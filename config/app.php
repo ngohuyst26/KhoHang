@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\ServiceProvider;
+
+
 return [
 
     /*
@@ -104,6 +107,16 @@ return [
             explode(',', env('APP_PREVIOUS_KEYS', ''))
         ),
     ],
+    'providers'     => ServiceProvider::defaultProviders()->merge([
+        /*
+         * Package Service Providers...
+         */
+
+        /*
+         * Application Service Providers...
+         */
+        Module\ModuleServiceProvider::class,
+    ])->toArray(),
 
     /*
     |--------------------------------------------------------------------------

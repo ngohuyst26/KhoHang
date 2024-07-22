@@ -5,9 +5,7 @@ namespace Module\Products\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductsRequest;
 use App\Http\Requests\UpdateProductsRequest;
-use App\Models\Option;
 use App\Models\Product;
-use App\Models\SkuValue;
 use Module\Products\Models\Products;
 
 class ProductsController extends Controller{
@@ -17,13 +15,10 @@ class ProductsController extends Controller{
      */
     public function index(){
 
-        $products = Product::where('id', 1)->first();
-
-        $option = SkuValue::where('product_id', 1)->get();
+        $products = Product::with(['productSku.optionValue.option'])->get();
 
         return view('Products::index', [
-            'product' => $products,
-            'options' => $option
+            'products' => $products,
         ]);
     }
 

@@ -25,6 +25,10 @@ class ProductSku extends Model{
             'storage_location_id');
     }
 
+    public function optionValue(){
+        return $this->belongsToMany(OptionValue::class, 'sku_value', 'sku_id');
+    }
+
     public function skuUnit(){
         return $this->hasMany(SkuUnit::class, 'product_sku_id');
     }

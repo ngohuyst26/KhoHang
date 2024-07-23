@@ -37,7 +37,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                     <div class="menu-item pt-5">
                         <!--begin:Menu content-->
                         <div class="menu-content">
-                            <span class="menu-heading fw-bold text-uppercase fs-7">Management</span>
+                            <span class="menu-heading fw-bold text-uppercase fs-7">Quản lý</span>
                         </div>
                         <!--end:Menu content-->
                     </div>
@@ -53,7 +53,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
 													<span class="path3"></span>
 												</i>
 											</span>
-											<span class="menu-title">Category</span>
+											<span class="menu-title">Loại hàng</span>
 											<span class="menu-arrow"></span>
 										</span>
                         <!--end:Menu link-->
@@ -62,11 +62,11 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="{{ route('admin.ListCate') }}">
+                                <a class="menu-link" href="{{ route('category.list') }}">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
-                                    <span class="menu-title">Category Listing</span>
+                                    <span class="menu-title">Danh sách</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
@@ -74,59 +74,11 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="{{ route('admin.AddCate') }}">
+                                <a class="menu-link" href="{{ route('category.add') }}">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
-                                    <span class="menu-title">Add new</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                            <!--end:Menu item-->
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="pages/user-profile/campaigns.html">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
-                                    <span class="menu-title">Campaigns</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                            <!--end:Menu item-->
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="pages/user-profile/documents.html">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
-                                    <span class="menu-title">Documents</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                            <!--end:Menu item-->
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="pages/user-profile/followers.html">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
-                                    <span class="menu-title">Followers</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                            <!--end:Menu item-->
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="pages/user-profile/activity.html">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
-                                    <span class="menu-title">Activity</span>
+                                    <span class="menu-title">Thêm loại</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
@@ -148,7 +100,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
 													<span class="path5"></span>
 												</i>
 											</span>
-											<span class="menu-title">Suppliers</span>
+											<span class="menu-title">Nhà cung cấp</span>
 											<span class="menu-arrow"></span>
 										</span>
                         <!--end:Menu link-->
@@ -161,7 +113,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
-                                    <span class="menu-title">Supplier Listing</span>
+                                    <span class="menu-title">Danh sách</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
@@ -173,7 +125,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
-                                    <span class="menu-title">Add new</span>
+                                    <span class="menu-title">Thêm nhà cung cấp</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
@@ -195,7 +147,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
 														<span class="path4"></span>
 													</i>
 											</span>
-											<span class="menu-title">Products</span>
+											<span class="menu-title">Sản phẩm</span>
 											<span class="menu-arrow"></span>
 										</span>
                         <!--end:Menu link-->
@@ -208,7 +160,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
-                                    <span class="menu-title">Product Listing</span>
+                                    <span class="menu-title">Danh sách sản phẩm</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
@@ -220,7 +172,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
-                                    <span class="menu-title">Add new</span>
+                                    <span class="menu-title">Thêm sản phẩm</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
@@ -240,7 +192,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
 														<span class="path2"></span>
 													</i>
 											</span>
-											<span class="menu-title">Customers</span>
+											<span class="menu-title">Khách hàng</span>
 											<span class="menu-arrow"></span>
 										</span>
                         <!--end:Menu link-->
@@ -253,7 +205,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
-                                    <span class="menu-title">Customer Listing</span>
+                                    <span class="menu-title">Danh sách khách hàng</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>

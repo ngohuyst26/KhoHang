@@ -1,20 +1,22 @@
 <?php
-use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\Admin\CustomerController;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::prefix('admin')->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
-});
-Route::get('/AddCate',[CategoryController::class,'AddCate']) ->name(('admin.AddCate'));
-Route::post('/AddCate', [CategoryController::class, 'store'])->name('admin.store');
-Route::get('/ListCate', [CategoryController::class, 'list'])->name('admin.ListCate');
-Route::get('/EditCate/{id}', [CategoryController::class, 'edit'])->name('admin.edit');
-Route::put('/UpdateCate/{id}', [CategoryController::class, 'update'])->name('admin.update');
-Route::delete('/DeleteCate/{id}', [CategoryController::class, 'delete'])->name('admin.delete');
+    Route::get('/', function () {
+        return view('pages.admin.dashboard.index');
+    });
+    Route::name('category.')->prefix('category')->group(function(){
+        Route::get('/add',[CategoryController::class,'addCategory'])->name(('add'));
+        Route::post('/add', [CategoryController::class, 'store'])->name('store');
+        Route::get('/list', [CategoryController::class, 'list'])->name('list');
+        Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [CategoryController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [CategoryController::class, 'delete'])->name('delete');
+    });
 
-Route::resource('customers', CustomerController::class);
+    Route::resource('customers', CustomerController::class);
+});

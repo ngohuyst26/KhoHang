@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function AddCate()
+    public function addCategory()
     {
 
-        return view('admin.AddCate');
+        return view('pages.admin.categories.add-category');
     }
 
     public function store(Request $request)
@@ -36,13 +36,13 @@ class CategoryController extends Controller
         $categories = Category::
         orderBy('id', 'desc')
             ->get();
-        return view('admin.ListCate', ['categories' => $categories]);
+        return view('pages.admin.categories.list-category', ['categories' => $categories]);
     }
 
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('admin.EditCate', ['category' => $category]);
+        return view('pages.admin.categories.edit-category', ['category' => $category]);
     }
 
     public function update(Request $request, $id)
@@ -59,7 +59,7 @@ class CategoryController extends Controller
         $category->status = $request->status == 'active' ? 1 : 0;
         $category->save();
 
-        return redirect()->route('admin.ListCate')->with('success', 'Cập nhật danh mục thành công!');
+        return redirect()->route('pages.admin.categories.list-category')->with('success', 'Cập nhật danh mục thành công!');
     }
 
     public function delete($id)
@@ -67,6 +67,6 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        return redirect()->route('admin.ListCate')->with('success', 'Xóa danh mục thành công!');
+        return redirect()->route('pages.admin.categories.list-category')->with('success', 'Xóa danh mục thành công!');
     }
 }

@@ -50,10 +50,10 @@
                                 </td>
                                 <td>
 
-                                    <a href="{{ route('admin.edit', $category->id) }}" class="btn btn-sm btn-light btn-active-light-primary">
+                                    <a href="{{ route('category.edit', $category->id) }}" class="btn btn-sm btn-light btn-active-light-primary">
                                         Sửa
                                     </a>
-                                    <form action="{{ route('admin.delete', $category->id) }}" method="POST" style="display:inline-block;">
+                                    <form action="{{ route('category.delete', $category->id) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-light btn-active-light-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục này?');">Xóa</button>

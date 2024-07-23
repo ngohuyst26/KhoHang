@@ -14,10 +14,10 @@ class CustomerController extends Controller
     {
         $customers = Customer::where('status',1)->paginate(10);
         if ($request->ajax()) {
-            return view('pages.customers.pagination', compact('customers'))->render();
+            return view('pages.admin.customers.pagination', compact('customers'))->render();
         }
 
-        return view('pages.customers.index', [
+        return view('pages.admin.customers.index', [
             'customers' => $customers
         ]);
     }
@@ -39,7 +39,7 @@ class CustomerController extends Controller
 
         if ($request->ajax()) {
             $customers = Customer::paginate(10);
-            return view('pages.customers.pagination', compact('customers'))->render();
+            return view('pages.admin.customers.pagination', compact('customers'))->render();
         }
 
         return redirect('/customers');

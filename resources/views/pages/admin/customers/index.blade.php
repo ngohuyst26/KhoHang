@@ -146,7 +146,7 @@
                 <!--begin::Card body-->
                 <div class="card-body pt-0" id="customers-list">
                     <!--begin::Table-->
-                    @include('pages.customers.pagination')
+                    @include('pages.admin.customers.pagination')
                     <!--end::Table-->
                 </div>
                 <!--end::Card body-->
@@ -415,7 +415,7 @@
     <script src=" {{asset('assets/js/custom/apps/customers/add.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
-        $(document).on('click', '.pagination a', function(e) {
+        $(document).on('click', '.pagination a', function (e) {
             e.preventDefault();
             var page = $(this).attr('href').split('page=')[1];
             fetchCustomers(page);
@@ -424,7 +424,7 @@
         function fetchCustomers(page) {
             $.ajax({
                 url: "/customers?page=" + page,
-                success: function(data) {
+                success: function (data) {
                     console.log(data);
                     $('#customers-list').html(data);
                 }

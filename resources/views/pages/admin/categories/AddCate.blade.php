@@ -1,4 +1,4 @@
-@extends('client.layouts.master')
+@extends('layouts.master')
 @section('content')
     <div class="container">
         <h1 class="mb-4">Thêm Danh Mục</h1>

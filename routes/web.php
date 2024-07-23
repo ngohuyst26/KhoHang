@@ -12,5 +12,9 @@ Route::prefix('admin')->group(function () {
 });
 Route::get('/AddCate',[CategoryController::class,'AddCate']) ->name(('admin.AddCate'));
 Route::post('/AddCate', [CategoryController::class, 'store'])->name('admin.store');
+Route::get('/ListCate', [CategoryController::class, 'list'])->name('admin.ListCate');
+Route::get('/EditCate/{id}', [CategoryController::class, 'edit'])->name('admin.edit');
+Route::put('/UpdateCate/{id}', [CategoryController::class, 'update'])->name('admin.update');
+Route::delete('/DeleteCate/{id}', [CategoryController::class, 'delete'])->name('admin.delete');
 
 Route::resource('customers', CustomerController::class);

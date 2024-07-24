@@ -127,7 +127,7 @@
                             </button>
                             <!--end::Export-->
                             <!--begin::Add customer-->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_customer">Add Customer</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="modal_customer" data-bs-target="#kt_modal_add_customer">Thêm khách hàng</button>
                             <!--end::Add customer-->
                         </div>
                         <!--end::Toolbar-->
@@ -154,20 +154,20 @@
             <!--end::Card-->
             <!--begin::Modals-->
             <!--begin::Modal - Customers - Add-->
-            <div class="modal fade" id="kt_modal_add_customer" tabindex="-1" aria-hidden="true">
+            <div class="modal fade" id="kt_modal_add_customer" tabindex="-1"  aria-hidden="true">
                 <!--begin::Modal dialog-->
-                <div class="modal-dialog modal-dialog-centered mw-650px">
+                <div class="modal-dialog modal-dialog-centered mw-1000px">
                     <!--begin::Modal content-->
                     <div class="modal-content">
                         <!--begin::Form-->
-                        <form class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#" id="kt_modal_add_customer_form" data-kt-redirect="../../demo1/dist/apps/customers/list.html">
+                        <form class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#" id="add_customer_form">
                             <!--begin::Modal header-->
                             <div class="modal-header" id="kt_modal_add_customer_header">
                                 <!--begin::Modal title-->
                                 <h2 class="fw-bolder">Add a Customer</h2>
                                 <!--end::Modal title-->
                                 <!--begin::Close-->
-                                <div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary">
+                                <div id="kt_modal_add_customer_close"  data-bs-dismiss="modal" class="btn btn-icon btn-sm btn-active-icon-primary">
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
                                     <span class="svg-icon svg-icon-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -183,84 +183,102 @@
                             <!--begin::Modal body-->
                             <div class="modal-body py-10 px-lg-17">
                                 <!--begin::Scroll-->
-                                <div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px" style="max-height: 28px;">
                                     <!--begin::Input group-->
-                                    <div class="fv-row mb-7 fv-plugins-icon-container">
-                                        <!--begin::Label-->
-                                        <label class="required fs-6 fw-bold mb-2">Name</label>
-                                        <!--end::Label-->
-                                        <!--begin::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="" name="name" value="Sean Bean">
-                                        <!--end::Input-->
-                                        <div class="fv-plugins-message-container invalid-feedback"></div>
-                                    </div>
-                                    <!--end::Input group-->
-                                    <div class="fv-row mb-7 fv-plugins-icon-container">
-                                        <!--begin::Label-->
-                                        <label class="required fs-6 fw-bold mb-2">Phone</label>
-                                        <!--end::Label-->
-                                        <!--begin::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="" name="name" value="Sean Bean">
-                                        <!--end::Input-->
-                                        <div class="fv-plugins-message-container invalid-feedback"></div>
-                                    </div>
-                                    <div class="fv-row mb-7 fv-plugins-icon-container">
-                                        <!--begin::Label-->
-                                        <label class="required fs-6 fw-bold mb-2">Date of birth</label>
-                                        <!--end::Label-->
-                                        <!--begin::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="" name="name" value="Sean Bean">
-                                        <!--end::Input-->
-                                        <div class="fv-plugins-message-container invalid-feedback"></div>
-                                    </div>
-                                    <!--begin::Input group-->
-                                    <div class="fv-row mb-7 fv-plugins-icon-container">
-                                        <!--begin::Label-->
-                                        <label class="fs-6 fw-bold mb-2">
-                                            <span class="required">Email</span>
-                                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Email address must be active" aria-label="Email address must be active"></i>
-                                        </label>
-                                        <!--end::Label-->
-                                        <!--begin::Input-->
-                                        <input type="email" class="form-control form-control-solid" placeholder="" name="email" value="sean@dellito.com">
-                                        <!--end::Input-->
-                                        <div class="fv-plugins-message-container invalid-feedback"></div>
-                                    </div>
-                                    <!--end::Input group-->
-                                    <!--begin::Input group-->
-                                    <div class="fv-row mb-7">
-                                        <!--begin::Label-->
-                                        <label class="fs-6 fw-bold mb-2">Description</label>
-                                        <!--end::Label-->
-                                        <!--begin::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="" name="description">
-                                        <!--end::Input-->
-                                        <div class="fv-plugins-message-container invalid-feedback"></div>
-                                    </div>
+                                <div class="form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework">
+                                    <div class="d-flex flex-column gap-2 gap-lg-1 w-100 w-lg-450px me-lg-10">
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="required fs-6 fw-bold mb-2">Họ và tên</label>
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="name" id="name" value="">
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="required fs-6 fw-bold mb-2">Ngày sinh</label>
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="date_of_birth" value="">
+                                                <p></p>
+                                            </div>
+                                            <div class="col">
+                                                <label class="required fs-6 fw-bold mb-2">Số điện thoại</label>
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="phone" value="">
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="fs-6 fw-bold mb-2">
+                                                    <span class="required">Email</span>
+                                                    <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Email address must be active" aria-label="Email address must be active"></i>
+                                                </label>
+                                                <input type="email" class="form-control form-control-solid" placeholder="" name="email" value="">
+                                                <div class="fv-plugins-message-container invalid-feedback"></div>
+                                            </div>
 
-                                    <div class="fv-row mb-7 fv-plugins-icon-container">
-                                        <!--begin::Label-->
-                                        <label class="required fs-6 fw-bold mb-2">Name</label>
-                                        <!--end::Label-->
-                                        <!--begin::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="" name="name" value="Sean Bean">
-                                        <!--end::Input-->
-                                        <div class="fv-plugins-message-container invalid-feedback"></div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="fs-6 fw-bold mb-2">Ghi chú</label>
+                                            <textarea class="form-control form-control-solid" rows="3" name="notes" placeholder=""></textarea>
+                                        </div>
                                     </div>
-                                    <!--end::Input group-->
-                                    <!--begin::Billing toggle-->
-                                    <div class="fw-bolder fs-3 rotate collapsible mb-7" data-bs-toggle="collapse" href="#kt_modal_add_customer_billing_info" role="button" aria-expanded="false" aria-controls="kt_customer_view_details">Shipping Information
-                                        <span class="ms-2 rotate-180">
-                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                            <span class="svg-icon svg-icon-3">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                    <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black"></path>
-                                                </svg>
-                                            </span>
-                                            <!--end::Svg Icon-->
-                                        </span>
+                                    <div class="d-flex flex-column flex-row-fluid gap-2 gap-lg-1">
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="required fs-6 fw-bold mb-2">Địa chỉ</label>
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="address" value="">
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="required fs-6 fw-bold mb-2">Mã số thuế</label>
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="tax_code" value="">
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="required fs-6 fw-bold mb-2">Facebook</label>
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="facebook" value="">
+                                                <div class="fv-plugins-message-container invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="fs-6 fw-bold mb-2">Loại khách hàng
+                                                    <span class="ms-1" data-bs-toggle="tooltip" aria-label="Select a discount type that will be applied to this product" data-bs-original-title="Select a discount type that will be applied to this product" data-kt-initialized="1">
+                                                    <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                    </i>
+                                                </span>
+                                                </label>
+                                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 row-cols-xl-2 g-9" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']" data-kt-initialized="1">
+                                                    <div class="col">
+                                                        <label class="btn btn-outline btn-outline-dashed btn-active-light-primary active d-flex text-start p-6" data-kt-button="true">
+                                                            <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
+                                                                <input class="form-check-input" type="radio" name="customer_type" value="1" checked="checked">
+                                                            </span>
+                                                            <span class="ms-5">
+                                                                <span class="fs-4 fw-bold text-gray-800 d-block">Cá nhân</span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col">
+                                                        <label class="btn btn-outline btn-outline-dashed btn-active-light-primary d-flex text-start p-6" data-kt-button="true">
+                                                            <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
+                                                                <input class="form-check-input" type="radio" name="customer_type" value="2">
+                                                            </span>
+                                                            <span class="ms-5">
+                                                                <span class="fs-4 fw-bold text-gray-800 d-block">Công ty</span>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <!--end::Billing toggle-->
                                 </div>
                                 <!--end::Scroll-->
                             </div>
@@ -268,13 +286,14 @@
                             <!--begin::Modal footer-->
                             <div class="modal-footer flex-center">
                                 <!--begin::Button-->
-                                <button type="reset" id="kt_modal_add_customer_cancel" class="btn btn-light me-3">Discard</button>
+                                <button type="reset" id="kt_modal_add_customer_cancel" data-bs-dismiss="modal" class="btn btn-light me-3">Hủy bỏ</button>
                                 <!--end::Button-->
                                 <!--begin::Button-->
                                 <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
-                                    <span class="indicator-label">Submit</span>
+                                    <span class="indicator-label">Thêm</span>
                                     <span class="indicator-progress">Please wait...
-														<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                    </span>
                                 </button>
                                 <!--end::Button-->
                             </div>
@@ -285,118 +304,159 @@
                     </div>
                 </div>
             </div>
-            <!--end::Modal - Customers - Add-->
-            <!--begin::Modal - Adjust Balance-->
-            <div class="modal fade" id="kt_customers_export_modal" tabindex="-1" aria-hidden="true">
+
+            <div class="modal fade" id="kt_modal_edit_customer" tabindex="-1"  aria-hidden="true">
                 <!--begin::Modal dialog-->
-                <div class="modal-dialog modal-dialog-centered mw-650px">
+                <div class="modal-dialog modal-dialog-centered mw-1000px">
                     <!--begin::Modal content-->
                     <div class="modal-content">
-                        <!--begin::Modal header-->
-                        <div class="modal-header">
-                            <!--begin::Modal title-->
-                            <h2 class="fw-bolder">Export Customers</h2>
-                            <!--end::Modal title-->
-                            <!--begin::Close-->
-                            <div id="kt_customers_export_close" class="btn btn-icon btn-sm btn-active-icon-primary">
-                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-                                <span class="svg-icon svg-icon-1">
-														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-															<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black"></rect>
-															<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"></rect>
-														</svg>
-													</span>
-                                <!--end::Svg Icon-->
+                        <!--begin::Form-->
+                        <form class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#" id="edit_customer_form">
+                            <!--begin::Modal header-->
+                            <div class="modal-header" id="kt_modal_add_customer_header">
+                                <!--begin::Modal title-->
+                                <h2 class="fw-bolder">Add a Customer</h2>
+                                <!--end::Modal title-->
+                                <!--begin::Close-->
+                                <div id="kt_modal_add_customer_close"  data-bs-dismiss="modal" class="btn btn-icon btn-sm btn-active-icon-primary">
+                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                                    <span class="svg-icon svg-icon-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black"></rect>
+                                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"></rect>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </div>
+                                <!--end::Close-->
                             </div>
-                            <!--end::Close-->
-                        </div>
-                        <!--end::Modal header-->
-                        <!--begin::Modal body-->
-                        <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-                            <!--begin::Form-->
-                            <form id="kt_customers_export_form" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="#">
+                            <!--end::Modal header-->
+                            <!--begin::Modal body-->
+                            <div class="modal-body py-10 px-lg-17">
+                                <!--begin::Scroll-->
                                 <!--begin::Input group-->
-                                <div class="fv-row mb-10 fv-plugins-icon-container">
-                                    <!--begin::Label-->
-                                    <label class="fs-5 fw-bold form-label mb-5">Select Date Range:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <input class="form-control form-control-solid flatpickr-input" placeholder="Pick a date" name="date" type="hidden"><input class="form-control form-control-solid form-control input" placeholder="Pick a date" tabindex="0" type="text" readonly="readonly">
-                                    <!--end::Input-->
-                                    <div class="fv-plugins-message-container invalid-feedback"></div>
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                <div class="fv-row mb-10">
-                                    <!--begin::Label-->
-                                    <label class="fs-5 fw-bold form-label mb-5">Select Export Format:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <select data-control="select2" data-placeholder="Select a format" data-hide-search="true" name="format" class="form-select form-select-solid select2-hidden-accessible" data-select2-id="select2-data-16-tloe" tabindex="-1" aria-hidden="true">
-                                        <option value="excell" data-select2-id="select2-data-18-3ejr">Excel</option>
-                                        <option value="pdf">PDF</option>
-                                        <option value="cvs">CVS</option>
-                                        <option value="zip">ZIP</option>
-                                    </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-17-qrxa" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-solid" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-format-18-container" aria-controls="select2-format-18-container"><span class="select2-selection__rendered" id="select2-format-18-container" role="textbox" aria-readonly="true" title="Excel">Excel</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                    <!--end::Input-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Row-->
-                                <div class="row fv-row mb-15">
-                                    <!--begin::Label-->
-                                    <label class="fs-5 fw-bold form-label mb-5">Payment Type:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Radio group-->
-                                    <div class="d-flex flex-column">
-                                        <!--begin::Radio button-->
-                                        <label class="form-check form-check-custom form-check-sm form-check-solid mb-3">
-                                            <input class="form-check-input" type="checkbox" value="1" checked="checked" name="payment_type">
-                                            <span class="form-check-label text-gray-600 fw-bold">All</span>
-                                        </label>
-                                        <!--end::Radio button-->
-                                        <!--begin::Radio button-->
-                                        <label class="form-check form-check-custom form-check-sm form-check-solid mb-3">
-                                            <input class="form-check-input" type="checkbox" value="2" checked="checked" name="payment_type">
-                                            <span class="form-check-label text-gray-600 fw-bold">Visa</span>
-                                        </label>
-                                        <!--end::Radio button-->
-                                        <!--begin::Radio button-->
-                                        <label class="form-check form-check-custom form-check-sm form-check-solid mb-3">
-                                            <input class="form-check-input" type="checkbox" value="3" name="payment_type">
-                                            <span class="form-check-label text-gray-600 fw-bold">Mastercard</span>
-                                        </label>
-                                        <!--end::Radio button-->
-                                        <!--begin::Radio button-->
-                                        <label class="form-check form-check-custom form-check-sm form-check-solid">
-                                            <input class="form-check-input" type="checkbox" value="4" name="payment_type">
-                                            <span class="form-check-label text-gray-600 fw-bold">American Express</span>
-                                        </label>
-                                        <!--end::Radio button-->
+                                <div class="form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework">
+                                    <div class="d-flex flex-column gap-2 gap-lg-1 w-100 w-lg-450px me-lg-10">
+                                        <input type="text" class="form-control form-control-solid" hidden="true" placeholder="" name="id" id="id_edit" value="">
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="required fs-6 fw-bold mb-2">Họ và tên</label>
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="name" id="name_edit" value="">
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="required fs-6 fw-bold mb-2">Ngày sinh</label>
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="date_of_birth_edit" value="">
+                                                <p></p>
+                                            </div>
+                                            <div class="col">
+                                                <label class="required fs-6 fw-bold mb-2">Số điện thoại</label>
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="phone_edit" value="">
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="fs-6 fw-bold mb-2">
+                                                    <span class="required">Email</span>
+                                                    <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Email address must be active" aria-label="Email address must be active"></i>
+                                                </label>
+                                                <input type="email" class="form-control form-control-solid" placeholder="" name="email" value="">
+                                                <div class="fv-plugins-message-container invalid-feedback"></div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="fs-6 fw-bold mb-2">Ghi chú</label>
+                                            <textarea class="form-control form-control-solid" rows="3" name="notes" placeholder=""></textarea>
+                                        </div>
                                     </div>
-                                    <!--end::Input group-->
+                                    <div class="d-flex flex-column flex-row-fluid gap-2 gap-lg-1">
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="required fs-6 fw-bold mb-2">Địa chỉ</label>
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="address_edit" value="">
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="required fs-6 fw-bold mb-2">Mã số thuế</label>
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="tax_code_edit" value="">
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="required fs-6 fw-bold mb-2">Facebook</label>
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="facebook_edit" value="">
+                                                <div class="fv-plugins-message-container invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="fs-6 fw-bold mb-2">Loại khách hàng
+                                                    <span class="ms-1" data-bs-toggle="tooltip" aria-label="Select a discount type that will be applied to this product" data-bs-original-title="Select a discount type that will be applied to this product" data-kt-initialized="1">
+                                                    <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                    </i>
+                                                </span>
+                                                </label>
+                                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 row-cols-xl-2 g-9" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']" data-kt-initialized="1">
+                                                    <div class="col">
+                                                        <label  class="btn btn-outline btn-outline-dashed btn-active-light-primary d-flex text-start p-6" data-kt-button="true">
+                                                            <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
+                                                                <input class="form-check-input" type="radio" name="customer_type" id="customer_type_edit_1" value="1">
+                                                            </span>
+                                                            <span class="ms-5">
+                                                                <span class="fs-4 fw-bold text-gray-800 d-block">Cá nhân</span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col">
+                                                        <label class="btn btn-outline btn-outline-dashed btn-active-light-primary d-flex text-start p-6" data-kt-button="true">
+                                                            <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
+                                                                <input class="form-check-input" type="radio" name="customer_type" id="customer_type_edit_2"  value="2">
+                                                            </span>
+                                                            <span class="ms-5">
+                                                                <span class="fs-4 fw-bold text-gray-800 d-block">Công ty</span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <!--end::Row-->
-                                <!--begin::Actions-->
-                                <div class="text-center">
-                                    <button type="reset" id="kt_customers_export_cancel" class="btn btn-light me-3">Discard</button>
-                                    <button type="submit" id="kt_customers_export_submit" class="btn btn-primary">
-                                        <span class="indicator-label">Submit</span>
-                                        <span class="indicator-progress">Please wait...
-															<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                                    </button>
-                                </div>
-                                <!--end::Actions-->
-                                <div></div>
-                            </form>
-                            <!--end::Form-->
-                        </div>
-                        <!--end::Modal body-->
+                                <!--end::Scroll-->
+                            </div>
+                            <!--end::Modal body-->
+                            <!--begin::Modal footer-->
+                            <div class="modal-footer flex-center">
+                                <!--begin::Button-->
+                                <button type="reset" id="kt_modal_add_customer_cancel" data-bs-dismiss="modal" class="btn btn-light me-3">Hủy bỏ</button>
+                                <!--end::Button-->
+                                <!--begin::Button-->
+                                <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
+                                    <span class="indicator-label">Thêm</span>
+                                    <span class="indicator-progress">Please wait...
+                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                    </span>
+                                </button>
+                                <!--end::Button-->
+                            </div>
+                            <!--end::Modal footer-->
+                            <div></div>
+                        </form>
+                        <!--end::Form-->
                     </div>
-                    <!--end::Modal content-->
                 </div>
-                <!--end::Modal dialog-->
             </div>
-            <!--end::Modal - New Card-->
+
             <!--end::Modals-->
         </div>
         <!--end::Container-->
@@ -415,17 +475,251 @@
     <script src=" {{asset('assets/js/custom/apps/customers/add.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
+        $(document).ready(function() {
+            //Clear errors
+            $("#modal_customer").on('click',function (){
+                clearErrors();
+            })
+
+            //Hanlde submit adding form
+            $("#add_customer_form").submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '{{ route('customers.store') }}',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(data) {
+                        if (data.errors) {
+                            let error = data.errors
+                            handleFieldError("#name", error.name);
+
+                        }else{
+                            $('#customers-list').html(data);
+                            $('#kt_modal_add_customer').modal('hide');
+                            clearErrors();
+                            Swal.fire({
+                                text: "Here's a basic example of SweetAlert!",
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn btn-primary"
+                                }
+                            });
+                        }
+                    },
+                })
+            })
+
+            //Hanlde submit updating form
+            $("#edit_form_price_range").submit(function(e) {
+                e.preventDefault();
+
+                let id = $('#idEdit').val();
+
+                $.ajax({
+                    url: '/dien-tich/' + id,
+                    type: 'PUT',
+                    dataType: 'json',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        if (response.status == true) {
+                            $("#nameEdit").removeClass('is-invalid border-danger')
+                                .siblings('p')
+                                .removeClass('invalid-feedback')
+                                .html('');
+
+                            $("#min_acreage").removeClass('is-invalid border-danger')
+                                .siblings('p')
+                                .removeClass('invalid-feedback')
+                                .html('');
+
+                            $("#max_acreage").removeClass('is-invalid border-danger')
+                                .siblings('p')
+                                .removeClass('invalid-feedback')
+                                .html('');
+
+                            $('#kt_modal_edit_room_type').modal('hide');
+                            window.location.reload();
+
+                            alert('Cập nhật thành công!')
+
+                        } else {
+                            var errors = response.errors;
+                            if (errors.name) {
+                                $("#nameEdit").addClass('is-invalid border-danger')
+                                    .siblings('p')
+                                    .addClass('invalid-feedback')
+                                    .html(errors.name)
+                            } else {
+                                $("#nameEdit").removeClass('is-invalid border-danger')
+                                    .siblings('p')
+                                    .removeClass('invalid-feedback')
+                                    .html('')
+                            }
+
+                            if (errors.min_acreage) {
+                                $("#min_acreage_edit").addClass('is-invalid border-danger')
+                                    .siblings('p')
+                                    .addClass('invalid-feedback')
+                                    .html(errors.min_acreage)
+                            } else {
+                                $("#min_acreage_edit").removeClass('is-invalid border-danger')
+                                    .siblings('p')
+                                    .removeClass('invalid-feedback')
+                                    .html('')
+                            }
+
+                            if (errors.max_acreage) {
+                                $("#max_acreage_edit").addClass('is-invalid border-danger')
+                                    .siblings('p')
+                                    .addClass('invalid-feedback')
+                                    .html(errors.max_acreage)
+                            } else {
+                                $("#max_acreage_edit").removeClass('is-invalid border-danger')
+                                    .siblings('p')
+                                    .removeClass('invalid-feedback')
+                                    .html('')
+                            }
+                        }
+                    }
+                });
+            });
+
+            //Handling update status 0
+            $('#update_status_form_price_range').submit(function(e) {
+                e.preventDefault();
+
+                let id = $('#idEditTrashPriceRange').val();
+
+                $.ajax({
+                    url: '/dien-tich/' + id,
+                    type: 'PUT',
+                    dataType: 'json',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        if (response.status == true) {
+                            $('#modal_confirm_add_trash').modal('hide');
+                            window.location.reload();
+                        } else {
+                            console.log(response);
+                            alert('Lỗi!')
+                        }
+                    }
+                });
+            })
+
+            //Handling update status 1
+            $('#restore_form_price_range').submit(function(e) {
+                e.preventDefault();
+
+                let id = $('#idRestore').val();
+
+                $.ajax({
+                    url: '/dien-tich/' + id,
+                    type: 'PUT',
+                    dataType: 'json',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        if (response.status == true) {
+                            $('#modal_confirm_restore').modal('hide');
+                            window.location.reload();
+                            // alert('Khôi phục thành công!')
+                        } else {
+
+                        }
+                    }
+                });
+            })
+
+            //Handling remove data
+            $('#remove_form_price_range').submit(function(e) {
+                e.preventDefault();
+
+                let id = $('#idDelete').val();
+
+                $.ajax({
+                    url: '/dien-tich/' + id,
+                    type: 'DELETE',
+                    dataType: 'json',
+                    data: {},
+                    success: function(response) {
+                        if (response.status == true) {
+                            $('#modal_confirm_remove').modal('hide');
+                            window.location.reload();
+                            // alert('Xóa bảng ghi thành công!')
+                        }
+                    },
+                    error: function(err) {
+                        alert('Lỗi không thể xóa!');
+                        $('#modal_confirm_remove').modal('hide');
+                    }
+                });
+            })
+        });
+
+        function openEdit(idEdit){
+            $.ajax({
+                url: "{{route('customers.index')}}/" + idEdit + '/edit',
+                method: 'GET',
+                success: function(data) {
+                    $('#id_edit').val(data.id);
+                    $('#name_edit').val(data.name);
+                    $('#date_of_birth_edit').val(data.date_of_birth);
+                    $('#phone_edit').val(data.phone);
+                    $('#email_edit').val(data.email);
+                    $('#address_edit').val(data.address);
+                    $('#tax_code_edit').val(data.tax_code);
+                    $('#facebook_edit').val(data.facebook);
+                    $('#notes_edit').val(data.notes);
+                    if(data.customer_type == 1){
+                        $('#customer_type_edit_1').attr('checked','checked');
+
+                    }else{
+                        $('#customer_type_edit_2').attr('checked','checked');
+                        // $('#label_customer_type_edit_2').attr('class','btn btn-outline btn-outline-dashed active btn-active-light-primary d-flex text-start p-6');
+                    }
+
+                },
+                error: function(err) {
+                    if (err.status == 404) {
+                        console.log('No query results for model');
+                    }
+                }
+            });
+        }
+
+
+        function handleFieldError(selector, error) {
+            const element = $(selector);
+            const feedbackElement = element.siblings('p');
+            if (error) {
+                element.addClass('is-invalid border-danger');
+                feedbackElement.addClass('invalid-feedback').html(error);
+            } else {
+                element.removeClass('is-invalid border-danger');
+                feedbackElement.removeClass('invalid-feedback').html('');
+            }
+        }
+
         $(document).on('click', '.pagination a', function (e) {
             e.preventDefault();
             var page = $(this).attr('href').split('page=')[1];
             fetchCustomers(page);
         });
 
+        function clearErrors() {
+            $('#add_customer_form')[0].reset();
+            $("#name").removeClass('is-invalid border-danger')
+                .siblings('p')
+                .removeClass('invalid-feedback')
+                .html('')
+        }
+
         function fetchCustomers(page) {
             $.ajax({
-                url: "/customers?page=" + page,
+                url: "{{route('customers.index')}}" + "?page=" + page,
                 success: function (data) {
-                    console.log(data);
                     $('#customers-list').html(data);
                 }
             });

@@ -14,8 +14,10 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-        $status = $request->status ?? '1';
-        $customers = Customer::orderBy('id','desc')->where('status',$status)->paginate(10);
+        $status = $request->filter === 'trash' ? '0' : '1';
+        $customers = Customer::orderBy('id','desc')
+                             ->where('status',$status)
+                             ->paginate(10);
 
         if ($request->ajax()) {
             return view('pages.admin.customers.pagination', [
@@ -25,6 +27,7 @@ class CustomerController extends Controller
 
         return view('pages.admin.customers.index', [
             'customers' => $customers,
+            'status' => $status
         ]);
     }
 
@@ -95,13 +98,14 @@ class CustomerController extends Controller
             $customer         = Customer::findOrFail($id);
             $customer->status = $request->status;
             $customer->save();
-
+            $status =  $request->status == '0' ? '1' : '0';
             $customers = Customer::orderBy('id','desc')
-                                 ->where('status','1')
+                                 ->where('status',$status)
                                  ->paginate(10);
 
             return view('pages.admin.customers.pagination', [
-                'customers'=>$customers
+                'customers'=>$customers,
+                'status' =>$status
             ])->render();
         }
 
@@ -133,7 +137,7 @@ class CustomerController extends Controller
 
         if ($request->ajax()) {
             $customers = Customer::orderBy('id','desc')
-                                 ->where('status','1')
+                                 ->where('status',1)
                                  ->paginate(10);
 
             return view('pages.admin.customers.pagination', [
@@ -145,13 +149,19 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
-        $acreage_range = AcreageRange::findOrFail($id);
-        $acreage_range->delete();
+        $customer = Customer::findOrFail($id);
+        $customer->delete();
 
-        return response()->json([
-            'status' => true
-        ]);
+        $customers = Customer::orderBy('id','desc')
+                             ->where('status','0')
+                             ->paginate(10);
+        if ($request->ajax()) {
+            return view('pages.admin.customers.pagination', [
+                'customers' => $customers,
+                'status' => '0'
+            ])->render();
+        }
     }
 }

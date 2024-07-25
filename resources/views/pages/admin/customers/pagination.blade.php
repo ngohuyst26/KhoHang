@@ -43,7 +43,7 @@
                     </td>
                     <!--end::Email=-->
                     <!--begin::Company=-->
-                    <td>{{$item->email}}</td>
+                    <td>{{$item->status}}</td>
                     <!--end::Company=-->
                     <!--begin::Payment method=-->
                     <td data-filter="mastercard">
@@ -55,18 +55,33 @@
                     <!--end::Date=-->
                     <!--begin::Action=-->
                     <td class="text-end">
-                        <button onclick="openEdit({{$item->id}})" data-bs-toggle="modal" data-bs-target="#kt_modal_edit"
-                                class="btn btn-light btn-flex btn-center btn-sm ">
-                            <span class="svg-icon svg-icon-2">
-                                @include('icons.edit')
-                            </span>
-                        </button>
-                        <button onclick="openTrash({{$item->id}})" data-bs-toggle="modal" data-bs-target="#kt_modal_trash"
-                                class="btn btn-light btn-flex btn-center btn-sm ">
-                            <span class="svg-icon svg-icon-2">
-                                @include('icons.trash')
-                            </span>
-                        </button>
+                        @if($status == '0')
+                            <button onclick="openRestore({{$item->id}})" data-bs-toggle="modal" data-bs-target="#kt_modal_restore"
+                                    class="btn btn-light btn-flex btn-center btn-sm ">
+                                <span class="svg-icon svg-icon-2">
+                                    @include('icons.restore')
+                                </span>
+                            </button>
+                            <button onclick="openDelete({{$item->id}})" data-bs-toggle="modal" data-bs-target="#kt_modal_delete"
+                                    class="btn btn-light btn-flex btn-center btn-sm ">
+                                <span class="svg-icon svg-icon-2">
+                                    @include('icons.delete')
+                                </span>
+                            </button>
+                        @else
+                            <button onclick="openEdit({{$item->id}})" data-bs-toggle="modal" data-bs-target="#kt_modal_edit"
+                                    class="btn btn-light btn-flex btn-center btn-sm ">
+                                <span class="svg-icon svg-icon-2">
+                                    @include('icons.edit')
+                                </span>
+                            </button>
+                            <button onclick="openTrash({{$item->id}})" data-bs-toggle="modal" data-bs-target="#kt_modal_trash"
+                                    class="btn btn-light btn-flex btn-center btn-sm ">
+                                <span class="svg-icon svg-icon-2">
+                                    @include('icons.trash')
+                                </span>
+                            </button>
+                        @endif
                     </td>
                 </tr>
             @endforeach

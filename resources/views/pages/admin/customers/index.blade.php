@@ -34,7 +34,7 @@
                                         <path d="M19.0759 3H4.72777C3.95892 3 3.47768 3.83148 3.86067 4.49814L8.56967 12.6949C9.17923 13.7559 9.5 14.9582 9.5 16.1819V19.5072C9.5 20.2189 10.2223 20.7028 10.8805 20.432L13.8805 19.1977C14.2553 19.0435 14.5 18.6783 14.5 18.273V13.8372C14.5 12.8089 14.8171 11.8056 15.408 10.964L19.8943 4.57465C20.3596 3.912 19.8856 3 19.0759 3Z" fill="black"></path>
                                     </svg>
                                 </span>
-                               Filter
+                                Filter
                             </button>
                             <div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true" id="kt-toolbar-filter">
                                 <!--begin::Header-->
@@ -108,7 +108,7 @@
                                 </div>
                                 <!--end::Content-->
                             </div>
-                            @if(Request::get('status') == '0')
+                            @if(Request::get('filter') === 'trash')
                                 <a type="button" href=" {{route('customers.index')}}" class="btn btn-light-primary me-3">
                                 <span class="svg-icon svg-icon-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -120,7 +120,7 @@
                                     Danh sách
                                 </a>
                             @else
-                                <a type="button" href=" {{route('customers.index')}}?status=0" class="btn btn-light-primary me-3">
+                                <a type="button" href=" {{route('customers.index')}}?filter=trash" class="btn btn-light-primary me-3">
                                 <span class="svg-icon svg-icon-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <rect opacity="0.3" x="12.75" y="4.25" width="12" height="2" rx="1" transform="rotate(90 12.75 4.25)" fill="black"></rect>
@@ -151,8 +151,7 @@
             </div>
             <!--end::Card-->
             <!--begin::Modals-->
-            <!--begin::Modal - Customers - Add-->
-            <div class="modal fade" id="kt_modal_add_customer" tabindex="-1"  aria-hidden="true">
+            <div class="modal fade" id="kt_modal_add_customer" tabindex="-1" aria-hidden="true">
                 <!--begin::Modal dialog-->
                 <div class="modal-dialog modal-dialog-centered mw-1000px">
                     <!--begin::Modal content-->
@@ -165,7 +164,7 @@
                                 <h2 class="fw-bolder">Add a Customer</h2>
                                 <!--end::Modal title-->
                                 <!--begin::Close-->
-                                <div id="kt_modal_add_customer_close"  data-bs-dismiss="modal" class="btn btn-icon btn-sm btn-active-icon-primary">
+                                <div id="kt_modal_add_customer_close" data-bs-dismiss="modal" class="btn btn-icon btn-sm btn-active-icon-primary">
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
                                     <span class="svg-icon svg-icon-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -181,7 +180,7 @@
                             <!--begin::Modal body-->
                             <div class="modal-body py-10 px-lg-17">
                                 <!--begin::Scroll-->
-                                    <!--begin::Input group-->
+                                <!--begin::Input group-->
                                 <div class="form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework">
                                     <div class="d-flex flex-column gap-2 gap-lg-1 w-100 w-lg-450px me-lg-10">
                                         <div class="row mb-3">
@@ -272,8 +271,8 @@
                                                                 <span class="fs-4 fw-bold text-gray-800 d-block">Công ty</span>
                                                             </span>
                                                         </label>
-                                                        </div>
                                                     </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -303,7 +302,7 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="kt_modal_edit" tabindex="-1"  aria-hidden="true">
+            <div class="modal fade" id="kt_modal_edit" tabindex="-1" aria-hidden="true">
                 <!--begin::Modal dialog-->
                 <div class="modal-dialog modal-dialog-centered mw-1000px">
                     <!--begin::Modal content-->
@@ -316,7 +315,7 @@
                                 <h2 class="fw-bolder">Add a Customer</h2>
                                 <!--end::Modal title-->
                                 <!--begin::Close-->
-                                <div id="kt_modal_add_customer_close"  data-bs-dismiss="modal" class="btn btn-icon btn-sm btn-active-icon-primary">
+                                <div id="kt_modal_add_customer_close" data-bs-dismiss="modal" class="btn btn-icon btn-sm btn-active-icon-primary">
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
                                     <span class="svg-icon svg-icon-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -406,7 +405,7 @@
                                                 </label>
                                                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 row-cols-xl-2 g-9" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']" data-kt-initialized="1">
                                                     <div class="col">
-                                                        <label  class="btn btn-outline btn-outline-dashed btn-active-light-primary d-flex text-start p-6" data-kt-button="true">
+                                                        <label class="btn btn-outline btn-outline-dashed btn-active-light-primary d-flex text-start p-6" data-kt-button="true">
                                                             <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
                                                                 <input class="form-check-input" type="radio" name="customer_type" id="customer_type_edit_1" value="1">
                                                             </span>
@@ -418,7 +417,7 @@
                                                     <div class="col">
                                                         <label class="btn btn-outline btn-outline-dashed btn-active-light-primary d-flex text-start p-6" data-kt-button="true">
                                                             <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-                                                                <input class="form-check-input" type="radio" name="customer_type" id="customer_type_edit_2"  value="2">
+                                                                <input class="form-check-input" type="radio" name="customer_type" id="customer_type_edit_2" value="2">
                                                             </span>
                                                             <span class="ms-5">
                                                                 <span class="fs-4 fw-bold text-gray-800 d-block">Công ty</span>
@@ -467,8 +466,55 @@
                             </div>
                             <div class="modal-body">
                                 <p>Bạn có muốn thêm vào thùng rác!</p>
-                                <input name="id" id="idUpdateStatus" value="" hidden />
-                                <input name="status" value="0" hidden />
+                                <input name="id" id="idUpdateStatus" value="" hidden/>
+                                <input name="status" value="0" hidden/>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Đóng</button>
+                                <button type="submit" class="btn btn-primary">Đồng ý</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal fade" tabindex="-1" id="kt_modal_restore">
+                <div class="modal-dialog">
+                    <form id="restore_form">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Thông báo</h3>
+                                <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                                    <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <p>Bạn có muốn khôi phục dữ liệu!</p>
+                                <input name="id" id="idRestore" value="" hidden/>
+                                <input name="status" value="1" hidden/>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Đóng</button>
+                                <button type="submit" class="btn btn-primary">Đồng ý</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal fade" tabindex="-1" id="kt_modal_delete">
+                <div class="modal-dialog">
+                    <form id="remove_form">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Thông báo</h3>
+                                <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                                    <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <p>Bạn có muốn xóa dữ liệu!</p>
+                                <input name="id" id="idRemove" value="" hidden/>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Đóng</button>
@@ -495,24 +541,25 @@
     <script src=" {{asset('assets/js/custom/apps/customers/add.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             //Clear errors
-            $("#modal_customer").on('click',function (){
+            $("#modal_customer").on('click', function () {
                 clearErrors();
             })
 
             //Hanlde submit adding form
-            $("#add_customer_form").submit(function(e) {
+            $("#add_customer_form").submit(function (e) {
                 e.preventDefault();
                 $.ajax({
                     url: '{{ route('customers.store') }}',
                     type: 'POST',
                     data: $(this).serialize(),
-                    success: function(data) {
+                    success: function (data) {
                         if (data.errors) {
                             let error = data.errors
                             handleFieldError("#name", error.name);
-                        }else{
+                        }
+                        else {
                             $('#customers-list').html(data);
                             $('#kt_modal_add_customer').modal('hide');
                             clearErrors();
@@ -531,7 +578,7 @@
             })
 
             //Hanlde submit updating form
-            $("#edit_customer_form").submit(function(e) {
+            $("#edit_customer_form").submit(function (e) {
                 e.preventDefault();
 
                 let id = $('#id_edit').val();
@@ -540,11 +587,12 @@
                     url: '{{route('customers.update',':id')}}'.replace(':id', id),
                     type: 'PUT',
                     data: $(this).serialize(),
-                    success: function(data) {
+                    success: function (data) {
                         if (data.errors) {
                             let error = data.errors
                             handleFieldError("#name_edit", error.name);
-                        }else{
+                        }
+                        else {
                             $('#customers-list').html(data);
                             $('#kt_modal_edit').modal('hide');
                             clearErrors();
@@ -563,7 +611,7 @@
             });
 
             //Handling update status 0
-            $('#update_status_form').submit(function(e) {
+            $('#update_status_form').submit(function (e) {
                 e.preventDefault();
                 let id = $('#idUpdateStatus').val();
 
@@ -571,7 +619,7 @@
                     url: '{{route('customers.update',':id')}}'.replace(':id', id),
                     type: 'PUT',
                     data: $(this).serialize(),
-                    success: function(data) {
+                    success: function (data) {
                         $('#customers-list').html(data);
                         $('#kt_modal_trash').modal('hide');
                         Swal.fire({
@@ -584,56 +632,66 @@
                             }
                         });
                     },
-                    error: function(err){
+                    error: function (err) {
                         console.log(err);
                     }
                 });
             })
 
             //Handling update status 1
-            $('#restore_form').submit(function(e) {
+            $('#restore_form').submit(function (e) {
                 e.preventDefault();
-
                 let id = $('#idRestore').val();
 
                 $.ajax({
-                    url: '/dien-tich/' + id,
+                    url: '{{route('customers.update',':id')}}'.replace(':id', id),
                     type: 'PUT',
-                    dataType: 'json',
                     data: $(this).serialize(),
-                    success: function(response) {
-                        if (response.status == true) {
-                            $('#modal_confirm_restore').modal('hide');
-                            window.location.reload();
-                            // alert('Khôi phục thành công!')
-                        } else {
-
-                        }
+                    success: function (data) {
+                        $('#customers-list').html(data);
+                        $('#kt_modal_restore').modal('hide');
+                        Swal.fire({
+                            text: "Khôi phục thành công!",
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "OK, Got it!",
+                            customClass: {
+                                confirmButton: "btn btn-primary"
+                            }
+                        });
+                    },
+                    error: function (err) {
+                        console.log(err);
                     }
                 });
             })
 
             //Handling remove data
-            $('#remove_form_price_range').submit(function(e) {
+            $('#remove_form').submit(function (e) {
                 e.preventDefault();
 
-                let id = $('#idDelete').val();
+                let id = $('#idRemove').val();
 
                 $.ajax({
-                    url: '/dien-tich/' + id,
+                    url: '{{route('customers.destroy',':id')}}'.replace(':id', id),
                     type: 'DELETE',
-                    dataType: 'json',
                     data: {},
-                    success: function(response) {
-                        if (response.status == true) {
-                            $('#modal_confirm_remove').modal('hide');
-                            window.location.reload();
-                            // alert('Xóa bảng ghi thành công!')
-                        }
+                    success: function (data) {
+                        $('#customers-list').html(data);
+                        $('#kt_modal_delete').modal('hide');
+                        Swal.fire({
+                            text: "Xóa thành công!",
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "OK, Got it!",
+                            customClass: {
+                                confirmButton: "btn btn-primary"
+                            }
+                        });
                     },
-                    error: function(err) {
-                        alert('Lỗi không thể xóa!');
-                        $('#modal_confirm_remove').modal('hide');
+                    error: function (err) {
+                        $('#kt_modal_delete').modal('hide');
+                        console.log(err)
                     }
                 });
             })
@@ -645,11 +703,11 @@
             fetchCustomers(page);
         });
 
-        function openEdit(idEdit){
+        function openEdit(idEdit) {
             $.ajax({
                 url: "{{route('customers.edit',':id')}}".replace(':id', idEdit),
                 method: 'GET',
-                success: function(data) {
+                success: function (data) {
                     $('#id_edit').val(data.id);
                     $('#name_edit').val(data.name);
                     $('#date_of_birth_edit').val(data.date_of_birth);
@@ -659,16 +717,17 @@
                     $('#tax_code_edit').val(data.tax_code);
                     $('#facebook_edit').val(data.facebook);
                     $('#notes_edit').val(data.notes);
-                    if(data.customer_type == 1){
-                        $('#customer_type_edit_1').attr('checked','checked');
+                    if (data.customer_type == 1) {
+                        $('#customer_type_edit_1').attr('checked', 'checked');
 
-                    }else{
-                        $('#customer_type_edit_2').attr('checked','checked');
+                    }
+                    else {
+                        $('#customer_type_edit_2').attr('checked', 'checked');
                         // $('#label_customer_type_edit_2').attr('class','btn btn-outline btn-outline-dashed active btn-active-light-primary d-flex text-start p-6');
                     }
 
                 },
-                error: function(err) {
+                error: function (err) {
                     if (err.status == 404) {
                         console.log('No query results for model');
                     }
@@ -676,14 +735,44 @@
             });
         }
 
-        function  openTrash(idUpdateStatus){
+        function openTrash(idUpdateStatus) {
             $.ajax({
                 url: "{{route('customers.edit',':id')}}".replace(':id', idUpdateStatus),
                 method: 'GET',
-                success: function(data) {
+                success: function (data) {
                     $('#idUpdateStatus').val(data.id);
                 },
-                error: function(err) {
+                error: function (err) {
+                    if (err.status == 404) {
+                        console.log('No query results for model');
+                    }
+                }
+            });
+        }
+
+        function openRestore(idRestore) {
+            $.ajax({
+                url: "{{route('customers.edit',':id')}}".replace(':id', idRestore),
+                method: 'GET',
+                success: function (data) {
+                    $('#idRestore').val(data.id);
+                },
+                error: function (err) {
+                    if (err.status == 404) {
+                        console.log('No query results for model');
+                    }
+                }
+            });
+        }
+
+        function openDelete(idRemove) {
+            $.ajax({
+                url: "{{route('customers.edit',':id')}}".replace(':id', idRemove),
+                method: 'GET',
+                success: function (data) {
+                    $('#idRemove').val(data.id);
+                },
+                error: function (err) {
                     if (err.status == 404) {
                         console.log('No query results for model');
                     }
@@ -697,7 +786,8 @@
             if (error) {
                 element.addClass('is-invalid border-danger');
                 feedbackElement.addClass('invalid-feedback').html(error);
-            } else {
+            }
+            else {
                 element.removeClass('is-invalid border-danger');
                 feedbackElement.removeClass('invalid-feedback').html('');
             }

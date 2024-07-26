@@ -65,7 +65,8 @@ class CustomerController extends Controller
                                  ->where('status','1')
                                  ->paginate(10);
             return view('pages.admin.customers.pagination', [
-                'customers'=>$customers
+                'customers'=>$customers,
+                'status' => '1'
             ])->render();
         }
 
@@ -141,7 +142,8 @@ class CustomerController extends Controller
                                  ->paginate(10);
 
             return view('pages.admin.customers.pagination', [
-                'customers'=>$customers
+                'customers'=>$customers,
+                'status' => '1'
             ])->render();
         }
     }

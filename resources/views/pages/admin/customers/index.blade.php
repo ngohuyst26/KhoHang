@@ -161,7 +161,7 @@
                             <!--begin::Modal header-->
                             <div class="modal-header" id="kt_modal_add_customer_header">
                                 <!--begin::Modal title-->
-                                <h2 class="fw-bolder">Add a Customer</h2>
+                                <h2 class="fw-bolder">Thêm khách hàng mới</h2>
                                 <!--end::Modal title-->
                                 <!--begin::Close-->
                                 <div id="kt_modal_add_customer_close" data-bs-dismiss="modal" class="btn btn-icon btn-sm btn-active-icon-primary">
@@ -312,7 +312,7 @@
                             <!--begin::Modal header-->
                             <div class="modal-header" id="kt_modal_add_customer_header">
                                 <!--begin::Modal title-->
-                                <h2 class="fw-bolder">Add a Customer</h2>
+                                <h2 class="fw-bolder">Cập nhật thông tin khách hàng</h2>
                                 <!--end::Modal title-->
                                 <!--begin::Close-->
                                 <div id="kt_modal_add_customer_close" data-bs-dismiss="modal" class="btn btn-icon btn-sm btn-active-icon-primary">
@@ -439,7 +439,7 @@
                                 <!--end::Button-->
                                 <!--begin::Button-->
                                 <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
-                                    <span class="indicator-label">Thêm</span>
+                                    <span class="indicator-label">Cập nhật</span>
                                     <span class="indicator-progress">Please wait...
                                         <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                                     </span>

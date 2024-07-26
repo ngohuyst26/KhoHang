@@ -41,6 +41,17 @@
                             <!--end::Input-->
                             <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                         </div>
+
+                        <div class="mb-10 fv-row fv-plugins-icon-container">
+                            <!--begin::Label-->
+                            <label class="required form-label">Danh mục sản phẩm</label>
+                            <select name="category_id" class="form-select col-3 select-2" data-control="select2" data-placeholder="Select an option">
+                                @foreach($categories as $attribute)
+                                    <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div class="mb-10 fv-row fv-plugins-icon-container">
                             <label class="form-label">Mô tả sản phẩm</label>
                             <textarea name="description" id="kt_docs_ckeditor_classic">

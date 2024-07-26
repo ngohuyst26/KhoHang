@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Option;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class ProductController extends Controller{
         $products = Product::with(['productSku.optionValue.option'])->get();
 
         return view('pages.admin.products.list', [
-            'products' => $products
+            'products' => $products,
         ]);
     }
 
@@ -25,13 +26,14 @@ class ProductController extends Controller{
      * Show the form for creating a new resource.
      */
     public function create(){
-        $products = Product::with(['productSku.optionValue.option'])->get();
         //        dd($products);
-        $option = Option::all();
-
+        $products   = Product::with(['productSku.optionValue.option'])->get();
+        $option     = Option::all();
+        $categories = Category::all();
         return view('pages.admin.products.create', [
-            'options'  => $option,
-            'products' => $products
+            'options'    => $option,
+            'products'   => $products,
+            'categories' => $categories
         ]);
     }
 
@@ -39,11 +41,10 @@ class ProductController extends Controller{
      * Store a newly created resource in storage.
      */
     public function store(Request $request){
-        dd($request);
         $data = $request->all();
-
         $productId = DB::table('products')->insertGetId([
             'name'        => $request->name,
+            'category_id' => $request->category_id,
             'description' => $request->description
         ]);
 
@@ -52,7 +53,7 @@ class ProductController extends Controller{
             DB::table('product_sku')->insertGetId([
                 'product_id' => $productId,
                 'price'      => $request->price,
-                'sale_price' => $request->sale_price + 2000,
+                'sale_price' => $request->sale_price,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -109,6 +110,8 @@ class ProductController extends Controller{
                 }
             }
         }
+
+        return redirect(route('products.index'));
     }
 
     /**

@@ -43,7 +43,7 @@
                     </td>
                     <!--end::Email=-->
                     <!--begin::Company=-->
-                    <td>{{$item->status}}</td>
+                    <td>{{$item->email}}</td>
                     <!--end::Company=-->
                     <!--begin::Payment method=-->
                     <td data-filter="mastercard">

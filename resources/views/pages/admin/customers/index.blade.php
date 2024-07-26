@@ -345,12 +345,12 @@
                                         <div class="row mb-3">
                                             <div class="col">
                                                 <label class="required fs-6 fw-bold mb-2">Ngày sinh</label>
-                                                <input type="text" class="form-control form-control-solid" placeholder="" name="date_of_birth_edit" value="">
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="date_of_birth"  id="date_of_birth_edit" value="">
                                                 <p></p>
                                             </div>
                                             <div class="col">
                                                 <label class="required fs-6 fw-bold mb-2">Số điện thoại</label>
-                                                <input type="text" class="form-control form-control-solid" placeholder="" name="phone_edit" value="">
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="phone" id="phone_edit" value="">
                                                 <p></p>
                                             </div>
                                         </div>
@@ -360,35 +360,35 @@
                                                     <span class="required">Email</span>
                                                     <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Email address must be active" aria-label="Email address must be active"></i>
                                                 </label>
-                                                <input type="email" class="form-control form-control-solid" placeholder="" name="email" value="">
+                                                <input type="email" class="form-control form-control-solid" placeholder="" name="email" id="email_edit"  value="">
                                                 <div class="fv-plugins-message-container invalid-feedback"></div>
                                             </div>
 
                                         </div>
                                         <div class="row mb-3">
                                             <label class="fs-6 fw-bold mb-2">Ghi chú</label>
-                                            <textarea class="form-control form-control-solid" rows="3" name="notes" placeholder=""></textarea>
+                                            <textarea class="form-control form-control-solid" rows="3" name="notes"  id="notes_edit" placeholder=""></textarea>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column flex-row-fluid gap-2 gap-lg-1">
                                         <div class="row mb-3">
                                             <div class="col">
                                                 <label class="required fs-6 fw-bold mb-2">Địa chỉ</label>
-                                                <input type="text" class="form-control form-control-solid" placeholder="" name="address_edit" value="">
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="address" id="address_edit" value="">
                                                 <p></p>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col">
                                                 <label class="required fs-6 fw-bold mb-2">Mã số thuế</label>
-                                                <input type="text" class="form-control form-control-solid" placeholder="" name="tax_code_edit" value="">
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="tax_code" id="tax_code_edit" value="">
                                                 <p></p>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col">
                                                 <label class="required fs-6 fw-bold mb-2">Facebook</label>
-                                                <input type="text" class="form-control form-control-solid" placeholder="" name="facebook_edit" value="">
+                                                <input type="text" class="form-control form-control-solid" placeholder="" name="facebook" id="facebook_edit" value="">
                                                 <div class="fv-plugins-message-container invalid-feedback"></div>
                                             </div>
                                         </div>

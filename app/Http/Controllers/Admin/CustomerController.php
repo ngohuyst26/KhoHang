@@ -138,7 +138,7 @@ class CustomerController extends Controller
 
         if ($request->ajax()) {
             $customers = Customer::orderBy('id','desc')
-                                 ->where('status',1)
+                                 ->where('status','1')
                                  ->paginate(10);
 
             return view('pages.admin.customers.pagination', [

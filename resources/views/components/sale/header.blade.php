@@ -1,7 +1,7 @@
 <div class="page-header" kv-focus-click="#productSearchInput">
     <div class="header-left">
         <div class="col-left-control " ng-show="!$root.session.IsActiveGppDrugStore || !$root.activeCart.canUseSamplePrecriptionSearch() || !vm.isSearchSamplePrescription">
-            <product-selarch-component on-select-product="vm.onSelectProduct(selectedProduct, weight)" on-select-grouped-products="vm.onSelectProductNoLock(selectedProduct, weight)" on-select-sample-prescription="vm.onSelectSamplePrescription(products)" is-disabled="$root.activeCart.isWarrantyInvoice()" quantityid="productSearchInputF3" placeholder="Tìm hàng hóa (F3)" toggle-search-sample-prescription="vm.toggleSearchSamplePrescription()">
+            <product-search-component on-select-product="vm.onSelectProduct(selectedProduct, weight)" on-select-grouped-products="vm.onSelectProductNoLock(selectedProduct, weight)" on-select-sample-prescription="vm.onSelectSamplePrescription(products)" is-disabled="$root.activeCart.isWarrantyInvoice()" quantityid="productSearchInputF3" placeholder="Tìm hàng hóa (F3)" toggle-search-sample-prescription="vm.toggleSearchSamplePrescription()">
                 <div class="products-search" ng-class="{'product-search-medicine' : $root.session.IsActiveGppDrugStore, 'is-eScale' : (vm.settings.UseElectronicScales &amp;&amp; !$root.activeCart.isWarrantyOrder()), 'is-warranty-order' : $root.activeCart.isWarrantyOrder(),'is-multiSelect': $root.cartDisplayOptions.multiSelectProduct }">
                     <div class="autocomplete-wrapper ng-pristine ng-untouched ng-valid ng-empty" kv-autocomplete="vm.autocomplete" kv-disabled="vm.isDisabled" ng-model="vm.productSearchTerm" attr-placeholder="Tìm hàng hóa (F3)" template-id="productItemTempl" attr-inputid="productSearchInput" data="vm.products" on-type="vm.searchTermChanged" attr-iconclass="fal fa-search" attr-inputclass="form-control-custom" on-select="vm.onProductSelected" on-select-product="vm.onSelectProduct" on-select-empty="vm.onEmptyListSelect" on-select-no-match="vm.onNoMatchCode" on-warning-select="vm.warningMaximumSelectItems" on-add-new="vm.onAddNew" is-add-new="$root.session.Privileges.Product_Create &amp;&amp; vm.isAddNew" no-auto-select="vm.isHideMode" is-scale="vm.search_method == 'search-3'" on-tindex="vm.tabIndex" kv-show-popup="vm.showRelatedProductPopup" is-bar-scanner="vm.isBarScanner" is-read-onhand="vm.isReadOnHand" is-tab-change="vm.isTabChange" is-use-order-supplier="vm.isUseOrderSupplier" is-multi-select-mode="vm.multiSelectProduct" is-limit-view-price-warranty-order="vm.isLimitViewPriceWarrantyOrder" is-online="vm.isOnline" search-delay-time="620" pholder="vm.placeholder" ,="" is-using-warehouse="vm.isUsingWarehouse">
                         <div class="autocomplete " id="">
@@ -15,6 +15,7 @@
                                     <span><span class="total-product">false</span> <span translate=""><span>sản phẩm</span></span></span>
                                     <a class="btn btn-primary add-list-product" ng-click="vm.addMultiItemsToCart(vm.listItems)" href="javascript:;">Thêm vào đơn</a>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -31,7 +32,8 @@
                         <a ng-disabled="vm.isDisabled" class="btn-icon-lg sale-mode" ng-class="{enable:!vm.isHideMode}" title="Chế độ nhập" ng-click="vm.changeSaleMode()" ng-hide="vm.hideQuantity"><i class="fal fa-barcode-read"></i></a>
                     </div>
                 </div>
-            </product-selarch-component>
+
+            </product-search-component>
         </div>
         <div class="col-left-control ng-hide" ng-show="$root.session.IsActiveGppDrugStore &amp;&amp; $root.activeCart.canUseSamplePrecriptionSearch() &amp;&amp; vm.isSearchSamplePrescription">
             <sample-prescription-search-component on-select-sample-prescription="vm.onSelectSamplePrescription(products)" placeholder="Tìm đơn thuốc mẫu" toggle-search-sample-prescription="vm.toggleSearchSamplePrescription()">
@@ -57,6 +59,7 @@
                             <i class="far fa-poll-h"></i></button>
                     </div>
                 </div>
+
             </sample-prescription-search-component>
         </div>
         <div class="cart-tabs">

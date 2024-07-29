@@ -4,7 +4,14 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\PhotoController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Sale\SaleController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/', function (){
+    return redirect()->route('sale.index');
+});
+
+Route::resource('/sale', SaleController::class);
 
 Route::prefix('admin')->group(function (){
     Route::get('/', function (){

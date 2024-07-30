@@ -22,6 +22,8 @@ Route::prefix('admin')->group(function (){
 
     Route::resource('customers', CustomerController::class);
     Route::resource('products', ProductController::class);
-    Route::post('upload-file', [PhotoController::class, 'upload'])->name('upload');
+
+    Route::get('/admin/customers/{customer}/{skuId}/edit', [ProductController::class, 'edit']);
+    Route::post('upload-file', [ProductController::class, 'upload'])->name('upload');
 
 });

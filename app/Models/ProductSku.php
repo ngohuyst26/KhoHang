@@ -17,7 +17,7 @@ class ProductSku extends Model{
     }
 
     public function photo(){
-        return $this->hasMany(Photo::class);
+        return $this->hasMany(Photo::class, 'product_sku_id');
     }
 
     public function storageLocation(){

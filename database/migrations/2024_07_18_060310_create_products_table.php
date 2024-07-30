@@ -14,19 +14,25 @@ return new class extends Migration{
         Schema::create('products', function (Blueprint $table){
             $table->id();
             $table->foreignId('category_id')
+                ->nullable()
                   ->constrained()
-                  ->onDelete('restrict');
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
 
             $table->foreignId('brand_id')
+                ->nullable()
                   ->constrained('brands')
-                  ->onDelete('restrict');
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
 
             $table->foreignId('supplier_id')
+                ->nullable()
                   ->constrained('suppliers')
-                  ->onDelete('restrict');
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
 
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->tinyInteger('status')
                   ->default(1);
             $table->timestamps();

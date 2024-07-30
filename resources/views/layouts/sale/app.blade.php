@@ -4291,6 +4291,7 @@
 <script type="text/javascript" defer="" async="" src="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/js/k_pay_register.js"></script>
 <script type="text/javascript" defer="" async="" src="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/js/k_pay_checkout.js"></script>
 <script src="chrome-extension://gppongmhjkpfnbhagpmjfkannfbllamg/js/js.js"></script>
+@stack('script')
 </body>
 
 </html>

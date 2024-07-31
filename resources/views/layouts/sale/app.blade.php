@@ -272,7 +272,7 @@
     <!-- APP CONFIG -->
     <script src="https://cdn-app.kiotviet.vn/clientsdk/kv-sdk-3.0.5.js"></script>
     <link rel="stylesheet" href="https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/assets/css/mains.92303bb3.css">
-    <script src="https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/vendor.6e26f171.js"></script>
+{{--    <script src="https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/vendor.6e26f171.js"></script>--}}
     <style>
 		.swal2-popup.swal2-toast {
 			box-sizing: border-box;
@@ -1599,7 +1599,7 @@
 			padding: 0 !important;
 		}
     </style>
-    <script src="https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/resource.a6cdd786.js"></script>
+{{--    <script src="https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/resource.a6cdd786.js"></script>--}}
     <style type="text/css">
 		.__react_component_tooltip {
 			border-radius: 3px;
@@ -2016,7 +2016,7 @@
 			text-align: center;
 		}
     </style>
-    <script src="https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/main.d9917f73.js"></script>
+{{--    <script src="https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/main.d9917f73.js"></script>--}}
     <style>
 		.ejoy-sub-active {
 			color: #1296ba !important;
@@ -4048,7 +4048,8 @@
 
 <!---->
 <div ui-view="">
-    <div class="wrapper home-page home-page-extend normal-mode invoice kv-ship-v4" ng-class="{'home-page-extend': !($root.saleScreenMode === 1) &amp;&amp; !$root.activeCart.isRefund() &amp;&amp; !$root.activeCart.isWarrantyCart(), 'fast-mode': ($root.saleScreenMode === 1) &amp;&amp; !$root.activeCart.isRefund() &amp;&amp; !$root.activeCart.isWarrantyCart(), 'normal-mode' : ($root.saleScreenMode === 2) &amp;&amp; !$root.activeCart.isRefund() &amp;&amp; !$root.activeCart.isWarrantyCart(), 'delivery-mode' : ($root.saleScreenMode === 3) &amp;&amp; !$root.activeCart.isRefund() &amp;&amp; !$root.activeCart.isWarrantyCart(), 'invoice': $root.activeCart.isInvoice(), 'order': $root.activeCart.isOrder(), 'refund': $root.activeCart.isRefund(), 'medicine' : $root.session.IsActiveGppDrugStore, 'warranty' : $root.saleScreenMode === 1 || $root.activeCart.isRefund() || $root.activeCart.isWarrantyCart(), 'kv-ship-v4' : $root.session.IsUsingKShipV4Toggle}" kv-disabled-control="$root.activeCart.Code.indexOf('HDO') === 0 || $root.activeCart.Code.indexOf('THO') === 0" kv-disabled-watch-var="$root.activeCart.Code">
+    <div class="wrapper home-page invoice kv-ship-v4 fast-mode warranty">
+{{--    <div class="wrapper home-page home-page-extend normal-mode invoice kv-ship-v4">--}}
 
         <x-sale.header></x-sale.header>
         @yield('content')
@@ -4161,136 +4162,37 @@
 <div id="kvSavedCode" style="display: none"></div>
 
 
-<script type="text/javascript" src="endpoint-config.js"></script>
-<script type="text/javascript" src="kv-resource-loader.min.js"></script>
-<script type="text/javascript">
-    (function () {
-        KvResourceLoader.init({
+{{--<script type="text/javascript">--}}
+{{--    (function () {--}}
+{{--        KvResourceLoader.init({--}}
 
-            'assets/css/mains.92303bb3.css': ['https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/assets/css/mains.92303bb3.css', 'https://cdn-pos2.kiotviet.vn/2024/7/26/5_15/assets/css/mains.92303bb3.css']
-            ,
-            'app/vendor.6e26f171.js': ['https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/vendor.6e26f171.js', 'https://cdn-pos2.kiotviet.vn/2024/7/26/5_15/app/vendor.6e26f171.js']
-            ,
-            'app/resource.a6cdd786.js': ['https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/resource.a6cdd786.js', 'https://cdn-pos2.kiotviet.vn/2024/7/26/5_15/app/resource.a6cdd786.js']
-            ,
-            'app/main.d9917f73.js': ['https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/main.d9917f73.js', 'https://cdn-pos2.kiotviet.vn/2024/7/26/5_15/app/main.d9917f73.js']
+{{--            'assets/css/mains.92303bb3.css': ['https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/assets/css/mains.92303bb3.css', 'https://cdn-pos2.kiotviet.vn/2024/7/26/5_15/assets/css/mains.92303bb3.css']--}}
+{{--            ,--}}
+{{--            'app/vendor.6e26f171.js': ['https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/vendor.6e26f171.js', 'https://cdn-pos2.kiotviet.vn/2024/7/26/5_15/app/vendor.6e26f171.js']--}}
+{{--            ,--}}
+{{--            'app/resource.a6cdd786.js': ['https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/resource.a6cdd786.js', 'https://cdn-pos2.kiotviet.vn/2024/7/26/5_15/app/resource.a6cdd786.js']--}}
+{{--            ,--}}
+{{--            'app/main.d9917f73.js': ['https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/main.d9917f73.js', 'https://cdn-pos2.kiotviet.vn/2024/7/26/5_15/app/main.d9917f73.js']--}}
 
-        }, function () {
-            console.log('App resources loaded');
-        });
-    })();
-    window.cdnPrefixFolder = {
-        CdnPrefixs: ['https://cdn-pos1.kiotviet.vn/2024/7/26/5_15', 'https://cdn-pos2.kiotviet.vn/2024/7/26/5_15'],
-        CdnDestFolder: '2024/7/26/5_15'
-    }
-</script>
+{{--        }, function () {--}}
+{{--            console.log('App resources loaded');--}}
+{{--        });--}}
+{{--    })();--}}
+{{--    window.cdnPrefixFolder = {--}}
+{{--        CdnPrefixs: ['https://cdn-pos1.kiotviet.vn/2024/7/26/5_15', 'https://cdn-pos2.kiotviet.vn/2024/7/26/5_15'],--}}
+{{--        CdnDestFolder: '2024/7/26/5_15'--}}
+{{--    }--}}
+{{--</script>--}}
 <div id="eJOY__extension_root" class="eJOY__extension_root_class" style="all: unset;"></div>
 <script type="text/javascript" defer="" async="" src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
-<script type="text/javascript" defer="" async="" src="https://kv-analytics.kiotviet.vn/analytic.js?v=1"></script>
-<div class="k-list-container k-popup k-group k-reset" id="warranty-reception-place-dropdown-list" data-role="popup" style="display: none; position: absolute;">
-    <div class="k-group-header" style="display:none"></div>
-    <div class="k-list-scroller" unselectable="on">
-        <ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="warranty-reception-place-dropdown_listbox" aria-live="off" data-role="staticlist" role="listbox">
-            <li tabindex="-1" role="option" unselectable="on" class="k-item k-state-focused" data-offset-index="0" id="b39c0708-7ae4-41be-a69d-1868d40edefa" aria-selected="true">Tại cửa hàng</li>
-            <li tabindex="-1" role="option" unselectable="on" class="k-item" data-offset-index="1">Tại nhà</li>
-            <li tabindex="-1" role="option" unselectable="on" class="k-item" data-offset-index="2">Khác</li>
-        </ul>
-    </div>
-</div>
-<div class="k-list-container k-popup k-group k-reset" data-role="popup" style="display: none; position: absolute;">
-    <span class="k-list-filter"><input class="k-textbox" role="listbox" aria-haspopup="true" aria-expanded="false" aria-owns="" tabindex="2000" aria-disabled="false" aria-activedescendant="0cbb1c19-2763-43fb-9ed6-6b20ab75044d"><span unselectable="on" class="k-icon k-i-search">select</span></span>
-    <div class="k-group-header" style="display:none"></div>
-    <div class="k-list-scroller" unselectable="on">
-        <ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" aria-live="polite" data-role="staticlist" role="listbox">
-            <li tabindex="-1" role="option" unselectable="on" class="k-item k-state-selected" aria-selected="true" data-offset-index="0">
-                <span class="k-state-default active">Lê Thanh Quang</span></li>
-            <li tabindex="-1" role="option" unselectable="on" class="k-item" data-offset-index="1">
-                <span class="k-state-default ">Nguyễn Thị Thái Hòa</span></li>
-            <li tabindex="-1" role="option" unselectable="on" class="k-item" data-offset-index="2">
-                <span class="k-state-default ">Lê Thị Bảo Trân</span></li>
-        </ul>
-    </div>
-</div>
-<div class="k-list-container k-popup k-group k-reset" data-role="popup" style="display: none; position: absolute;">
-    <span class="k-list-filter"><input class="k-textbox" role="listbox" aria-haspopup="true" aria-expanded="false" aria-owns="" tabindex="2001" aria-disabled="false" aria-activedescendant="226239ee-ddc3-4614-9a8e-cc5520dd0e4e"><span unselectable="on" class="k-icon k-i-search">select</span></span>
-    <div class="k-group-header" style="display:none"></div>
-    <div class="k-list-scroller" unselectable="on">
-        <ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" aria-live="polite" data-role="staticlist" role="listbox">
-            <li tabindex="-1" role="option" unselectable="on" class="k-item k-state-focused k-state-selected" data-offset-index="0" id="226239ee-ddc3-4614-9a8e-cc5520dd0e4e" aria-selected="true">
-                <span class="k-state-default active"><i class="fas fa-walking"></i> Bán trực tiếp</span></li>
-            <li tabindex="-1" role="option" unselectable="on" class="k-item" data-offset-index="1">
-                <span class="k-state-default "><i class="fas fa-shopping-cart"></i> Khác</span></li>
-            <li tabindex="-1" role="option" unselectable="on" class="k-item" data-offset-index="2">
-                <span class="k-state-default "><i class=""></i> + Thêm kênh bán</span></li>
-        </ul>
-    </div>
-</div>
-<div aria-hidden="true" class="k-calendar-container k-popup k-group k-reset" id="PurchaseDateCart_dateview" data-role="popup" style="display: none; position: absolute;"></div>
-<div class="k-list-container k-list-scroller k-popup k-group k-reset" unselectable="on" data-role="popup" style="display: none; position: absolute;">
-    <ul tabindex="-1" role="listbox" aria-hidden="true" unselectable="on" class="k-list k-reset" id="PurchaseTimeCart_timeview" style="overflow: auto;"></ul>
-</div>
-<div class="k-list-container k-popup k-group k-reset" id="pricebook-list" data-role="popup" style="display: none; position: absolute;">
-    <span class="k-list-filter"><input class="k-textbox" role="listbox" aria-haspopup="true" aria-expanded="false" aria-owns="pricebook_listbox" tabindex="2014" aria-disabled="false" aria-activedescendant="f6d70d89-2f9d-4d35-a760-40fb258ea88d"><span unselectable="on" class="k-icon k-i-search">select</span></span>
-    <div class="k-group-header" style="display:none"></div>
-    <div class="k-list-scroller" unselectable="on">
-        <ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="pricebook_listbox" aria-live="polite" data-role="staticlist" role="listbox">
-            <li tabindex="-1" role="option" unselectable="on" class="k-item k-state-selected" aria-selected="true" data-offset-index="0">
-                <span class="k-state-default active">Bảng giá chung</span></li>
-        </ul>
-    </div>
-</div>
-<div class="k-list-container k-popup k-group k-reset" id="cbSelectBranch-list" data-role="popup" style="display: none; position: absolute;">
-    <span class="k-list-filter"><input class="k-textbox" role="listbox" aria-haspopup="true" aria-expanded="false" aria-owns="cbSelectBranch_listbox" tabindex="0" aria-disabled="false" aria-activedescendant="5721bf21-4bbb-413c-bd10-78eac5273f68"><span unselectable="on" class="k-icon k-i-search">select</span></span>
-    <div class="k-group-header" style="display:none"></div>
-    <div class="k-list-scroller" unselectable="on">
-        <ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="cbSelectBranch_listbox" aria-live="polite" data-role="staticlist" role="listbox">
-            <li tabindex="-1" role="option" unselectable="on" class="k-item k-state-focused k-state-selected" data-offset-index="0" id="5721bf21-4bbb-413c-bd10-78eac5273f68" aria-selected="true">
-                <span class="k-state-default active">Chi nhánh trung tâm</span></li>
-        </ul>
-    </div>
-</div>
-<div class="k-list-container k-popup k-group k-reset" id="cbSelectWarehouse-list" data-role="popup" style="display: none; position: absolute;">
-    <span class="k-list-filter"><input class="k-textbox" role="listbox" aria-haspopup="true" aria-expanded="false" aria-owns="cbSelectWarehouse_listbox" tabindex="0" aria-disabled="false"><span unselectable="on" class="k-icon k-i-search">select</span></span>
-    <div class="k-group-header" style="display:none"></div>
-    <div class="k-list-scroller" unselectable="on">
-        <ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="cbSelectWarehouse_listbox" aria-live="polite" data-role="staticlist" role="listbox"></ul>
-    </div>
-</div>
-<div class="k-list-container k-popup k-group k-reset" id="pricebook-list" data-role="popup" style="display: none; position: absolute;">
-    <span class="k-list-filter"><input class="k-textbox" role="listbox" aria-haspopup="true" aria-expanded="false" aria-owns="pricebook_listbox" tabindex="2014" aria-disabled="false" aria-activedescendant="8c44cacb-ee7a-4d9f-865f-b77bb99e36d2"><span unselectable="on" class="k-icon k-i-search">select</span></span>
-    <div class="k-group-header" style="display:none"></div>
-    <div class="k-list-scroller" unselectable="on">
-        <ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="pricebook_listbox" aria-live="polite" data-role="staticlist" role="listbox">
-            <li tabindex="-1" role="option" unselectable="on" class="k-item k-state-selected" aria-selected="true" data-offset-index="0">
-                <span class="k-state-default active">Bảng giá chung</span></li>
-        </ul>
-    </div>
-</div>
-<div class="k-list-container k-popup k-group k-reset" id="unit-list" data-role="popup" style="display: none; position: absolute;">
-    <div class="k-group-header" style="display:none"></div>
-    <div class="k-list-scroller" unselectable="on">
-        <ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="unit_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul>
-    </div>
-</div>
-<div class="k-list-container k-popup k-group k-reset" id="unit-list" data-role="popup" style="display: none; position: absolute;">
-    <div class="k-group-header" style="display:none"></div>
-    <div class="k-list-scroller" unselectable="on">
-        <ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="unit_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul>
-    </div>
-</div>
-<div class="k-list-container k-popup k-group k-reset" id="unit-list" data-role="popup" style="display: none; position: absolute;">
-    <div class="k-group-header" style="display:none"></div>
-    <div class="k-list-scroller" unselectable="on">
-        <ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="unit_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul>
-    </div>
-</div>
-<script type="text/javascript" defer="" async="" src="https://cdn-ktarget.citigo.com.vn/widget/23.9.150/k-target-widget.js"></script>
-<script type="text/javascript" defer="" async="" src="https://cdn-shipping.kiotviet.vn/shipping-api/widget/20240729145821/widget_price/price-v4.min.js"></script>
-<script type="text/javascript" defer="" async="" src="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/js/chunk-vendors.js"></script>
-<script type="text/javascript" defer="" async="" src="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/js/k_fin_onboarding.js"></script>
-<script type="text/javascript" defer="" async="" src="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/js/k_pay_register.js"></script>
-<script type="text/javascript" defer="" async="" src="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/js/k_pay_checkout.js"></script>
-<script src="chrome-extension://gppongmhjkpfnbhagpmjfkannfbllamg/js/js.js"></script>
+
+{{--<script type="text/javascript" defer="" async="" src="https://cdn-ktarget.citigo.com.vn/widget/23.9.150/k-target-widget.js"></script>--}}
+{{--<script type="text/javascript" defer="" async="" src="https://cdn-shipping.kiotviet.vn/shipping-api/widget/20240729145821/widget_price/price-v4.min.js"></script>--}}
+{{--<script type="text/javascript" defer="" async="" src="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/js/chunk-vendors.js"></script>--}}
+{{--<script type="text/javascript" defer="" async="" src="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/js/k_fin_onboarding.js"></script>--}}
+{{--<script type="text/javascript" defer="" async="" src="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/js/k_pay_register.js"></script>--}}
+{{--<script type="text/javascript" defer="" async="" src="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/js/k_pay_checkout.js"></script>--}}
+{{--<script src="chrome-extension://gppongmhjkpfnbhagpmjfkannfbllamg/js/js.js"></script>--}}
 @stack('script')
 </body>
 

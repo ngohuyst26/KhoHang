@@ -1,14 +1,48 @@
 <div class="page-header" kv-focus-click="#productSearchInput">
     <div class="header-left">
-        <div class="col-left-control " ng-show="!$root.session.IsActiveGppDrugStore || !$root.activeCart.canUseSamplePrecriptionSearch() || !vm.isSearchSamplePrescription">
+        <div class="col-left-control " >
             <product-search-component on-select-product="vm.onSelectProduct(selectedProduct, weight)" on-select-grouped-products="vm.onSelectProductNoLock(selectedProduct, weight)" on-select-sample-prescription="vm.onSelectSamplePrescription(products)" is-disabled="$root.activeCart.isWarrantyInvoice()" quantityid="productSearchInputF3" placeholder="Tìm hàng hóa (F3)" toggle-search-sample-prescription="vm.toggleSearchSamplePrescription()">
-                <div class="products-search" ng-class="{'product-search-medicine' : $root.session.IsActiveGppDrugStore, 'is-eScale' : (vm.settings.UseElectronicScales &amp;&amp; !$root.activeCart.isWarrantyOrder()), 'is-warranty-order' : $root.activeCart.isWarrantyOrder(),'is-multiSelect': $root.cartDisplayOptions.multiSelectProduct }">
-                    <div class="autocomplete-wrapper ng-pristine ng-untouched ng-valid ng-empty" kv-autocomplete="vm.autocomplete" kv-disabled="vm.isDisabled" ng-model="vm.productSearchTerm" attr-placeholder="Tìm hàng hóa (F3)" template-id="productItemTempl" attr-inputid="productSearchInput" data="vm.products" on-type="vm.searchTermChanged" attr-iconclass="fal fa-search" attr-inputclass="form-control-custom" on-select="vm.onProductSelected" on-select-product="vm.onSelectProduct" on-select-empty="vm.onEmptyListSelect" on-select-no-match="vm.onNoMatchCode" on-warning-select="vm.warningMaximumSelectItems" on-add-new="vm.onAddNew" is-add-new="$root.session.Privileges.Product_Create &amp;&amp; vm.isAddNew" no-auto-select="vm.isHideMode" is-scale="vm.search_method == 'search-3'" on-tindex="vm.tabIndex" kv-show-popup="vm.showRelatedProductPopup" is-bar-scanner="vm.isBarScanner" is-read-onhand="vm.isReadOnHand" is-tab-change="vm.isTabChange" is-use-order-supplier="vm.isUseOrderSupplier" is-multi-select-mode="vm.multiSelectProduct" is-limit-view-price-warranty-order="vm.isLimitViewPriceWarrantyOrder" is-online="vm.isOnline" search-delay-time="620" pholder="vm.placeholder" ,="" is-using-warehouse="vm.isUsingWarehouse">
+                <div class="products-search" >
+                    <div class="autocomplete-wrapper ng-pristine ng-untouched ng-valid ng-empty">
                         <div class="autocomplete " id="">
                             <i class="fal fa-search"></i>
-                            <input type="text" autocomplete="off" ng-model="vm.searchParam" placeholder="Tìm hàng hóa (F3)" class="form-control form-control-custom ng-empty ng-touched" id="productSearchInput" ng-disabled="vm.kvDisable" kv-select-text="" tabindex="1" kv-tab-index="">
-                            <div class="output-complete ng-hide" ng-class="{'has-add-new':vm.getStateAddNewProduct(vm.isAddNew, vm.listItems), 'show-only': vm.getStateSelectMulti(vm.listItems,vm.isMultiSelect), 'is-offline': !vm.isOnline}" ng-show="vm.completing">
-                                <ul ng-hide="vm.searchParam &amp;&amp; vm.suggestions.length == 0"><!-- select multi --> <!----> <!-- select only --> <!----></ul>
+                            <input type="text" autocomplete="off"  placeholder="Tìm hàng hóa (F3)" class="form-control form-control-custom ng-empty ng-touched" id="productSearchInput" ng-disabled="vm.kvDisable" kv-select-text="" tabindex="1" kv-tab-index="">
+                            <div class="output-complete" id="toggleProduct" style="display: none;">
+                                <ul id="productSearchList">
+                                    @php
+                                    $products = \App\Models\Product::all();
+                                    @endphp
+                                    @foreach($products as $product)
+                                        <li class="output-item is-on-cart addProduct" data-id="{{$product->id}}" data-name="{{$product->name}}" data-price="3899000"   index="0" val="Áo vest nam màu xanh lá" >
+                                            <div class="output-thumb-wrap">
+                                                <div class="output-thumb">
+                                                    <button class="output-product-lk" >
+                                                        <i class="far fa-ellipsis-h"></i>
+                                                    </button> <!----><img loading="lazy" ng-if="!(suggestion.Image == null || suggestion.Image == '') " ng-src="https://cdn-app.kiotviet.vn/sample/fashion/1.png" onerror="loadFallBackImage(this)" kv-fallback-img="" src="https://cdn-app.kiotviet.vn/sample/fashion/1.png"><!----> <!---->
+                                                </div>
+                                                <div class="output-thumb-secondary"><i class="fas fa-image img-default"></i>
+                                                </div>
+                                            </div> <!---->
+                                            <div class="output-body" ng-if="suggestion.Id">
+                                                <div class="output-info"><h5 class="output-name font-medium">
+                                                        <span class="">{{$product->name}}</span>
+                                                        <span class="tag tag-xxs tag-light-warning"></span>
+                                                        <span class="tag tag-xxs tag-light-primary"></span></h5> <!---->
+                                                    <div ng-if="!vm.isLimitViewPriceWarrantyOrder" class="output-price">
+                                                        <span class="product-price-new has-currency">3,899,000</span>
+                                                    </div><!---->
+                                                </div>
+                                                <div class="output-value"><span class="output-code">NAM001</span>
+                                                </div> <!---->
+                                                <div class="output-unit" ng-if="$root.session.User.IsAdmin || $root.session.Privileges.Invoice_ReadOnHand">
+                                                    <span class="output-tag"> <span translate=""><span>Tồn</span></span>: <span class="onHandValue">0</span> </span>
+                                                    <span class="output-tag ng-hide" ng-show="vm.isUseOrderSupplier"> <span translate=""><span>Đặt NCC</span></span>: <span class="priceValue">0</span> </span>
+                                                    <span class="output-tag"> <span translate=""><span>KH đặt</span></span>: <span class="reservedValue"> 0 </span> </span>
+                                                </div><!---->
+                                            </div><!----> <!---->
+                                        </li>
+                                    @endforeach
+                                </ul>
                                 <div class="not-found ng-hide" ng-show="vm.searchParam &amp;&amp; vm.suggestions.length == 0">Không tìm thấy kết quả nào phù hợp</div>
                                 <a class="add-new-product ng-hide" ng-click="vm.onAddNew()" ng-show="vm.isAddNew &amp;&amp; !vm.getStateSelectMulti(vm.listItems,vm.isMultiSelect)" href="javascript:;">+ Thêm mới hàng hóa</a>
                                 <div class="multi-select-actions ng-hide" ng-show="vm.getStateSelectMulti(vm.listItems, vm.isMultiSelect)">

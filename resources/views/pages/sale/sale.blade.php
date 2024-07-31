@@ -6,6 +6,7 @@
                 <cart-products-component on-select-product="vm.onSelectProduct(selectedProduct)">
                     <div class="welcome-page ng-hide" ng-hide="$root.activeCart.Items.length > 0 || $root.activeCart.isRefund()"><!----></div>
                     <div class="carts-list show-duplicate-item" id="cartListProduct" ng-class="{'show-duplicate-item' : $root.cartDisplayOptions.duplicateCartItem}"><!---->
+
                     </div><!---->
                     <div ng-class="{'hide-order':!($root.cartDisplayOptions.numberOrder), 'hide-code':!($root.cartDisplayOptions.code), 'hide-img':!($root.cartDisplayOptions.productImg), 'hide-change-price':!($root.cartDisplayOptions.price), 'hide-price':!($root.cartDisplayOptions.total), 'hide-add-row':!($root.cartDisplayOptions.clone) }" class="hide-img hide-add-row"></div>
 

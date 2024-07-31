@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Sale;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class SaleController extends Controller
@@ -12,7 +13,7 @@ class SaleController extends Controller
      */
     public function index()
     {
-        return view('pages.sale.sale');
+        return view('pages.sale.index');
     }
 
     /**
@@ -61,5 +62,12 @@ class SaleController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $products = Product::where('name', 'LIKE', "%$query%")->get();
+        return response()->json($products);
     }
 }

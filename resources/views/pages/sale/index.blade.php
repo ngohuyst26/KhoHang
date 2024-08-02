@@ -16,7 +16,7 @@
             </div>
             <div class="cart-footer">
                 <div class="cart-footer-left">
-                    <textarea class="form-control form-control-custom note-cart item-note- ng-empty ng-valid-maxlength" type="text" spellcheck="false" ng-model="$root.activeCart.Description" placeholder=" &nbsp;Ghi chú đơn hàng" kv-auto-expand-multi-line="" kv-focus-control-ready="{select: false}" maxlength="4000" tabindex="1500" style="height: 33px;"></textarea>
+                    <textarea class="form-control form-control-custom note-cart item-note- ng-empty ng-valid-maxlength" type="text" spellcheck="false"  placeholder=" &nbsp;Ghi chú đơn hàng" kv-auto-expand-multi-line="" kv-focus-control-ready="{select: false}" maxlength="4000" tabindex="1500" style="height: 33px;"></textarea>
                 </div><!---->
                 <div class="cart-footer-right" ng-if="$root.saleScreenMode != 2 || $root.activeCart.isRefund() || $root.activeCart.isWarrantyCart()"><!----></div><!----><!---->
             </div>
@@ -28,7 +28,7 @@
                         <div class="cart-header-control-left">
                             <div class="cart-seller">
                                 <sold-by-dropdown-component>
-                                    <div id="salesman"><span title="" style="" class="k-widget k-dropdown k-header dropdown-control dropdown-control-sm saleman-dropdown" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="2000" aria-owns="" aria-disabled="false" aria-busy="false" aria-activedescendant="bd4baf21-b719-4bac-89a1-040b8cb44fa8"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input"><span>Lê Thanh Quang</span></span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span><select class="dropdown-control dropdown-control-sm saleman-dropdown" kendo-drop-down-list="vm.salesmanDropDown" k-options="vm.salesmanOptions" k-ng-model="$root.activeCart.SoldBy" ng-disabled="!$root.session.Privileges.Invoice_ModifySeller" data-role="dropdownlist" style="display: none;">
+                                    <div id="salesman"><span title="" style="" class="k-widget k-dropdown k-header dropdown-control dropdown-control-sm saleman-dropdown" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="2000" aria-owns="" aria-disabled="false" aria-busy="false" aria-activedescendant="bd4baf21-b719-4bac-89a1-040b8cb44fa8"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input"><span>Lê Thanh Quang</span></span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span><select class="dropdown-control dropdown-control-sm saleman-dropdown"   data-role="dropdownlist" style="display: none;">
                                                         <option value="1000342177">Lê Thanh Quang</option>
                                                         <option value="1000342178">Nguyễn Thị Thái Hòa</option>
                                                         <option value="1000342179">Lê Thị Bảo Trân</option>
@@ -36,7 +36,7 @@
                                 </sold-by-dropdown-component>
                             </div>
                             <sale-channel-component ng-show="!$root.activeCart.isWarrantyOrder()" sc-id="$root.activeCart.SaleChannelId" disabled="$root.activeCart.isRefund() &amp;&amp; !$root.activeCart.IsQuickReturn">
-                                <div id="saleChannel"><span title="" style="" class="k-widget k-dropdown k-header dropdown-control dropdown-control-sm salechannel-dropdown-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="2001" aria-owns="" aria-disabled="false" aria-busy="false" aria-activedescendant="0035efea-cb39-4d18-acd6-9bddaac2acd6"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input"><i title="Kênh bán: Bán trực tiếp" class="fas fa-walking"></i></span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span><select class="dropdown-control dropdown-control-sm salechannel-dropdown-control" kendo-drop-down-list="vm.saleChannelDropDown" k-options="vm.saleChannelOptions" k-ng-model="vm.scId" k-value-primitive="true" ng-disabled="vm.disabled" data-role="dropdownlist" style="display: none;">
+                                <div id="saleChannel"><span title="" style="" class="k-widget k-dropdown k-header dropdown-control dropdown-control-sm salechannel-dropdown-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="2001" aria-owns="" aria-disabled="false" aria-busy="false" aria-activedescendant="0035efea-cb39-4d18-acd6-9bddaac2acd6"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input"><i title="Kênh bán: Bán trực tiếp" class="fas fa-walking"></i></span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span><select class="dropdown-control dropdown-control-sm salechannel-dropdown-control" ng-disabled="vm.disabled" data-role="dropdownlist" style="display: none;">
                                                     <option value="0" selected="selected">Bán trực tiếp</option>
                                                     <option value="1000000578">Khác</option>
                                                     <option value="-1">+ Thêm kênh bán</option>
@@ -111,7 +111,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group-row form-group-row-sm form-group-price">
-                                        <div class="col-form-wrap font-size-medium text-right has-currency">21,373,800</div>
+                                        <div class="col-form-wrap font-size-medium text-right has-currency"><span id="total_amount">0</span></div>
                                     </div>
                                 </div>
                                 <div class="form-group-inline form-labels-125">
@@ -250,7 +250,7 @@
                 </payment-component><!----><!----><!---->
             </div><!---->
             <div class="products product-list product-list--change ng-hide" ng-show="$root.saleScreenMode === 2 &amp;&amp; !$root.activeCart.isRefund() &amp;&amp; !$root.activeCart.isWarrantyCart()">
-            </div>>
+            </div>
 
             <div ng-if="$root.activeCart.isInvoice() &amp;&amp; $root.saleScreenMode === 1" class="cart-actions"><!---->
                 <button skip-disable="" type="button" class="btn btn-primary btn-xl" ng-click="vm.debouncedSaveTransaction()" id="saveTransaction" tabindex="2464">Thanh toán</button>
@@ -338,7 +338,13 @@
                 event.stopPropagation();
                 let id = $(this).data('id');
                 let name = $(this).data('name');
-                let price = $(this).data('price');
+                let priceCur = $(this).data('price');
+
+                const formatter = new Intl.NumberFormat('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND',
+                });
+                const price = formatter.format(priceCur);
 
                 var cartItem = $('#cartListProduct').find('.carts-item[data-id="' + id + '"]');
                 if (cartItem.length > 0) {
@@ -375,7 +381,7 @@
                         '<button type="button" class="btn-icon btn-icon-bg-default down minus">' +
                         '<i class="fal fa-minus"></i>' +
                         '</button>' +
-                        '<input id="note-cartitem-0" type="number" value="1"   class="form-control form-control-sm form-control-invoice note-cartitem-0 ng-not-empty form-control-error quantity-input">' +
+                        '<input id="note-cartitem-0" type="number" value="1" data-price="'+priceCur+'"  class="form-control form-control-sm form-control-invoice note-cartitem-0 ng-not-empty form-control-error quantity-input">' +
                         '<button type="button" class="btn-icon btn-icon-bg-default up plus">' +
                         '<i class="fal fa-plus"></i>' +
                         '</button>' +
@@ -385,12 +391,12 @@
                         '<div class="cell-auto" ></div>' +
                         ' <div class="cell-change-price" ><!---->' +
                         '<div class="popup-anchor" >' +
-                        '<button class="form-control form-control-sm text-right cart-item-0"  >'+price+'</button>' +
+                        '<button class="form-control form-control-sm text-right cart-item-0 "> <span class="sale_price">'+price+'</span></button>' +
                         '</div>' +
                         '</div>' +
                         '<div class="cell-change-price" ng-if="$root.cartDisplayOptions.total"><!----><!---->' +
                         '<div class="cell-total text-right" ng-if="!$root.cartDisplayOptions.changeSubTotal || $root.activeCart.Type == vm.returnCartStatus || $root.activeCart.Type == vm.newReturnCartStatus">' +
-                        '<span class="cart-price-new has-currency">3,699,000</span>' +
+                        '<span class="cart-price-new has-currency">'+price+'</span>' +
                         '</div><!---->' +
                         '</div><!---->' +
                         '</div>' +
@@ -433,24 +439,56 @@
                         '</div>' +
                         '</div>';
                     $('#cartListProduct').append(item);
+                    updateOrderTotal();
                 }
             });
 
-
-            $('#cartListProduct').on('click','.plus', function(){
+            $(document).on('click','.plus', function(){
                 var quantityInput = $(this).siblings('.quantity-input');
                 var currentQuantity = parseInt(quantityInput.val());
                 quantityInput.val(currentQuantity + 1);
+                updateItemTotal(quantityInput);
+                updateOrderTotal();
             });
 
-            $('#cartListProduct').on('click','.minus', function(){
+            $(document).on('click','.minus', function(){
                 var quantityInput = $(this).siblings('.quantity-input');
                 var currentQuantity = parseInt(quantityInput.val());
                 if(currentQuantity > 1){
                     quantityInput.val(currentQuantity - 1);
+                    updateItemTotal(quantityInput);
+                    updateOrderTotal();
                 }
+
             });
 
+            $(document).on('input', '.quantity-input', function() {
+                updateItemTotal($(this));
+                updateOrderTotal();
+            });
+
+            function updateItemTotal(quantityInput) {
+                const price = parseInt(quantityInput.data('price'));
+                const quantity = parseInt(quantityInput.val());
+                const total = price * quantity;
+
+                quantityInput.closest('.carts-content-bottom').find('.cell-change-price .cart-price-new').text(formatCurrency(total));
+            }
+
+            function updateOrderTotal() {
+                let total = 0;
+                $('.quantity-input').each(function() {
+                    const price = parseInt($(this).data('price'));
+                    const quantity = parseInt($(this).val());
+                    total += price * quantity;
+                });
+
+                $('#total_amount').text(formatCurrency(total));
+            }
+
+            function formatCurrency(amount) {
+                return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+            }
 
         });
     </script>

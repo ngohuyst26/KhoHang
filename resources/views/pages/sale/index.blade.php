@@ -250,243 +250,8 @@
                 </payment-component><!----><!----><!---->
             </div><!---->
             <div class="products product-list product-list--change ng-hide" ng-show="$root.saleScreenMode === 2 &amp;&amp; !$root.activeCart.isRefund() &amp;&amp; !$root.activeCart.isWarrantyCart()">
-                <product-list-component active-cart="vm.activeCart" ng-show="$root.productListLoaded || $root.saleScreenMode === 2" on-select-product="vm.onSelectProduct(selectedProduct)" on-change-price-book="vm.onChangePriceBook(selectedProduct)" on-change-customer="vm.onChangeCustomer(customer)" component="vm.productListComponent" class="ng-hide">
-                    <div id="productListWrapper">
-                        <div class="product-header" ng-class="{'has-customer-point' : ($root.activeCart.Customer.Debt &amp;&amp; $root.activeCart.Customer.RewardPoint )}">
-                            <div class="product-header-wrapper">
-                                <div class="product-header-left single-pricebook" ng-class="{'single-pricebook' : vm.priceBookLength < 2}"><!----><!---->
-                                    <pricebook-component ng-show="vm.priceBookLength >= 2" id="pricebook1" pricebook="$root.activeCart.SelectedPricebook" customer="$root.activeCart.Customer" on-change="vm.onChangePriceBook({selectedProduct: pricebook})" read-only="($root.activeCart.isRefundWithInvoice() &amp;&amp; !$root.activeCart.hasExchange() || $root.activeCart.FromOrder &amp;&amp; !$root.activeCart.OrderNotUsePromotion)" uib-tooltip="Bảng giá chung" tooltip-placement="bottom" tooltip-append-to-body="true" class="ng-hide"><span title="" style="" class="k-widget k-dropdown k-header dropdown-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="2014" aria-owns="pricebook_listbox" aria-disabled="false" aria-busy="false" aria-activedescendant="7f4015b7-a330-4554-b4ae-4f9abd8a3d1b"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input"><span>Bảng giá chung</span></span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span><select class="dropdown-control" id="pricebook" k-ng-model="vm.pricebook" ng-disabled="vm.readOnly" kendo-drop-down-list="vm.pricebookDropDown" k-options="vm.pricebookOptions" k-rebind="vm.pricebook" data-role="dropdownlist" style="display: none;">
-                                                        <option>Bảng giá chung</option>
-                                                    </select></span></pricebook-component>
-                                </div>
-                                <div class="product-header-right">
-                                    <button class="btn-icon-lg btn-icon-mix " ng-click="vm.showCateFilter()" tabindex="2020" uib-tooltip="Lọc theo nhóm hàng" tooltip-placement="bottom" tooltip-append-to-body="true">
-                                        <i class="fas fa-list-ul"></i></button>
-                                    <button ng-click="vm.showAttrFilter()" class="btn-icon-lg btn-icon-mix " tabindex="2021" uib-tooltip="Lọc hàng hóa theo thuộc tính" tooltip-placement="bottom" tooltip-append-to-body="true">
-                                        <i class="far fa-filter"></i></button>
-                                    <button ng-click="vm.changeProductView()" uib-tooltip="Chế độ danh sách" tooltip-placement="bottom-right" tooltip-append-to-body="true" class="btn-icon-lg btn-icon-mix gallery--container" tabindex="2022">
-                                        <i class="fa fa-image"></i></button>
-                                </div>
-                            </div>
-                            <div class="filter-items">
-                                <div class="customer-debt-point" ng-hide="(($root.activeCart.Customer.Debt | formatCurrency) == 0) &amp;&amp; (($root.activeCart.Customer.RewardPoint | formatNumberCurrency) == 0)">
-                                    <div class="form-group-inline">
-                                        <div class="form-group-row ng-hide" ng-show="$root.activeCart.Customer &amp;&amp; $root.activeCart.Customer.Debt &amp;&amp; $root.session.Privileges.CustomerAdjustment_Read">
-                                            <span class="tag tag-xxs tag-light-danger"><span translate=""><span>Nợ:</span></span> <!----> <!----> <!----><span ng-if="$root.activeCart.Customer.Debt === undefined || !vm.isOnline">---</span><!----></span>
-                                        </div>
-                                        <div class="form-group-row ng-hide" ng-show="$root.activeCart.Customer &amp;&amp; $root.activeCart.Customer.RewardPoint &amp;&amp; $root.activeCart.isShowCustomerPoint($root.session.Setting) &amp;&amp; $root.session.Setting.RewardPoint &amp;&amp; $root.session.Privileges.CustomerPointAdjustment_Read">
-                                            <span class="tag tag-xxs tag-light-success" uib-tooltip="0" tooltip-placement="right" tooltip-append-to-body="true"><span translate=""><span>Điểm:</span></span> <!----> <!----><span ng-if="$root.activeCart.Customer.RewardPoint === undefined || !vm.isOnline">---</span><!----></span>
-                                        </div>
-                                    </div>
-                                </div><!---->
-                                <ks-swiper-container slides-per-view="auto" space-between="10" pagination-is-activse="true" pagination-clickable="false" override-parameters="{'shortSwipes':false}" show-nav-buttons="false" loop="false" initial-slide="0" auto-resize="true" class="filter-list" on-ready="vm.onReadySwiper(swiper)">
-                                    <div class="swiper-container swiper-container-horizontal">
-                                        <div class="parallax-bg ng-hide" data-swiper-parallax="" ng-show="parallax"></div>
-                                        <div class="swiper-wrapper " ng-transclude="" style="transition-duration: 0ms;">
-                                            <div kv-product-filter-info="" class="filter-info" filter-data="vm.categoryFilter" on-select="vm.cateFilterComponent.selectCategory(cateId)" on-deselect="vm.cateFilterComponent.deselectCategory(cateId)"></div>
-                                        </div>
-                                        <div class="swiper-pagination " id="paginator-ab446953-eb63-41a1-825a-d0b0dceb67d6"></div>
-                                        <div class="swiper-button-next ng-hide" ng-show="showNavButtons" id="nextButton-ab446953-eb63-41a1-825a-d0b0dceb67d6"></div>
-                                        <div class="swiper-button-prev ng-hide" ng-show="showNavButtons" id="prevButton-ab446953-eb63-41a1-825a-d0b0dceb67d6"></div>
-                                        <div class="swiper-scrollbar ng-hide" ng-show="showScrollBar" id="scrollBar-ab446953-eb63-41a1-825a-d0b0dceb67d6"></div>
-                                    </div>
-                                </ks-swiper-container>
-                            </div>
-                        </div>
-                        <ks-swiper-container swiper="vm.swiper" slides-per-view="1" space-between="0" pagination-is-activse="true" pagination-clickable="false" override-parameters="{'shortSwipes':false}" show-nav-buttons="false" loop="false" initial-slide="0" auto-resize="true" class="swiperList" on-ready="vm.onReadySwiper(swiper)">
-                            <div class="swiper-container swiper-container-horizontal">
-                                <div class="parallax-bg ng-hide" data-swiper-parallax="" ng-show="parallax"></div>
-                                <div class="swiper-wrapper " ng-transclude="" style="transition-duration: 0ms;"><!---->
-                                    <div class="swiper-slide swiper-slide-active" ng-transclude="" ng-repeat="slide in vm.slides">
-                                        <ul><!---->
-                                            <li ng-repeat="p in slide.items track by p.Id" class="" ng-click="vm.selectProduct(p)" style="margin-bottom: 0px;">
-                                                <a href="javascript:void(0)" class="product" title="Áo vest nam màu xanh lá - Tồn: 0 - KH đặt: 0" tabindex="-1">
-                                                    <div class="product-info ">
-                                                        <img loading="lazy" ng-src="https://cdn-app.kiotviet.vn/sample/fashion/1.png" onerror="loadFallBackImage(this)" kv-fallback-img="" src="https://cdn-app.kiotviet.vn/sample/fashion/1.png"> <!---->
-                                                        <div class="product-detail">
-                                                            <span class="product-price has-currency">3,899,000</span>
-                                                            <span class="product-qty ng-hide" ng-show="vm.isReadOnHand &amp;&amp; $root.cartDisplayOptions.onHand &amp;&amp; p.ProductType==2">0</span>
-                                                        </div>
-                                                        <div class="product-info-multiple has-image" ng-class="{'has-image': p.Image}">
-                                                            <img loading="lazy" ng-src="https://cdn-app.kiotviet.vn/sample/fashion/1.png" onerror="loadFallBackImage(this)" kv-fallback-img="" src="https://cdn-app.kiotviet.vn/sample/fashion/1.png"> <!---->
-                                                            <div class="product-detail">
-                                                                <span class="product-price has-currency">3,899,000</span>
-                                                                <span class="product-qty ng-hide" ng-show="vm.isReadOnHand &amp;&amp; $root.cartDisplayOptions.onHand &amp;&amp; p.ProductType==2">0</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info-bottom"><!---->
-                                                        <h4 class="product-name" ng-if="$root.cartDisplayOptions.groupProducts">Áo vest nam màu xanh lá</h4><!----><!---->
-                                                        <div class="product-detail">
-                                                            <span class="product-price has-currency">3,899,000</span>
-                                                            <span class="product-qty ng-hide" ng-show="vm.isReadOnHand &amp;&amp; $root.cartDisplayOptions.onHand &amp;&amp; p.ProductType==2">0</span>
-                                                        </div>
-                                                    </div>
-                                                </a></li><!---->
-                                            <li ng-repeat="p in slide.items track by p.Id" class="" ng-click="vm.selectProduct(p)" style="margin-bottom: 0px;">
-                                                <a href="javascript:void(0)" class="product" title="Áo vest nam màu kem - Tồn: 0 - KH đặt: 0" tabindex="-1">
-                                                    <div class="product-info ">
-                                                        <img loading="lazy" ng-src="https://cdn-app.kiotviet.vn/sample/fashion/2.png" onerror="loadFallBackImage(this)" kv-fallback-img="" src="https://cdn-app.kiotviet.vn/sample/fashion/2.png"> <!---->
-                                                        <div class="product-detail">
-                                                            <span class="product-price has-currency">3,699,000</span>
-                                                            <span class="product-qty ng-hide" ng-show="vm.isReadOnHand &amp;&amp; $root.cartDisplayOptions.onHand &amp;&amp; p.ProductType==2">0</span>
-                                                        </div>
-                                                        <div class="product-info-multiple has-image" ng-class="{'has-image': p.Image}">
-                                                            <img loading="lazy" ng-src="https://cdn-app.kiotviet.vn/sample/fashion/2.png" onerror="loadFallBackImage(this)" kv-fallback-img="" src="https://cdn-app.kiotviet.vn/sample/fashion/2.png"> <!---->
-                                                            <div class="product-detail">
-                                                                <span class="product-price has-currency">3,699,000</span>
-                                                                <span class="product-qty ng-hide" ng-show="vm.isReadOnHand &amp;&amp; $root.cartDisplayOptions.onHand &amp;&amp; p.ProductType==2">0</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info-bottom"><!---->
-                                                        <h4 class="product-name" ng-if="$root.cartDisplayOptions.groupProducts">Áo vest nam màu kem</h4><!----><!---->
-                                                        <div class="product-detail">
-                                                            <span class="product-price has-currency">3,699,000</span>
-                                                            <span class="product-qty ng-hide" ng-show="vm.isReadOnHand &amp;&amp; $root.cartDisplayOptions.onHand &amp;&amp; p.ProductType==2">0</span>
-                                                        </div>
-                                                    </div>
-                                                </a></li><!---->
-                                        </ul>
-                                    </div><!---->
-                                    <div class="swiper-slide swiper-slide-next" ng-transclude="" ng-repeat="slide in vm.slides">
-                                        <ul><!---->
-                                            <li ng-repeat="p in slide.items track by p.Id" class="" ng-click="vm.selectProduct(p)" style="margin-bottom: 0px;">
-                                                <a href="javascript:void(0)" class="product" title="Giầy da nam màu nâu - Tồn: 0 - KH đặt: 0" tabindex="-1">
-                                                    <div class="product-info ">
-                                                        <img loading="lazy" ng-src="https://cdn-app.kiotviet.vn/sample/fashion/22.png" onerror="loadFallBackImage(this)" kv-fallback-img="" src="https://cdn-app.kiotviet.vn/sample/fashion/22.png"> <!---->
-                                                        <div class="product-detail">
-                                                            <span class="product-price has-currency">629,100</span>
-                                                            <span class="product-qty ng-hide" ng-show="vm.isReadOnHand &amp;&amp; $root.cartDisplayOptions.onHand &amp;&amp; p.ProductType==2">0</span>
-                                                        </div>
-                                                        <div class="product-info-multiple has-image" ng-class="{'has-image': p.Image}">
-                                                            <img loading="lazy" ng-src="https://cdn-app.kiotviet.vn/sample/fashion/22.png" onerror="loadFallBackImage(this)" kv-fallback-img="" src="https://cdn-app.kiotviet.vn/sample/fashion/22.png"> <!---->
-                                                            <div class="product-detail">
-                                                                <span class="product-price has-currency">629,100</span>
-                                                                <span class="product-qty ng-hide" ng-show="vm.isReadOnHand &amp;&amp; $root.cartDisplayOptions.onHand &amp;&amp; p.ProductType==2">0</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info-bottom"><!---->
-                                                        <h4 class="product-name" ng-if="$root.cartDisplayOptions.groupProducts">Giầy da nam màu nâu</h4><!----><!---->
-                                                        <div class="product-detail">
-                                                            <span class="product-price has-currency">629,100</span>
-                                                            <span class="product-qty ng-hide" ng-show="vm.isReadOnHand &amp;&amp; $root.cartDisplayOptions.onHand &amp;&amp; p.ProductType==2">0</span>
-                                                        </div>
-                                                    </div>
-                                                </a></li><!---->
-                                            <li ng-repeat="p in slide.items track by p.Id" class="" ng-click="vm.selectProduct(p)" style="margin-bottom: 0px;">
-                                                <a href="javascript:void(0)" class="product" title="Giày nam buộc dây màu nâu - Tồn: 0 - KH đặt: 0" tabindex="-1">
-                                                    <div class="product-info ">
-                                                        <img loading="lazy" ng-src="https://cdn-app.kiotviet.vn/sample/fashion/23.png" onerror="loadFallBackImage(this)" kv-fallback-img="" src="https://cdn-app.kiotviet.vn/sample/fashion/23.png"> <!---->
-                                                        <div class="product-detail">
-                                                            <span class="product-price has-currency">629,100</span>
-                                                            <span class="product-qty ng-hide" ng-show="vm.isReadOnHand &amp;&amp; $root.cartDisplayOptions.onHand &amp;&amp; p.ProductType==2">0</span>
-                                                        </div>
-                                                        <div class="product-info-multiple has-image" ng-class="{'has-image': p.Image}">
-                                                            <img loading="lazy" ng-src="https://cdn-app.kiotviet.vn/sample/fashion/23.png" onerror="loadFallBackImage(this)" kv-fallback-img="" src="https://cdn-app.kiotviet.vn/sample/fashion/23.png"> <!---->
-                                                            <div class="product-detail">
-                                                                <span class="product-price has-currency">629,100</span>
-                                                                <span class="product-qty ng-hide" ng-show="vm.isReadOnHand &amp;&amp; $root.cartDisplayOptions.onHand &amp;&amp; p.ProductType==2">0</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info-bottom"><!---->
-                                                        <h4 class="product-name" ng-if="$root.cartDisplayOptions.groupProducts">Giày nam buộc dây màu nâu</h4><!----><!---->
-                                                        <div class="product-detail">
-                                                            <span class="product-price has-currency">629,100</span>
-                                                            <span class="product-qty ng-hide" ng-show="vm.isReadOnHand &amp;&amp; $root.cartDisplayOptions.onHand &amp;&amp; p.ProductType==2">0</span>
-                                                        </div>
-                                                    </div>
-                                                </a></li><!---->
-                                        </ul>
-                                    </div><!---->
-                                </div>
-                                <div class="swiper-pagination " id="paginator-ebcb59a4-df7c-4aa3-866d-cce8a7f1c067"></div>
-                                <div class="swiper-button-next ng-hide" ng-show="showNavButtons" id="nextButton-ebcb59a4-df7c-4aa3-866d-cce8a7f1c067"></div>
-                                <div class="swiper-button-prev ng-hide" ng-show="showNavButtons" id="prevButton-ebcb59a4-df7c-4aa3-866d-cce8a7f1c067"></div>
-                                <div class="swiper-scrollbar ng-hide" ng-show="showScrollBar" id="scrollBar-ebcb59a4-df7c-4aa3-866d-cce8a7f1c067"></div>
-                            </div>
-                        </ks-swiper-container>
-                        <div class="product-footer">
-                            <div class="product-footer-left">
-                                <div class="product-footer-left-pagination products-list-pagination">
-                                    <button ng-click="vm.swipePrev()" title="Trang trước" class="btn-icon btn-icon-bg-default" tabindex="2460">
-                                        <i class="far fa-angle-left"></i></button>
-                                    <span class="number-pages">1/2</span>
-                                    <button ng-click="vm.swipeNext()" title="Trang sau" class="btn-icon btn-icon-bg-default" tabindex="2461">
-                                        <i class="far fa-angle-right"></i></button>
-                                </div>
-                            </div><!----><!---->
-                            <div ng-if="$root.activeCart.isInvoice()" class="cart-actions cart-actions-list-product"><!---->
-                                <button skip-disable="" type="button" class="btn btn-primary btn-xl" ng-click="vm.debouncedSaveTransaction()" id="saveTransactionNormal" tabindex="2465">Thanh toán</button>
-                            </div><!---->
-                        </div>
-                        <product-filter-cate-component active="vm.toggles.showCateFilter" on-filter="vm.filterByCate($checkedTree)" component="vm.cateFilterComponent">
-                            <kv-pull-over kv-show="vm.active" on-active="vm.onActive()" skip-disable="">
-                                <div class="float-nav ng-hide" ng-show="popOut">
-                                    <div class="float-nav-content" ng-transclude="">
-                                        <h3 class="float-nav-title filter">Lọc theo nhóm hàng
-                                            <button tabindex="-1" ng-click="vm.close()" class="btn-icon btn-icon-default">
-                                                <i class="fal fa-times"></i></button>
-                                        </h3>
-                                        <div class="filter-header">
-                                            <h4 class="filter-header-title" translate=""><span>Nhóm hàng</span>
-                                            </h4><!---->
-                                        </div>
-                                        <div class="scroll-content"><!---->
-                                            <div class="loading" ng-if="!vm.treeDataSource">Đang tải nhóm hàng ...</div><!---->
-                                            <div id="treeView" kendo-tree-view="vm.treeView" class="kv-treeview k-widget k-treeview" k-options="vm.treeOptions" ng-class="{'hide-k-icon': vm.searchParam}" data-role="treeview" tabindex="-1">
-                                                <ul class="k-group k-treeview-lines" role="tree"></ul>
-                                            </div>
-                                            <div class="not-found ng-hide" style="color: #a5a6ae;" ng-show="!vm.filterAndResult">
-                                                <i class="far fa-file-search" style="font-size: 32px;"></i> Không có kết quả nào được tìm thấy
-                                            </div>
-                                        </div>
-                                        <div class="group-buttons">
-                                            <div class="group-buttons-left">
-                                                <a ng-click="vm.clearFilter()" class="btn-remove-filter font-medium"><i class="far fa-trash-alt"></i> Xóa chọn tất cả</a>
-                                            </div>
-                                            <div class="group-buttons-right">
-                                                <a ng-click="vm.close()" class="btn btn-outline-primary"><i class="fa fa-ban"></i>Bỏ qua</a>
-                                                <a ng-click="vm.applyFilter()" class="btn btn-primary"><i class="fa fa-check-square"></i>
-                                                    <span translate=""><span>Xong</span></span></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="float-overlay  ng-hide" ng-show="popOut" ng-click="popOut=!popOut"></div>
-                            </kv-pull-over>
-                        </product-filter-cate-component>
-                        <product-filter-attr-component active="vm.toggles.showAttrFilter" on-filter="vm.filterByAttrs($attrFilters)">
-                            <kv-pull-over kv-show="vm.active" on-active="vm.onActive()">
-                                <div class="float-nav ng-hide" ng-show="popOut">
-                                    <div class="float-nav-content" ng-transclude="">
-                                        <h3 class="float-nav-title">Lọc hàng hóa theo thuộc tính
-                                            <button tabindex="-1" ng-click="vm.close()" class="btn-icon btn-icon-default">
-                                                <i class="fal fa-times"></i></button>
-                                        </h3>
-                                        <div class="scroll-content"><!---->
-                                            <div class="loading" ng-if="!vm.attributeList">Đang tải thuộc tính ...</div><!----><!---->
-                                        </div>
-                                        <div class="group-buttons">
-                                            <div class="group-buttons-left">
-                                                <a ng-click="vm.clearFilter(true)" class="btn-remove-filter"><i class="far fa-trash-alt"></i>
-                                                    <span translate="" class="font-medium"><span>Xóa chọn tất cả</span></span></a>
-                                            </div>
-                                            <div class="group-buttons-right">
-                                                <a ng-click="vm.close()" class="btn btn-outline-primary"><i class="fa fa-ban"></i>Bỏ qua</a>
-                                                <a href="javascript:;" class="btn btn-primary" ng-click="vm.processFilter(true)" tabindex="-1"><i class="fa fa-check-square"></i>
-                                                    <span translate=""><span>Xong</span></span></a></div>
-                                        </div>
-                                        <div class="catgTreeBox"></div>
-                                    </div>
-                                </div>
-                                <div class="float-overlay  ng-hide" ng-show="popOut" ng-click="popOut=!popOut"></div>
-                            </kv-pull-over>
-                        </product-filter-attr-component>
-                    </div>
-                </product-list-component>
-            </div><!----><span ng-repeat-start="cart in $root.carts track by cart.Uuid"></span><!----><span ng-repeat-end=""></span><!----><!----><!----><!---->
+            </div>>
+
             <div ng-if="$root.activeCart.isInvoice() &amp;&amp; $root.saleScreenMode === 1" class="cart-actions"><!---->
                 <button skip-disable="" type="button" class="btn btn-primary btn-xl" ng-click="vm.debouncedSaveTransaction()" id="saveTransaction" tabindex="2464">Thanh toán</button>
             </div><!---->
@@ -498,17 +263,77 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
-
+            //Show 'product list' render from VIEW
             $('#productSearchInput').focus(function() {
                 $('#toggleProduct').show();
+            });
+
+            //Show product list from API
+            $('#productSearchInput').on('keyup', function() {
+                $('#toggleProduct').removeClass('ng-hide');
+                var query = $(this).val();
+                $.ajax({
+                    url: "{{ route('search') }}",
+                    type: "GET",
+                    data: {'query': query},
+                    success: function(data) {
+                        $('#productSearchList').empty();
+                        $.each(data, function(index, product) {
+                            const formatter = new Intl.NumberFormat('vi-VN', {
+                                style: 'currency',
+                                currency: 'VND',
+                            });
+                            const price = product.product_sku[0].sale_price;
+                            const formattedPrice = formatter.format(price);
+
+                            $('#productSearchList').append(' <li class="addProduct output-item is-on-cart " data-id="'+ product.id +'" data-name="'+ product.name +'" data-price="'+ product.product_sku[0].sale_price +'"   index="0" val="Áo vest nam màu xanh lá" >'+
+                                '<div class="output-thumb-wrap">'+
+                                '<div class="output-thumb">'+
+                                '<button class="output-product-lk" >'+
+                                '<i class="far fa-ellipsis-h"></i>'+
+                                '</button> <!----><img loading="lazy" src="https://cdn-app.kiotviet.vn/sample/fashion/1.png"><!----> <!---->'+
+                                '</div>'+
+                                '<div class="output-thumb-secondary"><i class="fas fa-image img-default"></i>'+
+                                '</div>'+
+                                '</div> <!---->'+
+                                '<div class="output-body" ng-if="suggestion.Id">'+
+                                '<div class="output-info"><h5 class="output-name font-medium">'+
+                                '<span class="">'+ product.name +'</span>'+
+                                '<span class="tag tag-xxs tag-light-warning"></span>'+
+                                '<span class="tag tag-xxs tag-light-primary"></span></h5> <!---->'+
+                                '<div ng-if="!vm.isLimitViewPriceWarrantyOrder" class="output-price">'+
+                                '<span class="product-price-new has-currency">'+ formattedPrice +'</span>'+
+                                '</div><!---->'+
+                                '</div>'+
+                                '<div class="output-value"><span class="output-code">SP000'+ product.id +'</span>'+
+                                '</div> <!---->'+
+                                ' <div class="output-unit" ng-if="$root.session.User.IsAdmin || $root.session.Privileges.Invoice_ReadOnHand">'+
+                                '<span class="output-tag"> <span translate=""><span>Tồn</span></span>: <span class="onHandValue">0</span> </span>'+
+                                '<span class="output-tag ng-hide" ng-show="vm.isUseOrderSupplier"> <span translate=""><span>Đặt NCC</span></span>: <span class="priceValue">0</span> </span>'+
+                                '<span class="output-tag"> <span translate=""><span>KH đặt</span></span>: <span class="reservedValue"> 0 </span> </span>'+
+                                '</div><!---->'+
+                                '</div><!----> <!---->'+
+                                '</li>');
+                        });
+                    }
+                });
             });
 
             $(document).click(function(event) {
                 if (!$(event.target).closest('#productSearchInput, #productSearchList').length) {
                     $('#toggleProduct').hide();
                 }
+                if (!$(event.target).closest('#sale-menu-bar').length) {
+                    $('#sale-menu-bar').removeClass('open');
+                }
             });
 
+            //Show menu bar header
+            $('#sale-menu-bar').click(function() {
+                $('#sale-menu-bar').addClass('open');
+            });
+
+            //Add product to cart
             $('#productSearchList').on('click', '.addProduct', function(event) {
                 event.stopPropagation();
                 let id = $(this).data('id');
@@ -535,9 +360,9 @@
                         '<div class="carts-container">' +
                         '<div class="carts-content-info">' +
                         '<div class="carts-content-top">' +
-                        '<div class="cell-code"  title="Tồn: 0  − KH đặt: 0">NAM003</div><!---->' +
+                        '<div class="cell-code"  title="Tồn: 0  − KH đặt: 0">'+id+'</div><!---->' +
                         '<div class="cell-info">' +
-                        '<div class="info-content" ><span title="Tồn: 0 − KH đặt: 0">Áo vest nam màu xanh</span> ' +
+                        '<div class="info-content" ><span title="Tồn: 0 − KH đặt: 0">'+name+'</span> ' +
                         '<button class="btn-icon btn-inventory" >' +
                         '<i class="far fa-info-circle"></i>' +
                         '</button>' +
@@ -560,7 +385,7 @@
                         '<div class="cell-auto" ></div>' +
                         ' <div class="cell-change-price" ><!---->' +
                         '<div class="popup-anchor" >' +
-                        '<button class="form-control form-control-sm text-right cart-item-0"  >3,699,000</button>' +
+                        '<button class="form-control form-control-sm text-right cart-item-0"  >'+price+'</button>' +
                         '</div>' +
                         '</div>' +
                         '<div class="cell-change-price" ng-if="$root.cartDisplayOptions.total"><!----><!---->' +
@@ -611,48 +436,21 @@
                 }
             });
 
-            $('#productSearchInput').on('keyup', function() {
-                $('#toggleProduct').removeClass('ng-hide');
-                var query = $(this).val();
-                $.ajax({
-                    url: "{{ route('search') }}",
-                    type: "GET",
-                    data: {'query': query},
-                    success: function(data) {
-                        $('#productSearchList').empty();
-                        $.each(data, function(index, product) {
-                            $('#productSearchList').append(' <li class="addProduct output-item is-on-cart " data-id="'+ product.id +'" data-name="'+ product.name +'" data-price="3899000"   index="0" val="Áo vest nam màu xanh lá" >'+
-                                '<div class="output-thumb-wrap">'+
-                                '<div class="output-thumb">'+
-                                '<button class="output-product-lk" >'+
-                                '<i class="far fa-ellipsis-h"></i>'+
-                        '</button> <!----><img loading="lazy" src="https://cdn-app.kiotviet.vn/sample/fashion/1.png"><!----> <!---->'+
-                            '</div>'+
-                            '<div class="output-thumb-secondary"><i class="fas fa-image img-default"></i>'+
-                            '</div>'+
-                        '</div> <!---->'+
-                            '<div class="output-body" ng-if="suggestion.Id">'+
-                                '<div class="output-info"><h5 class="output-name font-medium">'+
-                                    '<span class="">'+ product.name +'</span>'+
-                                    '<span class="tag tag-xxs tag-light-warning"></span>'+
-                                    '<span class="tag tag-xxs tag-light-primary"></span></h5> <!---->'+
-                                    '<div ng-if="!vm.isLimitViewPriceWarrantyOrder" class="output-price">'+
-                                        '<span class="product-price-new has-currency">3,899,000</span>'+
-                                    '</div><!---->'+
-                                '</div>'+
-                                '<div class="output-value"><span class="output-code">NAM001</span>'+
-                                '</div> <!---->'+
-                               ' <div class="output-unit" ng-if="$root.session.User.IsAdmin || $root.session.Privileges.Invoice_ReadOnHand">'+
-                                    '<span class="output-tag"> <span translate=""><span>Tồn</span></span>: <span class="onHandValue">0</span> </span>'+
-                                    '<span class="output-tag ng-hide" ng-show="vm.isUseOrderSupplier"> <span translate=""><span>Đặt NCC</span></span>: <span class="priceValue">0</span> </span>'+
-                                    '<span class="output-tag"> <span translate=""><span>KH đặt</span></span>: <span class="reservedValue"> 0 </span> </span>'+
-                                '</div><!---->'+
-                            '</div><!----> <!---->'+
-                        '</li>');
-                        });
-                    }
-                });
-            });121212
+
+            $('#cartListProduct').on('click','.plus', function(){
+                var quantityInput = $(this).siblings('.quantity-input');
+                var currentQuantity = parseInt(quantityInput.val());
+                quantityInput.val(currentQuantity + 1);
+            });
+
+            $('#cartListProduct').on('click','.minus', function(){
+                var quantityInput = $(this).siblings('.quantity-input');
+                var currentQuantity = parseInt(quantityInput.val());
+                if(currentQuantity > 1){
+                    quantityInput.val(currentQuantity - 1);
+                }
+            });
+
 
         });
     </script>

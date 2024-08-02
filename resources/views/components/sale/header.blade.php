@@ -10,10 +10,10 @@
                             <div class="output-complete" id="toggleProduct" style="display: none;">
                                 <ul id="productSearchList">
                                     @php
-                                    $products = \App\Models\Product::all();
+                                    $products = \App\Models\Product::with('productSku')->paginate(5);
                                     @endphp
                                     @foreach($products as $product)
-                                        <li class="output-item is-on-cart addProduct" data-id="{{$product->id}}" data-name="{{$product->name}}" data-price="3899000"   index="0" val="Áo vest nam màu xanh lá" >
+                                        <li class="output-item is-on-cart addProduct" data-id="{{$product->id}}" data-name="{{$product->name}}" data-price="{{$product->productSku->first()->sale_price}}"   index="0" val="Áo vest nam màu xanh lá" >
                                             <div class="output-thumb-wrap">
                                                 <div class="output-thumb">
                                                     <button class="output-product-lk" >
@@ -29,10 +29,10 @@
                                                         <span class="tag tag-xxs tag-light-warning"></span>
                                                         <span class="tag tag-xxs tag-light-primary"></span></h5> <!---->
                                                     <div ng-if="!vm.isLimitViewPriceWarrantyOrder" class="output-price">
-                                                        <span class="product-price-new has-currency">3,899,000</span>
+                                                        <span class="product-price-new has-currency">{{number_format($product->productSku->first()->sale_price, 0, ',', '.') }} đ</span>
                                                     </div><!---->
                                                 </div>
-                                                <div class="output-value"><span class="output-code">NAM001</span>
+                                                <div class="output-value"><span class="output-code">SP000{{$product->id}}</span>
                                                 </div> <!---->
                                                 <div class="output-unit" ng-if="$root.session.User.IsAdmin || $root.session.Privileges.Invoice_ReadOnHand">
                                                     <span class="output-tag"> <span translate=""><span>Tồn</span></span>: <span class="onHandValue">0</span> </span>
@@ -49,7 +49,6 @@
                                     <span><span class="total-product">false</span> <span translate=""><span>sản phẩm</span></span></span>
                                     <a class="btn btn-primary add-list-product" ng-click="vm.addMultiItemsToCart(vm.listItems)" href="javascript:;">Thêm vào đơn</a>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -171,7 +170,7 @@
                 <a class="icon-link print-button enable" ng-class="{enable:$root.AutoPrint}" uib-tooltip="Thiết lập in" tooltip-placement="bottom" tooltip-append-to-body="true" id="printConfig" skip-disable="" uib-popover-template="'autoPrintTpl.html'" popover-trigger="'outsideClick'" popover-placement="bottom" popover-class="popover-print popover-284"><span class="badge badge-sm badge-print ng-hide" ng-show="vm.alphabelticalList.length > 0"> <span ng-show="$root.session.Setting.UseCod &amp;&amp; ($root.activeCart.isInvoice() || $root.activeCart.isOrder() || $root.activeCart.hasExchange())"> </span></span>
                     <i class="fas fa-print"></i></a></li>
             <li class="icon-item"><span class="user-name">0784638746</span></li>
-            <li class="icon-item menu-bar">
+            <li class="icon-item menu-bar" id="sale-menu-bar">
                 <a class="icon-link list-bar" skip-disable=""><i class="far fa-bars"></i></a>
                 <div class="dropdown-menu dropdown-menu-right main-settings">
                     <a class="dropdown-item" ng-click="vm.viewDailyReport()" skip-disable="" ng-show="$root.session.Privileges.EndOfDayReport_EndOfDayDocument || $root.session.Privileges.EndOfDayReport_EndOfDaySynthetic"><span class="dropdown-icon"><i class="far fa-chart-pie"></i></span>
@@ -197,7 +196,7 @@
                                             chọn hiển thị</span></span></a>
                     <a class="dropdown-item" title="Danh sách các phím tắt" ng-click="toggles.showMenu=false;vm.configHotkeys()"><span class="dropdown-icon"><i class="far fa-info-circle"></i></span>
                         <span translate=""><span>Phím tắt</span></span></a>
-                    <a class="dropdown-item" href="/man/#/Invoices" skip-disable=""><span class="dropdown-icon"><i class="far fa-poll"></i></span>
+                    <a class="dropdown-item" href="{{route('dashboard')}}" skip-disable=""><span class="dropdown-icon"><i class="far fa-poll"></i></span>
                         <span translate=""><span>Quản lý</span></span></a>
                     <a class="dropdown-item" ng-click="vm.logout()" skip-disable=""><span class="dropdown-icon"><i class="far fa-sign-out"></i></span>
                         <span translate=""><span>Đăng xuất</span></span></a></div>

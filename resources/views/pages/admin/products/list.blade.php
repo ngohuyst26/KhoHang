@@ -154,7 +154,7 @@
                                                         class="text-gray-800 text-hover-primary fs-5 fw-bold cursor-pointer"
                                                         data-kt-ecommerce-product-filter="product_name">
                                                         {{$product->name.' '}}
-                                                        @if($product->productSku->count() > 1)
+                                                        @if($product->productSku->first()->optionValue->count() > 0)
                                                             (Có {{$product->productSku->count()}} biến thể)
                                                         @endif
                                                     </h2>
@@ -190,13 +190,15 @@
                                                 class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
                                                 data-kt-menu="true">
                                                 <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="/metronic8/demo1/apps/ecommerce/catalog/edit-product.html"
-                                                       class="menu-link px-3">
-                                                        Sửa
-                                                    </a>
-                                                </div>
-                                                <!--end::Menu item-->
+                                                @if($product->productSku->count() == 1)
+                                                    <div class="menu-item px-3">
+                                                        <a href="{{route('products.edit',['product' => $product->id,'skuId' => $product->productSku->first()->id ])}}"
+                                                           class="menu-link px-3">
+                                                            Sửa
+                                                        </a>
+                                                    </div>
+                                                    <!--end::Menu item-->
+                                                @endif
 
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
@@ -212,7 +214,7 @@
 
                                     </tr>
 
-                                    @if($product->productSku->count() > 1)
+                                    @if($product->productSku->first()->optionValue->count() > 0)
 
                                         <tr class="gs-0 details-row d-none" role="row">
                                             <td></td>
@@ -294,16 +296,16 @@
                                                                             <td colspan="2">
                                                                                 <div class="d-flex align-items-center">
                                                                                     <!--begin::Thumbnail-->
-                                                                                    <a href="/metronic8/demo1/apps/ecommerce/catalog/edit-product.html"
+                                                                                    <a href="#"
                                                                                        class="symbol symbol-50px">
                                                                                         <span class="symbol-label"
-                                                                                              style="background-image:url({{$sku->photo->first()?->url}});"></span>
+                                                                                              style="background-image:url({{Storage::url($sku->photo->first()?->url)}});"></span>
                                                                                     </a>
                                                                                     <!--end::Thumbnail-->
 
                                                                                     <div class="ms-5">
                                                                                         <!--begin::Title-->
-                                                                                        <a href="/metronic8/demo1/apps/ecommerce/catalog/edit-product.html"
+                                                                                        <a href="#"
                                                                                            class="text-gray-800 text-hover-primary fs-5 fw-bold"
                                                                                            data-kt-ecommerce-product-filter="product_name">
                                                                                             {{$product->name}}
@@ -342,7 +344,7 @@
                                                                                     data-kt-menu="true">
                                                                                     <!--begin::Menu item-->
                                                                                     <div class="menu-item px-3">
-                                                                                        <a href="/metronic8/demo1/apps/ecommerce/catalog/edit-product.html"
+                                                                                        <a href="{{route('products.edit',['product' => $product->id,'skuId' => $sku->id])}}"
                                                                                            class="menu-link px-3">
                                                                                             Sửa
                                                                                         </a>
@@ -374,7 +376,6 @@
                                         </tr>
                                     @endif
                                 @endforeach
-
                                 </tbody>
                                 <tfoot></tfoot>
                             </table>

@@ -25,54 +25,70 @@
                             <!--end::Input-->
                             <p></p>
                         </div>
-                        <div class="mb-10 fv-row fv-plugins-icon-container">
-                            <!--begin::Label-->
-                            <label class="required form-label">Giá vốn</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            <input type="text" id="price" name="price" class="form-control mb-2" placeholder="Giá vốn"
-                                   value="">
-                            <!--end::Input-->
-                            <p></p>
-                            <div
-                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-                        </div>
-                        <div class="mb-10 fv-row fv-plugins-icon-container">
-                            <!--begin::Label-->
-                            <label class="required form-label">Giá bán</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            <input type="text" id="sale_price" name="sale_price" class="form-control mb-2"
-                                   placeholder="Giá bán" value="">
-                            <!--end::Input-->
-                            <p></p>
-                            <div
-                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                        <div class="row">
+                            <div class="col-4 mb-10 fv-row fv-plugins-icon-container">
+                                <!--begin::Label-->
+                                <label class="required form-label">Giá vốn</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="text" id="price" name="price" class="form-control mb-2"
+                                       placeholder="Giá vốn"
+                                       value="">
+                                <!--end::Input-->
+                                <p></p>
+                                <div
+                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                            </div>
+                            <div class="col-4 mb-10 fv-row fv-plugins-icon-container">
+                                <!--begin::Label-->
+                                <label class="required form-label">Giá bán</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="text" id="sale_price" name="sale_price" class="form-control mb-2"
+                                       placeholder="Giá bán" value="">
+                                <!--end::Input-->
+                                <p></p>
+                                <div
+                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                            </div>
+                            <div class="col-4 mb-10 fv-row fv-plugins-icon-container">
+                                <!--begin::Label-->
+                                <label class="required form-label">Tồn kho</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="text" id="inventory" name="inventory" class="form-control mb-2"
+                                       placeholder="Giá bán" value="">
+                                <!--end::Input-->
+                                <p></p>
+                                <div
+                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                            </div>
                         </div>
 
-                        <div class="mb-10 fv-row fv-plugins-icon-container">
-                            <!--begin::Label-->
-                            <label class="required form-label">Tồn kho</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            <input type="text" id="inventory" name="inventory" class="form-control mb-2"
-                                   placeholder="Giá bán" value="">
-                            <!--end::Input-->
-                            <p></p>
-                            <div
-                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
-                        </div>
+                        <div class="row">
+                            <div class="col-6 mb-10 fv-row fv-plugins-icon-container">
+                                <!--begin::Label-->
+                                <label class="required form-label">Danh mục sản phẩm</label>
+                                <select name="category_id" id="category_id" class="form-select col-3 select-2"
+                                        data-control="select2" data-placeholder="Select an option">
+                                    @foreach($categories as $attribute)
+                                        <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
+                                    @endforeach
+                                </select>
+                                <p></p>
+                            </div>
 
-                        <div class="mb-10 fv-row fv-plugins-icon-container">
-                            <!--begin::Label-->
-                            <label class="required form-label">Danh mục sản phẩm</label>
-                            <select name="category_id" id="category_id" class="form-select col-3 select-2"
-                                    data-control="select2" data-placeholder="Select an option">
-                                @foreach($categories as $attribute)
-                                    <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
-                                @endforeach
-                            </select>
-                            <p></p>
+                            <div class="col-6 mb-10 fv-row fv-plugins-icon-container">
+                                <!--begin::Label-->
+                                <label class="required form-label">Nhà cung cấp</label>
+                                <select name="supplier_id" id="supplier_id" class="form-select col-3 select-2"
+                                        data-control="select2" data-placeholder="Select an option">
+                                    @foreach($supplier as $attribute)
+                                        <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
+                                    @endforeach
+                                </select>
+                                <p></p>
+                            </div>
                         </div>
 
                         <div class="mb-10 fv-row fv-plugins-icon-container">
@@ -190,6 +206,7 @@
 
 @endsection
 @push('script')
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/repeater.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.min.js"></script>
@@ -310,7 +327,7 @@
             }
         });
 
-
+        Dropzone.autoDiscover = false;
         var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
             url: '{{route('upload')}}',
             headers: {
@@ -318,21 +335,16 @@
             },
             paramName: "file",
             maxFiles: 5,
-            maxFilesize: 2, // MB
+            maxFilesize: 10, // MB
             addRemoveLinks: true,
-            accept: function (file, done) {
-                done();
-            },
-            success: function (file, response) {
-                if (this.files.length > 1) {
-                    this.removeFile(this.files[0]);
-                }
-                return console.log(response);
-            },
+            autoProcessQueue: false, // Ngăn Dropzone tự động tải lên
+            init: function () {
+                this.on("processing", function () {
+                    this.options.autoProcessQueue = true;
+                });
+            }
         });
 
-
-        {{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--}}
 
         $(document).ready(function () {
 
@@ -345,20 +357,26 @@
                     type: 'POST',
                     data: $(this).serialize(),
                     success: function (data) {
-                        if (data.length > 0) {
-                            Swal.fire({
-                                text: "Tạo sản phẩm thành công",
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn btn-primary"
-                                }
-                            });
-                            window.location = "{{route('products.create')}}";
+                        console.log(isNumber(data.skuId));
+                        if (myDropzone.getQueuedFiles().length > 0 && isNumber(data.skuId)) {
+                            myDropzone.options.params = {
+                                sku_id: data.skuId // Truyền product ID cùng với file upload
+                            };
+                            myDropzone.processQueue(); // Bắt đầu tải lên các file
                         }
+                        Swal.fire({
+                            text: "Tạo sản phẩm thành công",
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: {
+                                confirmButton: "btn btn-primary"
+                            }
+                        });
+                        window.location = "{{route('products.create')}}";
                     },
                     error: function (err) {
+                        console.log(err)
                         if (err.responseJSON.errors) {
                             let error = err.responseJSON.errors;
                             handleFieldError("#name", error.other.name);
@@ -366,6 +384,7 @@
                             handleFieldError("#sale_price", error.other.sale_price);
                             handleFieldError("#inventory", error.other.inventory);
                             handleFieldError("#category_id", error.other.category);
+                            handleFieldError("#supplier_id", error.other.supplier);
 
                             //reset mess error
                             const mess = $('.is_valid');
@@ -407,10 +426,11 @@
                     }
                 })
             })
-
-
         });
 
+        function isNumber(value) {
+            return typeof value === 'number' && !isNaN(value);
+        }
 
         function handleFieldError(selector, error) {
             const element = $(selector);

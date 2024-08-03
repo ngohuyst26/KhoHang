@@ -116,6 +116,7 @@ return [
          * Application Service Providers...
          */
         Module\ModuleServiceProvider::class,
+        App\Providers\RepositoryServiceProvider::class,
     ])->toArray(),
 
     /*

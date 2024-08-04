@@ -1,26 +1,28 @@
 <div class="page-header" kv-focus-click="#productSearchInput">
     <div class="header-left">
-        <div class="col-left-control " >
+        <div class="col-left-control ">
             <product-search-component on-select-product="vm.onSelectProduct(selectedProduct, weight)" on-select-grouped-products="vm.onSelectProductNoLock(selectedProduct, weight)" on-select-sample-prescription="vm.onSelectSamplePrescription(products)" is-disabled="$root.activeCart.isWarrantyInvoice()" quantityid="productSearchInputF3" placeholder="Tìm hàng hóa (F3)" toggle-search-sample-prescription="vm.toggleSearchSamplePrescription()">
-                <div class="products-search" >
+                <div class="products-search">
                     <div class="autocomplete-wrapper ng-pristine ng-untouched ng-valid ng-empty">
                         <div class="autocomplete " id="">
                             <i class="fal fa-search"></i>
-                            <input type="text" autocomplete="off"  placeholder="Tìm hàng hóa (F3)" class="form-control form-control-custom ng-empty ng-touched" id="productSearchInput" ng-disabled="vm.kvDisable" kv-select-text="" tabindex="1" kv-tab-index="">
+                            <input type="text" autocomplete="off" placeholder="Tìm hàng hóa (F3)" class="form-control form-control-custom ng-empty ng-touched" id="productSearchInput" ng-disabled="vm.kvDisable" kv-select-text="" tabindex="1" kv-tab-index="">
                             <div class="output-complete" id="toggleProduct" style="display: none;">
                                 <ul id="productSearchList">
                                     @php
-                                    $products = \App\Models\Product::with('productSku')->paginate(5);
+                                        $products = \App\Models\Product::with(['productSku','productSku.optionValue.option'])->paginate(5);
                                     @endphp
                                     @foreach($products as $product)
-                                        <li class="output-item is-on-cart addProduct" data-id="{{$product->id}}" data-name="{{$product->name}}" data-price="{{$product->productSku->first()->sale_price}}"   index="0" val="Áo vest nam màu xanh lá" >
+
+                                        <li class="output-item is-on-cart addProduct" data-id="{{$product->id}}" data-name="{{$product->name}}" data-price="{{$product->productSku->first()->sale_price}}" index="0" val="Áo vest nam màu xanh lá">
                                             <div class="output-thumb-wrap">
                                                 <div class="output-thumb">
-                                                    <button class="output-product-lk" >
+                                                    <button class="output-product-lk">
                                                         <i class="far fa-ellipsis-h"></i>
                                                     </button> <!----><img loading="lazy" ng-if="!(suggestion.Image == null || suggestion.Image == '') " ng-src="https://cdn-app.kiotviet.vn/sample/fashion/1.png" onerror="loadFallBackImage(this)" kv-fallback-img="" src="https://cdn-app.kiotviet.vn/sample/fashion/1.png"><!----> <!---->
                                                 </div>
-                                                <div class="output-thumb-secondary"><i class="fas fa-image img-default"></i>
+                                                <div class="output-thumb-secondary">
+                                                    <i class="fas fa-image img-default"></i>
                                                 </div>
                                             </div> <!---->
                                             <div class="output-body" ng-if="suggestion.Id">
@@ -32,7 +34,8 @@
                                                         <span class="product-price-new has-currency">{{number_format($product->productSku->first()->sale_price, 0, ',', '.') }} đ</span>
                                                     </div><!---->
                                                 </div>
-                                                <div class="output-value"><span class="output-code">SP000{{$product->id}}</span>
+                                                <div class="output-value">
+                                                    <span class="output-code">SP000{{$product->id}}</span>
                                                 </div> <!---->
                                                 <div class="output-unit" ng-if="$root.session.User.IsAdmin || $root.session.Privileges.Invoice_ReadOnHand">
                                                     <span class="output-tag"> <span translate=""><span>Tồn</span></span>: <span class="onHandValue">0</span> </span>

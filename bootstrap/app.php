@@ -19,6 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
             ];
 
             $clientRoutes = [
+                'order.php',
                 'sale.php',
             ];
 

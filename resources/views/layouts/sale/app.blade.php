@@ -171,9 +171,9 @@
     <meta http-equiv="expires" content="0">
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
     <meta http-equiv="pragma" content="no-cache">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="icon" type="image/x-icon" href="https://cdn-app.kiotviet.vn/retailler/Content/img/favicon.ico" crossorigin="anonymous">
-
 
     <!-- APP CONFIG -->
     <script type="text/javascript">
@@ -270,9 +270,9 @@
         }
     </script>
     <!-- APP CONFIG -->
-    <script src="https://cdn-app.kiotviet.vn/clientsdk/kv-sdk-3.0.5.js"></script>
+{{--    <script src="https://cdn-app.kiotviet.vn/clientsdk/kv-sdk-3.0.5.js"></script>--}}
     <link rel="stylesheet" href="https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/assets/css/mains.92303bb3.css">
-{{--    <script src="https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/vendor.6e26f171.js"></script>--}}
+
     <style>
 		.swal2-popup.swal2-toast {
 			box-sizing: border-box;
@@ -1599,7 +1599,6 @@
 			padding: 0 !important;
 		}
     </style>
-{{--    <script src="https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/resource.a6cdd786.js"></script>--}}
     <style type="text/css">
 		.__react_component_tooltip {
 			border-radius: 3px;
@@ -2016,7 +2015,6 @@
 			text-align: center;
 		}
     </style>
-{{--    <script src="https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/main.d9917f73.js"></script>--}}
     <style>
 		.ejoy-sub-active {
 			color: #1296ba !important;
@@ -2242,11 +2240,11 @@
 			color: #0CB1C7
 		}
     </style>
-    <link rel="stylesheet" type="text/css" href="https://cdn-shipping.kiotviet.vn/shipping-api/widget/20240729145821/widget_price/price-v4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/css/chunk-vendors.css" media="all">
-    <link rel="stylesheet" type="text/css" href="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/css/k_fin_onboarding.css" media="all">
-    <link rel="stylesheet" type="text/css" href="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/css/k_pay_register.css" media="all">
-    <link rel="stylesheet" type="text/css" href="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/css/k_pay_checkout.css" media="all">
+{{--    <link rel="stylesheet" type="text/css" href="https://cdn-shipping.kiotviet.vn/shipping-api/widget/20240729145821/widget_price/price-v4.min.css">--}}
+{{--    <link rel="stylesheet" type="text/css" href="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/css/chunk-vendors.css" media="all">--}}
+{{--    <link rel="stylesheet" type="text/css" href="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/css/k_fin_onboarding.css" media="all">--}}
+{{--    <link rel="stylesheet" type="text/css" href="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/css/k_pay_register.css" media="all">--}}
+{{--    <link rel="stylesheet" type="text/css" href="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/css/k_pay_checkout.css" media="all">--}}
     <style type="text/css">
 		.vodal,
 		.vodal-mask {
@@ -4028,14 +4026,10 @@
 			caret-color: #802700 !important;
 		}
     </style>
+    @stack('style')
 </head>
 
-<body ui-sref-active="{login:'login', expire: 'expireTime'}" class="normal-mode expand-delivery" ng-class="{'mode-1': $root.saleScreenMode === 1 || $root.activeCart.isWarrantyCart(),
-   'mode-refund' : $root.activeCart.isRefund(),
-   'normal-mode' : ($root.saleScreenMode === 2) &amp;&amp; !$root.activeCart.isRefund() &amp;&amp; !$root.activeCart.isWarrantyCart(),
-   'international-version' : $root.session.isHiddenFeatures('kiotviet_finance'),
-   'currency-peso': $root.currencyPeso,
-    'en-US': $root.session.User.lang === 'en-US' }" data-new-gr-c-s-check-loaded="14.1189.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1189.0">
+<body  class="normal-mode expand-delivery" data-new-gr-c-s-check-loaded="14.1189.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1189.0">
 <div id="loading-bar-spinner" style="display: none;">
     <div class="no-freeze-spinner">
         <div class="spinner--container">
@@ -4049,11 +4043,9 @@
 <!---->
 <div ui-view="">
     <div class="wrapper home-page invoice kv-ship-v4 fast-mode warranty">
-{{--    <div class="wrapper home-page home-page-extend normal-mode invoice kv-ship-v4">--}}
-
         <x-sale.header></x-sale.header>
         @yield('content')
-       <x-sale.footer></x-sale.footer>
+        <x-sale.footer></x-sale.footer>
         <div id="widget" style="z-index: 10004;">
             <div id="k-finance-widget-onboarding">
                 <div>
@@ -4103,96 +4095,10 @@
         <div id="k-target-banner"></div>
     </div>
 </div>
-
-<!---->
-
-<div style="display: none">
-    <!-- inject:jpg -->
-    <!-- endinject -->
-
-    <!-- inject:svg -->
-    <!-- endinject -->
-
-    <!-- inject:png -->
-    <!-- endinject -->
 </div>
 
-
-<script type="text/javascript">
-    function getChromeVersion() {
-        var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
-
-        return raw ? parseInt(raw[2], 10) : false;
-    }
-
-    function loadFallBackImage(element) {
-
-        var linkCdn = window.cdnPrefixFolder
-        var lstCdnPrefix = linkCdn.CdnPrefixs;
-        var forderPath = '';
-
-        lstCdnPrefix.forEach(item => {
-            if (element.src.indexOf(item) > -1) {
-                forderPath = element.src.replace(`${item}/`, '')
-            }
-        });
-        for (let index = 0; index < lstCdnPrefix.length; index++) {
-            var item = lstCdnPrefix[index];
-            if (element.src.indexOf(item) == -1 && forderPath) {
-                element.src = `${item}/${forderPath}`;
-                break;
-            }
-        }
-    }
-
-    var chromeVer = getChromeVersion();
-    if ('serviceWorker' in navigator && navigator.serviceWorker.onmessage !== undefined && chromeVer > 70) {
-        window.addEventListener('load', function () {
-            const swUrl = window.location.pathname + 'sw.js';
-            navigator.serviceWorker.register(swUrl).then(function (registration) {
-                console.log('[KV] SW registered: ', registration);
-            }).catch(function (registrationError) {
-                console.log('[KV] SW registration failed: ', registrationError);
-            });
-        });
-    }
-</script>
-
-
-<div id="kvSavedCode" style="display: none"></div>
-
-
-{{--<script type="text/javascript">--}}
-{{--    (function () {--}}
-{{--        KvResourceLoader.init({--}}
-
-{{--            'assets/css/mains.92303bb3.css': ['https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/assets/css/mains.92303bb3.css', 'https://cdn-pos2.kiotviet.vn/2024/7/26/5_15/assets/css/mains.92303bb3.css']--}}
-{{--            ,--}}
-{{--            'app/vendor.6e26f171.js': ['https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/vendor.6e26f171.js', 'https://cdn-pos2.kiotviet.vn/2024/7/26/5_15/app/vendor.6e26f171.js']--}}
-{{--            ,--}}
-{{--            'app/resource.a6cdd786.js': ['https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/resource.a6cdd786.js', 'https://cdn-pos2.kiotviet.vn/2024/7/26/5_15/app/resource.a6cdd786.js']--}}
-{{--            ,--}}
-{{--            'app/main.d9917f73.js': ['https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/app/main.d9917f73.js', 'https://cdn-pos2.kiotviet.vn/2024/7/26/5_15/app/main.d9917f73.js']--}}
-
-{{--        }, function () {--}}
-{{--            console.log('App resources loaded');--}}
-{{--        });--}}
-{{--    })();--}}
-{{--    window.cdnPrefixFolder = {--}}
-{{--        CdnPrefixs: ['https://cdn-pos1.kiotviet.vn/2024/7/26/5_15', 'https://cdn-pos2.kiotviet.vn/2024/7/26/5_15'],--}}
-{{--        CdnDestFolder: '2024/7/26/5_15'--}}
-{{--    }--}}
-{{--</script>--}}
-<div id="eJOY__extension_root" class="eJOY__extension_root_class" style="all: unset;"></div>
 <script type="text/javascript" defer="" async="" src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
 
-{{--<script type="text/javascript" defer="" async="" src="https://cdn-ktarget.citigo.com.vn/widget/23.9.150/k-target-widget.js"></script>--}}
-{{--<script type="text/javascript" defer="" async="" src="https://cdn-shipping.kiotviet.vn/shipping-api/widget/20240729145821/widget_price/price-v4.min.js"></script>--}}
-{{--<script type="text/javascript" defer="" async="" src="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/js/chunk-vendors.js"></script>--}}
-{{--<script type="text/javascript" defer="" async="" src="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/js/k_fin_onboarding.js"></script>--}}
-{{--<script type="text/javascript" defer="" async="" src="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/js/k_pay_register.js"></script>--}}
-{{--<script type="text/javascript" defer="" async="" src="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/js/k_pay_checkout.js"></script>--}}
-{{--<script src="chrome-extension://gppongmhjkpfnbhagpmjfkannfbllamg/js/js.js"></script>--}}
 @stack('script')
 </body>
 

@@ -3,10 +3,6 @@
 use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/', function () {
-    return view('pages.admin.dashboard.index');
-})->name('dashboard');
 Route::name('category.')->prefix('category')->group(function () {
     Route::get('/add', [CategoryController::class, 'addCategory'])->name(('add'));
     Route::post('/add', [CategoryController::class, 'store'])->name('store');

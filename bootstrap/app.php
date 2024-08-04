@@ -23,6 +23,11 @@ return Application::configure(basePath: dirname(__DIR__))
                 'sale.php',
             ];
 
+            $authRoutes = [
+                'auth.php',
+                'web.php',
+            ];
+
 
             foreach ($systemRoutes as $route) {
                 Route::middleware('web')
@@ -36,6 +41,13 @@ return Application::configure(basePath: dirname(__DIR__))
                     ->prefix('')
                     ->group(base_path("routes/sale/{$route}"));
             }
+
+            foreach ($authRoutes as $route) {
+                Route::middleware('web')
+                     ->prefix('')
+                     ->group(base_path("routes/{$route}"));
+            }
+
         },
     )
     ->withMiddleware(function (Middleware $middleware) {

@@ -33,8 +33,12 @@ class OrderController extends Controller
         $cartItems = $request->input('cartItems', []);
         $grandTotal = $request->input('grandTotal', []);
         $created_at = $request->input('createdAt', []);
+        $discount = $request->input('discount', []);
+        $total_payment = $request->input('totalPayment', []);
         $order = Orders::create([
-            'grand_total' => $grandTotal
+            'grand_total' => $grandTotal,
+            'discount' => $discount,
+            'total_payment' => $total_payment,
         ]);
 
         foreach ($cartItems as $item) {

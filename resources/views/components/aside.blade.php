@@ -2,10 +2,10 @@
     <!--begin::Logo-->
     <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
         <!--begin::Logo image-->
-        <a href="index.html">
-            <img alt="Logo" src="{{asset('assets/media/logos/default-dark.svg')}}" class="h-25px app-sidebar-logo-default">
-            <img alt="Logo" src="{{asset('assets/media/logos/default-small.svg')}}" class="h-20px app-sidebar-logo-minimize">
-        </a>
+{{--        <a href="index.html">--}}
+{{--            <img alt="Logo" src="{{asset('assets/media/logos/default-dark.svg')}}" class="h-25px app-sidebar-logo-default">--}}
+{{--            <img alt="Logo" src="{{asset('assets/media/logos/default-small.svg')}}" class="h-20px app-sidebar-logo-minimize">--}}
+{{--        </a>--}}
         <!--end::Logo image-->
         <!--begin::Sidebar toggle-->
         <!--begin::Minimized sidebar setup:
@@ -253,14 +253,14 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
     </div>
     <!--end::sidebar menu-->
     <!--begin::Footer-->
-    <div class="app-sidebar-footer flex-column-auto pt-2 pb-6 px-6" id="kt_app_sidebar_footer">
-        <a href="https://preview.keenthemes.com/html/metronic/docs" class="btn btn-flex flex-center btn-custom btn-primary overflow-hidden text-nowrap px-0 h-40px w-100" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click" data-bs-original-title="200+ in-house components and 3rd-party plugins" data-kt-initialized="1">
-            <span class="btn-label">Docs &amp; Components</span>
-            <i class="ki-duotone ki-document btn-icon fs-2 m-0">
-                <span class="path1"></span>
-                <span class="path2"></span>
-            </i>
-        </a>
-    </div>
+{{--    <div class="app-sidebar-footer flex-column-auto pt-2 pb-6 px-6" id="kt_app_sidebar_footer">--}}
+{{--        <a href="https://preview.keenthemes.com/html/metronic/docs" class="btn btn-flex flex-center btn-custom btn-primary overflow-hidden text-nowrap px-0 h-40px w-100" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click" data-bs-original-title="200+ in-house components and 3rd-party plugins" data-kt-initialized="1">--}}
+{{--            <span class="btn-label">Docs &amp; Components</span>--}}
+{{--            <i class="ki-duotone ki-document btn-icon fs-2 m-0">--}}
+{{--                <span class="path1"></span>--}}
+{{--                <span class="path2"></span>--}}
+{{--            </i>--}}
+{{--        </a>--}}
+{{--    </div>--}}
     <!--end::Footer-->
 </div>

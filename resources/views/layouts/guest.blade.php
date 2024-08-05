@@ -19,7 +19,7 @@
 		}
 
 		.btn.btn-outline:not(.btn-outline-dashed) {
-			border: 1px solid gray;
+			border: 1px solid lightgrey;
 		}
 		.btn.btn-text-gray-700 {
 			color: var(--bs-text-gray-700);

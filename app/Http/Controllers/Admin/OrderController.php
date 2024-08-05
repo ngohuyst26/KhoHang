@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Orders;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -12,7 +13,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.orders.list');
+        $orders = Orders::orderBy('id','desc')->paginate(10);
+        return view('pages.admin.orders.list',[
+            'orders'=>$orders
+        ]);
     }
 
     /**

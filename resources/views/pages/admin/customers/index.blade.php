@@ -192,12 +192,12 @@
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col">
-                                                <label class="required fs-6 fw-bold mb-2">Ngày sinh</label>
+                                                <label class=" fs-6 fw-bold mb-2">Ngày sinh</label>
                                                 <input type="text" class="form-control form-control-solid" placeholder="" name="date_of_birth" value="">
                                                 <p></p>
                                             </div>
                                             <div class="col">
-                                                <label class="required fs-6 fw-bold mb-2">Số điện thoại</label>
+                                                <label class=" fs-6 fw-bold mb-2">Số điện thoại</label>
                                                 <input type="text" class="form-control form-control-solid" placeholder="" name="phone" value="">
                                                 <p></p>
                                             </div>
@@ -205,8 +205,8 @@
                                         <div class="row mb-3">
                                             <div class="col">
                                                 <label class="fs-6 fw-bold mb-2">
-                                                    <span class="required">Email</span>
-                                                    <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Email address must be active" aria-label="Email address must be active"></i>
+                                                    <span class="">Email</span>
+
                                                 </label>
                                                 <input type="email" class="form-control form-control-solid" placeholder="" name="email" value="">
                                                 <div class="fv-plugins-message-container invalid-feedback"></div>
@@ -221,21 +221,21 @@
                                     <div class="d-flex flex-column flex-row-fluid gap-2 gap-lg-1">
                                         <div class="row mb-3">
                                             <div class="col">
-                                                <label class="required fs-6 fw-bold mb-2">Địa chỉ</label>
+                                                <label class=" fs-6 fw-bold mb-2">Địa chỉ</label>
                                                 <input type="text" class="form-control form-control-solid" placeholder="" name="address" value="">
                                                 <p></p>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col">
-                                                <label class="required fs-6 fw-bold mb-2">Mã số thuế</label>
+                                                <label class=" fs-6 fw-bold mb-2">Mã số thuế</label>
                                                 <input type="text" class="form-control form-control-solid" placeholder="" name="tax_code" value="">
                                                 <p></p>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col">
-                                                <label class="required fs-6 fw-bold mb-2">Facebook</label>
+                                                <label class=" fs-6 fw-bold mb-2">Facebook</label>
                                                 <input type="text" class="form-control form-control-solid" placeholder="" name="facebook" value="">
                                                 <div class="fv-plugins-message-container invalid-feedback"></div>
                                             </div>
@@ -244,7 +244,6 @@
                                             <div class="col">
                                                 <label class="fs-6 fw-bold mb-2">Loại khách hàng
                                                     <span class="ms-1" data-bs-toggle="tooltip" aria-label="Select a discount type that will be applied to this product" data-bs-original-title="Select a discount type that will be applied to this product" data-kt-initialized="1">
-                                                    <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
                                                     <span class="path1"></span>
                                                     <span class="path2"></span>
                                                     <span class="path3"></span>
@@ -344,12 +343,12 @@
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col">
-                                                <label class="required fs-6 fw-bold mb-2">Ngày sinh</label>
+                                                <label class=" fs-6 fw-bold mb-2">Ngày sinh</label>
                                                 <input type="text" class="form-control form-control-solid" placeholder="" name="date_of_birth"  id="date_of_birth_edit" value="">
                                                 <p></p>
                                             </div>
                                             <div class="col">
-                                                <label class="required fs-6 fw-bold mb-2">Số điện thoại</label>
+                                                <label class=" fs-6 fw-bold mb-2">Số điện thoại</label>
                                                 <input type="text" class="form-control form-control-solid" placeholder="" name="phone" id="phone_edit" value="">
                                                 <p></p>
                                             </div>
@@ -357,8 +356,7 @@
                                         <div class="row mb-3">
                                             <div class="col">
                                                 <label class="fs-6 fw-bold mb-2">
-                                                    <span class="required">Email</span>
-                                                    <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Email address must be active" aria-label="Email address must be active"></i>
+                                                    <span class="">Email</span>
                                                 </label>
                                                 <input type="email" class="form-control form-control-solid" placeholder="" name="email" id="email_edit"  value="">
                                                 <div class="fv-plugins-message-container invalid-feedback"></div>
@@ -373,21 +371,21 @@
                                     <div class="d-flex flex-column flex-row-fluid gap-2 gap-lg-1">
                                         <div class="row mb-3">
                                             <div class="col">
-                                                <label class="required fs-6 fw-bold mb-2">Địa chỉ</label>
+                                                <label class=" fs-6 fw-bold mb-2">Địa chỉ</label>
                                                 <input type="text" class="form-control form-control-solid" placeholder="" name="address" id="address_edit" value="">
                                                 <p></p>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col">
-                                                <label class="required fs-6 fw-bold mb-2">Mã số thuế</label>
+                                                <label class=" fs-6 fw-bold mb-2">Mã số thuế</label>
                                                 <input type="text" class="form-control form-control-solid" placeholder="" name="tax_code" id="tax_code_edit" value="">
                                                 <p></p>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col">
-                                                <label class="required fs-6 fw-bold mb-2">Facebook</label>
+                                                <label class=" fs-6 fw-bold mb-2">Facebook</label>
                                                 <input type="text" class="form-control form-control-solid" placeholder="" name="facebook" id="facebook_edit" value="">
                                                 <div class="fv-plugins-message-container invalid-feedback"></div>
                                             </div>
@@ -396,7 +394,6 @@
                                             <div class="col">
                                                 <label class="fs-6 fw-bold mb-2">Loại khách hàng
                                                     <span class="ms-1" data-bs-toggle="tooltip" aria-label="Select a discount type that will be applied to this product" data-bs-original-title="Select a discount type that will be applied to this product" data-kt-initialized="1">
-                                                    <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
                                                     <span class="path1"></span>
                                                     <span class="path2"></span>
                                                     <span class="path3"></span>

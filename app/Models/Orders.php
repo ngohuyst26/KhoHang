@@ -9,5 +9,5 @@ class Orders extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['grand_total'];
+    protected $fillable = ['grand_total','discount','total_payment','created_at','updated_at'];
 }

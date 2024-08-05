@@ -199,7 +199,7 @@
                                             chọn hiển thị</span></span></a>
                     <a class="dropdown-item" title="Danh sách các phím tắt" ng-click="toggles.showMenu=false;vm.configHotkeys()"><span class="dropdown-icon"><i class="far fa-info-circle"></i></span>
                         <span translate=""><span>Phím tắt</span></span></a>
-                    <a class="dropdown-item" href="{{route('dashboard')}}" skip-disable=""><span class="dropdown-icon"><i class="far fa-poll"></i></span>
+                    <a class="dropdown-item" href="{{route('orders.index')}}" skip-disable=""><span class="dropdown-icon"><i class="far fa-poll"></i></span>
                         <span translate=""><span>Quản lý</span></span></a>
                     <a class="dropdown-item" href="{{route('logout')}}"  skip-disable=""><span class="dropdown-icon"><i class="far fa-sign-out"></i></span>
                         <span translate=""><span>Đăng xuất</span></span></a></div>

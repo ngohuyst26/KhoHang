@@ -169,29 +169,6 @@
                                     <span class="col-form-wrap amount-pay text-right" data-amount-due="" id="amountDue">0</span>
                                 </div>
                             </div>
-                            {{--                                    <payment-customer-point-form-component kv-tab-index="vm.tabIndex + 76" payment-class="vm.paymentClass">--}}
-                            {{--                                        <div ng-show="$root.activeCart.isShowPointMethod" class="ng-hide">--}}
-                            {{--                                            <div class="form-group-inline form-labels-125">--}}
-                            {{--                                                <div class="form-group-row"><label class="col-form-label">Điểm--}}
-                            {{--                                                        <span class="color-primary">0</span></label>--}}
-                            {{--                                                    <div class="col-form-wrap form-control-plaintext">--}}
-                            {{--                                                        <label class="check-switch"><input type="checkbox" tabindex="-1"  class="ng-pristine ng-untouched ng-valid ng-empty">--}}
-                            {{--                                                            <span></span></label></div>--}}
-                            {{--                                                </div>--}}
-                            {{--                                                <div class="form-group-row form-group-price">--}}
-                            {{--                                                    <input id="payingAmtPoint" tabindex="-1" class="form-control form-control-sm font-size-medium text-right payment-not-delivery ng-not-empty" type="text" ng-model="$root.activeCart.PointPayingAmount" kv-auto-numeric="{isTotalPrice: true, noRender: true}" ng-change="vm.doUpdatePointPayingAmount($root.activeCart.PointPayingAmount)" ng-disabled="!$root.activeCart.usePointForPayingAmount" disabled="disabled">--}}
-                            {{--                                                </div>--}}
-                            {{--                                            </div>--}}
-                            {{--                                            <div class="form-group-inline form-labels-125 ng-hide" ng-show="$root.activeCart.usePointForPayingAmount">--}}
-                            {{--                                                <div class="form-group-row">--}}
-                            {{--                                                    <label class="col-form-label" translate=""><span>Còn lại</span></label>--}}
-                            {{--                                                </div>--}}
-                            {{--                                                <div class="form-group-row form-group-price">--}}
-                            {{--                                                    <span class="col-form-wrap price-rest font-size-medium text-right">21,373,800</span>--}}
-                            {{--                                                </div>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </payment-customer-point-form-component>--}}
                             <div class="form-group-inline form-labels-125">
                                 <div class="form-group-row form-group-row-sm">
                                     <label class="col-form-label font-bold">Khách thanh toán</label></div>
@@ -220,39 +197,6 @@
                                     </button>
                                 </div>
                             </div>
-                            {{--                                    <div class="form-group" ><!---->--}}
-                            {{--                                        <div class="suggest-money" ><!---->--}}
-                            {{--                                            <button ng-show="$root.activeCart.singlePaymentType === 0" ng-repeat="amt in $root.activeCart.payingAmountSuggestion track by $index" type="button" class="btn btn-md btn-outline-light btn-circle" ng-click="vm.selectSuggestionCashAmount(amt)" tabindex="2102">21,374,000</button><!---->--}}
-                            {{--                                            <button ng-show="$root.activeCart.singlePaymentType === 0" ng-repeat="amt in $root.activeCart.payingAmountSuggestion track by $index" type="button" class="btn btn-md btn-outline-light btn-circle" ng-click="vm.selectSuggestionCashAmount(amt)" tabindex="2103">21,375,000</button><!---->--}}
-                            {{--                                            <button ng-show="$root.activeCart.singlePaymentType === 0" ng-repeat="amt in $root.activeCart.payingAmountSuggestion track by $index" type="button" class="btn btn-md btn-outline-light btn-circle" ng-click="vm.selectSuggestionCashAmount(amt)" tabindex="2104">21,380,000--}}
-                            {{--                                            </button><!---->--}}
-                            {{--                                            <button ng-show="$root.activeCart.singlePaymentType === 0" ng-repeat="amt in $root.activeCart.payingAmountSuggestion track by $index" type="button" class="btn btn-md btn-outline-light btn-circle" ng-click="vm.selectSuggestionCashAmount(amt)" tabindex="2105">21,400,000--}}
-                            {{--                                            </button><!---->--}}
-                            {{--                                            <button ng-show="$root.activeCart.singlePaymentType === 0" ng-repeat="amt in $root.activeCart.payingAmountSuggestion track by $index" type="button" class="btn btn-md btn-outline-light btn-circle" ng-click="vm.selectSuggestionCashAmount(amt)" tabindex="2106">21,500,000--}}
-                            {{--                                            </button><!----></div><!---->--}}
-                            {{--                                        <div id="bankAccounts" ng-class="{'payment-soft-pos' : vm.isShowSoftPOS, 'payment-wallet' : $root.activeCart.singlePaymentType === 3 }" ng-show="!$root.activeCart.isHideSinglePayment &amp;&amp; $root.activeCart.singlePaymentType !== 0" class="payment-card-method col-form-wrap form-control-plaintext ng-hide"><!----><!----></div><!----><!---->--}}
-                            {{--                                        <div class="form-group-inline form-labels-125 single-payment-box ng-hide" ng-show="$root.activeCart.isHideSinglePayment">--}}
-                            {{--                                            <div class="form-group-row form-group-row-sm">--}}
-                            {{--                                                <span>Thanh toán kết hợp</span></div>--}}
-                            {{--                                            <div class="form-group-row form-group-row-sm"><!----><span ng-if="$root.activeCart.getCurrentPaymentMethodsToString().length > 0">Tiền mặt</span><!---->--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </div>--}}
-                            {{--                                    <div class="form-group-inline form-labels-150" >--}}
-                            {{--                                        <div class="form-group-row form-group-row-sm">--}}
-                            {{--                                            <label class="col-form-label font-medium">Hoàn trả tạm ứng <!----><span class="sub-label" ng-if="$root.activeCart.getCurrentPaymentMethodsToString().length > 0">Tiền mặt</span><!---->--}}
-                            {{--                                            </label>--}}
-                            {{--                                            <div class="col-form-wrap">--}}
-                            {{--                                                <button class="btn-icon btn-multi-methods" ng-click="vm.openMultiPaymentsFormForReturnDeposit()" title="Hoàn trả tạm ứng">--}}
-                            {{--                                                    <i class="far fa-ellipsis-v"></i></button>--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                        <div class="form-group-row form-group-row-sm form-group-price">--}}
-                            {{--                                            <div class="col-form-wrap">--}}
-                            {{--                                                <input id="payingDepositReturn" class="form-control fs-18 form-control-sm text-right ng-pristine ng-untouched ng-valid ng-empty" type="text" ng-model="$root.activeCart.DepositReturn" kv-auto-numeric="{isProductPrice: true}" ng-change="vm.doUpdatePayingAmount()">--}}
-                            {{--                                            </div>--}}
-                            {{--                                        </div>--}}
-                            {{--                                    </div>--}}
                             <div class="form-labels-250 form-pay-customers">
                                 <div class="form-group-row form-group-row-sm form-check-payment form-check-methods">
                                     <label class="col-form-label"><span>Tiền thừa trả khách</span></label>
@@ -422,7 +366,7 @@
                         '<button type="button" class="btn-icon btn-icon-bg-default down minus">' +
                         '<i class="fal fa-minus"></i>' +
                         '</button>' +
-                        '<input type="number" value="1" data-price="' + priceCur + '"  class="form-control form-control-sm form-control-invoice note-cartitem-0 ng-not-empty form-control-error quantity-input">' +
+                        '<input type="text" value="1" readonly data-price="' + priceCur + '"  class="form-control form-control-sm form-control-invoice note-cartitem-0 ng-not-empty form-control-error quantity-input">' +
                         '<button type="button" class="btn-icon btn-icon-bg-default up plus">' +
                         '<i class="fal fa-plus"></i>' +
                         '</button>' +
@@ -480,17 +424,22 @@
 
                 let grandTotal = $('#amountDue').data('amount-due');
                 let createdAt = $('#created_at').val();
+                let discount =  $('#discount').val();
+                let totalPayment =  $('#amountPaid-hidden').val();
                 $.ajax({
                     url: '{{ route("sale.orders.store") }}',
                     method: 'POST',
                     data: {
                         cartItems: cartItems,
                         grandTotal: grandTotal,
-                        createdAt: createdAt
+                        createdAt: createdAt,
+                        discount: discount,
+                        totalPayment: totalPayment
                     },
                     success: function (response) {
                         if (response.status === 'success') {
                             $('#cartListProduct').empty();
+                            $('#amountPaid').val('');
                             updateOrderTotal();
 
                             const Toast = Swal.mixin({
@@ -597,6 +546,7 @@
 
                 $('#amountDue').text(amountDue.toLocaleString('vi-VN'));
                 $('#amountDue').data('amount-due', amountDue);
+                calculateChange();
             }
 
             $('#discount').on('input', updateAmountDue);

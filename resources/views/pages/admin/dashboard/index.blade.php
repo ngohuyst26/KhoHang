@@ -28,14 +28,14 @@
             </div>
             <!--end::Page title-->
             <!--begin::Actions-->
-            <div class="d-flex align-items-center gap-2 gap-lg-3">
-                <!--begin::Secondary button-->
-                <a href="apps/ecommerce/sales/listing.html" class="btn btn-sm fw-bold btn-secondary">Manage Sales</a>
-                <!--end::Secondary button-->
-                <!--begin::Primary button-->
-                <a href="apps/ecommerce/catalog/add-product.html" class="btn btn-sm fw-bold btn-primary">Add Product</a>
-                <!--end::Primary button-->
-            </div>
+{{--            <div class="d-flex align-items-center gap-2 gap-lg-3">--}}
+{{--                <!--begin::Secondary button-->--}}
+{{--                <a href="apps/ecommerce/sales/listing.html" class="btn btn-sm fw-bold btn-secondary">Manage Sales</a>--}}
+{{--                <!--end::Secondary button-->--}}
+{{--                <!--begin::Primary button-->--}}
+{{--                <a href="apps/ecommerce/catalog/add-product.html" class="btn btn-sm fw-bold btn-primary">Add Product</a>--}}
+{{--                <!--end::Primary button-->--}}
+{{--            </div>--}}
             <!--end::Actions-->
         </div>
         <!--end::Toolbar container-->

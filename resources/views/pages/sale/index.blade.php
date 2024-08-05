@@ -28,11 +28,23 @@
                     <div class="cart-header-control-left">
                         <div class="cart-seller">
                             <sold-by-dropdown-component>
-                                <div id="salesman"><span title="" style="" class="k-widget k-dropdown k-header dropdown-control dropdown-control-sm saleman-dropdown" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="2000" aria-owns="" aria-disabled="false" aria-busy="false" aria-activedescendant="bd4baf21-b719-4bac-89a1-040b8cb44fa8"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input"><span>Lê Thanh Quang</span></span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span><select class="dropdown-control dropdown-control-sm saleman-dropdown" data-role="dropdownlist" style="display: none;">
-                                                            <option value="1000342177">Lê Thanh Quang</option>
-                                                            <option value="1000342178">Nguyễn Thị Thái Hòa</option>
-                                                            <option value="1000342179">Lê Thị Bảo Trân</option>
-                                                        </select></span></div>
+                                <div id="salesman">
+                                    <span title="" style="" class="k-widget k-dropdown k-header dropdown-control dropdown-control-sm saleman-dropdown" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="2000" aria-owns="" aria-disabled="false" aria-busy="false" aria-activedescendant="bd4baf21-b719-4bac-89a1-040b8cb44fa8">
+                                        <span unselectable="on" class="k-dropdown-wrap k-state-default">
+                                            <span unselectable="on" class="k-input">
+                                                <span>{{Auth::user()->name}}</span>
+                                            </span>
+                                            <span unselectable="on" class="k-select">
+                                                <span unselectable="on" class="k-icon k-i-arrow-s">select</span>
+                                            </span>
+                                        </span>
+                                        <select class="dropdown-control dropdown-control-sm saleman-dropdown" data-role="dropdownlist" style="display: none;">
+                                            <option value="1000342177">Lê Thanh Quang</option>
+                                            <option value="1000342178">Nguyễn Thị Thái Hòa</option>
+                                            <option value="1000342179">Lê Thị Bảo Trân</option>
+                                        </select>
+                                    </span>
+                                </div>
                             </sold-by-dropdown-component>
                         </div>
                         <sale-channel-component ng-show="!$root.activeCart.isWarrantyOrder()" sc-id="$root.activeCart.SaleChannelId" disabled="$root.activeCart.isRefund() &amp;&amp; !$root.activeCart.IsQuickReturn">
@@ -50,8 +62,9 @@
                     </div>
                     <div class="cart-header-control-right date-time-control">
                         <date-time-selector-component id="poscreenTimeComponent">
-                            <span class="k-widget k-datepicker k-header" style=""><span class="k-picker-wrap k-state-disabled"><input placeholder="28/07/2024" id="PurchaseDateCart" tabindex="2002" ng-paste="vm.onPaste($event.originalEvent)" data-role="datepicker" style="width: 100%;" type="text" class="k-input" role="combobox" aria-expanded="false" aria-owns="PurchaseDateCart_dateview" aria-disabled="true" disabled="disabled"><span unselectable="on" class="k-select" role="button" aria-controls="PurchaseDateCart_dateview"><span unselectable="on" class="k-icon k-i-calendar">select</span></span></span></span>
-                            <span class="k-widget k-timepicker k-header" style=""><span class="k-picker-wrap k-state-disabled"><input placeholder="22:17" id="PurchaseTimeCart" tabindex="2003" data-role="timepicker" type="text" class="k-input" role="combobox" aria-expanded="false" aria-owns="PurchaseTimeCart_timeview" aria-disabled="true" style="width: 100%;" disabled="disabled"><span unselectable="on" class="k-select" role="button" aria-controls="PurchaseTimeCart_timeview"><span unselectable="on" class="k-icon k-i-clock">select</span></span></span></span>
+                            <input id="created_at" hidden value="{{now()}}">
+                            <span class="k-widget k-datepicker k-header" style=""><span class="k-picker-wrap k-state-disabled"><input placeholder="{{now()}}" id="PurchaseDateCart" tabindex="2002" ng-paste="vm.onPaste($event.originalEvent)" data-role="datepicker" style="width: 100%;" type="text" class="k-input" role="combobox" aria-expanded="false" aria-owns="PurchaseDateCart_dateview" aria-disabled="true" disabled="disabled"><span unselectable="on" class="k-select" role="button" aria-controls="PurchaseDateCart_dateview"><span unselectable="on" class="k-icon k-i-calendar">select</span></span></span></span>
+                            <span class="k-widget k-timepicker k-header" style=""><span class="k-picker-wrap k-state-disabled"><input placeholder="{{date("h:i:sa")}}" id="PurchaseTimeCart" tabindex="2003" data-role="timepicker" type="text" class="k-input" role="combobox" aria-expanded="false" aria-owns="PurchaseTimeCart_timeview" aria-disabled="true" style="width: 100%;" disabled="disabled"><span unselectable="on" class="k-select" role="button" aria-controls="PurchaseTimeCart_timeview"><span unselectable="on" class="k-icon k-i-clock">select</span></span></span></span>
                         </date-time-selector-component>
                     </div>
                 </div>
@@ -75,16 +88,26 @@
                                         </div>
                                     </div>
                                 </div><!---->
-                                <button ng-if="$root.authSvc.has($root.session.Privileges.Customer_Create) &amp;&amp; !vm.isvoucher &amp;&amp; !vm.isUpdateInvoiceWithShippingDelivery()" class="btn-icon btn-icon-default" title="Thêm khách hàng" ng-hide="vm.currentCustomer" ng-click="vm.openNewCustomerWindow()" id="addCustomer" kv-tab-index="" tabindex="2011">
+                                <button class="btn-icon btn-icon-default" title="Thêm khách hàng" tabindex="2011">
                                     <i class="far fa-plus"></i></button><!---->
                             </div><!----><!---->
                         </div>
 
                     </customer-search-component><!----><!----></div>
-                <pricebook-component ng-show="vm.priceBookLength >= 2" id="pricebook1" pricebook="$root.activeCart.SelectedPricebook" customer="$root.activeCart.Customer" on-change="vm.onChangePriceBook(pricebook)" read-only="($root.activeCart.isRefundWithInvoice() &amp;&amp; !$root.activeCart.hasExchange() || $root.activeCart.FromOrder &amp;&amp; !$root.activeCart.OrderNotUsePromotion)" uib-tooltip="Bảng giá chung" tooltip-placement="bottom" tooltip-append-to-body="true" class="ng-hide"><span title="" style="" class="k-widget k-dropdown k-header dropdown-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="2014" aria-owns="pricebook_listbox" aria-disabled="false" aria-busy="false" aria-activedescendant="96945982-1650-44ec-868e-42d2982320e7"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span unselectable="on" class="k-input"><span>Bảng giá
-                                                    chung</span></span><span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span></span><select class="dropdown-control" id="pricebook" k-ng-model="vm.pricebook" ng-disabled="vm.readOnly" kendo-drop-down-list="vm.pricebookDropDown" k-options="vm.pricebookOptions" k-rebind="vm.pricebook" data-role="dropdownlist" style="display: none;">
-                                            <option>Bảng giá chung</option>
-                                        </select></span>
+                <pricebook-component id="pricebook1"  uib-tooltip="Bảng giá chung" tooltip-placement="bottom" tooltip-append-to-body="true" class="ng-hide">
+                    <span title="" style="" class="k-widget k-dropdown k-header dropdown-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="2014" aria-owns="pricebook_listbox" aria-disabled="false" aria-busy="false" aria-activedescendant="96945982-1650-44ec-868e-42d2982320e7">
+                        <span unselectable="on" class="k-dropdown-wrap k-state-default">
+                            <span unselectable="on" class="k-input">
+                                <span>Bảng giáchung</span>
+                            </span>
+                            <span unselectable="on" class="k-select">
+                                <span unselectable="on" class="k-icon k-i-arrow-s">select</span>
+                            </span>
+                        </span>
+                        <select class="dropdown-control" id="pricebook" k-ng-model="vm.pricebook" ng-disabled="vm.readOnly" " data-role="dropdownlist" style="display: none;">
+                            <option>Bảng giá chung</option>
+                        </select>
+                    </span>
                 </pricebook-component>
                 <div class="customer-debt-point">
                     <div class="form-group-inline">
@@ -456,13 +479,14 @@
                 });
 
                 let grandTotal = $('#amountDue').data('amount-due');
-
+                let createdAt = $('#created_at').val();
                 $.ajax({
                     url: '{{ route("orders.store") }}',
                     method: 'POST',
                     data: {
                         cartItems: cartItems,
-                        grandTotal: grandTotal
+                        grandTotal: grandTotal,
+                        createdAt: createdAt
                     },
                     success: function (response) {
                         if (response.status === 'success') {

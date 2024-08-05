@@ -32,7 +32,7 @@ class OrderController extends Controller
     {
         $cartItems = $request->input('cartItems', []);
         $grandTotal = $request->input('grandTotal', []);
-
+        $created_at = $request->input('createdAt', []);
         $order = Orders::create([
             'grand_total' => $grandTotal
         ]);
@@ -44,8 +44,8 @@ class OrderController extends Controller
                 'quantity' => $item['quantity'],
                 'unit_amount' => $item['unit_amount'],
                 'total_amount' => $item['total_amount'],
-                'created_at'=> now(),
-                'updated_at'=> now(),
+                'created_at'=> $created_at,
+                'updated_at'=> $created_at,
             ]);
         }
 

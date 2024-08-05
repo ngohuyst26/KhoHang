@@ -119,7 +119,7 @@
                                                 <button type="button" tabindex="-1" uib-tooltip="Chuyển sang đặt hàng" tooltip-placement="bottom" tooltip-append-to-body="true" ng-if="tabType === 1" class="btn-icon btn-icon-primary btn-change-type" ng-show="showChangeType()" ng-click="changeType()">
                                                     <i class="far fa-exchange"></i></button><!---->
                                                 <!---->
-                                                <a href="javascript:void(0);" tabindex="-1" ng-class="{active:selected}" class="nav-link active" skip-disable="" ng-transclude="" ng-click="select()"><span skip-disable="">Hóa đơn 1</span></a>
+                                                <a href="javascript:void(0);" tabindex="-1" ng-class="{active:selected}" class="nav-link active" skip-disable="" ng-transclude="" ng-click="select()"><span skip-disable="">Hóa đơn</span></a>
                                                 <button type="button" tabindex="-1" skip-disable="" ng-click="close()" class="btn-icon-sm btn-close-tab" title="Đóng">
                                                     <i class="fal fa-times"></i></button>
                                             </li>
@@ -172,7 +172,7 @@
             <li class="icon-item">
                 <a class="icon-link print-button enable" ng-class="{enable:$root.AutoPrint}" uib-tooltip="Thiết lập in" tooltip-placement="bottom" tooltip-append-to-body="true" id="printConfig" skip-disable="" uib-popover-template="'autoPrintTpl.html'" popover-trigger="'outsideClick'" popover-placement="bottom" popover-class="popover-print popover-284"><span class="badge badge-sm badge-print ng-hide" ng-show="vm.alphabelticalList.length > 0"> <span ng-show="$root.session.Setting.UseCod &amp;&amp; ($root.activeCart.isInvoice() || $root.activeCart.isOrder() || $root.activeCart.hasExchange())"> </span></span>
                     <i class="fas fa-print"></i></a></li>
-            <li class="icon-item"><span class="user-name">0784638746</span></li>
+            <li class="icon-item"><span class="user-name">{{Auth::user()->name ?? ''}}</span></li>
             <li class="icon-item menu-bar" id="sale-menu-bar">
                 <a class="icon-link list-bar" skip-disable=""><i class="far fa-bars"></i></a>
                 <div class="dropdown-menu dropdown-menu-right main-settings">
@@ -201,7 +201,7 @@
                         <span translate=""><span>Phím tắt</span></span></a>
                     <a class="dropdown-item" href="{{route('dashboard')}}" skip-disable=""><span class="dropdown-icon"><i class="far fa-poll"></i></span>
                         <span translate=""><span>Quản lý</span></span></a>
-                    <a class="dropdown-item" ng-click="vm.logout()" skip-disable=""><span class="dropdown-icon"><i class="far fa-sign-out"></i></span>
+                    <a class="dropdown-item" href="{{route('logout')}}"  skip-disable=""><span class="dropdown-icon"><i class="far fa-sign-out"></i></span>
                         <span translate=""><span>Đăng xuất</span></span></a></div>
             </li>
         </ul>

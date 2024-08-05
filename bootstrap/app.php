@@ -37,7 +37,7 @@ return Application::configure(basePath: dirname(__DIR__))
             }
 
             foreach ($clientRoutes as $route) {
-                Route::middleware('web')
+                Route::middleware(['web','auth'])
                     ->prefix('')
                     ->group(base_path("routes/sale/{$route}"));
             }

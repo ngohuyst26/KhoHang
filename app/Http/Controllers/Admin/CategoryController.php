@@ -35,7 +35,7 @@ class CategoryController extends Controller
     {
         $categories = Category::
         orderBy('id', 'desc')
-            ->get();
+            ->paginate(5);
         return view('pages.admin.categories.list-category', ['categories' => $categories]);
     }
 
@@ -59,7 +59,7 @@ class CategoryController extends Controller
         $category->status = $request->status == 'active' ? 1 : 0;
         $category->save();
 
-        return redirect()->route('pages.admin.categories.list-category')->with('success', 'Cập nhật danh mục thành công!');
+        return redirect()->back()->with('success', 'Cập nhật danh mục thành công!');
     }
 
     public function delete($id)
@@ -67,6 +67,6 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        return redirect()->route('pages.admin.categories.list-category')->with('success', 'Xóa danh mục thành công!');
+        return redirect()->back()->with('success', 'Xóa danh mục thành công!');
     }
 }

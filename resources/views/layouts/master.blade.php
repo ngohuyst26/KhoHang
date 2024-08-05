@@ -15,7 +15,8 @@
     <meta property="og:site_name" content="Keenthemes | Metronic"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="canonical" href=""/>
-    <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ic')}}"/>
+{{--    <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ic')}}"/>--}}
+    <link rel="icon" type="image/x-icon" href="https://cdn-app.kiotviet.vn/retailler/Content/img/favicon.ico" crossorigin="anonymous">
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
     <!--end::Fonts-->

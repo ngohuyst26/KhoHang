@@ -2,11 +2,11 @@
 @section('content')
     <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
         <!--begin::Toolbar container-->
-        <div id="kt_app_toolbar_container" class="app-container container-fluid d-flex flex-stack">
+        <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
             <!--begin::Page title-->
             <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                 <!--begin::Title-->
-                <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">Multipurpose</h1>
+                <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">eCommerce Dashboard</h1>
                 <!--end::Title-->
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -30,10 +30,10 @@
             <!--begin::Actions-->
             <div class="d-flex align-items-center gap-2 gap-lg-3">
                 <!--begin::Secondary button-->
-                <a href="#" class="btn btn-sm fw-bold btn-secondary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Rollover</a>
+                <a href="apps/ecommerce/sales/listing.html" class="btn btn-sm fw-bold btn-secondary">Manage Sales</a>
                 <!--end::Secondary button-->
                 <!--begin::Primary button-->
-                <a href="#" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_new_target">Add Target</a>
+                <a href="apps/ecommerce/catalog/add-product.html" class="btn btn-sm fw-bold btn-primary">Add Product</a>
                 <!--end::Primary button-->
             </div>
             <!--end::Actions-->
@@ -42,22 +42,117 @@
     </div>
     <div id="kt_app_content" class="app-content flex-column-fluid">
         <!--begin::Content container-->
-        <div id="kt_app_content_container" class="app-container container-fluid">
+        <div id="kt_app_content_container" class="app-container container-xxl">
             <!--begin::Row-->
-            <div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
+            <div class="row gx-5 gx-xl-10 mb-xl-10">
                 <!--begin::Col-->
-                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
-                    <!--begin::Card widget 20-->
-                    <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-md-50 mb-5 mb-xl-10" style="background-color: #F1416C;background-image:url('assets/media/patterns/vector-1.png')">
+                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-10">
+                    <!--begin::Card widget 4-->
+                    <div class="card card-flush h-md-50 mb-5 mb-xl-10">
                         <!--begin::Header-->
                         <div class="card-header pt-5">
                             <!--begin::Title-->
                             <div class="card-title d-flex flex-column">
-                                <!--begin::Amount-->
-                                <span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">69</span>
-                                <!--end::Amount-->
+                                <!--begin::Info-->
+                                <div class="d-flex align-items-center">
+                                    <!--begin::Currency-->
+                                    <span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">$</span>
+                                    <!--end::Currency-->
+                                    <!--begin::Amount-->
+                                    <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">69,700</span>
+                                    <!--end::Amount-->
+                                    <!--begin::Badge-->
+                                    <span class="badge badge-light-success fs-base">
+															<i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1">
+																<span class="path1"></span>
+																<span class="path2"></span>
+															</i>2.2%</span>
+                                    <!--end::Badge-->
+                                </div>
+                                <!--end::Info-->
                                 <!--begin::Subtitle-->
-                                <span class="text-white opacity-75 pt-1 fw-semibold fs-6">Active Projects</span>
+                                <span class="text-gray-500 pt-1 fw-semibold fs-6">Expected Earnings</span>
+                                <!--end::Subtitle-->
+                            </div>
+                            <!--end::Title-->
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Card body-->
+                        <div class="card-body pt-2 pb-4 d-flex align-items-center">
+                            <!--begin::Chart-->
+                            <div class="d-flex flex-center me-5 pt-2">
+                                <div id="kt_card_widget_4_chart" style="min-width: 70px; min-height: 70px" data-kt-size="70" data-kt-line="11"><span></span><canvas height="70" width="70"></canvas></div>
+                            </div>
+                            <!--end::Chart-->
+                            <!--begin::Labels-->
+                            <div class="d-flex flex-column content-justify-center w-100">
+                                <!--begin::Label-->
+                                <div class="d-flex fs-6 fw-semibold align-items-center">
+                                    <!--begin::Bullet-->
+                                    <div class="bullet w-8px h-6px rounded-2 bg-danger me-3"></div>
+                                    <!--end::Bullet-->
+                                    <!--begin::Label-->
+                                    <div class="text-gray-500 flex-grow-1 me-4">Shoes</div>
+                                    <!--end::Label-->
+                                    <!--begin::Stats-->
+                                    <div class="fw-bolder text-gray-700 text-xxl-end">$7,660</div>
+                                    <!--end::Stats-->
+                                </div>
+                                <!--end::Label-->
+                                <!--begin::Label-->
+                                <div class="d-flex fs-6 fw-semibold align-items-center my-3">
+                                    <!--begin::Bullet-->
+                                    <div class="bullet w-8px h-6px rounded-2 bg-primary me-3"></div>
+                                    <!--end::Bullet-->
+                                    <!--begin::Label-->
+                                    <div class="text-gray-500 flex-grow-1 me-4">Gaming</div>
+                                    <!--end::Label-->
+                                    <!--begin::Stats-->
+                                    <div class="fw-bolder text-gray-700 text-xxl-end">$2,820</div>
+                                    <!--end::Stats-->
+                                </div>
+                                <!--end::Label-->
+                                <!--begin::Label-->
+                                <div class="d-flex fs-6 fw-semibold align-items-center">
+                                    <!--begin::Bullet-->
+                                    <div class="bullet w-8px h-6px rounded-2 me-3" style="background-color: #E4E6EF"></div>
+                                    <!--end::Bullet-->
+                                    <!--begin::Label-->
+                                    <div class="text-gray-500 flex-grow-1 me-4">Others</div>
+                                    <!--end::Label-->
+                                    <!--begin::Stats-->
+                                    <div class="fw-bolder text-gray-700 text-xxl-end">$45,257</div>
+                                    <!--end::Stats-->
+                                </div>
+                                <!--end::Label-->
+                            </div>
+                            <!--end::Labels-->
+                        </div>
+                        <!--end::Card body-->
+                    </div>
+                    <!--end::Card widget 4-->
+                    <!--begin::Card widget 5-->
+                    <div class="card card-flush h-md-50 mb-xl-10">
+                        <!--begin::Header-->
+                        <div class="card-header pt-5">
+                            <!--begin::Title-->
+                            <div class="card-title d-flex flex-column">
+                                <!--begin::Info-->
+                                <div class="d-flex align-items-center">
+                                    <!--begin::Amount-->
+                                    <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">1,836</span>
+                                    <!--end::Amount-->
+                                    <!--begin::Badge-->
+                                    <span class="badge badge-light-danger fs-base">
+															<i class="ki-duotone ki-arrow-down fs-5 text-danger ms-n1">
+																<span class="path1"></span>
+																<span class="path2"></span>
+															</i>2.2%</span>
+                                    <!--end::Badge-->
+                                </div>
+                                <!--end::Info-->
+                                <!--begin::Subtitle-->
+                                <span class="text-gray-500 pt-1 fw-semibold fs-6">Orders This Month</span>
                                 <!--end::Subtitle-->
                             </div>
                             <!--end::Title-->
@@ -67,30 +162,73 @@
                         <div class="card-body d-flex align-items-end pt-0">
                             <!--begin::Progress-->
                             <div class="d-flex align-items-center flex-column mt-3 w-100">
-                                <div class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
-                                    <span>43 Pending</span>
-                                    <span>72%</span>
+                                <div class="d-flex justify-content-between w-100 mt-auto mb-2">
+                                    <span class="fw-bolder fs-6 text-gray-900">1,048 to Goal</span>
+                                    <span class="fw-bold fs-6 text-gray-500">62%</span>
                                 </div>
-                                <div class="h-8px mx-3 w-100 bg-white bg-opacity-50 rounded">
-                                    <div class="bg-white rounded h-8px" role="progressbar" style="width: 72%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="h-8px mx-3 w-100 bg-light-success rounded">
+                                    <div class="bg-success rounded h-8px" role="progressbar" style="width: 62%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <!--end::Progress-->
                         </div>
                         <!--end::Card body-->
                     </div>
-                    <!--end::Card widget 20-->
-                    <!--begin::Card widget 7-->
+                    <!--end::Card widget 5-->
+                </div>
+                <!--end::Col-->
+                <!--begin::Col-->
+                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-10">
+                    <!--begin::Card widget 6-->
                     <div class="card card-flush h-md-50 mb-5 mb-xl-10">
                         <!--begin::Header-->
                         <div class="card-header pt-5">
                             <!--begin::Title-->
                             <div class="card-title d-flex flex-column">
+                                <!--begin::Info-->
+                                <div class="d-flex align-items-center">
+                                    <!--begin::Currency-->
+                                    <span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">$</span>
+                                    <!--end::Currency-->
+                                    <!--begin::Amount-->
+                                    <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">2,420</span>
+                                    <!--end::Amount-->
+                                    <!--begin::Badge-->
+                                    <span class="badge badge-light-success fs-base">
+															<i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1">
+																<span class="path1"></span>
+																<span class="path2"></span>
+															</i>2.6%</span>
+                                    <!--end::Badge-->
+                                </div>
+                                <!--end::Info-->
+                                <!--begin::Subtitle-->
+                                <span class="text-gray-500 pt-1 fw-semibold fs-6">Average Daily Sales</span>
+                                <!--end::Subtitle-->
+                            </div>
+                            <!--end::Title-->
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Card body-->
+                        <div class="card-body d-flex align-items-end px-0 pb-0">
+                            <!--begin::Chart-->
+                            <div id="kt_card_widget_6_chart" class="w-100" style="height: 80px; min-height: 80px;"><div id="apexchartslowjrn1p" class="apexcharts-canvas apexchartslowjrn1p apexcharts-theme-light" style="width: 289px; height: 80px;"><svg id="SvgjsSvg1244" width="289" height="80" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><foreignObject x="0" y="0" width="289" height="80"><div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 40px;"></div></foreignObject><g id="SvgjsG1289" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g><g id="SvgjsG1246" class="apexcharts-inner apexcharts-graphical" transform="translate(34.65833333333333, 4.5)"><defs id="SvgjsDefs1245"><clipPath id="gridRectMasklowjrn1p"><rect id="SvgjsRect1248" width="282" height="84" x="-31.158333333333335" y="-6.5" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMasklowjrn1p"></clipPath><clipPath id="nonForecastMasklowjrn1p"></clipPath><clipPath id="gridRectMarkerMasklowjrn1p"><rect id="SvgjsRect1249" width="223.68333333333334" height="75" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath></defs><g id="SvgjsG1269" class="apexcharts-grid"><g id="SvgjsG1270" class="apexcharts-gridlines-horizontal" style="display: none;"><line id="SvgjsLine1273" x1="-24.658333333333335" y1="0" x2="244.34166666666667" y2="0" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1274" x1="-24.658333333333335" y1="71" x2="244.34166666666667" y2="71" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line></g><g id="SvgjsG1271" class="apexcharts-gridlines-vertical" style="display: none;"></g><line id="SvgjsLine1276" x1="0" y1="71" x2="219.68333333333334" y2="71" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line><line id="SvgjsLine1275" x1="0" y1="1" x2="0" y2="71" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line></g><g id="SvgjsG1272" class="apexcharts-grid-borders" style="display: none;"></g><g id="SvgjsG1250" class="apexcharts-bar-series apexcharts-plot-series"><g id="SvgjsG1251" class="apexcharts-series" rel="1" seriesName="Sales" data:realIndex="0"><path id="SvgjsPath1256" d="M-5.568819444444443 60.501000000000005L-5.568819444444443 54.876C-5.568819444444443 51.876 -2.5688194444444434 48.876 0.4311805555555557 48.876L0.4311805555555557 48.876C2.9999999999999996 48.876 5.568819444444443 51.876 5.568819444444443 54.876L5.568819444444443 60.501000000000005C5.568819444444443 63.501000000000005 2.568819444444444 66.501 -0.4311805555555557 66.501L-0.4311805555555557 66.501C-2.9999999999999996 66.501 -5.568819444444443 63.501000000000005 -5.568819444444443 60.501000000000005C-5.568819444444443 60.501000000000005 -5.568819444444443 60.501000000000005 -5.568819444444443 60.501000000000005 " fill="rgba(27,132,255,0.85)" fill-opacity="1" stroke="transparent" stroke-opacity="1" stroke-linecap="round" stroke-width="9" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMasklowjrn1p)" pathTo="M -5.568819444444443 60.501000000000005 L -5.568819444444443 54.876 C -5.568819444444443 51.876 -2.568819444444444 48.876 0.4311805555555557 48.876 L 0.4311805555555557 48.876 C 2.9999999999999996 48.876 5.568819444444443 51.876 5.568819444444443 54.876 L 5.568819444444443 60.501000000000005 C 5.568819444444443 63.501000000000005 2.568819444444444 66.501 -0.4311805555555557 66.501 L -0.4311805555555557 66.501 C -2.9999999999999996 66.501 -5.568819444444443 63.501000000000005 -5.568819444444443 60.501000000000005 Z " pathFrom="M -5.568819444444443 66.501 L -5.568819444444443 66.501 L 5.568819444444443 66.501 L 5.568819444444443 66.501 L 5.568819444444443 66.501 L 5.568819444444443 66.501 L 5.568819444444443 66.501 L -5.568819444444443 66.501 Z" cy="44.375" cx="5.568819444444443" j="0" val="30" barHeight="26.625" barWidth="20.137638888888887"></path><path id="SvgjsPath1258" d="M31.045069444444444 60.501000000000005L31.045069444444444 28.251000000000005C31.045069444444444 25.251000000000005 34.045069444444444 22.251000000000005 37.045069444444444 22.251000000000005L37.045069444444444 22.251000000000005C39.61388888888889 22.251000000000005 42.18270833333333 25.251000000000005 42.18270833333333 28.251000000000005L42.18270833333333 60.501000000000005C42.18270833333333 63.501000000000005 39.18270833333333 66.501 36.18270833333333 66.501L36.18270833333333 66.501C33.61388888888889 66.501 31.045069444444444 63.501000000000005 31.045069444444444 60.501000000000005C31.045069444444444 60.501000000000005 31.045069444444444 60.501000000000005 31.045069444444444 60.501000000000005 " fill="rgba(27,132,255,0.85)" fill-opacity="1" stroke="transparent" stroke-opacity="1" stroke-linecap="round" stroke-width="9" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMasklowjrn1p)" pathTo="M 31.045069444444444 60.501000000000005 L 31.045069444444444 28.251 C 31.045069444444444 25.251 34.045069444444444 22.251 37.045069444444444 22.251 L 37.045069444444444 22.251 C 39.61388888888889 22.251 42.18270833333333 25.251 42.18270833333333 28.251 L 42.18270833333333 60.501000000000005 C 42.18270833333333 63.501000000000005 39.18270833333333 66.501 36.18270833333333 66.501 L 36.18270833333333 66.501 C 33.61388888888889 66.501 31.045069444444444 63.501000000000005 31.045069444444444 60.501000000000005 Z " pathFrom="M 31.045069444444444 66.501 L 31.045069444444444 66.501 L 42.18270833333333 66.501 L 42.18270833333333 66.501 L 42.18270833333333 66.501 L 42.18270833333333 66.501 L 42.18270833333333 66.501 L 31.045069444444444 66.501 Z" cy="17.75" cx="42.18270833333333" j="1" val="60" barHeight="53.25" barWidth="20.137638888888887"></path><path id="SvgjsPath1260" d="M67.65895833333333 60.501000000000005L67.65895833333333 34.46350000000001C67.65895833333333 31.46350000000001 70.65895833333333 28.46350000000001 73.65895833333333 28.46350000000001L73.65895833333333 28.46350000000001C76.22777777777777 28.46350000000001 78.79659722222222 31.46350000000001 78.79659722222222 34.46350000000001L78.79659722222222 60.501000000000005C78.79659722222222 63.501000000000005 75.79659722222222 66.501 72.79659722222222 66.501L72.79659722222222 66.501C70.22777777777777 66.501 67.65895833333333 63.501000000000005 67.65895833333333 60.501000000000005C67.65895833333333 60.501000000000005 67.65895833333333 60.501000000000005 67.65895833333333 60.501000000000005 " fill="rgba(27,132,255,0.85)" fill-opacity="1" stroke="transparent" stroke-opacity="1" stroke-linecap="round" stroke-width="9" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMasklowjrn1p)" pathTo="M 67.65895833333333 60.501000000000005 L 67.65895833333333 34.46350000000001 C 67.65895833333333 31.46350000000001 70.65895833333333 28.463500000000007 73.65895833333333 28.463500000000007 L 73.65895833333333 28.463500000000007 C 76.22777777777777 28.463500000000007 78.79659722222222 31.46350000000001 78.79659722222222 34.46350000000001 L 78.79659722222222 60.501000000000005 C 78.79659722222222 63.501000000000005 75.79659722222222 66.501 72.79659722222222 66.501 L 72.79659722222222 66.501 C 70.22777777777777 66.501 67.65895833333333 63.501000000000005 67.65895833333333 60.501000000000005 Z " pathFrom="M 67.65895833333333 66.501 L 67.65895833333333 66.501 L 78.79659722222222 66.501 L 78.79659722222222 66.501 L 78.79659722222222 66.501 L 78.79659722222222 66.501 L 78.79659722222222 66.501 L 67.65895833333333 66.501 Z" cy="23.962500000000006" cx="78.79659722222222" j="2" val="53" barHeight="47.037499999999994" barWidth="20.137638888888887"></path><path id="SvgjsPath1262" d="M104.27284722222223 60.501000000000005L104.27284722222223 41.5635C104.27284722222223 38.5635 107.27284722222223 35.5635 110.27284722222223 35.5635L110.27284722222223 35.5635C112.84166666666667 35.5635 115.41048611111111 38.5635 115.41048611111111 41.5635L115.41048611111111 60.501000000000005C115.41048611111111 63.501000000000005 112.41048611111111 66.501 109.41048611111111 66.501L109.41048611111111 66.501C106.84166666666667 66.501 104.27284722222223 63.501000000000005 104.27284722222223 60.501000000000005C104.27284722222223 60.501000000000005 104.27284722222223 60.501000000000005 104.27284722222223 60.501000000000005 " fill="rgba(27,132,255,0.85)" fill-opacity="1" stroke="transparent" stroke-opacity="1" stroke-linecap="round" stroke-width="9" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMasklowjrn1p)" pathTo="M 104.27284722222223 60.501000000000005 L 104.27284722222223 41.5635 C 104.27284722222223 38.5635 107.27284722222223 35.5635 110.27284722222223 35.5635 L 110.27284722222223 35.5635 C 112.84166666666667 35.5635 115.41048611111111 38.5635 115.41048611111111 41.5635 L 115.41048611111111 60.501000000000005 C 115.41048611111111 63.501000000000005 112.41048611111111 66.501 109.41048611111111 66.501 L 109.41048611111111 66.501 C 106.84166666666667 66.501 104.27284722222223 63.501000000000005 104.27284722222223 60.501000000000005 Z " pathFrom="M 104.27284722222223 66.501 L 104.27284722222223 66.501 L 115.41048611111111 66.501 L 115.41048611111111 66.501 L 115.41048611111111 66.501 L 115.41048611111111 66.501 L 115.41048611111111 66.501 L 104.27284722222223 66.501 Z" cy="31.0625" cx="115.41048611111111" j="3" val="45" barHeight="39.9375" barWidth="20.137638888888887"></path><path id="SvgjsPath1264" d="M140.8867361111111 60.501000000000005L140.8867361111111 28.251000000000005C140.8867361111111 25.251000000000005 143.8867361111111 22.251000000000005 146.8867361111111 22.251000000000005L146.8867361111111 22.251000000000005C149.45555555555555 22.251000000000005 152.024375 25.251000000000005 152.024375 28.251000000000005L152.024375 60.501000000000005C152.024375 63.501000000000005 149.024375 66.501 146.024375 66.501L146.024375 66.501C143.45555555555555 66.501 140.8867361111111 63.501000000000005 140.8867361111111 60.501000000000005C140.8867361111111 60.501000000000005 140.8867361111111 60.501000000000005 140.8867361111111 60.501000000000005 " fill="rgba(27,132,255,0.85)" fill-opacity="1" stroke="transparent" stroke-opacity="1" stroke-linecap="round" stroke-width="9" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMasklowjrn1p)" pathTo="M 140.8867361111111 60.501000000000005 L 140.8867361111111 28.251 C 140.8867361111111 25.251 143.8867361111111 22.251 146.8867361111111 22.251 L 146.8867361111111 22.251 C 149.45555555555555 22.251 152.024375 25.251 152.024375 28.251 L 152.024375 60.501000000000005 C 152.024375 63.501000000000005 149.024375 66.501 146.024375 66.501 L 146.024375 66.501 C 143.45555555555555 66.501 140.8867361111111 63.501000000000005 140.8867361111111 60.501000000000005 Z " pathFrom="M 140.8867361111111 66.501 L 140.8867361111111 66.501 L 152.024375 66.501 L 152.024375 66.501 L 152.024375 66.501 L 152.024375 66.501 L 152.024375 66.501 L 140.8867361111111 66.501 Z" cy="17.75" cx="152.024375" j="4" val="60" barHeight="53.25" barWidth="20.137638888888887"></path><path id="SvgjsPath1266" d="M177.50062499999999 60.501000000000005L177.50062499999999 14.938500000000005C177.50062499999999 11.938500000000005 180.50062499999999 8.938500000000005 183.50062499999999 8.938500000000005L183.50062499999999 8.938500000000005C186.06944444444443 8.938500000000005 188.63826388888887 11.938500000000005 188.63826388888887 14.938500000000005L188.63826388888887 60.501000000000005C188.63826388888887 63.501000000000005 185.63826388888887 66.501 182.63826388888887 66.501L182.63826388888887 66.501C180.06944444444443 66.501 177.50062499999999 63.501000000000005 177.50062499999999 60.501000000000005C177.50062499999999 60.501000000000005 177.50062499999999 60.501000000000005 177.50062499999999 60.501000000000005 " fill="rgba(27,132,255,0.85)" fill-opacity="1" stroke="transparent" stroke-opacity="1" stroke-linecap="round" stroke-width="9" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMasklowjrn1p)" pathTo="M 177.50062499999999 60.501000000000005 L 177.50062499999999 14.938500000000001 C 177.50062499999999 11.938500000000001 180.50062499999999 8.938500000000001 183.50062499999999 8.938500000000001 L 183.50062499999999 8.938500000000001 C 186.06944444444443 8.938500000000001 188.63826388888887 11.938500000000001 188.63826388888887 14.938500000000001 L 188.63826388888887 60.501000000000005 C 188.63826388888887 63.501000000000005 185.63826388888887 66.501 182.63826388888887 66.501 L 182.63826388888887 66.501 C 180.06944444444443 66.501 177.50062499999999 63.501000000000005 177.50062499999999 60.501000000000005 Z " pathFrom="M 177.50062499999999 66.501 L 177.50062499999999 66.501 L 188.63826388888887 66.501 L 188.63826388888887 66.501 L 188.63826388888887 66.501 L 188.63826388888887 66.501 L 188.63826388888887 66.501 L 177.50062499999999 66.501 Z" cy="4.4375" cx="188.63826388888887" j="5" val="75" barHeight="66.5625" barWidth="20.137638888888887"></path><path id="SvgjsPath1268" d="M214.1145138888889 60.501000000000005L214.1145138888889 34.46350000000001C214.1145138888889 31.46350000000001 217.1145138888889 28.46350000000001 220.1145138888889 28.46350000000001L220.1145138888889 28.46350000000001C222.68333333333334 28.46350000000001 225.25215277777778 31.46350000000001 225.25215277777778 34.46350000000001L225.25215277777778 60.501000000000005C225.25215277777778 63.501000000000005 222.25215277777778 66.501 219.25215277777778 66.501L219.25215277777778 66.501C216.68333333333334 66.501 214.1145138888889 63.501000000000005 214.1145138888889 60.501000000000005C214.1145138888889 60.501000000000005 214.1145138888889 60.501000000000005 214.1145138888889 60.501000000000005 " fill="rgba(27,132,255,0.85)" fill-opacity="1" stroke="transparent" stroke-opacity="1" stroke-linecap="round" stroke-width="9" stroke-dasharray="0" class="apexcharts-bar-area" index="0" clip-path="url(#gridRectMasklowjrn1p)" pathTo="M 214.1145138888889 60.501000000000005 L 214.1145138888889 34.46350000000001 C 214.1145138888889 31.46350000000001 217.1145138888889 28.463500000000007 220.1145138888889 28.463500000000007 L 220.1145138888889 28.463500000000007 C 222.68333333333334 28.463500000000007 225.25215277777778 31.46350000000001 225.25215277777778 34.46350000000001 L 225.25215277777778 60.501000000000005 C 225.25215277777778 63.501000000000005 222.25215277777778 66.501 219.25215277777778 66.501 L 219.25215277777778 66.501 C 216.68333333333334 66.501 214.1145138888889 63.501000000000005 214.1145138888889 60.501000000000005 Z " pathFrom="M 214.1145138888889 66.501 L 214.1145138888889 66.501 L 225.25215277777778 66.501 L 225.25215277777778 66.501 L 225.25215277777778 66.501 L 225.25215277777778 66.501 L 225.25215277777778 66.501 L 214.1145138888889 66.501 Z" cy="23.962500000000006" cx="225.25215277777778" j="6" val="53" barHeight="47.037499999999994" barWidth="20.137638888888887"></path><g id="SvgjsG1253" class="apexcharts-bar-goals-markers"><g id="SvgjsG1255" className="apexcharts-bar-goals-groups" class="apexcharts-hidden-element-shown" clip-path="url(#gridRectMarkerMasklowjrn1p)"></g><g id="SvgjsG1257" className="apexcharts-bar-goals-groups" class="apexcharts-hidden-element-shown" clip-path="url(#gridRectMarkerMasklowjrn1p)"></g><g id="SvgjsG1259" className="apexcharts-bar-goals-groups" class="apexcharts-hidden-element-shown" clip-path="url(#gridRectMarkerMasklowjrn1p)"></g><g id="SvgjsG1261" className="apexcharts-bar-goals-groups" class="apexcharts-hidden-element-shown" clip-path="url(#gridRectMarkerMasklowjrn1p)"></g><g id="SvgjsG1263" className="apexcharts-bar-goals-groups" class="apexcharts-hidden-element-shown" clip-path="url(#gridRectMarkerMasklowjrn1p)"></g><g id="SvgjsG1265" className="apexcharts-bar-goals-groups" class="apexcharts-hidden-element-shown" clip-path="url(#gridRectMarkerMasklowjrn1p)"></g><g id="SvgjsG1267" className="apexcharts-bar-goals-groups" class="apexcharts-hidden-element-shown" clip-path="url(#gridRectMarkerMasklowjrn1p)"></g></g><g id="SvgjsG1254" class="apexcharts-bar-shadows apexcharts-hidden-element-shown"></g></g><g id="SvgjsG1252" class="apexcharts-datalabels apexcharts-hidden-element-shown" data:realIndex="0"></g></g><line id="SvgjsLine1277" x1="-24.658333333333335" y1="0" x2="244.34166666666667" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1278" x1="-24.658333333333335" y1="0" x2="244.34166666666667" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line><g id="SvgjsG1279" class="apexcharts-xaxis" transform="translate(0, 0)"><g id="SvgjsG1280" class="apexcharts-xaxis-texts-g" transform="translate(0, -4)"></g></g><g id="SvgjsG1290" class="apexcharts-yaxis-annotations apexcharts-hidden-element-shown"></g><g id="SvgjsG1291" class="apexcharts-xaxis-annotations apexcharts-hidden-element-shown"></g><g id="SvgjsG1292" class="apexcharts-point-annotations apexcharts-hidden-element-shown"></g></g></svg><div class="apexcharts-tooltip apexcharts-theme-light" style="left: 71.0895px; top: -13px;"><div class="apexcharts-tooltip-title" style="font-family: inherit; font-size: 12px;">Feb: 2</div><div class="apexcharts-tooltip-series-group apexcharts-active" style="order: 1; display: flex;"><span class="apexcharts-tooltip-marker" style="background-color: rgba(27, 132, 255, 0.85);"></span><div class="apexcharts-tooltip-text" style="font-family: inherit; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-y-label">Sales: </span><span class="apexcharts-tooltip-text-y-value">60%</span></div><div class="apexcharts-tooltip-goals-group"><span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div></div><div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-light"><div class="apexcharts-yaxistooltip-text"></div></div></div></div>
+                            <!--end::Chart-->
+                        </div>
+                        <!--end::Card body-->
+                    </div>
+                    <!--end::Card widget 6-->
+                    <!--begin::Card widget 7-->
+                    <div class="card card-flush h-md-50 mb-xl-10">
+                        <!--begin::Header-->
+                        <div class="card-header pt-5">
+                            <!--begin::Title-->
+                            <div class="card-title d-flex flex-column">
                                 <!--begin::Amount-->
-                                <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">357</span>
+                                <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">6.3k</span>
                                 <!--end::Amount-->
                                 <!--begin::Subtitle-->
-                                <span class="text-gray-500 pt-1 fw-semibold fs-6">Professionals</span>
+                                <span class="text-gray-500 pt-1 fw-semibold fs-6">New Customers This Month</span>
                                 <!--end::Subtitle-->
                             </div>
                             <!--end::Title-->
@@ -122,7 +260,7 @@
                                     <img alt="Pic" src="assets/media/avatars/300-12.jpg">
                                 </div>
                                 <a href="#" class="symbol symbol-35px symbol-circle" data-bs-toggle="modal" data-bs-target="#kt_modal_view_users">
-                                    <span class="symbol-label bg-dark text-gray-300 fs-8 fw-bold">+42</span>
+                                    <span class="symbol-label bg-light text-gray-400 fs-8 fw-bold">+42</span>
                                 </a>
                             </div>
                             <!--end::Users group-->
@@ -133,3416 +271,15 @@
                 </div>
                 <!--end::Col-->
                 <!--begin::Col-->
-                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
-                    <!--begin::Card widget 17-->
-                    <div class="card card-flush h-md-50 mb-5 mb-xl-10">
-                        <!--begin::Header-->
-                        <div class="card-header pt-5">
-                            <!--begin::Title-->
-                            <div class="card-title d-flex flex-column">
-                                <!--begin::Info-->
-                                <div class="d-flex align-items-center">
-                                    <!--begin::Currency-->
-                                    <span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">$</span>
-                                    <!--end::Currency-->
-                                    <!--begin::Amount-->
-                                    <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">69,700</span>
-                                    <!--end::Amount-->
-                                    <!--begin::Badge-->
-                                    <span class="badge badge-light-success fs-base">
-															<i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1">
-																<span class="path1"></span>
-																<span class="path2"></span>
-															</i>2.2%</span>
-                                    <!--end::Badge-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Subtitle-->
-                                <span class="text-gray-500 pt-1 fw-semibold fs-6">Projects Earnings in April</span>
-                                <!--end::Subtitle-->
-                            </div>
-                            <!--end::Title-->
-                        </div>
-                        <!--end::Header-->
-                        <!--begin::Card body-->
-                        <div class="card-body pt-2 pb-4 d-flex flex-wrap align-items-center">
-                            <!--begin::Chart-->
-                            <div class="d-flex flex-center me-5 pt-2">
-                                <div id="kt_card_widget_17_chart" style="min-width: 70px; min-height: 70px" data-kt-size="70" data-kt-line="11">
-                                    <span></span>
-                                    <canvas height="70" width="70"></canvas>
-                                </div>
-                            </div>
-                            <!--end::Chart-->
-                            <!--begin::Labels-->
-                            <div class="d-flex flex-column content-justify-center flex-row-fluid">
-                                <!--begin::Label-->
-                                <div class="d-flex fw-semibold align-items-center">
-                                    <!--begin::Bullet-->
-                                    <div class="bullet w-8px h-3px rounded-2 bg-success me-3"></div>
-                                    <!--end::Bullet-->
-                                    <!--begin::Label-->
-                                    <div class="text-gray-500 flex-grow-1 me-4">Leaf CRM</div>
-                                    <!--end::Label-->
-                                    <!--begin::Stats-->
-                                    <div class="fw-bolder text-gray-700 text-xxl-end">$7,660</div>
-                                    <!--end::Stats-->
-                                </div>
-                                <!--end::Label-->
-                                <!--begin::Label-->
-                                <div class="d-flex fw-semibold align-items-center my-3">
-                                    <!--begin::Bullet-->
-                                    <div class="bullet w-8px h-3px rounded-2 bg-primary me-3"></div>
-                                    <!--end::Bullet-->
-                                    <!--begin::Label-->
-                                    <div class="text-gray-500 flex-grow-1 me-4">Mivy App</div>
-                                    <!--end::Label-->
-                                    <!--begin::Stats-->
-                                    <div class="fw-bolder text-gray-700 text-xxl-end">$2,820</div>
-                                    <!--end::Stats-->
-                                </div>
-                                <!--end::Label-->
-                                <!--begin::Label-->
-                                <div class="d-flex fw-semibold align-items-center">
-                                    <!--begin::Bullet-->
-                                    <div class="bullet w-8px h-3px rounded-2 me-3" style="background-color: #E4E6EF"></div>
-                                    <!--end::Bullet-->
-                                    <!--begin::Label-->
-                                    <div class="text-gray-500 flex-grow-1 me-4">Others</div>
-                                    <!--end::Label-->
-                                    <!--begin::Stats-->
-                                    <div class="fw-bolder text-gray-700 text-xxl-end">$45,257</div>
-                                    <!--end::Stats-->
-                                </div>
-                                <!--end::Label-->
-                            </div>
-                            <!--end::Labels-->
-                        </div>
-                        <!--end::Card body-->
-                    </div>
-                    <!--end::Card widget 17-->
-                    <!--begin::List widget 26-->
-                    <div class="card card-flush h-lg-50">
-                        <!--begin::Header-->
-                        <div class="card-header pt-5">
-                            <!--begin::Title-->
-                            <h3 class="card-title text-gray-800 fw-bold">External Links</h3>
-                            <!--end::Title-->
-                            <!--begin::Toolbar-->
-                            <div class="card-toolbar">
-                                <!--begin::Menu-->
-                                <button class="btn btn-icon btn-color-gray-500 btn-active-color-primary justify-content-end" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
-                                    <i class="ki-duotone ki-dots-square fs-1 text-gray-500 me-n1">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                        <span class="path3"></span>
-                                        <span class="path4"></span>
-                                    </i>
-                                </button>
-                                <!--begin::Menu 2-->
-                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px" data-kt-menu="true">
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <div class="menu-content fs-6 text-gray-900 fw-bold px-3 py-4">Quick Actions</div>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu separator-->
-                                    <div class="separator mb-3 opacity-75"></div>
-                                    <!--end::Menu separator-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">New Ticket</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">New Customer</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
-                                        <!--begin::Menu item-->
-                                        <a href="#" class="menu-link px-3">
-                                            <span class="menu-title">New Group</span>
-                                            <span class="menu-arrow"></span>
-                                        </a>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu sub-->
-                                        <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Admin Group</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Staff Group</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Member Group</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                        </div>
-                                        <!--end::Menu sub-->
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">New Contact</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu separator-->
-                                    <div class="separator mt-3 opacity-75"></div>
-                                    <!--end::Menu separator-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <div class="menu-content px-3 py-3">
-                                            <a class="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
-                                        </div>
-                                    </div>
-                                    <!--end::Menu item-->
-                                </div>
-                                <!--end::Menu 2-->
-                                <!--end::Menu-->
-                            </div>
-                            <!--end::Toolbar-->
-                        </div>
-                        <!--end::Header-->
-                        <!--begin::Body-->
-                        <div class="card-body pt-5">
-                            <!--begin::Item-->
-                            <div class="d-flex flex-stack">
-                                <!--begin::Section-->
-                                <a href="#" class="text-primary fw-semibold fs-6 me-2">Avg. Client Rating</a>
-                                <!--end::Section-->
-                                <!--begin::Action-->
-                                <button type="button" class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
-                                    <i class="ki-duotone ki-exit-right-corner fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </i>
-                                </button>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Item-->
-                            <!--begin::Separator-->
-                            <div class="separator separator-dashed my-3"></div>
-                            <!--end::Separator-->
-                            <!--begin::Item-->
-                            <div class="d-flex flex-stack">
-                                <!--begin::Section-->
-                                <a href="#" class="text-primary fw-semibold fs-6 me-2">Instagram Followers</a>
-                                <!--end::Section-->
-                                <!--begin::Action-->
-                                <button type="button" class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
-                                    <i class="ki-duotone ki-exit-right-corner fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </i>
-                                </button>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Item-->
-                            <!--begin::Separator-->
-                            <div class="separator separator-dashed my-3"></div>
-                            <!--end::Separator-->
-                            <!--begin::Item-->
-                            <div class="d-flex flex-stack">
-                                <!--begin::Section-->
-                                <a href="#" class="text-primary fw-semibold fs-6 me-2">Google Ads CPC</a>
-                                <!--end::Section-->
-                                <!--begin::Action-->
-                                <button type="button" class="btn btn-icon btn-sm h-auto btn-color-gray-500 btn-active-color-primary justify-content-end">
-                                    <i class="ki-duotone ki-exit-right-corner fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </i>
-                                </button>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Item-->
-                        </div>
-                        <!--end::Body-->
-                    </div>
-                    <!--end::LIst widget 26-->
-                </div>
-                <!--end::Col-->
-                <!--begin::Col-->
-                <div class="col-xxl-6">
-                    <!--begin::Engage widget 10-->
-                    <div class="card card-flush h-md-100">
-                        <!--begin::Body-->
-                        <div class="card-body d-flex flex-column justify-content-between mt-9 bgi-no-repeat bgi-size-cover bgi-position-x-center pb-0" style="background-position: 100% 50%; background-image:url('assets/media/stock/900x600/42.png')">
-                            <!--begin::Wrapper-->
-                            <div class="mb-10">
-                                <!--begin::Title-->
-                                <div class="fs-2hx fw-bold text-gray-800 text-center mb-13">
-														<span class="me-2">Try our all new Enviroment with
-															<br>
-															<span class="position-relative d-inline-block text-danger">
-																<a href="pages/user-profile/overview.html" class="text-danger opacity-75-hover">Pro Plan</a>
-                                                                <!--begin::Separator-->
-																<span class="position-absolute opacity-15 bottom-0 start-0 border-4 border-danger border-bottom w-100"></span>
-                                                                <!--end::Separator-->
-															</span></span>for Free
-                                </div>
-                                <!--end::Title-->
-                                <!--begin::Action-->
-                                <div class="text-center">
-                                    <a href="#" class="btn btn-sm btn-dark fw-bold" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan">Upgrade Now</a>
-                                </div>
-                                <!--begin::Action-->
-                            </div>
-                            <!--begin::Wrapper-->
-                            <!--begin::Illustration-->
-                            <img class="mx-auto h-150px h-lg-200px theme-light-show" src="assets/media/illustrations/misc/upgrade.svg" alt="">
-                            <img class="mx-auto h-150px h-lg-200px theme-dark-show" src="assets/media/illustrations/misc/upgrade-dark.svg" alt="">
-                            <!--end::Illustration-->
-                        </div>
-                        <!--end::Body-->
-                    </div>
-                    <!--end::Engage widget 10-->
-                </div>
-                <!--end::Col-->
-            </div>
-            <!--end::Row-->
-            <!--begin::Row-->
-            <div class="row gx-5 gx-xl-10">
-                <!--begin::Col-->
-                <div class="col-xxl-6 mb-5 mb-xl-10">
-                    <!--begin::Chart widget 8-->
-                    <div class="card card-flush h-xl-100">
-                        <!--begin::Header-->
-                        <div class="card-header pt-5">
-                            <!--begin::Title-->
-                            <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label fw-bold text-gray-900">Performance Overview</span>
-                                <span class="text-gray-500 mt-1 fw-semibold fs-6">Users from all channels</span>
-                            </h3>
-                            <!--end::Title-->
-                            <!--begin::Toolbar-->
-                            <div class="card-toolbar">
-                                <ul class="nav" id="kt_chart_widget_8_tabs" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light fw-bold px-4 me-1" data-bs-toggle="tab" id="kt_chart_widget_8_week_toggle" href="#kt_chart_widget_8_week_tab" aria-selected="false" tabindex="-1" role="tab">Month</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light fw-bold px-4 me-1 active" data-bs-toggle="tab" id="kt_chart_widget_8_month_toggle" href="#kt_chart_widget_8_month_tab" aria-selected="true" role="tab">Week</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--end::Toolbar-->
-                        </div>
-                        <!--end::Header-->
-                        <!--begin::Body-->
-                        <div class="card-body pt-6">
-                            <!--begin::Tab content-->
-                            <div class="tab-content">
-                                <!--begin::Tab pane-->
-                                <div class="tab-pane fade" id="kt_chart_widget_8_week_tab" role="tabpanel" aria-labelledby="kt_chart_widget_8_week_toggle">
-                                    <!--begin::Statistics-->
-                                    <div class="mb-5">
-                                        <!--begin::Statistics-->
-                                        <div class="d-flex align-items-center mb-2">
-                                            <span class="fs-1 fw-semibold text-gray-500 me-1 mt-n1">$</span>
-                                            <span class="fs-3x fw-bold text-gray-800 me-2 lh-1 ls-n2">18,89</span>
-                                            <span class="badge badge-light-success fs-base">
-																	<i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1">
-																		<span class="path1"></span>
-																		<span class="path2"></span>
-																	</i>4,8%</span>
-                                        </div>
-                                        <!--end::Statistics-->
-                                        <!--begin::Description-->
-                                        <span class="fs-6 fw-semibold text-gray-500">Avarage cost per interaction</span>
-                                        <!--end::Description-->
-                                    </div>
-                                    <!--end::Statistics-->
-                                    <!--begin::Chart-->
-                                    <div id="kt_chart_widget_8_week_chart" class="ms-n5 min-h-auto" style="height: 275px"></div>
-                                    <!--end::Chart-->
-                                    <!--begin::Items-->
-                                    <div class="d-flex flex-wrap pt-5">
-                                        <!--begin::Item-->
-                                        <div class="d-flex flex-column me-7 me-lg-16 pt-sm-3 pt-6">
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center mb-3 mb-sm-6">
-                                                <!--begin::Bullet-->
-                                                <span class="bullet bullet-dot bg-primary me-2 h-10px w-10px"></span>
-                                                <!--end::Bullet-->
-                                                <!--begin::Label-->
-                                                <span class="fw-bold text-gray-600 fs-6">Social Campaigns</span>
-                                                <!--end::Label-->
-                                            </div>
-                                            <!--ed::Item-->
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center">
-                                                <!--begin::Bullet-->
-                                                <span class="bullet bullet-dot bg-danger me-2 h-10px w-10px"></span>
-                                                <!--end::Bullet-->
-                                                <!--begin::Label-->
-                                                <span class="fw-bold text-<gray-600 fs-6">Google Ads</span>
-                                                <!--end::Label-->
-                                            </div>
-                                            <!--ed::Item-->
-                                        </div>
-                                        <!--ed::Item-->
-                                        <!--begin::Item-->
-                                        <div class="d-flex flex-column me-7 me-lg-16 pt-sm-3 pt-6">
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center mb-3 mb-sm-6">
-                                                <!--begin::Bullet-->
-                                                <span class="bullet bullet-dot bg-success me-2 h-10px w-10px"></span>
-                                                <!--end::Bullet-->
-                                                <!--begin::Label-->
-                                                <span class="fw-bold text-gray-600 fs-6">Email Newsletter</span>
-                                                <!--end::Label-->
-                                            </div>
-                                            <!--ed::Item-->
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center">
-                                                <!--begin::Bullet-->
-                                                <span class="bullet bullet-dot bg-warning me-2 h-10px w-10px"></span>
-                                                <!--end::Bullet-->
-                                                <!--begin::Label-->
-                                                <span class="fw-bold text-gray-600 fs-6">Courses</span>
-                                                <!--end::Label-->
-                                            </div>
-                                            <!--ed::Item-->
-                                        </div>
-                                        <!--ed::Item-->
-                                        <!--begin::Item-->
-                                        <div class="d-flex flex-column pt-sm-3 pt-6">
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center mb-3 mb-sm-6">
-                                                <!--begin::Bullet-->
-                                                <span class="bullet bullet-dot bg-info me-2 h-10px w-10px"></span>
-                                                <!--end::Bullet-->
-                                                <!--begin::Label-->
-                                                <span class="fw-bold text-gray-600 fs-6">TV Campaign</span>
-                                                <!--end::Label-->
-                                            </div>
-                                            <!--ed::Item-->
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center">
-                                                <!--begin::Bullet-->
-                                                <span class="bullet bullet-dot bg-success me-2 h-10px w-10px"></span>
-                                                <!--end::Bullet-->
-                                                <!--begin::Label-->
-                                                <span class="fw-bold text-gray-600 fs-6">Radio</span>
-                                                <!--end::Label-->
-                                            </div>
-                                            <!--ed::Item-->
-                                        </div>
-                                        <!--ed::Item-->
-                                    </div>
-                                    <!--ed::Items-->
-                                </div>
-                                <!--end::Tab pane-->
-                                <!--begin::Tab pane-->
-                                <div class="tab-pane fade active show" id="kt_chart_widget_8_month_tab" role="tabpanel" aria-labelledby="kt_chart_widget_8_month_toggle">
-                                    <!--begin::Statistics-->
-                                    <div class="mb-5">
-                                        <!--begin::Statistics-->
-                                        <div class="d-flex align-items-center mb-2">
-                                            <span class="fs-1 fw-semibold text-gray-500 me-1 mt-n1">$</span>
-                                            <span class="fs-3x fw-bold text-gray-800 me-2 lh-1 ls-n2">8,55</span>
-                                            <span class="badge badge-light-success fs-base">
-																	<i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1">
-																		<span class="path1"></span>
-																		<span class="path2"></span>
-																	</i>2.2%</span>
-                                        </div>
-                                        <!--end::Statistics-->
-                                        <!--begin::Description-->
-                                        <span class="fs-6 fw-semibold text-gray-500">Avarage cost per interaction</span>
-                                        <!--end::Description-->
-                                    </div>
-                                    <!--end::Statistics-->
-                                    <!--begin::Chart-->
-                                    <div id="kt_chart_widget_8_month_chart" class="ms-n5 min-h-auto" style="height: 275px; min-height: 290px;">
-                                        <div id="apexcharts2vafhpa8" class="apexcharts-canvas apexcharts2vafhpa8 apexcharts-theme-light" style="width: 537px; height: 275px;">
-                                            <svg id="SvgjsSvg2799" width="537" height="275" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg apexcharts-zoomable" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;">
-                                                <foreignObject x="0" y="0" width="537" height="275">
-                                                    <div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 137.5px;"></div>
-                                                </foreignObject>
-                                                <g id="SvgjsG2979" class="apexcharts-yaxis" rel="0" transform="translate(20.475000381469727, 0)">
-                                                    <g id="SvgjsG2980" class="apexcharts-yaxis-texts-g">
-                                                        <text id="SvgjsText2982" font-family="inherit" x="20" y="34.333333333333336" text-anchor="end" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;">
-                                                            <tspan id="SvgjsTspan2983">700</tspan>
-                                                            <title>700</title></text>
-                                                        <text id="SvgjsText2985" font-family="inherit" x="20" y="64.44761904761906" text-anchor="end" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;">
-                                                            <tspan id="SvgjsTspan2986">600</tspan>
-                                                            <title>600</title></text>
-                                                        <text id="SvgjsText2988" font-family="inherit" x="20" y="94.56190476190477" text-anchor="end" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;">
-                                                            <tspan id="SvgjsTspan2989">500</tspan>
-                                                            <title>500</title></text>
-                                                        <text id="SvgjsText2991" font-family="inherit" x="20" y="124.67619047619048" text-anchor="end" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;">
-                                                            <tspan id="SvgjsTspan2992">400</tspan>
-                                                            <title>400</title></text>
-                                                        <text id="SvgjsText2994" font-family="inherit" x="20" y="154.7904761904762" text-anchor="end" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;">
-                                                            <tspan id="SvgjsTspan2995">300</tspan>
-                                                            <title>300</title></text>
-                                                        <text id="SvgjsText2997" font-family="inherit" x="20" y="184.90476190476193" text-anchor="end" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;">
-                                                            <tspan id="SvgjsTspan2998">200</tspan>
-                                                            <title>200</title></text>
-                                                        <text id="SvgjsText3000" font-family="inherit" x="20" y="215.01904761904765" text-anchor="end" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;">
-                                                            <tspan id="SvgjsTspan3001">100</tspan>
-                                                            <title>100</title></text>
-                                                        <text id="SvgjsText3003" font-family="inherit" x="20" y="245.13333333333338" text-anchor="end" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;">
-                                                            <tspan id="SvgjsTspan3004">0</tspan>
-                                                            <title>0</title></text>
-                                                    </g>
-                                                </g>
-                                                <g id="SvgjsG2801" class="apexcharts-inner apexcharts-graphical" transform="translate(50.47500038146973, 30)">
-                                                    <defs id="SvgjsDefs2800">
-                                                        <clipPath id="gridRectMask2vafhpa8">
-                                                            <rect id="SvgjsRect2806" width="470.5249996185303" height="214.8" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                        </clipPath>
-                                                        <clipPath id="forecastMask2vafhpa8"></clipPath>
-                                                        <clipPath id="nonForecastMask2vafhpa8"></clipPath>
-                                                        <clipPath id="gridRectMarkerMask2vafhpa8">
-                                                            <rect id="SvgjsRect2807" width="470.5249996185303" height="214.8" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                        </clipPath>
-                                                    </defs>
-                                                    <rect id="SvgjsRect2805" width="0" height="210.8" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="1" stroke="#b6b6b6" stroke-dasharray="3" fill="#b1b9c4" class="apexcharts-xcrosshairs" y2="210.8" filter="none" fill-opacity="0.9"></rect>
-                                                    <line id="SvgjsLine2933" x1="0" y1="210.8" x2="0" y2="210.8" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                    <line id="SvgjsLine2934" x1="66.6464285169329" y1="210.8" x2="66.6464285169329" y2="210.8" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                    <line id="SvgjsLine2935" x1="133.2928570338658" y1="210.8" x2="133.2928570338658" y2="210.8" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                    <line id="SvgjsLine2936" x1="199.9392855507987" y1="210.8" x2="199.9392855507987" y2="210.8" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                    <line id="SvgjsLine2937" x1="266.5857140677316" y1="210.8" x2="266.5857140677316" y2="210.8" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                    <line id="SvgjsLine2938" x1="333.23214258466453" y1="210.8" x2="333.23214258466453" y2="210.8" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                    <line id="SvgjsLine2939" x1="399.87857110159746" y1="210.8" x2="399.87857110159746" y2="210.8" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                    <line id="SvgjsLine2940" x1="466.5249996185304" y1="210.8" x2="466.5249996185304" y2="210.8" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-xaxis-tick"></line>
-                                                    <g id="SvgjsG2929" class="apexcharts-grid">
-                                                        <g id="SvgjsG2930" class="apexcharts-gridlines-horizontal">
-                                                            <line id="SvgjsLine2942" x1="0" y1="30.114285714285717" x2="466.5249996185303" y2="30.114285714285717" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine2943" x1="0" y1="60.228571428571435" x2="466.5249996185303" y2="60.228571428571435" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine2944" x1="0" y1="90.34285714285716" x2="466.5249996185303" y2="90.34285714285716" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine2945" x1="0" y1="120.45714285714287" x2="466.5249996185303" y2="120.45714285714287" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine2946" x1="0" y1="150.57142857142858" x2="466.5249996185303" y2="150.57142857142858" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine2947" x1="0" y1="180.6857142857143" x2="466.5249996185303" y2="180.6857142857143" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine2948" x1="0" y1="210.80000000000004" x2="466.5249996185303" y2="210.80000000000004" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                        </g>
-                                                        <g id="SvgjsG2931" class="apexcharts-gridlines-vertical"></g>
-                                                        <line id="SvgjsLine2950" x1="0" y1="210.8" x2="466.5249996185303" y2="210.8" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                        <line id="SvgjsLine2949" x1="0" y1="1" x2="0" y2="210.8" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                    </g>
-                                                    <g id="SvgjsG2932" class="apexcharts-grid-borders">
-                                                        <line id="SvgjsLine2941" x1="0" y1="0" x2="466.5249996185303" y2="0" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                    </g>
-                                                    <g id="SvgjsG2808" class="apexcharts-bubble-series apexcharts-plot-series">
-                                                        <g id="SvgjsG2809" class="apexcharts-series" zIndex="0" seriesName="SocialxCampaigns" data:longestSeries="false" rel="1" data:realIndex="0">
-                                                            <g id="SvgjsG2810" class="apexcharts-series-markers-wrap" data:realIndex="0">
-                                                                <g id="SvgjsG2812" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2813" r="0" cx="83.30803564616612" cy="120.45714285714286" class="apexcharts-marker wu7s1cbyj" fill="#1b84ff" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="0" j="0" index="0" default-marker-size="0"></circle>
-                                                                    <circle id="SvgjsCircle2814" r="0" cx="83.30803564616612" cy="0" class="apexcharts-nullpoint" fill="#1b84ff" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="1" j="1" index="0" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2815" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2816" r="35.13333333333333" cx="83.30803564616612" cy="120.45714285714286" x="79.30803564616612" y="116.45714285714286" fill="rgba(27,132,255,1)" fill-opacity="1" stroke-width="0" stroke-dasharray="0" stroke-opacity="0.9" rel="0" j="0" index="0" default-marker-size="35.13333333333333" class="apexcharts-marker"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2817" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2818" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#1b84ff" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="2" j="2" index="0" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2819" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2820" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2821" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#1b84ff" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="3" j="3" index="0" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2822" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2823" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2824" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#1b84ff" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="4" j="4" index="0" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2825" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2826" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2827" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#1b84ff" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="5" j="5" index="0" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2828" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g class="apexcharts-series-markers">
-                                                                    <circle id="SvgjsCircle3008" r="0" cx="0" cy="0" class="apexcharts-marker woeca1b2z" fill="#1b84ff" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" default-marker-size="0"></circle>
-                                                                </g>
-                                                            </g>
-                                                        </g>
-                                                        <g id="SvgjsG2829" class="apexcharts-series" zIndex="1" seriesName="EmailxNewsletter" data:longestSeries="false" rel="2" data:realIndex="1">
-                                                            <g id="SvgjsG2830" class="apexcharts-series-markers-wrap" data:realIndex="1">
-                                                                <g id="SvgjsG2832" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2833" r="0" cx="166.61607129233224" cy="105.4" class="apexcharts-marker wdxbp763f" fill="#17c653" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="0" j="0" index="1" default-marker-size="0"></circle>
-                                                                    <circle id="SvgjsCircle2834" r="0" cx="83.30803564616612" cy="0" class="apexcharts-nullpoint" fill="#17c653" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="1" j="1" index="1" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2835" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2836" r="30.74166666666667" cx="166.61607129233224" cy="105.4" x="162.61607129233224" y="101.4" fill="rgba(23,198,83,1)" fill-opacity="1" stroke-width="0" stroke-dasharray="0" stroke-opacity="0.9" rel="0" j="0" index="1" default-marker-size="30.74166666666667" class="apexcharts-marker"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2837" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2838" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#17c653" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="2" j="2" index="1" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2839" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2840" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2841" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#17c653" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="3" j="3" index="1" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2842" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2843" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2844" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#17c653" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="4" j="4" index="1" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2845" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2846" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2847" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#17c653" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="5" j="5" index="1" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2848" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g class="apexcharts-series-markers">
-                                                                    <circle id="SvgjsCircle3009" r="0" cx="0" cy="0" class="apexcharts-marker wg3hqq5nol" fill="#17c653" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" default-marker-size="0"></circle>
-                                                                </g>
-                                                            </g>
-                                                        </g>
-                                                        <g id="SvgjsG2849" class="apexcharts-series" zIndex="2" seriesName="TVxCampaign" data:longestSeries="false" rel="3" data:realIndex="2">
-                                                            <g id="SvgjsG2850" class="apexcharts-series-markers-wrap" data:realIndex="2">
-                                                                <g id="SvgjsG2852" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2853" r="0" cx="233.2624998092651" cy="75.28571428571428" class="apexcharts-marker w7cza8878" fill="#f6c000" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="0" j="0" index="2" default-marker-size="0"></circle>
-                                                                    <circle id="SvgjsCircle2854" r="0" cx="83.30803564616612" cy="0" class="apexcharts-nullpoint" fill="#f6c000" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="1" j="1" index="2" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2855" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2856" r="26.35" cx="233.2624998092651" cy="75.28571428571428" x="229.2624998092651" y="71.28571428571428" fill="rgba(246,192,0,1)" fill-opacity="1" stroke-width="0" stroke-dasharray="0" stroke-opacity="0.9" rel="0" j="0" index="2" default-marker-size="26.35" class="apexcharts-marker"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2857" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2858" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#f6c000" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="2" j="2" index="2" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2859" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2860" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2861" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#f6c000" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="3" j="3" index="2" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2862" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2863" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2864" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#f6c000" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="4" j="4" index="2" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2865" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2866" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2867" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#f6c000" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="5" j="5" index="2" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2868" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g class="apexcharts-series-markers">
-                                                                    <circle id="SvgjsCircle3010" r="0" cx="0" cy="0" class="apexcharts-marker wzzegvo9e" fill="#f6c000" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" default-marker-size="0"></circle>
-                                                                </g>
-                                                            </g>
-                                                        </g>
-                                                        <g id="SvgjsG2869" class="apexcharts-series" zIndex="3" seriesName="GooglexAds" data:longestSeries="false" rel="4" data:realIndex="3">
-                                                            <g id="SvgjsG2870" class="apexcharts-series-markers-wrap" data:realIndex="3">
-                                                                <g id="SvgjsG2872" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2873" r="0" cx="299.908928326198" cy="135.51428571428573" class="apexcharts-marker wnnc8jgse" fill="#f8285a" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="0" j="0" index="3" default-marker-size="0"></circle>
-                                                                    <circle id="SvgjsCircle2874" r="0" cx="83.30803564616612" cy="0" class="apexcharts-nullpoint" fill="#f8285a" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="1" j="1" index="3" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2875" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2876" r="21.958333333333336" cx="299.908928326198" cy="135.51428571428573" x="295.908928326198" y="131.51428571428573" fill="rgba(248,40,90,1)" fill-opacity="1" stroke-width="0" stroke-dasharray="0" stroke-opacity="0.9" rel="0" j="0" index="3" default-marker-size="21.958333333333336" class="apexcharts-marker"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2877" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2878" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#f8285a" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="2" j="2" index="3" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2879" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2880" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2881" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#f8285a" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="3" j="3" index="3" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2882" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2883" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2884" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#f8285a" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="4" j="4" index="3" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2885" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2886" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2887" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#f8285a" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="5" j="5" index="3" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2888" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g class="apexcharts-series-markers">
-                                                                    <circle id="SvgjsCircle3011" r="0" cx="0" cy="0" class="apexcharts-marker w5e6jzy16" fill="#f8285a" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" default-marker-size="0"></circle>
-                                                                </g>
-                                                            </g>
-                                                        </g>
-                                                        <g id="SvgjsG2889" class="apexcharts-series" zIndex="4" seriesName="Courses" data:longestSeries="false" rel="5" data:realIndex="4">
-                                                            <g id="SvgjsG2890" class="apexcharts-series-markers-wrap" data:realIndex="4">
-                                                                <g id="SvgjsG2892" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2893" r="0" cx="333.2321425846645" cy="60.22857142857143" class="apexcharts-marker wjsbdm2bc" fill="#7239ea" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="0" j="0" index="4" default-marker-size="0"></circle>
-                                                                    <circle id="SvgjsCircle2894" r="0" cx="83.30803564616612" cy="0" class="apexcharts-nullpoint" fill="#7239ea" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="1" j="1" index="4" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2895" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2896" r="26.35" cx="333.2321425846645" cy="60.22857142857143" x="329.2321425846645" y="56.22857142857143" fill="rgba(114,57,234,1)" fill-opacity="1" stroke-width="0" stroke-dasharray="0" stroke-opacity="0.9" rel="0" j="0" index="4" default-marker-size="26.35" class="apexcharts-marker"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2897" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2898" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#7239ea" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="2" j="2" index="4" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2899" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2900" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2901" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#7239ea" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="3" j="3" index="4" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2902" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2903" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2904" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#7239ea" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="4" j="4" index="4" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2905" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2906" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2907" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#7239ea" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="5" j="5" index="4" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2908" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g class="apexcharts-series-markers">
-                                                                    <circle id="SvgjsCircle3012" r="0" cx="0" cy="0" class="apexcharts-marker wz29kxxl8" fill="#7239ea" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" default-marker-size="0"></circle>
-                                                                </g>
-                                                            </g>
-                                                        </g>
-                                                        <g id="SvgjsG2909" class="apexcharts-series" zIndex="5" seriesName="Radio" data:longestSeries="false" rel="6" data:realIndex="5">
-                                                            <g id="SvgjsG2910" class="apexcharts-series-markers-wrap" data:realIndex="5">
-                                                                <g id="SvgjsG2912" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2913" r="0" cx="399.87857110159734" cy="135.51428571428573" class="apexcharts-marker wlrytw44b" fill="#43ced7" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="0" j="0" index="5" default-marker-size="0"></circle>
-                                                                    <circle id="SvgjsCircle2914" r="0" cx="83.30803564616612" cy="0" class="apexcharts-nullpoint" fill="#43ced7" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="1" j="1" index="5" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2915" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2916" r="24.593333333333334" cx="399.87857110159734" cy="135.51428571428573" x="395.87857110159734" y="131.51428571428573" fill="rgba(67,206,215,1)" fill-opacity="1" stroke-width="0" stroke-dasharray="0" stroke-opacity="0.9" rel="0" j="0" index="5" default-marker-size="24.593333333333334" class="apexcharts-marker"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2917" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2918" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#43ced7" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="2" j="2" index="5" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2919" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2920" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2921" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#43ced7" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="3" j="3" index="5" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2922" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2923" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2924" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#43ced7" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="4" j="4" index="5" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2925" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g id="SvgjsG2926" class="" clip-path="url(#gridRectMarkerMask2vafhpa8)">
-                                                                    <circle id="SvgjsCircle2927" r="0" cx="0" cy="0" class="apexcharts-nullpoint" fill="#43ced7" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" rel="5" j="5" index="5" default-marker-size="0"></circle>
-                                                                </g>
-                                                                <g id="SvgjsG2928" class="apexcharts-series-markers apexcharts-series-bubble" clip-path="url(#gridRectMarkerMask2vafhpa8)"></g>
-                                                                <g class="apexcharts-series-markers">
-                                                                    <circle id="SvgjsCircle3013" r="0" cx="0" cy="0" class="apexcharts-marker w3faw876t" fill="#43ced7" fill-opacity="1" stroke-width="0" stroke-opacity="0.9" default-marker-size="0"></circle>
-                                                                </g>
-                                                            </g>
-                                                        </g>
-                                                        <g id="SvgjsG2811" class="apexcharts-datalabels" data:realIndex="0"></g>
-                                                        <g id="SvgjsG2831" class="apexcharts-datalabels" data:realIndex="1"></g>
-                                                        <g id="SvgjsG2851" class="apexcharts-datalabels" data:realIndex="2"></g>
-                                                        <g id="SvgjsG2871" class="apexcharts-datalabels" data:realIndex="3"></g>
-                                                        <g id="SvgjsG2891" class="apexcharts-datalabels" data:realIndex="4"></g>
-                                                        <g id="SvgjsG2911" class="apexcharts-datalabels" data:realIndex="5"></g>
-                                                    </g>
-                                                    <line id="SvgjsLine2951" x1="0" y1="0" x2="466.5249996185303" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line>
-                                                    <line id="SvgjsLine2952" x1="0" y1="0" x2="466.5249996185303" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line>
-                                                    <g id="SvgjsG2953" class="apexcharts-xaxis" transform="translate(0, 0)">
-                                                        <g id="SvgjsG2954" class="apexcharts-xaxis-texts-g" transform="translate(0, -4)">
-                                                            <text id="SvgjsText2956" font-family="inherit" x="0" y="238.8" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;">
-                                                                <tspan id="SvgjsTspan2957">0</tspan>
-                                                                <title>0</title></text>
-                                                            <text id="SvgjsText2959" font-family="inherit" x="66.6464285169329" y="238.8" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;">
-                                                                <tspan id="SvgjsTspan2960">100</tspan>
-                                                                <title>100</title></text>
-                                                            <text id="SvgjsText2962" font-family="inherit" x="133.2928570338658" y="238.8" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;">
-                                                                <tspan id="SvgjsTspan2963">200</tspan>
-                                                                <title>200</title></text>
-                                                            <text id="SvgjsText2965" font-family="inherit" x="199.93928555079873" y="238.8" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;">
-                                                                <tspan id="SvgjsTspan2966">300</tspan>
-                                                                <title>300</title></text>
-                                                            <text id="SvgjsText2968" font-family="inherit" x="266.5857140677316" y="238.8" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;">
-                                                                <tspan id="SvgjsTspan2969">400</tspan>
-                                                                <title>400</title></text>
-                                                            <text id="SvgjsText2971" font-family="inherit" x="333.23214258466453" y="238.8" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;">
-                                                                <tspan id="SvgjsTspan2972">500</tspan>
-                                                                <title>500</title></text>
-                                                            <text id="SvgjsText2974" font-family="inherit" x="399.87857110159746" y="238.8" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;">
-                                                                <tspan id="SvgjsTspan2975">600</tspan>
-                                                                <title>600</title></text>
-                                                            <text id="SvgjsText2977" font-family="inherit" x="466.5249996185304" y="238.8" text-anchor="middle" dominant-baseline="auto" font-size="13px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;">
-                                                                <tspan id="SvgjsTspan2978">700</tspan>
-                                                                <title>700</title></text>
-                                                        </g>
-                                                    </g>
-                                                    <g id="SvgjsG3005" class="apexcharts-yaxis-annotations"></g>
-                                                    <g id="SvgjsG3006" class="apexcharts-xaxis-annotations"></g>
-                                                    <g id="SvgjsG3007" class="apexcharts-point-annotations"></g>
-                                                    <rect id="SvgjsRect3014" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe" class="apexcharts-zoom-rect"></rect>
-                                                    <rect id="SvgjsRect3015" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe" class="apexcharts-selection-rect"></rect>
-                                                </g>
-                                            </svg>
-                                            <div class="apexcharts-tooltip apexcharts-theme-light">
-                                                <div class="apexcharts-tooltip-title" style="font-family: inherit; font-size: 12px;"></div>
-                                                <div class="apexcharts-tooltip-series-group" style="order: 1;">
-                                                    <span class="apexcharts-tooltip-marker" style="background-color: rgb(27, 132, 255);"></span>
-                                                    <div class="apexcharts-tooltip-text" style="font-family: inherit; font-size: 12px;">
-                                                        <div class="apexcharts-tooltip-y-group">
-                                                            <span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-goals-group">
-                                                            <span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-z-group">
-                                                            <span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="apexcharts-tooltip-series-group" style="order: 2;">
-                                                    <span class="apexcharts-tooltip-marker" style="background-color: rgb(23, 198, 83);"></span>
-                                                    <div class="apexcharts-tooltip-text" style="font-family: inherit; font-size: 12px;">
-                                                        <div class="apexcharts-tooltip-y-group">
-                                                            <span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-goals-group">
-                                                            <span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-z-group">
-                                                            <span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="apexcharts-tooltip-series-group" style="order: 3;">
-                                                    <span class="apexcharts-tooltip-marker" style="background-color: rgb(246, 192, 0);"></span>
-                                                    <div class="apexcharts-tooltip-text" style="font-family: inherit; font-size: 12px;">
-                                                        <div class="apexcharts-tooltip-y-group">
-                                                            <span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-goals-group">
-                                                            <span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-z-group">
-                                                            <span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="apexcharts-tooltip-series-group" style="order: 4;">
-                                                    <span class="apexcharts-tooltip-marker" style="background-color: rgb(248, 40, 90);"></span>
-                                                    <div class="apexcharts-tooltip-text" style="font-family: inherit; font-size: 12px;">
-                                                        <div class="apexcharts-tooltip-y-group">
-                                                            <span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-goals-group">
-                                                            <span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-z-group">
-                                                            <span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="apexcharts-tooltip-series-group" style="order: 5;">
-                                                    <span class="apexcharts-tooltip-marker" style="background-color: rgb(114, 57, 234);"></span>
-                                                    <div class="apexcharts-tooltip-text" style="font-family: inherit; font-size: 12px;">
-                                                        <div class="apexcharts-tooltip-y-group">
-                                                            <span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-goals-group">
-                                                            <span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-z-group">
-                                                            <span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="apexcharts-tooltip-series-group" style="order: 6;">
-                                                    <span class="apexcharts-tooltip-marker" style="background-color: rgb(67, 206, 215);"></span>
-                                                    <div class="apexcharts-tooltip-text" style="font-family: inherit; font-size: 12px;">
-                                                        <div class="apexcharts-tooltip-y-group">
-                                                            <span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-goals-group">
-                                                            <span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-z-group">
-                                                            <span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="apexcharts-xaxistooltip apexcharts-xaxistooltip-bottom apexcharts-theme-light">
-                                                <div class="apexcharts-xaxistooltip-text" style="font-family: inherit; font-size: 12px;"></div>
-                                            </div>
-                                            <div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-light">
-                                                <div class="apexcharts-yaxistooltip-text"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--end::Chart-->
-                                    <!--begin::Items-->
-                                    <div class="d-flex flex-wrap pt-5">
-                                        <!--begin::Item-->
-                                        <div class="d-flex flex-column me-7 me-lg-16 pt-sm-3 pt-6">
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center mb-3 mb-sm-6">
-                                                <!--begin::Bullet-->
-                                                <span class="bullet bullet-dot bg-primary me-2 h-10px w-10px"></span>
-                                                <!--end::Bullet-->
-                                                <!--begin::Label-->
-                                                <span class="fw-bold text-gray-600 fs-6">Social Campaigns</span>
-                                                <!--end::Label-->
-                                            </div>
-                                            <!--ed::Item-->
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center">
-                                                <!--begin::Bullet-->
-                                                <span class="bullet bullet-dot bg-danger me-2 h-10px w-10px"></span>
-                                                <!--end::Bullet-->
-                                                <!--begin::Label-->
-                                                <span class="fw-bold text-gray-600 fs-6">Google Ads</span>
-                                                <!--end::Label-->
-                                            </div>
-                                            <!--ed::Item-->
-                                        </div>
-                                        <!--ed::Item-->
-                                        <!--begin::Item-->
-                                        <div class="d-flex flex-column me-7 me-lg-16 pt-sm-3 pt-6">
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center mb-3 mb-sm-6">
-                                                <!--begin::Bullet-->
-                                                <span class="bullet bullet-dot bg-success me-2 h-10px w-10px"></span>
-                                                <!--end::Bullet-->
-                                                <!--begin::Label-->
-                                                <span class="fw-bold text-gray-600 fs-6">Email Newsletter</span>
-                                                <!--end::Label-->
-                                            </div>
-                                            <!--ed::Item-->
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center">
-                                                <!--begin::Bullet-->
-                                                <span class="bullet bullet-dot bg-warning me-2 h-10px w-10px"></span>
-                                                <!--end::Bullet-->
-                                                <!--begin::Label-->
-                                                <span class="fw-bold text-gray-600 fs-6">Courses</span>
-                                                <!--end::Label-->
-                                            </div>
-                                            <!--ed::Item-->
-                                        </div>
-                                        <!--ed::Item-->
-                                        <!--begin::Item-->
-                                        <div class="d-flex flex-column pt-sm-3 pt-6">
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center mb-3 mb-sm-6">
-                                                <!--begin::Bullet-->
-                                                <span class="bullet bullet-dot bg-info me-2 h-10px w-10px"></span>
-                                                <!--end::Bullet-->
-                                                <!--begin::Label-->
-                                                <span class="fw-bold text-gray-600 fs-6">TV Campaign</span>
-                                                <!--end::Label-->
-                                            </div>
-                                            <!--ed::Item-->
-                                            <!--begin::Item-->
-                                            <div class="d-flex align-items-center">
-                                                <!--begin::Bullet-->
-                                                <span class="bullet bullet-dot bg-success me-2 h-10px w-10px"></span>
-                                                <!--end::Bullet-->
-                                                <!--begin::Label-->
-                                                <span class="fw-bold text-gray-600 fs-6">Radio</span>
-                                                <!--end::Label-->
-                                            </div>
-                                            <!--ed::Item-->
-                                        </div>
-                                        <!--ed::Item-->
-                                    </div>
-                                    <!--ed::Items-->
-                                </div>
-                                <!--end::Tab pane-->
-                            </div>
-                            <!--end::Tab content-->
-                        </div>
-                        <!--end::Body-->
-                    </div>
-                    <!--end::Chart widget 8-->
-                </div>
-                <!--end::Col-->
-                <!--begin::Col-->
-                <div class="col-xl-6 mb-5 mb-xl-10">
-                    <!--begin::Tables widget 16-->
-                    <div class="card card-flush h-xl-100">
-                        <!--begin::Header-->
-                        <div class="card-header pt-5">
-                            <!--begin::Title-->
-                            <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label fw-bold text-gray-800">Authors Achievements</span>
-                                <span class="text-gray-500 mt-1 fw-semibold fs-6">Avg. 69.34% Conv. Rate</span>
-                            </h3>
-                            <!--end::Title-->
-                            <!--begin::Toolbar-->
-                            <div class="card-toolbar">
-                                <!--begin::Menu-->
-                                <button class="btn btn-icon btn-color-gray-500 btn-active-color-primary justify-content-end" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
-                                    <i class="ki-duotone ki-dots-square fs-1 text-gray-500 me-n1">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                        <span class="path3"></span>
-                                        <span class="path4"></span>
-                                    </i>
-                                </button>
-                                <!--begin::Menu 2-->
-                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px" data-kt-menu="true">
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <div class="menu-content fs-6 text-gray-900 fw-bold px-3 py-4">Quick Actions</div>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu separator-->
-                                    <div class="separator mb-3 opacity-75"></div>
-                                    <!--end::Menu separator-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">New Ticket</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">New Customer</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
-                                        <!--begin::Menu item-->
-                                        <a href="#" class="menu-link px-3">
-                                            <span class="menu-title">New Group</span>
-                                            <span class="menu-arrow"></span>
-                                        </a>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu sub-->
-                                        <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Admin Group</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Staff Group</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Member Group</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                        </div>
-                                        <!--end::Menu sub-->
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">New Contact</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu separator-->
-                                    <div class="separator mt-3 opacity-75"></div>
-                                    <!--end::Menu separator-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <div class="menu-content px-3 py-3">
-                                            <a class="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
-                                        </div>
-                                    </div>
-                                    <!--end::Menu item-->
-                                </div>
-                                <!--end::Menu 2-->
-                                <!--end::Menu-->
-                            </div>
-                            <!--end::Toolbar-->
-                        </div>
-                        <!--end::Header-->
-                        <!--begin::Body-->
-                        <div class="card-body pt-6">
-                            <!--begin::Nav-->
-                            <ul class="nav nav-pills nav-pills-custom mb-3" role="tablist">
-                                <!--begin::Item-->
-                                <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
-                                    <!--begin::Link-->
-                                    <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-80px h-85px pt-5 pb-2 active" id="kt_stats_widget_16_tab_link_1" data-bs-toggle="pill" href="#kt_stats_widget_16_tab_1" aria-selected="true" role="tab">
-                                        <!--begin::Icon-->
-                                        <div class="nav-icon mb-3">
-                                            <i class="ki-duotone ki-car fs-1">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                                <span class="path3"></span>
-                                                <span class="path4"></span>
-                                                <span class="path5"></span>
-                                            </i>
-                                        </div>
-                                        <!--end::Icon-->
-                                        <!--begin::Title-->
-                                        <span class="nav-text text-gray-800 fw-bold fs-6 lh-1">SaaS</span>
-                                        <!--end::Title-->
-                                        <!--begin::Bullet-->
-                                        <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
-                                        <!--end::Bullet-->
-                                    </a>
-                                    <!--end::Link-->
-                                </li>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
-                                    <!--begin::Link-->
-                                    <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-80px h-85px pt-5 pb-2" id="kt_stats_widget_16_tab_link_2" data-bs-toggle="pill" href="#kt_stats_widget_16_tab_2" aria-selected="false" tabindex="-1" role="tab">
-                                        <!--begin::Icon-->
-                                        <div class="nav-icon mb-3">
-                                            <i class="ki-duotone ki-bitcoin fs-1">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>
-                                        </div>
-                                        <!--end::Icon-->
-                                        <!--begin::Title-->
-                                        <span class="nav-text text-gray-800 fw-bold fs-6 lh-1">Crypto</span>
-                                        <!--end::Title-->
-                                        <!--begin::Bullet-->
-                                        <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
-                                        <!--end::Bullet-->
-                                    </a>
-                                    <!--end::Link-->
-                                </li>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
-                                    <!--begin::Link-->
-                                    <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-80px h-85px pt-5 pb-2" id="kt_stats_widget_16_tab_link_3" data-bs-toggle="pill" href="#kt_stats_widget_16_tab_3" aria-selected="false" tabindex="-1" role="tab">
-                                        <!--begin::Icon-->
-                                        <div class="nav-icon mb-3">
-                                            <i class="ki-duotone ki-like fs-1">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>
-                                        </div>
-                                        <!--end::Icon-->
-                                        <!--begin::Title-->
-                                        <span class="nav-text text-gray-800 fw-bold fs-6 lh-1">Social</span>
-                                        <!--end::Title-->
-                                        <!--begin::Bullet-->
-                                        <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
-                                        <!--end::Bullet-->
-                                    </a>
-                                    <!--end::Link-->
-                                </li>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
-                                    <!--begin::Link-->
-                                    <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-80px h-85px pt-5 pb-2" id="kt_stats_widget_16_tab_link_4" data-bs-toggle="pill" href="#kt_stats_widget_16_tab_4" aria-selected="false" tabindex="-1" role="tab">
-                                        <!--begin::Icon-->
-                                        <div class="nav-icon mb-3">
-                                            <i class="ki-duotone ki-tablet fs-1">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                                <span class="path3"></span>
-                                            </i>
-                                        </div>
-                                        <!--end::Icon-->
-                                        <!--begin::Title-->
-                                        <span class="nav-text text-gray-800 fw-bold fs-6 lh-1">Mobile</span>
-                                        <!--end::Title-->
-                                        <!--begin::Bullet-->
-                                        <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
-                                        <!--end::Bullet-->
-                                    </a>
-                                    <!--end::Link-->
-                                </li>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
-                                    <!--begin::Link-->
-                                    <a class="nav-link btn btn-outline btn-flex btn-color-muted btn-active-color-primary flex-column overflow-hidden w-80px h-85px pt-5 pb-2" id="kt_stats_widget_16_tab_link_5" data-bs-toggle="pill" href="#kt_stats_widget_16_tab_5" aria-selected="false" tabindex="-1" role="tab">
-                                        <!--begin::Icon-->
-                                        <div class="nav-icon mb-3">
-                                            <i class="ki-duotone ki-send fs-1">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>
-                                        </div>
-                                        <!--end::Icon-->
-                                        <!--begin::Title-->
-                                        <span class="nav-text text-gray-800 fw-bold fs-6 lh-1">Others</span>
-                                        <!--end::Title-->
-                                        <!--begin::Bullet-->
-                                        <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
-                                        <!--end::Bullet-->
-                                    </a>
-                                    <!--end::Link-->
-                                </li>
-                                <!--end::Item-->
-                            </ul>
-                            <!--end::Nav-->
-                            <!--begin::Tab Content-->
-                            <div class="tab-content">
-                                <!--begin::Tap pane-->
-                                <div class="tab-pane fade show active" id="kt_stats_widget_16_tab_1" role="tabpanel" aria-labelledby="kt_stats_widget_16_tab_link_1">
-                                    <!--begin::Table container-->
-                                    <div class="table-responsive">
-                                        <!--begin::Table-->
-                                        <table class="table table-row-dashed align-middle gs-0 gy-3 my-0">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                            <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
-                                                <th class="p-0 pb-3 min-w-150px text-start">AUTHOR</th>
-                                                <th class="p-0 pb-3 min-w-100px text-end pe-13">CONV.</th>
-                                                <th class="p-0 pb-3 w-125px text-end pe-7">CHART</th>
-                                                <th class="p-0 pb-3 w-50px text-end">VIEW</th>
-                                            </tr>
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-3.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Guy Hawkins</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Haiti</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">78.34%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_1_1" class="h-50px mt-n8 pe-7" data-kt-chart-color="success" style="min-height: 50px;">
-                                                        <div id="apexchartsh8w45mpm" class="apexcharts-canvas apexchartsh8w45mpm apexcharts-theme-light" style="width: 92.25px; height: 50px;">
-                                                            <svg id="SvgjsSvg3231" width="92.25" height="50" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;">
-                                                                <foreignObject x="0" y="0" width="92.25" height="50">
-                                                                    <div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 25px;"></div>
-                                                                </foreignObject>
-                                                                <g id="SvgjsG3270" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g>
-                                                                <g id="SvgjsG3233" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 1)">
-                                                                    <defs id="SvgjsDefs3232">
-                                                                        <clipPath id="gridRectMaskh8w45mpm">
-                                                                            <rect id="SvgjsRect3236" width="98.25" height="54" x="-3" y="-3" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                        </clipPath>
-                                                                        <clipPath id="forecastMaskh8w45mpm"></clipPath>
-                                                                        <clipPath id="nonForecastMaskh8w45mpm"></clipPath>
-                                                                        <clipPath id="gridRectMarkerMaskh8w45mpm">
-                                                                            <rect id="SvgjsRect3237" width="96.25" height="52" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                        </clipPath>
-                                                                    </defs>
-                                                                    <g id="SvgjsG3244" class="apexcharts-grid">
-                                                                        <g id="SvgjsG3245" class="apexcharts-gridlines-horizontal" style="display: none;">
-                                                                            <line id="SvgjsLine3248" x1="0" y1="0" x2="92.25" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                            <line id="SvgjsLine3249" x1="0" y1="48" x2="92.25" y2="48" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                        </g>
-                                                                        <g id="SvgjsG3246" class="apexcharts-gridlines-vertical" style="display: none;"></g>
-                                                                        <line id="SvgjsLine3251" x1="0" y1="48" x2="92.25" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                                        <line id="SvgjsLine3250" x1="0" y1="1" x2="0" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                                    </g>
-                                                                    <g id="SvgjsG3247" class="apexcharts-grid-borders" style="display: none;"></g>
-                                                                    <g id="SvgjsG3238" class="apexcharts-area-series apexcharts-plot-series">
-                                                                        <g id="SvgjsG3239" class="apexcharts-series" zIndex="0" seriesName="NetxProfit" data:longestSeries="true" rel="1" data:realIndex="0">
-                                                                            <path id="SvgjsPath3242" d="M 0 35.2C 2.483653846153846 35.2 4.612500000000001 40 7.096153846153847 40C 9.579807692307693 40 11.708653846153847 36 14.192307692307693 36C 16.67596153846154 36 18.804807692307694 31.2 21.28846153846154 31.2C 23.772115384615386 31.2 25.90096153846154 43.2 28.384615384615387 43.2C 30.868269230769233 43.2 32.997115384615384 39.2 35.48076923076923 39.2C 37.96442307692308 39.2 40.09326923076924 44 42.57692307692308 44C 45.06057692307692 44 47.18942307692308 29.6 49.67307692307693 29.6C 52.156730769230776 29.6 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 33.6 70.96153846153847 33.6C 73.44519230769231 33.6 75.57403846153846 42.4 78.0576923076923 42.4C 80.54134615384615 42.4 82.67019230769232 31.2 85.15384615384616 31.2C 87.6375 31.2 89.76634615384616 37.6 92.25 37.6C 92.25 37.6 92.25 37.6 92.25 48 L 0 48z" fill="rgba(255,255,255,1)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskh8w45mpm)" pathTo="M 0 35.2C 2.483653846153846 35.2 4.612500000000001 40 7.096153846153847 40C 9.579807692307693 40 11.708653846153847 36 14.192307692307693 36C 16.67596153846154 36 18.804807692307694 31.2 21.28846153846154 31.2C 23.772115384615386 31.2 25.90096153846154 43.2 28.384615384615387 43.2C 30.868269230769233 43.2 32.997115384615384 39.2 35.48076923076923 39.2C 37.96442307692308 39.2 40.09326923076924 44 42.57692307692308 44C 45.06057692307692 44 47.18942307692308 29.6 49.67307692307693 29.6C 52.156730769230776 29.6 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 33.6 70.96153846153847 33.6C 73.44519230769231 33.6 75.57403846153846 42.4 78.0576923076923 42.4C 80.54134615384615 42.4 82.67019230769232 31.2 85.15384615384616 31.2C 87.6375 31.2 89.76634615384616 37.6 92.25 37.6C 92.25 37.6 92.25 37.6 92.25 48 L 0 48z" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48 L 0 48"></path>
-                                                                            <path id="SvgjsPath3243" d="M 0 35.2C 2.483653846153846 35.2 4.612500000000001 40 7.096153846153847 40C 9.579807692307693 40 11.708653846153847 36 14.192307692307693 36C 16.67596153846154 36 18.804807692307694 31.2 21.28846153846154 31.2C 23.772115384615386 31.2 25.90096153846154 43.2 28.384615384615387 43.2C 30.868269230769233 43.2 32.997115384615384 39.2 35.48076923076923 39.2C 37.96442307692308 39.2 40.09326923076924 44 42.57692307692308 44C 45.06057692307692 44 47.18942307692308 29.6 49.67307692307693 29.6C 52.156730769230776 29.6 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 33.6 70.96153846153847 33.6C 73.44519230769231 33.6 75.57403846153846 42.4 78.0576923076923 42.4C 80.54134615384615 42.4 82.67019230769232 31.2 85.15384615384616 31.2C 87.6375 31.2 89.76634615384616 37.6 92.25 37.6" fill="none" fill-opacity="1" stroke="#17c653" stroke-opacity="1" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskh8w45mpm)" pathTo="M 0 35.2C 2.483653846153846 35.2 4.612500000000001 40 7.096153846153847 40C 9.579807692307693 40 11.708653846153847 36 14.192307692307693 36C 16.67596153846154 36 18.804807692307694 31.2 21.28846153846154 31.2C 23.772115384615386 31.2 25.90096153846154 43.2 28.384615384615387 43.2C 30.868269230769233 43.2 32.997115384615384 39.2 35.48076923076923 39.2C 37.96442307692308 39.2 40.09326923076924 44 42.57692307692308 44C 45.06057692307692 44 47.18942307692308 29.6 49.67307692307693 29.6C 52.156730769230776 29.6 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 33.6 70.96153846153847 33.6C 73.44519230769231 33.6 75.57403846153846 42.4 78.0576923076923 42.4C 80.54134615384615 42.4 82.67019230769232 31.2 85.15384615384616 31.2C 87.6375 31.2 89.76634615384616 37.6 92.25 37.6" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48" fill-rule="evenodd"></path>
-                                                                            <g id="SvgjsG3240" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0"></g>
-                                                                        </g>
-                                                                        <g id="SvgjsG3241" class="apexcharts-datalabels" data:realIndex="0"></g>
-                                                                    </g>
-                                                                    <line id="SvgjsLine3252" x1="0" y1="0" x2="92.25" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line>
-                                                                    <line id="SvgjsLine3253" x1="0" y1="0" x2="92.25" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line>
-                                                                    <g id="SvgjsG3254" class="apexcharts-xaxis" transform="translate(0, 0)">
-                                                                        <g id="SvgjsG3255" class="apexcharts-xaxis-texts-g" transform="translate(0, 4)"></g>
-                                                                    </g>
-                                                                    <g id="SvgjsG3271" class="apexcharts-yaxis-annotations"></g>
-                                                                    <g id="SvgjsG3272" class="apexcharts-xaxis-annotations"></g>
-                                                                    <g id="SvgjsG3273" class="apexcharts-point-annotations"></g>
-                                                                </g>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-2.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jane Cooper</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Monaco</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">63.83%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_1_2" class="h-50px mt-n8 pe-7" data-kt-chart-color="danger" style="min-height: 50px;">
-                                                        <div id="apexchartspklsl9lo" class="apexcharts-canvas apexchartspklsl9lo apexcharts-theme-light" style="width: 92.25px; height: 50px;">
-                                                            <svg id="SvgjsSvg3274" width="92.25" height="50" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;">
-                                                                <foreignObject x="0" y="0" width="92.25" height="50">
-                                                                    <div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 25px;"></div>
-                                                                </foreignObject>
-                                                                <g id="SvgjsG3313" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g>
-                                                                <g id="SvgjsG3276" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 1)">
-                                                                    <defs id="SvgjsDefs3275">
-                                                                        <clipPath id="gridRectMaskpklsl9lo">
-                                                                            <rect id="SvgjsRect3279" width="98.25" height="54" x="-3" y="-3" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                        </clipPath>
-                                                                        <clipPath id="forecastMaskpklsl9lo"></clipPath>
-                                                                        <clipPath id="nonForecastMaskpklsl9lo"></clipPath>
-                                                                        <clipPath id="gridRectMarkerMaskpklsl9lo">
-                                                                            <rect id="SvgjsRect3280" width="96.25" height="52" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                        </clipPath>
-                                                                    </defs>
-                                                                    <g id="SvgjsG3287" class="apexcharts-grid">
-                                                                        <g id="SvgjsG3288" class="apexcharts-gridlines-horizontal" style="display: none;">
-                                                                            <line id="SvgjsLine3291" x1="0" y1="0" x2="92.25" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                            <line id="SvgjsLine3292" x1="0" y1="48" x2="92.25" y2="48" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                        </g>
-                                                                        <g id="SvgjsG3289" class="apexcharts-gridlines-vertical" style="display: none;"></g>
-                                                                        <line id="SvgjsLine3294" x1="0" y1="48" x2="92.25" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                                        <line id="SvgjsLine3293" x1="0" y1="1" x2="0" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                                    </g>
-                                                                    <g id="SvgjsG3290" class="apexcharts-grid-borders" style="display: none;"></g>
-                                                                    <g id="SvgjsG3281" class="apexcharts-area-series apexcharts-plot-series">
-                                                                        <g id="SvgjsG3282" class="apexcharts-series" zIndex="0" seriesName="NetxProfit" data:longestSeries="true" rel="1" data:realIndex="0">
-                                                                            <path id="SvgjsPath3285" d="M 0 41.6C 2.483653846153846 41.6 4.612500000000001 44 7.096153846153847 44C 9.579807692307693 44 11.708653846153847 35.2 14.192307692307693 35.2C 16.67596153846154 35.2 18.804807692307694 45.6 21.28846153846154 45.6C 23.772115384615386 45.6 25.90096153846154 29.6 28.384615384615387 29.6C 30.868269230769233 29.6 32.997115384615384 35.2 35.48076923076923 35.2C 37.96442307692308 35.2 40.09326923076924 39.2 42.57692307692308 39.2C 45.06057692307692 39.2 47.18942307692308 36 49.67307692307693 36C 52.156730769230776 36 54.28557692307693 45.6 56.769230769230774 45.6C 59.252884615384616 45.6 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 36 70.96153846153847 36C 73.44519230769231 36 75.57403846153846 42.4 78.0576923076923 42.4C 80.54134615384615 42.4 82.67019230769232 34.4 85.15384615384616 34.4C 87.6375 34.4 89.76634615384616 40.8 92.25 40.8C 92.25 40.8 92.25 40.8 92.25 48 L 0 48z" fill="rgba(255,255,255,1)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskpklsl9lo)" pathTo="M 0 41.6C 2.483653846153846 41.6 4.612500000000001 44 7.096153846153847 44C 9.579807692307693 44 11.708653846153847 35.2 14.192307692307693 35.2C 16.67596153846154 35.2 18.804807692307694 45.6 21.28846153846154 45.6C 23.772115384615386 45.6 25.90096153846154 29.6 28.384615384615387 29.6C 30.868269230769233 29.6 32.997115384615384 35.2 35.48076923076923 35.2C 37.96442307692308 35.2 40.09326923076924 39.2 42.57692307692308 39.2C 45.06057692307692 39.2 47.18942307692308 36 49.67307692307693 36C 52.156730769230776 36 54.28557692307693 45.6 56.769230769230774 45.6C 59.252884615384616 45.6 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 36 70.96153846153847 36C 73.44519230769231 36 75.57403846153846 42.4 78.0576923076923 42.4C 80.54134615384615 42.4 82.67019230769232 34.4 85.15384615384616 34.4C 87.6375 34.4 89.76634615384616 40.8 92.25 40.8C 92.25 40.8 92.25 40.8 92.25 48 L 0 48z" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48 L 0 48"></path>
-                                                                            <path id="SvgjsPath3286" d="M 0 41.6C 2.483653846153846 41.6 4.612500000000001 44 7.096153846153847 44C 9.579807692307693 44 11.708653846153847 35.2 14.192307692307693 35.2C 16.67596153846154 35.2 18.804807692307694 45.6 21.28846153846154 45.6C 23.772115384615386 45.6 25.90096153846154 29.6 28.384615384615387 29.6C 30.868269230769233 29.6 32.997115384615384 35.2 35.48076923076923 35.2C 37.96442307692308 35.2 40.09326923076924 39.2 42.57692307692308 39.2C 45.06057692307692 39.2 47.18942307692308 36 49.67307692307693 36C 52.156730769230776 36 54.28557692307693 45.6 56.769230769230774 45.6C 59.252884615384616 45.6 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 36 70.96153846153847 36C 73.44519230769231 36 75.57403846153846 42.4 78.0576923076923 42.4C 80.54134615384615 42.4 82.67019230769232 34.4 85.15384615384616 34.4C 87.6375 34.4 89.76634615384616 40.8 92.25 40.8" fill="none" fill-opacity="1" stroke="#f8285a" stroke-opacity="1" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskpklsl9lo)" pathTo="M 0 41.6C 2.483653846153846 41.6 4.612500000000001 44 7.096153846153847 44C 9.579807692307693 44 11.708653846153847 35.2 14.192307692307693 35.2C 16.67596153846154 35.2 18.804807692307694 45.6 21.28846153846154 45.6C 23.772115384615386 45.6 25.90096153846154 29.6 28.384615384615387 29.6C 30.868269230769233 29.6 32.997115384615384 35.2 35.48076923076923 35.2C 37.96442307692308 35.2 40.09326923076924 39.2 42.57692307692308 39.2C 45.06057692307692 39.2 47.18942307692308 36 49.67307692307693 36C 52.156730769230776 36 54.28557692307693 45.6 56.769230769230774 45.6C 59.252884615384616 45.6 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 36 70.96153846153847 36C 73.44519230769231 36 75.57403846153846 42.4 78.0576923076923 42.4C 80.54134615384615 42.4 82.67019230769232 34.4 85.15384615384616 34.4C 87.6375 34.4 89.76634615384616 40.8 92.25 40.8" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48" fill-rule="evenodd"></path>
-                                                                            <g id="SvgjsG3283" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0"></g>
-                                                                        </g>
-                                                                        <g id="SvgjsG3284" class="apexcharts-datalabels" data:realIndex="0"></g>
-                                                                    </g>
-                                                                    <line id="SvgjsLine3295" x1="0" y1="0" x2="92.25" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line>
-                                                                    <line id="SvgjsLine3296" x1="0" y1="0" x2="92.25" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line>
-                                                                    <g id="SvgjsG3297" class="apexcharts-xaxis" transform="translate(0, 0)">
-                                                                        <g id="SvgjsG3298" class="apexcharts-xaxis-texts-g" transform="translate(0, 4)"></g>
-                                                                    </g>
-                                                                    <g id="SvgjsG3314" class="apexcharts-yaxis-annotations"></g>
-                                                                    <g id="SvgjsG3315" class="apexcharts-xaxis-annotations"></g>
-                                                                    <g id="SvgjsG3316" class="apexcharts-point-annotations"></g>
-                                                                </g>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-9.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Poland</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">92.56%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_1_3" class="h-50px mt-n8 pe-7" data-kt-chart-color="success" style="min-height: 50px;">
-                                                        <div id="apexchartsfdjfhdhh" class="apexcharts-canvas apexchartsfdjfhdhh apexcharts-theme-light" style="width: 92.25px; height: 50px;">
-                                                            <svg id="SvgjsSvg3317" width="92.25" height="50" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;">
-                                                                <foreignObject x="0" y="0" width="92.25" height="50">
-                                                                    <div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 25px;"></div>
-                                                                </foreignObject>
-                                                                <g id="SvgjsG3356" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g>
-                                                                <g id="SvgjsG3319" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 1)">
-                                                                    <defs id="SvgjsDefs3318">
-                                                                        <clipPath id="gridRectMaskfdjfhdhh">
-                                                                            <rect id="SvgjsRect3322" width="98.25" height="54" x="-3" y="-3" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                        </clipPath>
-                                                                        <clipPath id="forecastMaskfdjfhdhh"></clipPath>
-                                                                        <clipPath id="nonForecastMaskfdjfhdhh"></clipPath>
-                                                                        <clipPath id="gridRectMarkerMaskfdjfhdhh">
-                                                                            <rect id="SvgjsRect3323" width="96.25" height="52" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                        </clipPath>
-                                                                    </defs>
-                                                                    <g id="SvgjsG3330" class="apexcharts-grid">
-                                                                        <g id="SvgjsG3331" class="apexcharts-gridlines-horizontal" style="display: none;">
-                                                                            <line id="SvgjsLine3334" x1="0" y1="0" x2="92.25" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                            <line id="SvgjsLine3335" x1="0" y1="48" x2="92.25" y2="48" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                        </g>
-                                                                        <g id="SvgjsG3332" class="apexcharts-gridlines-vertical" style="display: none;"></g>
-                                                                        <line id="SvgjsLine3337" x1="0" y1="48" x2="92.25" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                                        <line id="SvgjsLine3336" x1="0" y1="1" x2="0" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                                    </g>
-                                                                    <g id="SvgjsG3333" class="apexcharts-grid-borders" style="display: none;"></g>
-                                                                    <g id="SvgjsG3324" class="apexcharts-area-series apexcharts-plot-series">
-                                                                        <g id="SvgjsG3325" class="apexcharts-series" zIndex="0" seriesName="NetxProfit" data:longestSeries="true" rel="1" data:realIndex="0">
-                                                                            <path id="SvgjsPath3328" d="M 0 41.6C 2.483653846153846 41.6 4.612500000000001 43.2 7.096153846153847 43.2C 9.579807692307693 43.2 11.708653846153847 35.2 14.192307692307693 35.2C 16.67596153846154 35.2 18.804807692307694 45.6 21.28846153846154 45.6C 23.772115384615386 45.6 25.90096153846154 29.6 28.384615384615387 29.6C 30.868269230769233 29.6 32.997115384615384 35.2 35.48076923076923 35.2C 37.96442307692308 35.2 40.09326923076924 39.2 42.57692307692308 39.2C 45.06057692307692 39.2 47.18942307692308 36.8 49.67307692307693 36.8C 52.156730769230776 36.8 54.28557692307693 45.6 56.769230769230774 45.6C 59.252884615384616 45.6 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 36 70.96153846153847 36C 73.44519230769231 36 75.57403846153846 41.6 78.0576923076923 41.6C 80.54134615384615 41.6 82.67019230769232 34.4 85.15384615384616 34.4C 87.6375 34.4 89.76634615384616 40.8 92.25 40.8C 92.25 40.8 92.25 40.8 92.25 48 L 0 48z" fill="rgba(255,255,255,1)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskfdjfhdhh)" pathTo="M 0 41.6C 2.483653846153846 41.6 4.612500000000001 43.2 7.096153846153847 43.2C 9.579807692307693 43.2 11.708653846153847 35.2 14.192307692307693 35.2C 16.67596153846154 35.2 18.804807692307694 45.6 21.28846153846154 45.6C 23.772115384615386 45.6 25.90096153846154 29.6 28.384615384615387 29.6C 30.868269230769233 29.6 32.997115384615384 35.2 35.48076923076923 35.2C 37.96442307692308 35.2 40.09326923076924 39.2 42.57692307692308 39.2C 45.06057692307692 39.2 47.18942307692308 36.8 49.67307692307693 36.8C 52.156730769230776 36.8 54.28557692307693 45.6 56.769230769230774 45.6C 59.252884615384616 45.6 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 36 70.96153846153847 36C 73.44519230769231 36 75.57403846153846 41.6 78.0576923076923 41.6C 80.54134615384615 41.6 82.67019230769232 34.4 85.15384615384616 34.4C 87.6375 34.4 89.76634615384616 40.8 92.25 40.8C 92.25 40.8 92.25 40.8 92.25 48 L 0 48z" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48 L 0 48"></path>
-                                                                            <path id="SvgjsPath3329" d="M 0 41.6C 2.483653846153846 41.6 4.612500000000001 43.2 7.096153846153847 43.2C 9.579807692307693 43.2 11.708653846153847 35.2 14.192307692307693 35.2C 16.67596153846154 35.2 18.804807692307694 45.6 21.28846153846154 45.6C 23.772115384615386 45.6 25.90096153846154 29.6 28.384615384615387 29.6C 30.868269230769233 29.6 32.997115384615384 35.2 35.48076923076923 35.2C 37.96442307692308 35.2 40.09326923076924 39.2 42.57692307692308 39.2C 45.06057692307692 39.2 47.18942307692308 36.8 49.67307692307693 36.8C 52.156730769230776 36.8 54.28557692307693 45.6 56.769230769230774 45.6C 59.252884615384616 45.6 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 36 70.96153846153847 36C 73.44519230769231 36 75.57403846153846 41.6 78.0576923076923 41.6C 80.54134615384615 41.6 82.67019230769232 34.4 85.15384615384616 34.4C 87.6375 34.4 89.76634615384616 40.8 92.25 40.8" fill="none" fill-opacity="1" stroke="#17c653" stroke-opacity="1" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskfdjfhdhh)" pathTo="M 0 41.6C 2.483653846153846 41.6 4.612500000000001 43.2 7.096153846153847 43.2C 9.579807692307693 43.2 11.708653846153847 35.2 14.192307692307693 35.2C 16.67596153846154 35.2 18.804807692307694 45.6 21.28846153846154 45.6C 23.772115384615386 45.6 25.90096153846154 29.6 28.384615384615387 29.6C 30.868269230769233 29.6 32.997115384615384 35.2 35.48076923076923 35.2C 37.96442307692308 35.2 40.09326923076924 39.2 42.57692307692308 39.2C 45.06057692307692 39.2 47.18942307692308 36.8 49.67307692307693 36.8C 52.156730769230776 36.8 54.28557692307693 45.6 56.769230769230774 45.6C 59.252884615384616 45.6 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 36 70.96153846153847 36C 73.44519230769231 36 75.57403846153846 41.6 78.0576923076923 41.6C 80.54134615384615 41.6 82.67019230769232 34.4 85.15384615384616 34.4C 87.6375 34.4 89.76634615384616 40.8 92.25 40.8" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48" fill-rule="evenodd"></path>
-                                                                            <g id="SvgjsG3326" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0"></g>
-                                                                        </g>
-                                                                        <g id="SvgjsG3327" class="apexcharts-datalabels" data:realIndex="0"></g>
-                                                                    </g>
-                                                                    <line id="SvgjsLine3338" x1="0" y1="0" x2="92.25" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line>
-                                                                    <line id="SvgjsLine3339" x1="0" y1="0" x2="92.25" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line>
-                                                                    <g id="SvgjsG3340" class="apexcharts-xaxis" transform="translate(0, 0)">
-                                                                        <g id="SvgjsG3341" class="apexcharts-xaxis-texts-g" transform="translate(0, 4)"></g>
-                                                                    </g>
-                                                                    <g id="SvgjsG3357" class="apexcharts-yaxis-annotations"></g>
-                                                                    <g id="SvgjsG3358" class="apexcharts-xaxis-annotations"></g>
-                                                                    <g id="SvgjsG3359" class="apexcharts-point-annotations"></g>
-                                                                </g>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-7.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Cody Fishers</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Mexico</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">63.08%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_1_4" class="h-50px mt-n8 pe-7" data-kt-chart-color="success" style="min-height: 50px;">
-                                                        <div id="apexcharts710xae5v" class="apexcharts-canvas apexcharts710xae5v apexcharts-theme-light" style="width: 92.25px; height: 50px;">
-                                                            <svg id="SvgjsSvg3360" width="92.25" height="50" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;">
-                                                                <foreignObject x="0" y="0" width="92.25" height="50">
-                                                                    <div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 25px;"></div>
-                                                                </foreignObject>
-                                                                <g id="SvgjsG3399" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g>
-                                                                <g id="SvgjsG3362" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 1)">
-                                                                    <defs id="SvgjsDefs3361">
-                                                                        <clipPath id="gridRectMask710xae5v">
-                                                                            <rect id="SvgjsRect3365" width="98.25" height="54" x="-3" y="-3" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                        </clipPath>
-                                                                        <clipPath id="forecastMask710xae5v"></clipPath>
-                                                                        <clipPath id="nonForecastMask710xae5v"></clipPath>
-                                                                        <clipPath id="gridRectMarkerMask710xae5v">
-                                                                            <rect id="SvgjsRect3366" width="96.25" height="52" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                        </clipPath>
-                                                                    </defs>
-                                                                    <g id="SvgjsG3373" class="apexcharts-grid">
-                                                                        <g id="SvgjsG3374" class="apexcharts-gridlines-horizontal" style="display: none;">
-                                                                            <line id="SvgjsLine3377" x1="0" y1="0" x2="92.25" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                            <line id="SvgjsLine3378" x1="0" y1="48" x2="92.25" y2="48" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                        </g>
-                                                                        <g id="SvgjsG3375" class="apexcharts-gridlines-vertical" style="display: none;"></g>
-                                                                        <line id="SvgjsLine3380" x1="0" y1="48" x2="92.25" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                                        <line id="SvgjsLine3379" x1="0" y1="1" x2="0" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                                    </g>
-                                                                    <g id="SvgjsG3376" class="apexcharts-grid-borders" style="display: none;"></g>
-                                                                    <g id="SvgjsG3367" class="apexcharts-area-series apexcharts-plot-series">
-                                                                        <g id="SvgjsG3368" class="apexcharts-series" zIndex="0" seriesName="NetxProfit" data:longestSeries="true" rel="1" data:realIndex="0">
-                                                                            <path id="SvgjsPath3371" d="M 0 38.4C 2.483653846153846 38.4 4.612500000000001 44 7.096153846153847 44C 9.579807692307693 44 11.708653846153847 29.6 14.192307692307693 29.6C 16.67596153846154 29.6 18.804807692307694 38.4 21.28846153846154 38.4C 23.772115384615386 38.4 25.90096153846154 31.2 28.384615384615387 31.2C 30.868269230769233 31.2 32.997115384615384 40.8 35.48076923076923 40.8C 37.96442307692308 40.8 40.09326923076924 34.4 42.57692307692308 34.4C 45.06057692307692 34.4 47.18942307692308 32 49.67307692307693 32C 52.156730769230776 32 54.28557692307693 44.8 56.769230769230774 44.8C 59.252884615384616 44.8 61.38173076923077 28.8 63.86538461538462 28.8C 66.34903846153847 28.8 68.47788461538462 40.8 70.96153846153847 40.8C 73.44519230769231 40.8 75.57403846153846 37.6 78.0576923076923 37.6C 80.54134615384615 37.6 82.67019230769232 33.6 85.15384615384616 33.6C 87.6375 33.6 89.76634615384616 40.8 92.25 40.8C 92.25 40.8 92.25 40.8 92.25 48 L 0 48z" fill="rgba(255,255,255,1)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMask710xae5v)" pathTo="M 0 38.4C 2.483653846153846 38.4 4.612500000000001 44 7.096153846153847 44C 9.579807692307693 44 11.708653846153847 29.6 14.192307692307693 29.6C 16.67596153846154 29.6 18.804807692307694 38.4 21.28846153846154 38.4C 23.772115384615386 38.4 25.90096153846154 31.2 28.384615384615387 31.2C 30.868269230769233 31.2 32.997115384615384 40.8 35.48076923076923 40.8C 37.96442307692308 40.8 40.09326923076924 34.4 42.57692307692308 34.4C 45.06057692307692 34.4 47.18942307692308 32 49.67307692307693 32C 52.156730769230776 32 54.28557692307693 44.8 56.769230769230774 44.8C 59.252884615384616 44.8 61.38173076923077 28.8 63.86538461538462 28.8C 66.34903846153847 28.8 68.47788461538462 40.8 70.96153846153847 40.8C 73.44519230769231 40.8 75.57403846153846 37.6 78.0576923076923 37.6C 80.54134615384615 37.6 82.67019230769232 33.6 85.15384615384616 33.6C 87.6375 33.6 89.76634615384616 40.8 92.25 40.8C 92.25 40.8 92.25 40.8 92.25 48 L 0 48z" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48 L 0 48"></path>
-                                                                            <path id="SvgjsPath3372" d="M 0 38.4C 2.483653846153846 38.4 4.612500000000001 44 7.096153846153847 44C 9.579807692307693 44 11.708653846153847 29.6 14.192307692307693 29.6C 16.67596153846154 29.6 18.804807692307694 38.4 21.28846153846154 38.4C 23.772115384615386 38.4 25.90096153846154 31.2 28.384615384615387 31.2C 30.868269230769233 31.2 32.997115384615384 40.8 35.48076923076923 40.8C 37.96442307692308 40.8 40.09326923076924 34.4 42.57692307692308 34.4C 45.06057692307692 34.4 47.18942307692308 32 49.67307692307693 32C 52.156730769230776 32 54.28557692307693 44.8 56.769230769230774 44.8C 59.252884615384616 44.8 61.38173076923077 28.8 63.86538461538462 28.8C 66.34903846153847 28.8 68.47788461538462 40.8 70.96153846153847 40.8C 73.44519230769231 40.8 75.57403846153846 37.6 78.0576923076923 37.6C 80.54134615384615 37.6 82.67019230769232 33.6 85.15384615384616 33.6C 87.6375 33.6 89.76634615384616 40.8 92.25 40.8" fill="none" fill-opacity="1" stroke="#17c653" stroke-opacity="1" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMask710xae5v)" pathTo="M 0 38.4C 2.483653846153846 38.4 4.612500000000001 44 7.096153846153847 44C 9.579807692307693 44 11.708653846153847 29.6 14.192307692307693 29.6C 16.67596153846154 29.6 18.804807692307694 38.4 21.28846153846154 38.4C 23.772115384615386 38.4 25.90096153846154 31.2 28.384615384615387 31.2C 30.868269230769233 31.2 32.997115384615384 40.8 35.48076923076923 40.8C 37.96442307692308 40.8 40.09326923076924 34.4 42.57692307692308 34.4C 45.06057692307692 34.4 47.18942307692308 32 49.67307692307693 32C 52.156730769230776 32 54.28557692307693 44.8 56.769230769230774 44.8C 59.252884615384616 44.8 61.38173076923077 28.8 63.86538461538462 28.8C 66.34903846153847 28.8 68.47788461538462 40.8 70.96153846153847 40.8C 73.44519230769231 40.8 75.57403846153846 37.6 78.0576923076923 37.6C 80.54134615384615 37.6 82.67019230769232 33.6 85.15384615384616 33.6C 87.6375 33.6 89.76634615384616 40.8 92.25 40.8" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48" fill-rule="evenodd"></path>
-                                                                            <g id="SvgjsG3369" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0"></g>
-                                                                        </g>
-                                                                        <g id="SvgjsG3370" class="apexcharts-datalabels" data:realIndex="0"></g>
-                                                                    </g>
-                                                                    <line id="SvgjsLine3381" x1="0" y1="0" x2="92.25" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line>
-                                                                    <line id="SvgjsLine3382" x1="0" y1="0" x2="92.25" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line>
-                                                                    <g id="SvgjsG3383" class="apexcharts-xaxis" transform="translate(0, 0)">
-                                                                        <g id="SvgjsG3384" class="apexcharts-xaxis-texts-g" transform="translate(0, 4)"></g>
-                                                                    </g>
-                                                                    <g id="SvgjsG3400" class="apexcharts-yaxis-annotations"></g>
-                                                                    <g id="SvgjsG3401" class="apexcharts-xaxis-annotations"></g>
-                                                                    <g id="SvgjsG3402" class="apexcharts-point-annotations"></g>
-                                                                </g>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <!--end::Table-->
-                                    </div>
-                                    <!--end::Table container-->
-                                </div>
-                                <!--end::Tap pane-->
-                                <!--begin::Tap pane-->
-                                <div class="tab-pane fade" id="kt_stats_widget_16_tab_2" role="tabpanel" aria-labelledby="kt_stats_widget_16_tab_link_2">
-                                    <!--begin::Table container-->
-                                    <div class="table-responsive">
-                                        <!--begin::Table-->
-                                        <table class="table table-row-dashed align-middle gs-0 gy-3 my-0">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                            <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
-                                                <th class="p-0 pb-3 min-w-150px text-start">AUTHOR</th>
-                                                <th class="p-0 pb-3 min-w-100px text-end pe-13">CONV.</th>
-                                                <th class="p-0 pb-3 w-125px text-end pe-7">CHART</th>
-                                                <th class="p-0 pb-3 w-50px text-end">VIEW</th>
-                                            </tr>
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-25.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Brooklyn Simmons</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Poland</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">85.23%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_2_1" class="h-50px mt-n8 pe-7" data-kt-chart-color="success"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-24.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Mexico</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">74.83%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_2_2" class="h-50px mt-n8 pe-7" data-kt-chart-color="danger"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-20.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Annette Black</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Haiti</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">90.06%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_2_3" class="h-50px mt-n8 pe-7" data-kt-chart-color="success"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-17.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Marvin McKinney</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Monaco</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">54.08%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_2_4" class="h-50px mt-n8 pe-7" data-kt-chart-color="success"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <!--end::Table-->
-                                    </div>
-                                    <!--end::Table container-->
-                                </div>
-                                <!--end::Tap pane-->
-                                <!--begin::Tap pane-->
-                                <div class="tab-pane fade" id="kt_stats_widget_16_tab_3" role="tabpanel" aria-labelledby="kt_stats_widget_16_tab_link_3">
-                                    <!--begin::Table container-->
-                                    <div class="table-responsive">
-                                        <!--begin::Table-->
-                                        <table class="table table-row-dashed align-middle gs-0 gy-3 my-0">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                            <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
-                                                <th class="p-0 pb-3 min-w-150px text-start">AUTHOR</th>
-                                                <th class="p-0 pb-3 min-w-100px text-end pe-13">CONV.</th>
-                                                <th class="p-0 pb-3 w-125px text-end pe-7">CHART</th>
-                                                <th class="p-0 pb-3 w-50px text-end">VIEW</th>
-                                            </tr>
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-11.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">New York</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">52.34%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_3_1" class="h-50px mt-n8 pe-7" data-kt-chart-color="success"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-23.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Ronald Richards</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Madrid</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">77.65%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_3_2" class="h-50px mt-n8 pe-7" data-kt-chart-color="danger"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-4.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Leslie Alexander</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Pune</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">82.47%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_3_3" class="h-50px mt-n8 pe-7" data-kt-chart-color="success"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-1.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Courtney Henry</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Mexico</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">67.84%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_3_4" class="h-50px mt-n8 pe-7" data-kt-chart-color="success"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <!--end::Table-->
-                                    </div>
-                                    <!--end::Table container-->
-                                </div>
-                                <!--end::Tap pane-->
-                                <!--begin::Tap pane-->
-                                <div class="tab-pane fade" id="kt_stats_widget_16_tab_4" role="tabpanel" aria-labelledby="kt_stats_widget_16_tab_link_4">
-                                    <!--begin::Table container-->
-                                    <div class="table-responsive">
-                                        <!--begin::Table-->
-                                        <table class="table table-row-dashed align-middle gs-0 gy-3 my-0">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                            <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
-                                                <th class="p-0 pb-3 min-w-150px text-start">AUTHOR</th>
-                                                <th class="p-0 pb-3 min-w-100px text-end pe-13">CONV.</th>
-                                                <th class="p-0 pb-3 w-125px text-end pe-7">CHART</th>
-                                                <th class="p-0 pb-3 w-50px text-end">VIEW</th>
-                                            </tr>
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-12.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Arlene McCoy</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">London</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">53.44%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_4_1" class="h-50px mt-n8 pe-7" data-kt-chart-color="success"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-21.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Marvin McKinneyr</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Monaco</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">74.64%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_4_2" class="h-50px mt-n8 pe-7" data-kt-chart-color="danger"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-30.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">PManila</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">88.56%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_4_3" class="h-50px mt-n8 pe-7" data-kt-chart-color="success"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-14.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Iceland</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">63.16%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_4_4" class="h-50px mt-n8 pe-7" data-kt-chart-color="success"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <!--end::Table-->
-                                    </div>
-                                    <!--end::Table container-->
-                                </div>
-                                <!--end::Tap pane-->
-                                <!--begin::Tap pane-->
-                                <div class="tab-pane fade" id="kt_stats_widget_16_tab_5" role="tabpanel" aria-labelledby="kt_stats_widget_16_tab_link_5">
-                                    <!--begin::Table container-->
-                                    <div class="table-responsive">
-                                        <!--begin::Table-->
-                                        <table class="table table-row-dashed align-middle gs-0 gy-3 my-0">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                            <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
-                                                <th class="p-0 pb-3 min-w-150px text-start">AUTHOR</th>
-                                                <th class="p-0 pb-3 min-w-100px text-end pe-13">CONV.</th>
-                                                <th class="p-0 pb-3 w-125px text-end pe-7">CHART</th>
-                                                <th class="p-0 pb-3 w-50px text-end">VIEW</th>
-                                            </tr>
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-6.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jane Cooper</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Haiti</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">68.54%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_5_1" class="h-50px mt-n8 pe-7" data-kt-chart-color="success"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-10.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Kiribati</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">55.83%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_5_2" class="h-50px mt-n8 pe-7" data-kt-chart-color="danger"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-9.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Poland</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">93.46%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_5_3" class="h-50px mt-n8 pe-7" data-kt-chart-color="success"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-50px me-3">
-                                                            <img src="assets/media/avatars/300-3.jpg" class="" alt="">
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Ralph Edwards</a>
-                                                            <span class="text-gray-500 fw-semibold d-block fs-7">Mexico</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">64.48%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_5_4" class="h-50px mt-n8 pe-7" data-kt-chart-color="success"></div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                        <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <!--end::Table-->
-                                    </div>
-                                    <!--end::Table container-->
-                                </div>
-                                <!--end::Tap pane-->
-                                <!--end::Table container-->
-                            </div>
-                            <!--end::Tab Content-->
-                        </div>
-                        <!--end: Card Body-->
-                    </div>
-                    <!--end::Tables widget 16-->
-                </div>
-                <!--end::Col-->
-            </div>
-            <!--end::Row-->
-            <!--begin::Row-->
-            <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
-                <!--begin::Col-->
-                <div class="col-xxl-6">
-                    <!--begin::Card widget 18-->
-                    <div class="card card-flush h-xl-100">
-                        <!--begin::Body-->
-                        <div class="card-body py-9">
-                            <!--begin::Row-->
-                            <div class="row gx-9 h-100">
-                                <!--begin::Col-->
-                                <div class="col-sm-6 mb-10 mb-sm-0">
-                                    <!--begin::Image-->
-                                    <div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-400px min-h-sm-100 h-100" style="background-size: 100% 100%;background-image:url('assets/media/stock/600x600/img-65.jpg')"></div>
-                                    <!--end::Image-->
-                                </div>
-                                <!--end::Col-->
-                                <!--begin::Col-->
-                                <div class="col-sm-6">
-                                    <!--begin::Wrapper-->
-                                    <div class="d-flex flex-column h-100">
-                                        <!--begin::Header-->
-                                        <div class="mb-7">
-                                            <!--begin::Headin-->
-                                            <div class="d-flex flex-stack mb-6">
-                                                <!--begin::Title-->
-                                                <div class="flex-shrink-0 me-5">
-                                                    <span class="text-gray-500 fs-7 fw-bold me-2 d-block lh-1 pb-1">Featured</span>
-                                                    <span class="text-gray-800 fs-1 fw-bold">9 Degree</span>
-                                                </div>
-                                                <!--end::Title-->
-                                                <span class="badge badge-light-primary flex-shrink-0 align-self-center py-3 px-4 fs-7">In Process</span>
-                                            </div>
-                                            <!--end::Heading-->
-                                            <!--begin::Items-->
-                                            <div class="d-flex align-items-center flex-wrap d-grid gap-2">
-                                                <!--begin::Item-->
-                                                <div class="d-flex align-items-center me-5 me-xl-13">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-30px symbol-circle me-3">
-                                                        <img src="assets/media/avatars/300-3.jpg" class="" alt="">
-                                                    </div>
-                                                    <!--end::Symbol-->
-                                                    <!--begin::Info-->
-                                                    <div class="m-0">
-                                                        <span class="fw-semibold text-gray-500 d-block fs-8">Manager</span>
-                                                        <a href="pages/user-profile/overview.html" class="fw-bold text-gray-800 text-hover-primary fs-7">Robert Fox</a>
-                                                    </div>
-                                                    <!--end::Info-->
-                                                </div>
-                                                <!--end::Item-->
-                                                <!--begin::Item-->
-                                                <div class="d-flex align-items-center">
-                                                    <!--begin::Symbol-->
-                                                    <div class="symbol symbol-30px symbol-circle me-3">
-																			<span class="symbol-label bg-success">
-																				<i class="ki-duotone ki-abstract-41 fs-5 text-white">
-																					<span class="path1"></span>
-																					<span class="path2"></span>
-																				</i>
-																			</span>
-                                                    </div>
-                                                    <!--end::Symbol-->
-                                                    <!--begin::Info-->
-                                                    <div class="m-0">
-                                                        <span class="fw-semibold text-gray-500 d-block fs-8">Budget</span>
-                                                        <span class="fw-bold text-gray-800 fs-7">$64.800</span>
-                                                    </div>
-                                                    <!--end::Info-->
-                                                </div>
-                                                <!--end::Item-->
-                                            </div>
-                                            <!--end::Items-->
-                                        </div>
-                                        <!--end::Header-->
-                                        <!--begin::Body-->
-                                        <div class="mb-6">
-                                            <!--begin::Text-->
-                                            <span class="fw-semibold text-gray-600 fs-6 mb-8 d-block">Flat cartoony illustrations with vivid unblended colors and asymmetrical beautiful purple hair lady</span>
-                                            <!--end::Text-->
-                                            <!--begin::Stats-->
-                                            <div class="d-flex">
-                                                <!--begin::Stat-->
-                                                <div class="border border-gray-300 border-dashed rounded min-w-100px w-100 py-2 px-4 me-6 mb-3">
-                                                    <!--begin::Date-->
-                                                    <span class="fs-6 text-gray-700 fw-bold">Feb 6, 2021</span>
-                                                    <!--end::Date-->
-                                                    <!--begin::Label-->
-                                                    <div class="fw-semibold text-gray-500">Due Date</div>
-                                                    <!--end::Label-->
-                                                </div>
-                                                <!--end::Stat-->
-                                                <!--begin::Stat-->
-                                                <div class="border border-gray-300 border-dashed rounded min-w-100px w-100 py-2 px-4 mb-3">
-                                                    <!--begin::Number-->
-                                                    <span class="fs-6 text-gray-700 fw-bold">$
-																			<span class="ms-n1" data-kt-countup="true" data-kt-countup-value="284,900.00">0</span></span>
-                                                    <!--end::Number-->
-                                                    <!--begin::Label-->
-                                                    <div class="fw-semibold text-gray-500">Budget</div>
-                                                    <!--end::Label-->
-                                                </div>
-                                                <!--end::Stat-->
-                                            </div>
-                                            <!--end::Stats-->
-                                        </div>
-                                        <!--end::Body-->
-                                        <!--begin::Footer-->
-                                        <div class="d-flex flex-stack mt-auto bd-highlight">
-                                            <!--begin::Users group-->
-                                            <div class="symbol-group symbol-hover flex-nowrap">
-                                                <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" aria-label="Melody Macy" data-bs-original-title="Melody Macy" data-kt-initialized="1">
-                                                    <img alt="Pic" src="assets/media/avatars/300-2.jpg">
-                                                </div>
-                                                <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" aria-label="Michael Eberon" data-bs-original-title="Michael Eberon" data-kt-initialized="1">
-                                                    <img alt="Pic" src="assets/media/avatars/300-3.jpg">
-                                                </div>
-                                                <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" data-bs-original-title="Susan Redwood" data-kt-initialized="1">
-                                                    <span class="symbol-label bg-primary text-inverse-primary fw-bold">S</span>
-                                                </div>
-                                            </div>
-                                            <!--end::Users group-->
-                                            <!--begin::Actions-->
-                                            <a href="apps/projects/project.html" class="d-flex align-items-center text-primary opacity-75-hover fs-6 fw-semibold">View Project
-                                                <i class="ki-duotone ki-exit-right-corner fs-4 ms-1">
-                                                    <span class="path1"></span>
-                                                    <span class="path2"></span>
-                                                </i></a>
-                                            <!--end::Actions-->
-                                        </div>
-                                        <!--end::Footer-->
-                                    </div>
-                                    <!--end::Wrapper-->
-                                </div>
-                                <!--end::Col-->
-                            </div>
-                            <!--end::Row-->
-                        </div>
-                        <!--end::Body-->
-                    </div>
-                    <!--end::Card widget 18-->
-                </div>
-                <!--end::Col-->
-                <!--begin::Col-->
-                <div class="col-xl-6">
-                    <!--begin::Chart widget 36-->
-                    <div class="card card-flush overflow-hidden h-lg-100">
-                        <!--begin::Header-->
-                        <div class="card-header pt-5">
-                            <!--begin::Title-->
-                            <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label fw-bold text-gray-900">Performance</span>
-                                <span class="text-gray-500 mt-1 fw-semibold fs-6">1,046 Inbound Calls today</span>
-                            </h3>
-                            <!--end::Title-->
-                            <!--begin::Toolbar-->
-                            <div class="card-toolbar">
-                                <!--begin::Daterangepicker(defined in src/js/layout/app.js)-->
-                                <div data-kt-daterangepicker="true" data-kt-daterangepicker-opens="left" data-kt-daterangepicker-range="today" class="btn btn-sm btn-light d-flex align-items-center px-4" data-kt-initialized="1">
-                                    <!--begin::Display range-->
-                                    <div class="text-gray-600 fw-bold">23 Jul 2024</div>
-                                    <!--end::Display range-->
-                                    <i class="ki-duotone ki-calendar-8 text-gray-500 lh-0 fs-2 ms-2 me-0">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                        <span class="path3"></span>
-                                        <span class="path4"></span>
-                                        <span class="path5"></span>
-                                        <span class="path6"></span>
-                                    </i>
-                                </div>
-                                <!--end::Daterangepicker-->
-                            </div>
-                            <!--end::Toolbar-->
-                        </div>
-                        <!--end::Header-->
-                        <!--begin::Card body-->
-                        <div class="card-body d-flex align-items-end p-0">
-                            <!--begin::Chart-->
-                            <div id="kt_charts_widget_36" class="min-h-auto w-100 ps-4 pe-6" style="height: 300px; min-height: 315px;">
-                                <div id="apexchartse7fhzbjo" class="apexcharts-canvas apexchartse7fhzbjo apexcharts-theme-light" style="width: 546.5px; height: 300px;">
-                                    <svg id="SvgjsSvg2660" width="546.5" height="300" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg apexcharts-zoomable" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;">
-                                        <foreignObject x="0" y="0" width="546.5" height="300">
-                                            <div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 150px;"></div>
-                                        </foreignObject>
-                                        <rect id="SvgjsRect2700" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe"></rect>
-                                        <g id="SvgjsG2763" class="apexcharts-yaxis" rel="0" transform="translate(17.337499618530273, 0)">
-                                            <g id="SvgjsG2764" class="apexcharts-yaxis-texts-g">
-                                                <text id="SvgjsText2766" font-family="inherit" x="20" y="34" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;">
-                                                    <tspan id="SvgjsTspan2767">120</tspan>
-                                                    <title>120</title></text>
-                                                <text id="SvgjsText2769" font-family="inherit" x="20" y="70.93404447873434" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;">
-                                                    <tspan id="SvgjsTspan2770">105</tspan>
-                                                    <title>105</title></text>
-                                                <text id="SvgjsText2772" font-family="inherit" x="20" y="107.86808895746867" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;">
-                                                    <tspan id="SvgjsTspan2773">90</tspan>
-                                                    <title>90</title></text>
-                                                <text id="SvgjsText2775" font-family="inherit" x="20" y="144.802133436203" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;">
-                                                    <tspan id="SvgjsTspan2776">75</tspan>
-                                                    <title>75</title></text>
-                                                <text id="SvgjsText2778" font-family="inherit" x="20" y="181.73617791493734" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;">
-                                                    <tspan id="SvgjsTspan2779">60</tspan>
-                                                    <title>60</title></text>
-                                                <text id="SvgjsText2781" font-family="inherit" x="20" y="218.67022239367168" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;">
-                                                    <tspan id="SvgjsTspan2782">45</tspan>
-                                                    <title>45</title></text>
-                                                <text id="SvgjsText2784" font-family="inherit" x="20" y="255.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;">
-                                                    <tspan id="SvgjsTspan2785">30</tspan>
-                                                    <title>30</title></text>
-                                            </g>
-                                        </g>
-                                        <g id="SvgjsG2662" class="apexcharts-inner apexcharts-graphical" transform="translate(47.33749961853027, 30)">
-                                            <defs id="SvgjsDefs2661">
-                                                <clipPath id="gridRectMaske7fhzbjo">
-                                                    <rect id="SvgjsRect2666" width="496.1625003814697" height="228.60426687240601" x="-3.5" y="-3.5" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                </clipPath>
-                                                <clipPath id="forecastMaske7fhzbjo"></clipPath>
-                                                <clipPath id="nonForecastMaske7fhzbjo"></clipPath>
-                                                <clipPath id="gridRectMarkerMaske7fhzbjo">
-                                                    <rect id="SvgjsRect2667" width="493.1625003814697" height="225.60426687240601" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                </clipPath>
-                                                <linearGradient id="SvgjsLinearGradient2672" x1="0" y1="0" x2="0" y2="1">
-                                                    <stop id="SvgjsStop2673" stop-opacity="0.4" stop-color="rgba(27,132,255,0.4)" offset="0.15"></stop>
-                                                    <stop id="SvgjsStop2674" stop-opacity="0.2" stop-color="rgba(255,255,255,0.2)" offset="1.2"></stop>
-                                                    <stop id="SvgjsStop2675" stop-opacity="0.2" stop-color="rgba(255,255,255,0.2)" offset="1"></stop>
-                                                </linearGradient>
-                                                <linearGradient id="SvgjsLinearGradient2681" x1="0" y1="0" x2="0" y2="1">
-                                                    <stop id="SvgjsStop2682" stop-opacity="0.4" stop-color="rgba(23,198,83,0.4)" offset="0.15"></stop>
-                                                    <stop id="SvgjsStop2683" stop-opacity="0.2" stop-color="rgba(255,255,255,0.2)" offset="1.2"></stop>
-                                                    <stop id="SvgjsStop2684" stop-opacity="0.2" stop-color="rgba(255,255,255,0.2)" offset="1"></stop>
-                                                </linearGradient>
-                                            </defs>
-                                            <g id="SvgjsG2687" class="apexcharts-grid">
-                                                <g id="SvgjsG2688" class="apexcharts-gridlines-horizontal">
-                                                    <line id="SvgjsLine2692" x1="0" y1="36.934044478734336" x2="489.1625003814697" y2="36.934044478734336" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                    <line id="SvgjsLine2693" x1="0" y1="73.86808895746867" x2="489.1625003814697" y2="73.86808895746867" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                    <line id="SvgjsLine2694" x1="0" y1="110.80213343620301" x2="489.1625003814697" y2="110.80213343620301" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                    <line id="SvgjsLine2695" x1="0" y1="147.73617791493734" x2="489.1625003814697" y2="147.73617791493734" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                    <line id="SvgjsLine2696" x1="0" y1="184.67022239367168" x2="489.1625003814697" y2="184.67022239367168" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                </g>
-                                                <g id="SvgjsG2689" class="apexcharts-gridlines-vertical"></g>
-                                                <line id="SvgjsLine2699" x1="0" y1="221.60426687240601" x2="489.1625003814697" y2="221.60426687240601" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                <line id="SvgjsLine2698" x1="0" y1="1" x2="0" y2="221.60426687240601" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                            </g>
-                                            <g id="SvgjsG2690" class="apexcharts-grid-borders">
-                                                <line id="SvgjsLine2691" x1="0" y1="0" x2="489.1625003814697" y2="0" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                <line id="SvgjsLine2697" x1="0" y1="221.60426687240601" x2="489.1625003814697" y2="221.60426687240601" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                            </g>
-                                            <g id="SvgjsG2668" class="apexcharts-area-series apexcharts-plot-series">
-                                                <g id="SvgjsG2669" class="apexcharts-series" zIndex="0" seriesName="InboundxCalls" data:longestSeries="true" rel="1" data:realIndex="0">
-                                                    <path id="SvgjsPath2676" d="M 0 135.4248297553592C 9.511493062973022 135.4248297553592 17.664201402664183 98.49078527662488 27.175694465637207 98.49078527662488C 36.68718752861023 98.49078527662488 44.83989586830139 98.49078527662488 54.351388931274414 98.49078527662488C 63.86288199424744 98.49078527662488 72.0155903339386 147.73617791493734 81.52708339691162 147.73617791493734C 91.03857645988464 147.73617791493734 99.19128479957581 147.73617791493734 108.70277786254883 147.73617791493734C 118.21427092552184 147.73617791493734 126.36697926521302 184.67022239367168 135.87847232818604 184.67022239367168C 145.38996539115905 184.67022239367168 153.54267373085023 184.67022239367168 163.05416679382324 184.67022239367168C 172.56565985679626 184.67022239367168 180.71836819648743 98.49078527662488 190.22986125946045 98.49078527662488C 199.74135432243347 98.49078527662488 207.89406266212464 98.49078527662488 217.40555572509766 98.49078527662488C 226.91704878807067 98.49078527662488 235.06975712776182 123.11348159578111 244.58125019073483 123.11348159578111C 254.09274325370785 123.11348159578111 262.245451593399 123.11348159578111 271.75694465637207 123.11348159578111C 281.2684377193451 123.11348159578111 289.42114605903623 73.86808895746864 298.9326391220093 73.86808895746864C 308.4441321849823 73.86808895746864 316.59684052467344 73.86808895746864 326.1083335876465 73.86808895746864C 335.61982665061953 73.86808895746864 343.77253499031065 98.49078527662488 353.2840280532837 98.49078527662488C 362.79552111625674 98.49078527662488 370.94822945594785 98.49078527662488 380.4597225189209 98.49078527662488C 389.97121558189394 98.49078527662488 398.12392392158506 98.49078527662488 407.6354169845581 98.49078527662488C 417.14691004753115 98.49078527662488 425.29961838722227 147.73617791493734 434.8111114501953 147.73617791493734C 444.32260451316836 147.73617791493734 452.4753128528595 147.73617791493734 461.9868059158325 147.73617791493734C 471.4982989788055 147.73617791493734 479.6510073184967 172.35887423409355 489.16250038146967 172.35887423409355C 489.16250038146967 172.35887423409355 489.16250038146967 172.35887423409355 489.16250038146967 221.60426687240601 L 0 221.60426687240601z" fill="url(#SvgjsLinearGradient2672)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaske7fhzbjo)" pathTo="M 0 135.4248297553592C 9.511493062973022 135.4248297553592 17.664201402664183 98.49078527662488 27.175694465637207 98.49078527662488C 36.68718752861023 98.49078527662488 44.83989586830139 98.49078527662488 54.351388931274414 98.49078527662488C 63.86288199424744 98.49078527662488 72.0155903339386 147.73617791493734 81.52708339691162 147.73617791493734C 91.03857645988464 147.73617791493734 99.19128479957581 147.73617791493734 108.70277786254883 147.73617791493734C 118.21427092552184 147.73617791493734 126.36697926521302 184.67022239367168 135.87847232818604 184.67022239367168C 145.38996539115905 184.67022239367168 153.54267373085023 184.67022239367168 163.05416679382324 184.67022239367168C 172.56565985679626 184.67022239367168 180.71836819648743 98.49078527662488 190.22986125946045 98.49078527662488C 199.74135432243347 98.49078527662488 207.89406266212464 98.49078527662488 217.40555572509766 98.49078527662488C 226.91704878807067 98.49078527662488 235.06975712776182 123.11348159578111 244.58125019073483 123.11348159578111C 254.09274325370785 123.11348159578111 262.245451593399 123.11348159578111 271.75694465637207 123.11348159578111C 281.2684377193451 123.11348159578111 289.42114605903623 73.86808895746864 298.9326391220093 73.86808895746864C 308.4441321849823 73.86808895746864 316.59684052467344 73.86808895746864 326.1083335876465 73.86808895746864C 335.61982665061953 73.86808895746864 343.77253499031065 98.49078527662488 353.2840280532837 98.49078527662488C 362.79552111625674 98.49078527662488 370.94822945594785 98.49078527662488 380.4597225189209 98.49078527662488C 389.97121558189394 98.49078527662488 398.12392392158506 98.49078527662488 407.6354169845581 98.49078527662488C 417.14691004753115 98.49078527662488 425.29961838722227 147.73617791493734 434.8111114501953 147.73617791493734C 444.32260451316836 147.73617791493734 452.4753128528595 147.73617791493734 461.9868059158325 147.73617791493734C 471.4982989788055 147.73617791493734 479.6510073184967 172.35887423409355 489.16250038146967 172.35887423409355C 489.16250038146967 172.35887423409355 489.16250038146967 172.35887423409355 489.16250038146967 221.60426687240601 L 0 221.60426687240601z" pathFrom="M 0 295.4723558298747 L 0 295.4723558298747 L 27.175694465637207 295.4723558298747 L 54.351388931274414 295.4723558298747 L 81.52708339691162 295.4723558298747 L 108.70277786254883 295.4723558298747 L 135.87847232818604 295.4723558298747 L 163.05416679382324 295.4723558298747 L 190.22986125946045 295.4723558298747 L 217.40555572509766 295.4723558298747 L 244.58125019073483 295.4723558298747 L 271.75694465637207 295.4723558298747 L 298.9326391220093 295.4723558298747 L 326.1083335876465 295.4723558298747 L 353.2840280532837 295.4723558298747 L 380.4597225189209 295.4723558298747 L 407.6354169845581 295.4723558298747 L 434.8111114501953 295.4723558298747 L 461.9868059158325 295.4723558298747 L 489.16250038146967 295.4723558298747 L 0 295.4723558298747"></path>
-                                                    <path id="SvgjsPath2677" d="M 0 135.4248297553592C 9.511493062973022 135.4248297553592 17.664201402664183 98.49078527662488 27.175694465637207 98.49078527662488C 36.68718752861023 98.49078527662488 44.83989586830139 98.49078527662488 54.351388931274414 98.49078527662488C 63.86288199424744 98.49078527662488 72.0155903339386 147.73617791493734 81.52708339691162 147.73617791493734C 91.03857645988464 147.73617791493734 99.19128479957581 147.73617791493734 108.70277786254883 147.73617791493734C 118.21427092552184 147.73617791493734 126.36697926521302 184.67022239367168 135.87847232818604 184.67022239367168C 145.38996539115905 184.67022239367168 153.54267373085023 184.67022239367168 163.05416679382324 184.67022239367168C 172.56565985679626 184.67022239367168 180.71836819648743 98.49078527662488 190.22986125946045 98.49078527662488C 199.74135432243347 98.49078527662488 207.89406266212464 98.49078527662488 217.40555572509766 98.49078527662488C 226.91704878807067 98.49078527662488 235.06975712776182 123.11348159578111 244.58125019073483 123.11348159578111C 254.09274325370785 123.11348159578111 262.245451593399 123.11348159578111 271.75694465637207 123.11348159578111C 281.2684377193451 123.11348159578111 289.42114605903623 73.86808895746864 298.9326391220093 73.86808895746864C 308.4441321849823 73.86808895746864 316.59684052467344 73.86808895746864 326.1083335876465 73.86808895746864C 335.61982665061953 73.86808895746864 343.77253499031065 98.49078527662488 353.2840280532837 98.49078527662488C 362.79552111625674 98.49078527662488 370.94822945594785 98.49078527662488 380.4597225189209 98.49078527662488C 389.97121558189394 98.49078527662488 398.12392392158506 98.49078527662488 407.6354169845581 98.49078527662488C 417.14691004753115 98.49078527662488 425.29961838722227 147.73617791493734 434.8111114501953 147.73617791493734C 444.32260451316836 147.73617791493734 452.4753128528595 147.73617791493734 461.9868059158325 147.73617791493734C 471.4982989788055 147.73617791493734 479.6510073184967 172.35887423409355 489.16250038146967 172.35887423409355" fill="none" fill-opacity="1" stroke="#1b84ff" stroke-opacity="1" stroke-linecap="butt" stroke-width="3" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaske7fhzbjo)" pathTo="M 0 135.4248297553592C 9.511493062973022 135.4248297553592 17.664201402664183 98.49078527662488 27.175694465637207 98.49078527662488C 36.68718752861023 98.49078527662488 44.83989586830139 98.49078527662488 54.351388931274414 98.49078527662488C 63.86288199424744 98.49078527662488 72.0155903339386 147.73617791493734 81.52708339691162 147.73617791493734C 91.03857645988464 147.73617791493734 99.19128479957581 147.73617791493734 108.70277786254883 147.73617791493734C 118.21427092552184 147.73617791493734 126.36697926521302 184.67022239367168 135.87847232818604 184.67022239367168C 145.38996539115905 184.67022239367168 153.54267373085023 184.67022239367168 163.05416679382324 184.67022239367168C 172.56565985679626 184.67022239367168 180.71836819648743 98.49078527662488 190.22986125946045 98.49078527662488C 199.74135432243347 98.49078527662488 207.89406266212464 98.49078527662488 217.40555572509766 98.49078527662488C 226.91704878807067 98.49078527662488 235.06975712776182 123.11348159578111 244.58125019073483 123.11348159578111C 254.09274325370785 123.11348159578111 262.245451593399 123.11348159578111 271.75694465637207 123.11348159578111C 281.2684377193451 123.11348159578111 289.42114605903623 73.86808895746864 298.9326391220093 73.86808895746864C 308.4441321849823 73.86808895746864 316.59684052467344 73.86808895746864 326.1083335876465 73.86808895746864C 335.61982665061953 73.86808895746864 343.77253499031065 98.49078527662488 353.2840280532837 98.49078527662488C 362.79552111625674 98.49078527662488 370.94822945594785 98.49078527662488 380.4597225189209 98.49078527662488C 389.97121558189394 98.49078527662488 398.12392392158506 98.49078527662488 407.6354169845581 98.49078527662488C 417.14691004753115 98.49078527662488 425.29961838722227 147.73617791493734 434.8111114501953 147.73617791493734C 444.32260451316836 147.73617791493734 452.4753128528595 147.73617791493734 461.9868059158325 147.73617791493734C 471.4982989788055 147.73617791493734 479.6510073184967 172.35887423409355 489.16250038146967 172.35887423409355" pathFrom="M 0 295.4723558298747 L 0 295.4723558298747 L 27.175694465637207 295.4723558298747 L 54.351388931274414 295.4723558298747 L 81.52708339691162 295.4723558298747 L 108.70277786254883 295.4723558298747 L 135.87847232818604 295.4723558298747 L 163.05416679382324 295.4723558298747 L 190.22986125946045 295.4723558298747 L 217.40555572509766 295.4723558298747 L 244.58125019073483 295.4723558298747 L 271.75694465637207 295.4723558298747 L 298.9326391220093 295.4723558298747 L 326.1083335876465 295.4723558298747 L 353.2840280532837 295.4723558298747 L 380.4597225189209 295.4723558298747 L 407.6354169845581 295.4723558298747 L 434.8111114501953 295.4723558298747 L 461.9868059158325 295.4723558298747 L 489.16250038146967 295.4723558298747" fill-rule="evenodd"></path>
-                                                    <g id="SvgjsG2670" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0">
-                                                        <g class="apexcharts-series-markers">
-                                                            <circle id="SvgjsCircle2789" r="0" cx="0" cy="0" class="apexcharts-marker wkxdtvupt no-pointer-events" stroke="#1b84ff" fill="#1b84ff" fill-opacity="1" stroke-width="3" stroke-opacity="0.9" default-marker-size="0"></circle>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                                <g id="SvgjsG2678" class="apexcharts-series" zIndex="1" seriesName="OutboundxCalls" data:longestSeries="true" rel="2" data:realIndex="1">
-                                                    <path id="SvgjsPath2685" d="M 0 73.86808895746864C 9.511493062973022 73.86808895746864 17.664201402664183 24.622696319156205 27.175694465637207 24.622696319156205C 36.68718752861023 24.622696319156205 44.83989586830139 24.622696319156205 54.351388931274414 24.622696319156205C 63.86288199424744 24.622696319156205 72.0155903339386 61.55674079789054 81.52708339691162 61.55674079789054C 91.03857645988464 61.55674079789054 99.19128479957581 61.55674079789054 108.70277786254883 61.55674079789054C 118.21427092552184 61.55674079789054 126.36697926521302 86.17943711704677 135.87847232818604 86.17943711704677C 145.38996539115905 86.17943711704677 153.54267373085023 86.17943711704677 163.05416679382324 86.17943711704677C 172.56565985679626 86.17943711704677 180.71836819648743 61.55674079789054 190.22986125946045 61.55674079789054C 199.74135432243347 61.55674079789054 207.89406266212464 61.55674079789054 217.40555572509766 61.55674079789054C 226.91704878807067 61.55674079789054 235.06975712776182 12.311348159578074 244.58125019073483 12.311348159578074C 254.09274325370785 12.311348159578074 262.245451593399 12.311348159578074 271.75694465637207 12.311348159578074C 281.2684377193451 12.311348159578074 289.42114605903623 49.24539263831244 298.9326391220093 49.24539263831244C 308.4441321849823 49.24539263831244 316.59684052467344 49.24539263831244 326.1083335876465 49.24539263831244C 335.61982665061953 49.24539263831244 343.77253499031065 12.311348159578074 353.2840280532837 12.311348159578074C 362.79552111625674 12.311348159578074 370.94822945594785 12.311348159578074 380.4597225189209 12.311348159578074C 389.97121558189394 12.311348159578074 398.12392392158506 61.55674079789054 407.6354169845581 61.55674079789054C 417.14691004753115 61.55674079789054 425.29961838722227 61.55674079789054 434.8111114501953 61.55674079789054C 444.32260451316836 61.55674079789054 452.4753128528595 86.17943711704677 461.9868059158325 86.17943711704677C 471.4982989788055 86.17943711704677 479.6510073184967 86.17943711704677 489.16250038146967 86.17943711704677C 489.16250038146967 86.17943711704677 489.16250038146967 86.17943711704677 489.16250038146967 221.60426687240601 L 0 221.60426687240601z" fill="url(#SvgjsLinearGradient2681)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="1" clip-path="url(#gridRectMaske7fhzbjo)" pathTo="M 0 73.86808895746864C 9.511493062973022 73.86808895746864 17.664201402664183 24.622696319156205 27.175694465637207 24.622696319156205C 36.68718752861023 24.622696319156205 44.83989586830139 24.622696319156205 54.351388931274414 24.622696319156205C 63.86288199424744 24.622696319156205 72.0155903339386 61.55674079789054 81.52708339691162 61.55674079789054C 91.03857645988464 61.55674079789054 99.19128479957581 61.55674079789054 108.70277786254883 61.55674079789054C 118.21427092552184 61.55674079789054 126.36697926521302 86.17943711704677 135.87847232818604 86.17943711704677C 145.38996539115905 86.17943711704677 153.54267373085023 86.17943711704677 163.05416679382324 86.17943711704677C 172.56565985679626 86.17943711704677 180.71836819648743 61.55674079789054 190.22986125946045 61.55674079789054C 199.74135432243347 61.55674079789054 207.89406266212464 61.55674079789054 217.40555572509766 61.55674079789054C 226.91704878807067 61.55674079789054 235.06975712776182 12.311348159578074 244.58125019073483 12.311348159578074C 254.09274325370785 12.311348159578074 262.245451593399 12.311348159578074 271.75694465637207 12.311348159578074C 281.2684377193451 12.311348159578074 289.42114605903623 49.24539263831244 298.9326391220093 49.24539263831244C 308.4441321849823 49.24539263831244 316.59684052467344 49.24539263831244 326.1083335876465 49.24539263831244C 335.61982665061953 49.24539263831244 343.77253499031065 12.311348159578074 353.2840280532837 12.311348159578074C 362.79552111625674 12.311348159578074 370.94822945594785 12.311348159578074 380.4597225189209 12.311348159578074C 389.97121558189394 12.311348159578074 398.12392392158506 61.55674079789054 407.6354169845581 61.55674079789054C 417.14691004753115 61.55674079789054 425.29961838722227 61.55674079789054 434.8111114501953 61.55674079789054C 444.32260451316836 61.55674079789054 452.4753128528595 86.17943711704677 461.9868059158325 86.17943711704677C 471.4982989788055 86.17943711704677 479.6510073184967 86.17943711704677 489.16250038146967 86.17943711704677C 489.16250038146967 86.17943711704677 489.16250038146967 86.17943711704677 489.16250038146967 221.60426687240601 L 0 221.60426687240601z" pathFrom="M 0 295.4723558298747 L 0 295.4723558298747 L 27.175694465637207 295.4723558298747 L 54.351388931274414 295.4723558298747 L 81.52708339691162 295.4723558298747 L 108.70277786254883 295.4723558298747 L 135.87847232818604 295.4723558298747 L 163.05416679382324 295.4723558298747 L 190.22986125946045 295.4723558298747 L 217.40555572509766 295.4723558298747 L 244.58125019073483 295.4723558298747 L 271.75694465637207 295.4723558298747 L 298.9326391220093 295.4723558298747 L 326.1083335876465 295.4723558298747 L 353.2840280532837 295.4723558298747 L 380.4597225189209 295.4723558298747 L 407.6354169845581 295.4723558298747 L 434.8111114501953 295.4723558298747 L 461.9868059158325 295.4723558298747 L 489.16250038146967 295.4723558298747 L 0 295.4723558298747"></path>
-                                                    <path id="SvgjsPath2686" d="M 0 73.86808895746864C 9.511493062973022 73.86808895746864 17.664201402664183 24.622696319156205 27.175694465637207 24.622696319156205C 36.68718752861023 24.622696319156205 44.83989586830139 24.622696319156205 54.351388931274414 24.622696319156205C 63.86288199424744 24.622696319156205 72.0155903339386 61.55674079789054 81.52708339691162 61.55674079789054C 91.03857645988464 61.55674079789054 99.19128479957581 61.55674079789054 108.70277786254883 61.55674079789054C 118.21427092552184 61.55674079789054 126.36697926521302 86.17943711704677 135.87847232818604 86.17943711704677C 145.38996539115905 86.17943711704677 153.54267373085023 86.17943711704677 163.05416679382324 86.17943711704677C 172.56565985679626 86.17943711704677 180.71836819648743 61.55674079789054 190.22986125946045 61.55674079789054C 199.74135432243347 61.55674079789054 207.89406266212464 61.55674079789054 217.40555572509766 61.55674079789054C 226.91704878807067 61.55674079789054 235.06975712776182 12.311348159578074 244.58125019073483 12.311348159578074C 254.09274325370785 12.311348159578074 262.245451593399 12.311348159578074 271.75694465637207 12.311348159578074C 281.2684377193451 12.311348159578074 289.42114605903623 49.24539263831244 298.9326391220093 49.24539263831244C 308.4441321849823 49.24539263831244 316.59684052467344 49.24539263831244 326.1083335876465 49.24539263831244C 335.61982665061953 49.24539263831244 343.77253499031065 12.311348159578074 353.2840280532837 12.311348159578074C 362.79552111625674 12.311348159578074 370.94822945594785 12.311348159578074 380.4597225189209 12.311348159578074C 389.97121558189394 12.311348159578074 398.12392392158506 61.55674079789054 407.6354169845581 61.55674079789054C 417.14691004753115 61.55674079789054 425.29961838722227 61.55674079789054 434.8111114501953 61.55674079789054C 444.32260451316836 61.55674079789054 452.4753128528595 86.17943711704677 461.9868059158325 86.17943711704677C 471.4982989788055 86.17943711704677 479.6510073184967 86.17943711704677 489.16250038146967 86.17943711704677" fill="none" fill-opacity="1" stroke="#17c653" stroke-opacity="1" stroke-linecap="butt" stroke-width="3" stroke-dasharray="0" class="apexcharts-area" index="1" clip-path="url(#gridRectMaske7fhzbjo)" pathTo="M 0 73.86808895746864C 9.511493062973022 73.86808895746864 17.664201402664183 24.622696319156205 27.175694465637207 24.622696319156205C 36.68718752861023 24.622696319156205 44.83989586830139 24.622696319156205 54.351388931274414 24.622696319156205C 63.86288199424744 24.622696319156205 72.0155903339386 61.55674079789054 81.52708339691162 61.55674079789054C 91.03857645988464 61.55674079789054 99.19128479957581 61.55674079789054 108.70277786254883 61.55674079789054C 118.21427092552184 61.55674079789054 126.36697926521302 86.17943711704677 135.87847232818604 86.17943711704677C 145.38996539115905 86.17943711704677 153.54267373085023 86.17943711704677 163.05416679382324 86.17943711704677C 172.56565985679626 86.17943711704677 180.71836819648743 61.55674079789054 190.22986125946045 61.55674079789054C 199.74135432243347 61.55674079789054 207.89406266212464 61.55674079789054 217.40555572509766 61.55674079789054C 226.91704878807067 61.55674079789054 235.06975712776182 12.311348159578074 244.58125019073483 12.311348159578074C 254.09274325370785 12.311348159578074 262.245451593399 12.311348159578074 271.75694465637207 12.311348159578074C 281.2684377193451 12.311348159578074 289.42114605903623 49.24539263831244 298.9326391220093 49.24539263831244C 308.4441321849823 49.24539263831244 316.59684052467344 49.24539263831244 326.1083335876465 49.24539263831244C 335.61982665061953 49.24539263831244 343.77253499031065 12.311348159578074 353.2840280532837 12.311348159578074C 362.79552111625674 12.311348159578074 370.94822945594785 12.311348159578074 380.4597225189209 12.311348159578074C 389.97121558189394 12.311348159578074 398.12392392158506 61.55674079789054 407.6354169845581 61.55674079789054C 417.14691004753115 61.55674079789054 425.29961838722227 61.55674079789054 434.8111114501953 61.55674079789054C 444.32260451316836 61.55674079789054 452.4753128528595 86.17943711704677 461.9868059158325 86.17943711704677C 471.4982989788055 86.17943711704677 479.6510073184967 86.17943711704677 489.16250038146967 86.17943711704677" pathFrom="M 0 295.4723558298747 L 0 295.4723558298747 L 27.175694465637207 295.4723558298747 L 54.351388931274414 295.4723558298747 L 81.52708339691162 295.4723558298747 L 108.70277786254883 295.4723558298747 L 135.87847232818604 295.4723558298747 L 163.05416679382324 295.4723558298747 L 190.22986125946045 295.4723558298747 L 217.40555572509766 295.4723558298747 L 244.58125019073483 295.4723558298747 L 271.75694465637207 295.4723558298747 L 298.9326391220093 295.4723558298747 L 326.1083335876465 295.4723558298747 L 353.2840280532837 295.4723558298747 L 380.4597225189209 295.4723558298747 L 407.6354169845581 295.4723558298747 L 434.8111114501953 295.4723558298747 L 461.9868059158325 295.4723558298747 L 489.16250038146967 295.4723558298747" fill-rule="evenodd"></path>
-                                                    <g id="SvgjsG2679" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="1">
-                                                        <g class="apexcharts-series-markers">
-                                                            <circle id="SvgjsCircle2790" r="0" cx="0" cy="0" class="apexcharts-marker wtfh42r1m no-pointer-events" stroke="#17c653" fill="#17c653" fill-opacity="1" stroke-width="3" stroke-opacity="0.9" default-marker-size="0"></circle>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                                <g id="SvgjsG2671" class="apexcharts-datalabels" data:realIndex="0"></g>
-                                                <g id="SvgjsG2680" class="apexcharts-datalabels" data:realIndex="1"></g>
-                                            </g>
-                                            <line id="SvgjsLine2701" x1="0" y1="0" x2="0" y2="221.60426687240601" stroke="#1B84FF #17C653" stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-xcrosshairs" x="0" y="0" width="1" height="221.60426687240601" fill="#b1b9c4" filter="none" fill-opacity="0.9" stroke-width="1"></line>
-                                            <line id="SvgjsLine2702" x1="0" y1="0" x2="489.1625003814697" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line>
-                                            <line id="SvgjsLine2703" x1="0" y1="0" x2="489.1625003814697" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line>
-                                            <g id="SvgjsG2704" class="apexcharts-xaxis" transform="translate(0, 0)">
-                                                <g id="SvgjsG2705" class="apexcharts-xaxis-texts-g" transform="translate(0, -10)">
-                                                    <text id="SvgjsText2707" font-family="inherit" x="0" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)">
-                                                        <tspan id="SvgjsTspan2708"></tspan>
-                                                        <title></title></text>
-                                                    <text id="SvgjsText2710" font-family="inherit" x="27.175694465637207" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)">
-                                                        <tspan id="SvgjsTspan2711"></tspan>
-                                                        <title></title></text>
-                                                    <text id="SvgjsText2713" font-family="inherit" x="54.351388931274414" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)">
-                                                        <tspan id="SvgjsTspan2714"></tspan>
-                                                        <title></title></text>
-                                                    <text id="SvgjsText2716" font-family="inherit" x="81.52708339691162" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 82.52708721160889 238.2042784690857)">
-                                                        <tspan id="SvgjsTspan2717">9 AM</tspan>
-                                                        <title>9 AM</title></text>
-                                                    <text id="SvgjsText2719" font-family="inherit" x="108.70277786254883" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)">
-                                                        <tspan id="SvgjsTspan2720"></tspan>
-                                                        <title></title></text>
-                                                    <text id="SvgjsText2722" font-family="inherit" x="135.87847232818604" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)">
-                                                        <tspan id="SvgjsTspan2723"></tspan>
-                                                        <title></title></text>
-                                                    <text id="SvgjsText2725" font-family="inherit" x="163.05416679382324" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 164.05418395996094 238.2042784690857)">
-                                                        <tspan id="SvgjsTspan2726">12 PM</tspan>
-                                                        <title>12 PM</title></text>
-                                                    <text id="SvgjsText2728" font-family="inherit" x="190.22986125946045" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)">
-                                                        <tspan id="SvgjsTspan2729"></tspan>
-                                                        <title></title></text>
-                                                    <text id="SvgjsText2731" font-family="inherit" x="217.40555572509766" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)">
-                                                        <tspan id="SvgjsTspan2732"></tspan>
-                                                        <title></title></text>
-                                                    <text id="SvgjsText2734" font-family="inherit" x="244.58125019073486" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 245.58125114440918 238.2042784690857)">
-                                                        <tspan id="SvgjsTspan2735">15 PM</tspan>
-                                                        <title>15 PM</title></text>
-                                                    <text id="SvgjsText2737" font-family="inherit" x="271.75694465637207" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)">
-                                                        <tspan id="SvgjsTspan2738"></tspan>
-                                                        <title></title></text>
-                                                    <text id="SvgjsText2740" font-family="inherit" x="298.9326391220093" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)">
-                                                        <tspan id="SvgjsTspan2741"></tspan>
-                                                        <title></title></text>
-                                                    <text id="SvgjsText2743" font-family="inherit" x="326.1083335876465" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 327.108362197876 238.2042784690857)">
-                                                        <tspan id="SvgjsTspan2744">18 PM</tspan>
-                                                        <title>18 PM</title></text>
-                                                    <text id="SvgjsText2746" font-family="inherit" x="353.2840280532837" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)">
-                                                        <tspan id="SvgjsTspan2747"></tspan>
-                                                        <title></title></text>
-                                                    <text id="SvgjsText2749" font-family="inherit" x="380.4597225189209" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)">
-                                                        <tspan id="SvgjsTspan2750"></tspan>
-                                                        <title></title></text>
-                                                    <text id="SvgjsText2752" font-family="inherit" x="407.6354169845581" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 408.63541984558105 238.2042784690857)">
-                                                        <tspan id="SvgjsTspan2753">19 PM</tspan>
-                                                        <title>19 PM</title></text>
-                                                    <text id="SvgjsText2755" font-family="inherit" x="434.8111114501953" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)">
-                                                        <tspan id="SvgjsTspan2756"></tspan>
-                                                        <title></title></text>
-                                                    <text id="SvgjsText2758" font-family="inherit" x="461.9868059158325" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)">
-                                                        <tspan id="SvgjsTspan2759"></tspan>
-                                                        <title></title></text>
-                                                    <text id="SvgjsText2761" font-family="inherit" x="489.1625003814697" y="243.60426687240601" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)">
-                                                        <tspan id="SvgjsTspan2762"></tspan>
-                                                        <title></title></text>
-                                                </g>
-                                            </g>
-                                            <g id="SvgjsG2786" class="apexcharts-yaxis-annotations"></g>
-                                            <g id="SvgjsG2787" class="apexcharts-xaxis-annotations"></g>
-                                            <g id="SvgjsG2788" class="apexcharts-point-annotations"></g>
-                                            <rect id="SvgjsRect2791" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe" class="apexcharts-zoom-rect"></rect>
-                                            <rect id="SvgjsRect2792" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe" class="apexcharts-selection-rect"></rect>
-                                        </g>
-                                    </svg>
-                                    <div class="apexcharts-tooltip apexcharts-theme-light">
-                                        <div class="apexcharts-tooltip-title" style="font-family: inherit; font-size: 12px;"></div>
-                                        <div class="apexcharts-tooltip-series-group" style="order: 1;">
-                                            <span class="apexcharts-tooltip-marker" style="background-color: rgb(27, 132, 255);"></span>
-                                            <div class="apexcharts-tooltip-text" style="font-family: inherit; font-size: 12px;">
-                                                <div class="apexcharts-tooltip-y-group">
-                                                    <span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span>
-                                                </div>
-                                                <div class="apexcharts-tooltip-goals-group">
-                                                    <span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span>
-                                                </div>
-                                                <div class="apexcharts-tooltip-z-group">
-                                                    <span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="apexcharts-tooltip-series-group" style="order: 2;">
-                                            <span class="apexcharts-tooltip-marker" style="background-color: rgb(23, 198, 83);"></span>
-                                            <div class="apexcharts-tooltip-text" style="font-family: inherit; font-size: 12px;">
-                                                <div class="apexcharts-tooltip-y-group">
-                                                    <span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span>
-                                                </div>
-                                                <div class="apexcharts-tooltip-goals-group">
-                                                    <span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span>
-                                                </div>
-                                                <div class="apexcharts-tooltip-z-group">
-                                                    <span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="apexcharts-xaxistooltip apexcharts-xaxistooltip-bottom apexcharts-theme-light">
-                                        <div class="apexcharts-xaxistooltip-text" style="font-family: inherit; font-size: 12px;"></div>
-                                    </div>
-                                    <div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-light">
-                                        <div class="apexcharts-yaxistooltip-text"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end::Chart-->
-                        </div>
-                        <!--end::Card body-->
-                    </div>
-                    <!--end::Chart widget 36-->
-                </div>
-                <!--end::Col-->
-            </div>
-            <!--end::Row-->
-            <!--begin::Row-->
-            <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
-                <!--begin::Col-->
-                <div class="col-xl-4">
-                    <!--begin::Chart Widget 35-->
-                    <div class="card card-flush h-md-100">
-                        <!--begin::Header-->
-                        <div class="card-header pt-5 mb-6">
-                            <!--begin::Title-->
-                            <h3 class="card-title align-items-start flex-column">
-                                <!--begin::Statistics-->
-                                <div class="d-flex align-items-center mb-2">
-                                    <!--begin::Currency-->
-                                    <span class="fs-3 fw-semibold text-gray-500 align-self-start me-1">$</span>
-                                    <!--end::Currency-->
-                                    <!--begin::Value-->
-                                    <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1 ls-n2">3,274.94</span>
-                                    <!--end::Value-->
-                                    <!--begin::Label-->
-                                    <span class="badge badge-light-success fs-base">
-															<i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1">
-																<span class="path1"></span>
-																<span class="path2"></span>
-															</i>9.2%</span>
-                                    <!--end::Label-->
-                                </div>
-                                <!--end::Statistics-->
-                                <!--begin::Description-->
-                                <span class="fs-6 fw-semibold text-gray-500">Avg. Agent Earnings</span>
-                                <!--end::Description-->
-                            </h3>
-                            <!--end::Title-->
-                            <!--begin::Toolbar-->
-                            <div class="card-toolbar">
-                                <!--begin::Menu-->
-                                <button class="btn btn-icon btn-color-gray-500 btn-active-color-primary justify-content-end" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
-                                    <i class="ki-duotone ki-dots-square fs-1 text-gray-500 me-n1">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                        <span class="path3"></span>
-                                        <span class="path4"></span>
-                                    </i>
-                                </button>
-                                <!--begin::Menu 2-->
-                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px" data-kt-menu="true">
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <div class="menu-content fs-6 text-gray-900 fw-bold px-3 py-4">Quick Actions</div>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu separator-->
-                                    <div class="separator mb-3 opacity-75"></div>
-                                    <!--end::Menu separator-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">New Ticket</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">New Customer</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
-                                        <!--begin::Menu item-->
-                                        <a href="#" class="menu-link px-3">
-                                            <span class="menu-title">New Group</span>
-                                            <span class="menu-arrow"></span>
-                                        </a>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu sub-->
-                                        <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Admin Group</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Staff Group</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Member Group</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                        </div>
-                                        <!--end::Menu sub-->
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">New Contact</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu separator-->
-                                    <div class="separator mt-3 opacity-75"></div>
-                                    <!--end::Menu separator-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <div class="menu-content px-3 py-3">
-                                            <a class="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
-                                        </div>
-                                    </div>
-                                    <!--end::Menu item-->
-                                </div>
-                                <!--end::Menu 2-->
-                                <!--end::Menu-->
-                            </div>
-                            <!--end::Toolbar-->
-                        </div>
-                        <!--end::Header-->
-                        <!--begin::Body-->
-                        <div class="card-body py-0 px-0">
-                            <!--begin::Nav-->
-                            <ul class="nav d-flex justify-content-between mb-3 mx-9" role="tablist">
-                                <!--begin::Item-->
-                                <li class="nav-item mb-3" role="presentation">
-                                    <!--begin::Link-->
-                                    <a class="nav-link btn btn-flex flex-center btn-active-danger btn-color-gray-600 btn-active-color-white rounded-2 w-45px h-35px active" data-bs-toggle="tab" id="kt_charts_widget_35_tab_1" href="#kt_charts_widget_35_tab_content_1" aria-selected="true" role="tab">1d</a>
-                                    <!--end::Link-->
-                                </li>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <li class="nav-item mb-3" role="presentation">
-                                    <!--begin::Link-->
-                                    <a class="nav-link btn btn-flex flex-center btn-active-danger btn-color-gray-600 btn-active-color-white rounded-2 w-45px h-35px" data-bs-toggle="tab" id="kt_charts_widget_35_tab_2" href="#kt_charts_widget_35_tab_content_2" aria-selected="false" tabindex="-1" role="tab">5d</a>
-                                    <!--end::Link-->
-                                </li>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <li class="nav-item mb-3" role="presentation">
-                                    <!--begin::Link-->
-                                    <a class="nav-link btn btn-flex flex-center btn-active-danger btn-color-gray-600 btn-active-color-white rounded-2 w-45px h-35px" data-bs-toggle="tab" id="kt_charts_widget_35_tab_3" href="#kt_charts_widget_35_tab_content_3" aria-selected="false" tabindex="-1" role="tab">1m</a>
-                                    <!--end::Link-->
-                                </li>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <li class="nav-item mb-3" role="presentation">
-                                    <!--begin::Link-->
-                                    <a class="nav-link btn btn-flex flex-center btn-active-danger btn-color-gray-600 btn-active-color-white rounded-2 w-45px h-35px" data-bs-toggle="tab" id="kt_charts_widget_35_tab_4" href="#kt_charts_widget_35_tab_content_4" aria-selected="false" tabindex="-1" role="tab">6m</a>
-                                    <!--end::Link-->
-                                </li>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <li class="nav-item mb-3" role="presentation">
-                                    <!--begin::Link-->
-                                    <a class="nav-link btn btn-flex flex-center btn-active-danger btn-color-gray-600 btn-active-color-white rounded-2 w-45px h-35px" data-bs-toggle="tab" id="kt_charts_widget_35_tab_5" href="#kt_charts_widget_35_tab_content_5" aria-selected="false" tabindex="-1" role="tab">1y</a>
-                                    <!--end::Link-->
-                                </li>
-                                <!--end::Item-->
-                            </ul>
-                            <!--end::Nav-->
-                            <!--begin::Tab Content-->
-                            <div class="tab-content mt-n6">
-                                <!--begin::Tap pane-->
-                                <div class="tab-pane fade active show" id="kt_charts_widget_35_tab_content_1" role="tabpanel" aria-labelledby="kt_charts_widget_35_tab_1">
-                                    <!--begin::Chart-->
-                                    <div id="kt_charts_widget_35_chart_1" data-kt-chart-color="primary" class="min-h-auto h-200px ps-3 pe-6" style="min-height: 215px;">
-                                        <div id="apexchartsgn9lnhkg" class="apexcharts-canvas apexchartsgn9lnhkg apexcharts-theme-light" style="width: 345.75px; height: 200px;">
-                                            <svg id="SvgjsSvg2602" width="345.75" height="200" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg apexcharts-zoomable" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;">
-                                                <foreignObject x="0" y="0" width="345.75" height="200">
-                                                    <div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 100px;"></div>
-                                                </foreignObject>
-                                                <rect id="SvgjsRect2629" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe"></rect>
-                                                <g id="SvgjsG2650" class="apexcharts-yaxis" rel="0" transform="translate(-8, 0)">
-                                                    <g id="SvgjsG2651" class="apexcharts-yaxis-texts-g"></g>
-                                                </g>
-                                                <g id="SvgjsG2604" class="apexcharts-inner apexcharts-graphical" transform="translate(22, 30)">
-                                                    <defs id="SvgjsDefs2603">
-                                                        <clipPath id="gridRectMaskgn9lnhkg">
-                                                            <rect id="SvgjsRect2606" width="320.75" height="162" x="-3.5" y="-3.5" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                        </clipPath>
-                                                        <clipPath id="forecastMaskgn9lnhkg"></clipPath>
-                                                        <clipPath id="nonForecastMaskgn9lnhkg"></clipPath>
-                                                        <clipPath id="gridRectMarkerMaskgn9lnhkg">
-                                                            <rect id="SvgjsRect2607" width="317.75" height="159" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                        </clipPath>
-                                                        <linearGradient id="SvgjsLinearGradient2612" x1="0" y1="0" x2="0" y2="1">
-                                                            <stop id="SvgjsStop2613" stop-opacity="0.4" stop-color="rgba(27,132,255,0.4)" offset="0.15"></stop>
-                                                            <stop id="SvgjsStop2614" stop-opacity="0.2" stop-color="rgba(255,255,255,0.2)" offset="1.2"></stop>
-                                                            <stop id="SvgjsStop2615" stop-opacity="0.2" stop-color="rgba(255,255,255,0.2)" offset="1"></stop>
-                                                        </linearGradient>
-                                                    </defs>
-                                                    <g id="SvgjsG2618" class="apexcharts-grid">
-                                                        <g id="SvgjsG2619" class="apexcharts-gridlines-horizontal">
-                                                            <line id="SvgjsLine2623" x1="0" y1="38.75" x2="313.75" y2="38.75" stroke="#dbdfe9" stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine2624" x1="0" y1="77.5" x2="313.75" y2="77.5" stroke="#dbdfe9" stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                            <line id="SvgjsLine2625" x1="0" y1="116.25" x2="313.75" y2="116.25" stroke="#dbdfe9" stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                        </g>
-                                                        <g id="SvgjsG2620" class="apexcharts-gridlines-vertical"></g>
-                                                        <line id="SvgjsLine2628" x1="0" y1="155" x2="313.75" y2="155" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                        <line id="SvgjsLine2627" x1="0" y1="1" x2="0" y2="155" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                    </g>
-                                                    <g id="SvgjsG2621" class="apexcharts-grid-borders">
-                                                        <line id="SvgjsLine2622" x1="0" y1="0" x2="313.75" y2="0" stroke="#dbdfe9" stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                        <line id="SvgjsLine2626" x1="0" y1="155" x2="313.75" y2="155" stroke="#dbdfe9" stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                    </g>
-                                                    <g id="SvgjsG2608" class="apexcharts-area-series apexcharts-plot-series">
-                                                        <g id="SvgjsG2609" class="apexcharts-series" zIndex="0" seriesName="Earnings" data:longestSeries="true" rel="1" data:realIndex="0">
-                                                            <path id="SvgjsPath2616" d="M 0 98.16666666666666C 7.843749999999999 98.16666666666666 14.566964285714285 46.5 22.410714285714285 46.5C 30.254464285714285 46.5 36.97767857142857 46.5 44.82142857142857 46.5C 52.66517857142857 46.5 59.38839285714285 82.66666666666666 67.23214285714285 82.66666666666666C 75.07589285714285 82.66666666666666 81.79910714285714 82.66666666666666 89.64285714285714 82.66666666666666C 97.48660714285714 82.66666666666666 104.20982142857142 113.66666666666666 112.05357142857142 113.66666666666666C 119.89732142857142 113.66666666666666 126.6205357142857 113.66666666666666 134.4642857142857 113.66666666666666C 142.3080357142857 113.66666666666666 149.03125 82.66666666666666 156.875 82.66666666666666C 164.71875 82.66666666666666 171.44196428571428 82.66666666666666 179.28571428571428 82.66666666666666C 187.12946428571428 82.66666666666666 193.85267857142856 41.33333333333334 201.69642857142856 41.33333333333334C 209.54017857142856 41.33333333333334 216.26339285714283 41.33333333333334 224.10714285714283 41.33333333333334C 231.95089285714283 41.33333333333334 238.6741071428571 62 246.5178571428571 62C 254.3616071428571 62 261.0848214285714 62 268.9285714285714 62C 276.7723214285714 62 283.49553571428567 38.75 291.33928571428567 38.75C 299.18303571428567 38.75 305.90625 38.75 313.75 38.75C 313.75 38.75 313.75 38.75 313.75 155 L 0 155z" fill="url(#SvgjsLinearGradient2612)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskgn9lnhkg)" pathTo="M 0 98.16666666666666C 7.843749999999999 98.16666666666666 14.566964285714285 46.5 22.410714285714285 46.5C 30.254464285714285 46.5 36.97767857142857 46.5 44.82142857142857 46.5C 52.66517857142857 46.5 59.38839285714285 82.66666666666666 67.23214285714285 82.66666666666666C 75.07589285714285 82.66666666666666 81.79910714285714 82.66666666666666 89.64285714285714 82.66666666666666C 97.48660714285714 82.66666666666666 104.20982142857142 113.66666666666666 112.05357142857142 113.66666666666666C 119.89732142857142 113.66666666666666 126.6205357142857 113.66666666666666 134.4642857142857 113.66666666666666C 142.3080357142857 113.66666666666666 149.03125 82.66666666666666 156.875 82.66666666666666C 164.71875 82.66666666666666 171.44196428571428 82.66666666666666 179.28571428571428 82.66666666666666C 187.12946428571428 82.66666666666666 193.85267857142856 41.33333333333334 201.69642857142856 41.33333333333334C 209.54017857142856 41.33333333333334 216.26339285714283 41.33333333333334 224.10714285714283 41.33333333333334C 231.95089285714283 41.33333333333334 238.6741071428571 62 246.5178571428571 62C 254.3616071428571 62 261.0848214285714 62 268.9285714285714 62C 276.7723214285714 62 283.49553571428567 38.75 291.33928571428567 38.75C 299.18303571428567 38.75 305.90625 38.75 313.75 38.75C 313.75 38.75 313.75 38.75 313.75 155 L 0 155z" pathFrom="M 0 206.66666666666666 L 0 206.66666666666666 L 22.410714285714285 206.66666666666666 L 44.82142857142857 206.66666666666666 L 67.23214285714285 206.66666666666666 L 89.64285714285714 206.66666666666666 L 112.05357142857142 206.66666666666666 L 134.4642857142857 206.66666666666666 L 156.875 206.66666666666666 L 179.28571428571428 206.66666666666666 L 201.69642857142856 206.66666666666666 L 224.10714285714283 206.66666666666666 L 246.5178571428571 206.66666666666666 L 268.9285714285714 206.66666666666666 L 291.33928571428567 206.66666666666666 L 313.75 206.66666666666666 L 0 206.66666666666666"></path>
-                                                            <path id="SvgjsPath2617" d="M 0 98.16666666666666C 7.843749999999999 98.16666666666666 14.566964285714285 46.5 22.410714285714285 46.5C 30.254464285714285 46.5 36.97767857142857 46.5 44.82142857142857 46.5C 52.66517857142857 46.5 59.38839285714285 82.66666666666666 67.23214285714285 82.66666666666666C 75.07589285714285 82.66666666666666 81.79910714285714 82.66666666666666 89.64285714285714 82.66666666666666C 97.48660714285714 82.66666666666666 104.20982142857142 113.66666666666666 112.05357142857142 113.66666666666666C 119.89732142857142 113.66666666666666 126.6205357142857 113.66666666666666 134.4642857142857 113.66666666666666C 142.3080357142857 113.66666666666666 149.03125 82.66666666666666 156.875 82.66666666666666C 164.71875 82.66666666666666 171.44196428571428 82.66666666666666 179.28571428571428 82.66666666666666C 187.12946428571428 82.66666666666666 193.85267857142856 41.33333333333334 201.69642857142856 41.33333333333334C 209.54017857142856 41.33333333333334 216.26339285714283 41.33333333333334 224.10714285714283 41.33333333333334C 231.95089285714283 41.33333333333334 238.6741071428571 62 246.5178571428571 62C 254.3616071428571 62 261.0848214285714 62 268.9285714285714 62C 276.7723214285714 62 283.49553571428567 38.75 291.33928571428567 38.75C 299.18303571428567 38.75 305.90625 38.75 313.75 38.75" fill="none" fill-opacity="1" stroke="#1b84ff" stroke-opacity="1" stroke-linecap="butt" stroke-width="3" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskgn9lnhkg)" pathTo="M 0 98.16666666666666C 7.843749999999999 98.16666666666666 14.566964285714285 46.5 22.410714285714285 46.5C 30.254464285714285 46.5 36.97767857142857 46.5 44.82142857142857 46.5C 52.66517857142857 46.5 59.38839285714285 82.66666666666666 67.23214285714285 82.66666666666666C 75.07589285714285 82.66666666666666 81.79910714285714 82.66666666666666 89.64285714285714 82.66666666666666C 97.48660714285714 82.66666666666666 104.20982142857142 113.66666666666666 112.05357142857142 113.66666666666666C 119.89732142857142 113.66666666666666 126.6205357142857 113.66666666666666 134.4642857142857 113.66666666666666C 142.3080357142857 113.66666666666666 149.03125 82.66666666666666 156.875 82.66666666666666C 164.71875 82.66666666666666 171.44196428571428 82.66666666666666 179.28571428571428 82.66666666666666C 187.12946428571428 82.66666666666666 193.85267857142856 41.33333333333334 201.69642857142856 41.33333333333334C 209.54017857142856 41.33333333333334 216.26339285714283 41.33333333333334 224.10714285714283 41.33333333333334C 231.95089285714283 41.33333333333334 238.6741071428571 62 246.5178571428571 62C 254.3616071428571 62 261.0848214285714 62 268.9285714285714 62C 276.7723214285714 62 283.49553571428567 38.75 291.33928571428567 38.75C 299.18303571428567 38.75 305.90625 38.75 313.75 38.75" pathFrom="M 0 206.66666666666666 L 0 206.66666666666666 L 22.410714285714285 206.66666666666666 L 44.82142857142857 206.66666666666666 L 67.23214285714285 206.66666666666666 L 89.64285714285714 206.66666666666666 L 112.05357142857142 206.66666666666666 L 134.4642857142857 206.66666666666666 L 156.875 206.66666666666666 L 179.28571428571428 206.66666666666666 L 201.69642857142856 206.66666666666666 L 224.10714285714283 206.66666666666666 L 246.5178571428571 206.66666666666666 L 268.9285714285714 206.66666666666666 L 291.33928571428567 206.66666666666666 L 313.75 206.66666666666666" fill-rule="evenodd"></path>
-                                                            <g id="SvgjsG2610" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0">
-                                                                <g class="apexcharts-series-markers">
-                                                                    <circle id="SvgjsCircle2655" r="0" cx="0" cy="0" class="apexcharts-marker wm5uclh37 no-pointer-events" stroke="#1b84ff" fill="#1b84ff" fill-opacity="1" stroke-width="3" stroke-opacity="0.9" default-marker-size="0"></circle>
-                                                                </g>
-                                                            </g>
-                                                        </g>
-                                                        <g id="SvgjsG2611" class="apexcharts-datalabels" data:realIndex="0"></g>
-                                                    </g>
-                                                    <line id="SvgjsLine2630" x1="0" y1="0" x2="0" y2="155" stroke="#1b84ff" stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-xcrosshairs" x="0" y="0" width="1" height="155" fill="#b1b9c4" filter="none" fill-opacity="0.9" stroke-width="1"></line>
-                                                    <line id="SvgjsLine2631" x1="0" y1="0" x2="313.75" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line>
-                                                    <line id="SvgjsLine2632" x1="0" y1="0" x2="313.75" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line>
-                                                    <g id="SvgjsG2633" class="apexcharts-xaxis" transform="translate(20, 0)">
-                                                        <g id="SvgjsG2634" class="apexcharts-xaxis-texts-g" transform="translate(0, -4)"></g>
-                                                    </g>
-                                                    <g id="SvgjsG2652" class="apexcharts-yaxis-annotations"></g>
-                                                    <g id="SvgjsG2653" class="apexcharts-xaxis-annotations"></g>
-                                                    <g id="SvgjsG2654" class="apexcharts-point-annotations"></g>
-                                                    <rect id="SvgjsRect2656" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe" class="apexcharts-zoom-rect"></rect>
-                                                    <rect id="SvgjsRect2657" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe" class="apexcharts-selection-rect"></rect>
-                                                </g>
-                                            </svg>
-                                            <div class="apexcharts-tooltip apexcharts-theme-light">
-                                                <div class="apexcharts-tooltip-title" style="font-family: inherit; font-size: 12px;"></div>
-                                                <div class="apexcharts-tooltip-series-group" style="order: 1;">
-                                                    <span class="apexcharts-tooltip-marker" style="background-color: rgb(27, 132, 255);"></span>
-                                                    <div class="apexcharts-tooltip-text" style="font-family: inherit; font-size: 12px;">
-                                                        <div class="apexcharts-tooltip-y-group">
-                                                            <span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-goals-group">
-                                                            <span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span>
-                                                        </div>
-                                                        <div class="apexcharts-tooltip-z-group">
-                                                            <span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="apexcharts-xaxistooltip apexcharts-xaxistooltip-bottom apexcharts-theme-light">
-                                                <div class="apexcharts-xaxistooltip-text" style="font-family: inherit; font-size: 12px;"></div>
-                                            </div>
-                                            <div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-light">
-                                                <div class="apexcharts-yaxistooltip-text"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--end::Chart-->
-                                    <!--begin::Table container-->
-                                    <div class="table-responsive mx-9 mt-n6">
-                                        <!--begin::Table-->
-                                        <table class="table align-middle gs-0 gy-4">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                            <tr>
-                                                <th class="min-w-100px"></th>
-                                                <th class="min-w-100px text-end pe-0"></th>
-                                                <th class="text-end min-w-50px"></th>
-                                            </tr>
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" class="text-gray-600 fw-bold fs-6">2:30 PM</a>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="text-gray-800 fw-bold fs-6 me-1">$2,756.26</span>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="fw-bold fs-6 text-danger">-139.34</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" class="text-gray-600 fw-bold fs-6">3:10 PM</a>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="text-gray-800 fw-bold fs-6 me-1">$3,207.03</span>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="fw-bold fs-6 text-success">+576.24</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" class="text-gray-600 fw-bold fs-6">3:55 PM</a>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="text-gray-800 fw-bold fs-6 me-1">$3,274.94</span>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="fw-bold fs-6 text-success">+124.03</span>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <!--end::Table-->
-                                    </div>
-                                    <!--end::Table container-->
-                                </div>
-                                <!--end::Tap pane-->
-                                <!--begin::Tap pane-->
-                                <div class="tab-pane fade" id="kt_charts_widget_35_tab_content_2" role="tabpanel" aria-labelledby="kt_charts_widget_35_tab_2">
-                                    <!--begin::Chart-->
-                                    <div id="kt_charts_widget_35_chart_2" data-kt-chart-color="primary" class="min-h-auto h-200px ps-3 pe-6"></div>
-                                    <!--end::Chart-->
-                                    <!--begin::Table container-->
-                                    <div class="table-responsive mx-9 mt-n6">
-                                        <!--begin::Table-->
-                                        <table class="table align-middle gs-0 gy-4">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                            <tr>
-                                                <th class="min-w-100px"></th>
-                                                <th class="min-w-100px text-end pe-0"></th>
-                                                <th class="text-end min-w-50px"></th>
-                                            </tr>
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" class="text-gray-600 fw-bold fs-6">4:30 PM</a>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="text-gray-800 fw-bold fs-6 me-1">$2,345.45</span>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="fw-bold fs-6 text-success">+134.02</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" class="text-gray-600 fw-bold fs-6">11:35 AM</a>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="text-gray-800 fw-bold fs-6 me-1">$756.26</span>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="fw-bold fs-6 text-primary">-124.03</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" class="text-gray-600 fw-bold fs-6">3:30 PM</a>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="text-gray-800 fw-bold fs-6 me-1">$1,756.26</span>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="fw-bold fs-6 text-danger">+144.04</span>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <!--end::Table-->
-                                    </div>
-                                    <!--end::Table container-->
-                                </div>
-                                <!--end::Tap pane-->
-                                <!--begin::Tap pane-->
-                                <div class="tab-pane fade" id="kt_charts_widget_35_tab_content_3" role="tabpanel" aria-labelledby="kt_charts_widget_35_tab_3">
-                                    <!--begin::Chart-->
-                                    <div id="kt_charts_widget_35_chart_3" data-kt-chart-color="primary" class="min-h-auto h-200px ps-3 pe-6"></div>
-                                    <!--end::Chart-->
-                                    <!--begin::Table container-->
-                                    <div class="table-responsive mx-9 mt-n6">
-                                        <!--begin::Table-->
-                                        <table class="table align-middle gs-0 gy-4">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                            <tr>
-                                                <th class="min-w-100px"></th>
-                                                <th class="min-w-100px text-end pe-0"></th>
-                                                <th class="text-end min-w-50px"></th>
-                                            </tr>
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" class="text-gray-600 fw-bold fs-6">3:20 AM</a>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="text-gray-800 fw-bold fs-6 me-1">$3,756.26</span>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="fw-bold fs-6 text-primary">+185.03</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" class="text-gray-600 fw-bold fs-6">12:30 AM</a>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="text-gray-800 fw-bold fs-6 me-1">$2,756.26</span>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="fw-bold fs-6 text-danger">+124.03</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" class="text-gray-600 fw-bold fs-6">4:30 PM</a>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="text-gray-800 fw-bold fs-6 me-1">$756.26</span>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="fw-bold fs-6 text-success">-154.03</span>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <!--end::Table-->
-                                    </div>
-                                    <!--end::Table container-->
-                                </div>
-                                <!--end::Tap pane-->
-                                <!--begin::Tap pane-->
-                                <div class="tab-pane fade" id="kt_charts_widget_35_tab_content_4" role="tabpanel" aria-labelledby="kt_charts_widget_35_tab_4">
-                                    <!--begin::Chart-->
-                                    <div id="kt_charts_widget_35_chart_4" data-kt-chart-color="primary" class="min-h-auto h-200px ps-3 pe-6"></div>
-                                    <!--end::Chart-->
-                                    <!--begin::Table container-->
-                                    <div class="table-responsive mx-9 mt-n6">
-                                        <!--begin::Table-->
-                                        <table class="table align-middle gs-0 gy-4">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                            <tr>
-                                                <th class="min-w-100px"></th>
-                                                <th class="min-w-100px text-end pe-0"></th>
-                                                <th class="text-end min-w-50px"></th>
-                                            </tr>
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" class="text-gray-600 fw-bold fs-6">2:30 PM</a>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="text-gray-800 fw-bold fs-6 me-1">$2,756.26</span>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="fw-bold fs-6 text-warning">+124.03</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" class="text-gray-600 fw-bold fs-6">5:30 AM</a>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="text-gray-800 fw-bold fs-6 me-1">$1,756.26</span>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="fw-bold fs-6 text-info">+144.65</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" class="text-gray-600 fw-bold fs-6">4:30 PM</a>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="text-gray-800 fw-bold fs-6 me-1">$2,085.25</span>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="fw-bold fs-6 text-primary">+154.06</span>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <!--end::Table-->
-                                    </div>
-                                    <!--end::Table container-->
-                                </div>
-                                <!--end::Tap pane-->
-                                <!--begin::Tap pane-->
-                                <div class="tab-pane fade" id="kt_charts_widget_35_tab_content_5" role="tabpanel" aria-labelledby="kt_charts_widget_35_tab_5">
-                                    <!--begin::Chart-->
-                                    <div id="kt_charts_widget_35_chart_5" data-kt-chart-color="primary" class="min-h-auto h-200px ps-3 pe-6"></div>
-                                    <!--end::Chart-->
-                                    <!--begin::Table container-->
-                                    <div class="table-responsive mx-9 mt-n6">
-                                        <!--begin::Table-->
-                                        <table class="table align-middle gs-0 gy-4">
-                                            <!--begin::Table head-->
-                                            <thead>
-                                            <tr>
-                                                <th class="min-w-100px"></th>
-                                                <th class="min-w-100px text-end pe-0"></th>
-                                                <th class="text-end min-w-50px"></th>
-                                            </tr>
-                                            </thead>
-                                            <!--end::Table head-->
-                                            <!--begin::Table body-->
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" class="text-gray-600 fw-bold fs-6">2:30 PM</a>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="text-gray-800 fw-bold fs-6 me-1">$2,045.04</span>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="fw-bold fs-6 text-warning">+114.03</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" class="text-gray-600 fw-bold fs-6">3:30 AM</a>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="text-gray-800 fw-bold fs-6 me-1">$756.26</span>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="fw-bold fs-6 text-primary">-124.03</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" class="text-gray-600 fw-bold fs-6">10:30 PM</a>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="text-gray-800 fw-bold fs-6 me-1">$1.756.26</span>
-                                                </td>
-                                                <td class="pe-0 text-end">
-                                                    <span class="fw-bold fs-6 text-info">+165.86</span>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                            <!--end::Table body-->
-                                        </table>
-                                        <!--end::Table-->
-                                    </div>
-                                    <!--end::Table container-->
-                                </div>
-                                <!--end::Tap pane-->
-                            </div>
-                            <!--end::Tab Content-->
-                        </div>
-                        <!--end::Body-->
-                    </div>
-                    <!--end::Chart Widget 35-->
-                </div>
-                <!--end::Col-->
-                <!--begin::Col-->
-                <div class="col-xl-8">
-                    <!--begin::Table widget 14-->
-                    <div class="card card-flush h-md-100">
-                        <!--begin::Header-->
-                        <div class="card-header pt-7">
-                            <!--begin::Title-->
-                            <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label fw-bold text-gray-800">Projects Stats</span>
-                                <span class="text-gray-500 mt-1 fw-semibold fs-6">Updated 37 minutes ago</span>
-                            </h3>
-                            <!--end::Title-->
-                            <!--begin::Toolbar-->
-                            <div class="card-toolbar">
-                                <a href="apps/ecommerce/catalog/add-product.html" class="btn btn-sm btn-light">History</a>
-                            </div>
-                            <!--end::Toolbar-->
-                        </div>
-                        <!--end::Header-->
-                        <!--begin::Body-->
-                        <div class="card-body pt-6">
-                            <!--begin::Table container-->
-                            <div class="table-responsive">
-                                <!--begin::Table-->
-                                <table class="table table-row-dashed align-middle gs-0 gy-3 my-0">
-                                    <!--begin::Table head-->
-                                    <thead>
-                                    <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
-                                        <th class="p-0 pb-3 min-w-175px text-start">ITEM</th>
-                                        <th class="p-0 pb-3 min-w-100px text-end">BUDGET</th>
-                                        <th class="p-0 pb-3 min-w-100px text-end">PROGRESS</th>
-                                        <th class="p-0 pb-3 min-w-175px text-end pe-12">STATUS</th>
-                                        <th class="p-0 pb-3 w-125px text-end pe-7">CHART</th>
-                                        <th class="p-0 pb-3 w-50px text-end">VIEW</th>
-                                    </tr>
-                                    </thead>
-                                    <!--end::Table head-->
-                                    <!--begin::Table body-->
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="symbol symbol-50px me-3">
-                                                    <img src="assets/media/stock/600x600/img-49.jpg" class="" alt="">
-                                                </div>
-                                                <div class="d-flex justify-content-start flex-column">
-                                                    <a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Mivy App</a>
-                                                    <span class="text-gray-500 fw-semibold d-block fs-7">Jane Cooper</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end pe-0">
-                                            <span class="text-gray-600 fw-bold fs-6">$32,400</span>
-                                        </td>
-                                        <td class="text-end pe-0">
-                                            <!--begin::Label-->
-                                            <span class="badge badge-light-success fs-base">
-																		<i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1">
-																			<span class="path1"></span>
-																			<span class="path2"></span>
-																		</i>9.2%</span>
-                                            <!--end::Label-->
-                                        </td>
-                                        <td class="text-end pe-12">
-                                            <span class="badge py-3 px-4 fs-7 badge-light-primary">In Process</span>
-                                        </td>
-                                        <td class="text-end pe-0">
-                                            <div id="kt_table_widget_14_chart_1" class="h-50px mt-n8 pe-7" data-kt-chart-color="success" style="min-height: 50px;">
-                                                <div id="apexchartsep5stj22" class="apexcharts-canvas apexchartsep5stj22 apexcharts-theme-light" style="width: 92.25px; height: 50px;">
-                                                    <svg id="SvgjsSvg3016" width="92.25" height="50" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;">
-                                                        <foreignObject x="0" y="0" width="92.25" height="50">
-                                                            <div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 25px;"></div>
-                                                        </foreignObject>
-                                                        <g id="SvgjsG3055" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g>
-                                                        <g id="SvgjsG3018" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 1)">
-                                                            <defs id="SvgjsDefs3017">
-                                                                <clipPath id="gridRectMaskep5stj22">
-                                                                    <rect id="SvgjsRect3021" width="98.25" height="54" x="-3" y="-3" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                </clipPath>
-                                                                <clipPath id="forecastMaskep5stj22"></clipPath>
-                                                                <clipPath id="nonForecastMaskep5stj22"></clipPath>
-                                                                <clipPath id="gridRectMarkerMaskep5stj22">
-                                                                    <rect id="SvgjsRect3022" width="96.25" height="52" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                </clipPath>
-                                                            </defs>
-                                                            <g id="SvgjsG3029" class="apexcharts-grid">
-                                                                <g id="SvgjsG3030" class="apexcharts-gridlines-horizontal" style="display: none;">
-                                                                    <line id="SvgjsLine3033" x1="0" y1="0" x2="92.25" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                    <line id="SvgjsLine3034" x1="0" y1="48" x2="92.25" y2="48" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                </g>
-                                                                <g id="SvgjsG3031" class="apexcharts-gridlines-vertical" style="display: none;"></g>
-                                                                <line id="SvgjsLine3036" x1="0" y1="48" x2="92.25" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                                <line id="SvgjsLine3035" x1="0" y1="1" x2="0" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                            </g>
-                                                            <g id="SvgjsG3032" class="apexcharts-grid-borders" style="display: none;"></g>
-                                                            <g id="SvgjsG3023" class="apexcharts-area-series apexcharts-plot-series">
-                                                                <g id="SvgjsG3024" class="apexcharts-series" zIndex="0" seriesName="NetxProfit" data:longestSeries="true" rel="1" data:realIndex="0">
-                                                                    <path id="SvgjsPath3027" d="M 0 42.4C 2.483653846153846 42.4 4.612500000000001 40 7.096153846153847 40C 9.579807692307693 40 11.708653846153847 44 14.192307692307693 44C 16.67596153846154 44 18.804807692307694 31.2 21.28846153846154 31.2C 23.772115384615386 31.2 25.90096153846154 43.2 28.384615384615387 43.2C 30.868269230769233 43.2 32.997115384615384 39.2 35.48076923076923 39.2C 37.96442307692308 39.2 40.09326923076924 44 42.57692307692308 44C 45.06057692307692 44 47.18942307692308 29.6 49.67307692307693 29.6C 52.156730769230776 29.6 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 33.6 70.96153846153847 33.6C 73.44519230769231 33.6 75.57403846153846 42.4 78.0576923076923 42.4C 80.54134615384615 42.4 82.67019230769232 31.2 85.15384615384616 31.2C 87.6375 31.2 89.76634615384616 37.6 92.25 37.6C 92.25 37.6 92.25 37.6 92.25 48 L 0 48z" fill="rgba(255,255,255,1)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskep5stj22)" pathTo="M 0 42.4C 2.483653846153846 42.4 4.612500000000001 40 7.096153846153847 40C 9.579807692307693 40 11.708653846153847 44 14.192307692307693 44C 16.67596153846154 44 18.804807692307694 31.2 21.28846153846154 31.2C 23.772115384615386 31.2 25.90096153846154 43.2 28.384615384615387 43.2C 30.868269230769233 43.2 32.997115384615384 39.2 35.48076923076923 39.2C 37.96442307692308 39.2 40.09326923076924 44 42.57692307692308 44C 45.06057692307692 44 47.18942307692308 29.6 49.67307692307693 29.6C 52.156730769230776 29.6 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 33.6 70.96153846153847 33.6C 73.44519230769231 33.6 75.57403846153846 42.4 78.0576923076923 42.4C 80.54134615384615 42.4 82.67019230769232 31.2 85.15384615384616 31.2C 87.6375 31.2 89.76634615384616 37.6 92.25 37.6C 92.25 37.6 92.25 37.6 92.25 48 L 0 48z" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48 L 0 48"></path>
-                                                                    <path id="SvgjsPath3028" d="M 0 42.4C 2.483653846153846 42.4 4.612500000000001 40 7.096153846153847 40C 9.579807692307693 40 11.708653846153847 44 14.192307692307693 44C 16.67596153846154 44 18.804807692307694 31.2 21.28846153846154 31.2C 23.772115384615386 31.2 25.90096153846154 43.2 28.384615384615387 43.2C 30.868269230769233 43.2 32.997115384615384 39.2 35.48076923076923 39.2C 37.96442307692308 39.2 40.09326923076924 44 42.57692307692308 44C 45.06057692307692 44 47.18942307692308 29.6 49.67307692307693 29.6C 52.156730769230776 29.6 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 33.6 70.96153846153847 33.6C 73.44519230769231 33.6 75.57403846153846 42.4 78.0576923076923 42.4C 80.54134615384615 42.4 82.67019230769232 31.2 85.15384615384616 31.2C 87.6375 31.2 89.76634615384616 37.6 92.25 37.6" fill="none" fill-opacity="1" stroke="#17c653" stroke-opacity="1" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskep5stj22)" pathTo="M 0 42.4C 2.483653846153846 42.4 4.612500000000001 40 7.096153846153847 40C 9.579807692307693 40 11.708653846153847 44 14.192307692307693 44C 16.67596153846154 44 18.804807692307694 31.2 21.28846153846154 31.2C 23.772115384615386 31.2 25.90096153846154 43.2 28.384615384615387 43.2C 30.868269230769233 43.2 32.997115384615384 39.2 35.48076923076923 39.2C 37.96442307692308 39.2 40.09326923076924 44 42.57692307692308 44C 45.06057692307692 44 47.18942307692308 29.6 49.67307692307693 29.6C 52.156730769230776 29.6 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 39.2 63.86538461538462 39.2C 66.34903846153847 39.2 68.47788461538462 33.6 70.96153846153847 33.6C 73.44519230769231 33.6 75.57403846153846 42.4 78.0576923076923 42.4C 80.54134615384615 42.4 82.67019230769232 31.2 85.15384615384616 31.2C 87.6375 31.2 89.76634615384616 37.6 92.25 37.6" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48" fill-rule="evenodd"></path>
-                                                                    <g id="SvgjsG3025" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0"></g>
-                                                                </g>
-                                                                <g id="SvgjsG3026" class="apexcharts-datalabels" data:realIndex="0"></g>
-                                                            </g>
-                                                            <line id="SvgjsLine3037" x1="0" y1="0" x2="92.25" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line>
-                                                            <line id="SvgjsLine3038" x1="0" y1="0" x2="92.25" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line>
-                                                            <g id="SvgjsG3039" class="apexcharts-xaxis" transform="translate(0, 0)">
-                                                                <g id="SvgjsG3040" class="apexcharts-xaxis-texts-g" transform="translate(0, 4)"></g>
-                                                            </g>
-                                                            <g id="SvgjsG3056" class="apexcharts-yaxis-annotations"></g>
-                                                            <g id="SvgjsG3057" class="apexcharts-xaxis-annotations"></g>
-                                                            <g id="SvgjsG3058" class="apexcharts-point-annotations"></g>
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="symbol symbol-50px me-3">
-                                                    <img src="assets/media/stock/600x600/img-40.jpg" class="" alt="">
-                                                </div>
-                                                <div class="d-flex justify-content-start flex-column">
-                                                    <a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Avionica</a>
-                                                    <span class="text-gray-500 fw-semibold d-block fs-7">Esther Howard</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end pe-0">
-                                            <span class="text-gray-600 fw-bold fs-6">$256,910</span>
-                                        </td>
-                                        <td class="text-end pe-0">
-                                            <!--begin::Label-->
-                                            <span class="badge badge-light-danger fs-base">
-																		<i class="ki-duotone ki-arrow-down fs-5 text-danger ms-n1">
-																			<span class="path1"></span>
-																			<span class="path2"></span>
-																		</i>0.4%</span>
-                                            <!--end::Label-->
-                                        </td>
-                                        <td class="text-end pe-12">
-                                            <span class="badge py-3 px-4 fs-7 badge-light-warning">On Hold</span>
-                                        </td>
-                                        <td class="text-end pe-0">
-                                            <div id="kt_table_widget_14_chart_2" class="h-50px mt-n8 pe-7" data-kt-chart-color="danger" style="min-height: 50px;">
-                                                <div id="apexcharts8qlxmyvki" class="apexcharts-canvas apexcharts8qlxmyvki apexcharts-theme-light" style="width: 92.25px; height: 50px;">
-                                                    <svg id="SvgjsSvg3059" width="92.25" height="50" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;">
-                                                        <foreignObject x="0" y="0" width="92.25" height="50">
-                                                            <div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 25px;"></div>
-                                                        </foreignObject>
-                                                        <g id="SvgjsG3098" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g>
-                                                        <g id="SvgjsG3061" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 1)">
-                                                            <defs id="SvgjsDefs3060">
-                                                                <clipPath id="gridRectMask8qlxmyvki">
-                                                                    <rect id="SvgjsRect3064" width="98.25" height="54" x="-3" y="-3" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                </clipPath>
-                                                                <clipPath id="forecastMask8qlxmyvki"></clipPath>
-                                                                <clipPath id="nonForecastMask8qlxmyvki"></clipPath>
-                                                                <clipPath id="gridRectMarkerMask8qlxmyvki">
-                                                                    <rect id="SvgjsRect3065" width="96.25" height="52" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                </clipPath>
-                                                            </defs>
-                                                            <g id="SvgjsG3072" class="apexcharts-grid">
-                                                                <g id="SvgjsG3073" class="apexcharts-gridlines-horizontal" style="display: none;">
-                                                                    <line id="SvgjsLine3076" x1="0" y1="0" x2="92.25" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                    <line id="SvgjsLine3077" x1="0" y1="48" x2="92.25" y2="48" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                </g>
-                                                                <g id="SvgjsG3074" class="apexcharts-gridlines-vertical" style="display: none;"></g>
-                                                                <line id="SvgjsLine3079" x1="0" y1="48" x2="92.25" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                                <line id="SvgjsLine3078" x1="0" y1="1" x2="0" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                            </g>
-                                                            <g id="SvgjsG3075" class="apexcharts-grid-borders" style="display: none;"></g>
-                                                            <g id="SvgjsG3066" class="apexcharts-area-series apexcharts-plot-series">
-                                                                <g id="SvgjsG3067" class="apexcharts-series" zIndex="0" seriesName="NetxProfit" data:longestSeries="true" rel="1" data:realIndex="0">
-                                                                    <path id="SvgjsPath3070" d="M 0 34.4C 2.483653846153846 34.4 4.612500000000001 44 7.096153846153847 44C 9.579807692307693 44 11.708653846153847 29.6 14.192307692307693 29.6C 16.67596153846154 29.6 18.804807692307694 46.4 21.28846153846154 46.4C 23.772115384615386 46.4 25.90096153846154 31.2 28.384615384615387 31.2C 30.868269230769233 31.2 32.997115384615384 40.8 35.48076923076923 40.8C 37.96442307692308 40.8 40.09326923076924 34.4 42.57692307692308 34.4C 45.06057692307692 34.4 47.18942307692308 29.6 49.67307692307693 29.6C 52.156730769230776 29.6 54.28557692307693 44.8 56.769230769230774 44.8C 59.252884615384616 44.8 61.38173076923077 28.8 63.86538461538462 28.8C 66.34903846153847 28.8 68.47788461538462 40.8 70.96153846153847 40.8C 73.44519230769231 40.8 75.57403846153846 34.4 78.0576923076923 34.4C 80.54134615384615 34.4 82.67019230769232 31.2 85.15384615384616 31.2C 87.6375 31.2 89.76634615384616 42.4 92.25 42.4C 92.25 42.4 92.25 42.4 92.25 48 L 0 48z" fill="rgba(255,255,255,1)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMask8qlxmyvki)" pathTo="M 0 34.4C 2.483653846153846 34.4 4.612500000000001 44 7.096153846153847 44C 9.579807692307693 44 11.708653846153847 29.6 14.192307692307693 29.6C 16.67596153846154 29.6 18.804807692307694 46.4 21.28846153846154 46.4C 23.772115384615386 46.4 25.90096153846154 31.2 28.384615384615387 31.2C 30.868269230769233 31.2 32.997115384615384 40.8 35.48076923076923 40.8C 37.96442307692308 40.8 40.09326923076924 34.4 42.57692307692308 34.4C 45.06057692307692 34.4 47.18942307692308 29.6 49.67307692307693 29.6C 52.156730769230776 29.6 54.28557692307693 44.8 56.769230769230774 44.8C 59.252884615384616 44.8 61.38173076923077 28.8 63.86538461538462 28.8C 66.34903846153847 28.8 68.47788461538462 40.8 70.96153846153847 40.8C 73.44519230769231 40.8 75.57403846153846 34.4 78.0576923076923 34.4C 80.54134615384615 34.4 82.67019230769232 31.2 85.15384615384616 31.2C 87.6375 31.2 89.76634615384616 42.4 92.25 42.4C 92.25 42.4 92.25 42.4 92.25 48 L 0 48z" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48 L 0 48"></path>
-                                                                    <path id="SvgjsPath3071" d="M 0 34.4C 2.483653846153846 34.4 4.612500000000001 44 7.096153846153847 44C 9.579807692307693 44 11.708653846153847 29.6 14.192307692307693 29.6C 16.67596153846154 29.6 18.804807692307694 46.4 21.28846153846154 46.4C 23.772115384615386 46.4 25.90096153846154 31.2 28.384615384615387 31.2C 30.868269230769233 31.2 32.997115384615384 40.8 35.48076923076923 40.8C 37.96442307692308 40.8 40.09326923076924 34.4 42.57692307692308 34.4C 45.06057692307692 34.4 47.18942307692308 29.6 49.67307692307693 29.6C 52.156730769230776 29.6 54.28557692307693 44.8 56.769230769230774 44.8C 59.252884615384616 44.8 61.38173076923077 28.8 63.86538461538462 28.8C 66.34903846153847 28.8 68.47788461538462 40.8 70.96153846153847 40.8C 73.44519230769231 40.8 75.57403846153846 34.4 78.0576923076923 34.4C 80.54134615384615 34.4 82.67019230769232 31.2 85.15384615384616 31.2C 87.6375 31.2 89.76634615384616 42.4 92.25 42.4" fill="none" fill-opacity="1" stroke="#f8285a" stroke-opacity="1" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMask8qlxmyvki)" pathTo="M 0 34.4C 2.483653846153846 34.4 4.612500000000001 44 7.096153846153847 44C 9.579807692307693 44 11.708653846153847 29.6 14.192307692307693 29.6C 16.67596153846154 29.6 18.804807692307694 46.4 21.28846153846154 46.4C 23.772115384615386 46.4 25.90096153846154 31.2 28.384615384615387 31.2C 30.868269230769233 31.2 32.997115384615384 40.8 35.48076923076923 40.8C 37.96442307692308 40.8 40.09326923076924 34.4 42.57692307692308 34.4C 45.06057692307692 34.4 47.18942307692308 29.6 49.67307692307693 29.6C 52.156730769230776 29.6 54.28557692307693 44.8 56.769230769230774 44.8C 59.252884615384616 44.8 61.38173076923077 28.8 63.86538461538462 28.8C 66.34903846153847 28.8 68.47788461538462 40.8 70.96153846153847 40.8C 73.44519230769231 40.8 75.57403846153846 34.4 78.0576923076923 34.4C 80.54134615384615 34.4 82.67019230769232 31.2 85.15384615384616 31.2C 87.6375 31.2 89.76634615384616 42.4 92.25 42.4" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48" fill-rule="evenodd"></path>
-                                                                    <g id="SvgjsG3068" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0"></g>
-                                                                </g>
-                                                                <g id="SvgjsG3069" class="apexcharts-datalabels" data:realIndex="0"></g>
-                                                            </g>
-                                                            <line id="SvgjsLine3080" x1="0" y1="0" x2="92.25" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line>
-                                                            <line id="SvgjsLine3081" x1="0" y1="0" x2="92.25" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line>
-                                                            <g id="SvgjsG3082" class="apexcharts-xaxis" transform="translate(0, 0)">
-                                                                <g id="SvgjsG3083" class="apexcharts-xaxis-texts-g" transform="translate(0, 4)"></g>
-                                                            </g>
-                                                            <g id="SvgjsG3099" class="apexcharts-yaxis-annotations"></g>
-                                                            <g id="SvgjsG3100" class="apexcharts-xaxis-annotations"></g>
-                                                            <g id="SvgjsG3101" class="apexcharts-point-annotations"></g>
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="symbol symbol-50px me-3">
-                                                    <img src="assets/media/stock/600x600/img-39.jpg" class="" alt="">
-                                                </div>
-                                                <div class="d-flex justify-content-start flex-column">
-                                                    <a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Charto CRM</a>
-                                                    <span class="text-gray-500 fw-semibold d-block fs-7">Jenny Wilson</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end pe-0">
-                                            <span class="text-gray-600 fw-bold fs-6">$8,220</span>
-                                        </td>
-                                        <td class="text-end pe-0">
-                                            <!--begin::Label-->
-                                            <span class="badge badge-light-success fs-base">
-																		<i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1">
-																			<span class="path1"></span>
-																			<span class="path2"></span>
-																		</i>9.2%</span>
-                                            <!--end::Label-->
-                                        </td>
-                                        <td class="text-end pe-12">
-                                            <span class="badge py-3 px-4 fs-7 badge-light-primary">In Process</span>
-                                        </td>
-                                        <td class="text-end pe-0">
-                                            <div id="kt_table_widget_14_chart_3" class="h-50px mt-n8 pe-7" data-kt-chart-color="success" style="min-height: 50px;">
-                                                <div id="apexchartsubbz5u29j" class="apexcharts-canvas apexchartsubbz5u29j apexcharts-theme-light" style="width: 92.25px; height: 50px;">
-                                                    <svg id="SvgjsSvg3102" width="92.25" height="50" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;">
-                                                        <foreignObject x="0" y="0" width="92.25" height="50">
-                                                            <div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 25px;"></div>
-                                                        </foreignObject>
-                                                        <g id="SvgjsG3141" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g>
-                                                        <g id="SvgjsG3104" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 1)">
-                                                            <defs id="SvgjsDefs3103">
-                                                                <clipPath id="gridRectMaskubbz5u29j">
-                                                                    <rect id="SvgjsRect3107" width="98.25" height="54" x="-3" y="-3" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                </clipPath>
-                                                                <clipPath id="forecastMaskubbz5u29j"></clipPath>
-                                                                <clipPath id="nonForecastMaskubbz5u29j"></clipPath>
-                                                                <clipPath id="gridRectMarkerMaskubbz5u29j">
-                                                                    <rect id="SvgjsRect3108" width="96.25" height="52" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                </clipPath>
-                                                            </defs>
-                                                            <g id="SvgjsG3115" class="apexcharts-grid">
-                                                                <g id="SvgjsG3116" class="apexcharts-gridlines-horizontal" style="display: none;">
-                                                                    <line id="SvgjsLine3119" x1="0" y1="0" x2="92.25" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                    <line id="SvgjsLine3120" x1="0" y1="48" x2="92.25" y2="48" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                </g>
-                                                                <g id="SvgjsG3117" class="apexcharts-gridlines-vertical" style="display: none;"></g>
-                                                                <line id="SvgjsLine3122" x1="0" y1="48" x2="92.25" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                                <line id="SvgjsLine3121" x1="0" y1="1" x2="0" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                            </g>
-                                                            <g id="SvgjsG3118" class="apexcharts-grid-borders" style="display: none;"></g>
-                                                            <g id="SvgjsG3109" class="apexcharts-area-series apexcharts-plot-series">
-                                                                <g id="SvgjsG3110" class="apexcharts-series" zIndex="0" seriesName="NetxProfit" data:longestSeries="true" rel="1" data:realIndex="0">
-                                                                    <path id="SvgjsPath3113" d="M 0 46.4C 2.483653846153846 46.4 4.612500000000001 28.8 7.096153846153847 28.8C 9.579807692307693 28.8 11.708653846153847 44 14.192307692307693 44C 16.67596153846154 44 18.804807692307694 34.4 21.28846153846154 34.4C 23.772115384615386 34.4 25.90096153846154 42.4 28.384615384615387 42.4C 30.868269230769233 42.4 32.997115384615384 46.4 35.48076923076923 46.4C 37.96442307692308 46.4 40.09326923076924 38.4 42.57692307692308 38.4C 45.06057692307692 38.4 47.18942307692308 28.8 49.67307692307693 28.8C 52.156730769230776 28.8 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 28.8 63.86538461538462 28.8C 66.34903846153847 28.8 68.47788461538462 46.4 70.96153846153847 46.4C 73.44519230769231 46.4 75.57403846153846 41.6 78.0576923076923 41.6C 80.54134615384615 41.6 82.67019230769232 38.4 85.15384615384616 38.4C 87.6375 38.4 89.76634615384616 42.4 92.25 42.4C 92.25 42.4 92.25 42.4 92.25 48 L 0 48z" fill="rgba(255,255,255,1)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskubbz5u29j)" pathTo="M 0 46.4C 2.483653846153846 46.4 4.612500000000001 28.8 7.096153846153847 28.8C 9.579807692307693 28.8 11.708653846153847 44 14.192307692307693 44C 16.67596153846154 44 18.804807692307694 34.4 21.28846153846154 34.4C 23.772115384615386 34.4 25.90096153846154 42.4 28.384615384615387 42.4C 30.868269230769233 42.4 32.997115384615384 46.4 35.48076923076923 46.4C 37.96442307692308 46.4 40.09326923076924 38.4 42.57692307692308 38.4C 45.06057692307692 38.4 47.18942307692308 28.8 49.67307692307693 28.8C 52.156730769230776 28.8 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 28.8 63.86538461538462 28.8C 66.34903846153847 28.8 68.47788461538462 46.4 70.96153846153847 46.4C 73.44519230769231 46.4 75.57403846153846 41.6 78.0576923076923 41.6C 80.54134615384615 41.6 82.67019230769232 38.4 85.15384615384616 38.4C 87.6375 38.4 89.76634615384616 42.4 92.25 42.4C 92.25 42.4 92.25 42.4 92.25 48 L 0 48z" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48 L 0 48"></path>
-                                                                    <path id="SvgjsPath3114" d="M 0 46.4C 2.483653846153846 46.4 4.612500000000001 28.8 7.096153846153847 28.8C 9.579807692307693 28.8 11.708653846153847 44 14.192307692307693 44C 16.67596153846154 44 18.804807692307694 34.4 21.28846153846154 34.4C 23.772115384615386 34.4 25.90096153846154 42.4 28.384615384615387 42.4C 30.868269230769233 42.4 32.997115384615384 46.4 35.48076923076923 46.4C 37.96442307692308 46.4 40.09326923076924 38.4 42.57692307692308 38.4C 45.06057692307692 38.4 47.18942307692308 28.8 49.67307692307693 28.8C 52.156730769230776 28.8 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 28.8 63.86538461538462 28.8C 66.34903846153847 28.8 68.47788461538462 46.4 70.96153846153847 46.4C 73.44519230769231 46.4 75.57403846153846 41.6 78.0576923076923 41.6C 80.54134615384615 41.6 82.67019230769232 38.4 85.15384615384616 38.4C 87.6375 38.4 89.76634615384616 42.4 92.25 42.4" fill="none" fill-opacity="1" stroke="#17c653" stroke-opacity="1" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskubbz5u29j)" pathTo="M 0 46.4C 2.483653846153846 46.4 4.612500000000001 28.8 7.096153846153847 28.8C 9.579807692307693 28.8 11.708653846153847 44 14.192307692307693 44C 16.67596153846154 44 18.804807692307694 34.4 21.28846153846154 34.4C 23.772115384615386 34.4 25.90096153846154 42.4 28.384615384615387 42.4C 30.868269230769233 42.4 32.997115384615384 46.4 35.48076923076923 46.4C 37.96442307692308 46.4 40.09326923076924 38.4 42.57692307692308 38.4C 45.06057692307692 38.4 47.18942307692308 28.8 49.67307692307693 28.8C 52.156730769230776 28.8 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 28.8 63.86538461538462 28.8C 66.34903846153847 28.8 68.47788461538462 46.4 70.96153846153847 46.4C 73.44519230769231 46.4 75.57403846153846 41.6 78.0576923076923 41.6C 80.54134615384615 41.6 82.67019230769232 38.4 85.15384615384616 38.4C 87.6375 38.4 89.76634615384616 42.4 92.25 42.4" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48" fill-rule="evenodd"></path>
-                                                                    <g id="SvgjsG3111" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0"></g>
-                                                                </g>
-                                                                <g id="SvgjsG3112" class="apexcharts-datalabels" data:realIndex="0"></g>
-                                                            </g>
-                                                            <line id="SvgjsLine3123" x1="0" y1="0" x2="92.25" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line>
-                                                            <line id="SvgjsLine3124" x1="0" y1="0" x2="92.25" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line>
-                                                            <g id="SvgjsG3125" class="apexcharts-xaxis" transform="translate(0, 0)">
-                                                                <g id="SvgjsG3126" class="apexcharts-xaxis-texts-g" transform="translate(0, 4)"></g>
-                                                            </g>
-                                                            <g id="SvgjsG3142" class="apexcharts-yaxis-annotations"></g>
-                                                            <g id="SvgjsG3143" class="apexcharts-xaxis-annotations"></g>
-                                                            <g id="SvgjsG3144" class="apexcharts-point-annotations"></g>
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="symbol symbol-50px me-3">
-                                                    <img src="assets/media/stock/600x600/img-47.jpg" class="" alt="">
-                                                </div>
-                                                <div class="d-flex justify-content-start flex-column">
-                                                    <a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Tower Hill</a>
-                                                    <span class="text-gray-500 fw-semibold d-block fs-7">Cody Fisher</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end pe-0">
-                                            <span class="text-gray-600 fw-bold fs-6">$74,000</span>
-                                        </td>
-                                        <td class="text-end pe-0">
-                                            <!--begin::Label-->
-                                            <span class="badge badge-light-success fs-base">
-																		<i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1">
-																			<span class="path1"></span>
-																			<span class="path2"></span>
-																		</i>9.2%</span>
-                                            <!--end::Label-->
-                                        </td>
-                                        <td class="text-end pe-12">
-                                            <span class="badge py-3 px-4 fs-7 badge-light-success">Complated</span>
-                                        </td>
-                                        <td class="text-end pe-0">
-                                            <div id="kt_table_widget_14_chart_4" class="h-50px mt-n8 pe-7" data-kt-chart-color="success" style="min-height: 50px;">
-                                                <div id="apexchartsnli7k1xf" class="apexcharts-canvas apexchartsnli7k1xf apexcharts-theme-light" style="width: 92.25px; height: 50px;">
-                                                    <svg id="SvgjsSvg3145" width="92.25" height="50" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;">
-                                                        <foreignObject x="0" y="0" width="92.25" height="50">
-                                                            <div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 25px;"></div>
-                                                        </foreignObject>
-                                                        <g id="SvgjsG3184" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g>
-                                                        <g id="SvgjsG3147" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 1)">
-                                                            <defs id="SvgjsDefs3146">
-                                                                <clipPath id="gridRectMasknli7k1xf">
-                                                                    <rect id="SvgjsRect3150" width="98.25" height="54" x="-3" y="-3" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                </clipPath>
-                                                                <clipPath id="forecastMasknli7k1xf"></clipPath>
-                                                                <clipPath id="nonForecastMasknli7k1xf"></clipPath>
-                                                                <clipPath id="gridRectMarkerMasknli7k1xf">
-                                                                    <rect id="SvgjsRect3151" width="96.25" height="52" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                </clipPath>
-                                                            </defs>
-                                                            <g id="SvgjsG3158" class="apexcharts-grid">
-                                                                <g id="SvgjsG3159" class="apexcharts-gridlines-horizontal" style="display: none;">
-                                                                    <line id="SvgjsLine3162" x1="0" y1="0" x2="92.25" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                    <line id="SvgjsLine3163" x1="0" y1="48" x2="92.25" y2="48" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                </g>
-                                                                <g id="SvgjsG3160" class="apexcharts-gridlines-vertical" style="display: none;"></g>
-                                                                <line id="SvgjsLine3165" x1="0" y1="48" x2="92.25" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                                <line id="SvgjsLine3164" x1="0" y1="1" x2="0" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                            </g>
-                                                            <g id="SvgjsG3161" class="apexcharts-grid-borders" style="display: none;"></g>
-                                                            <g id="SvgjsG3152" class="apexcharts-area-series apexcharts-plot-series">
-                                                                <g id="SvgjsG3153" class="apexcharts-series" zIndex="0" seriesName="NetxProfit" data:longestSeries="true" rel="1" data:realIndex="0">
-                                                                    <path id="SvgjsPath3156" d="M 0 28.8C 2.483653846153846 28.8 4.612500000000001 45.6 7.096153846153847 45.6C 9.579807692307693 45.6 11.708653846153847 44 14.192307692307693 44C 16.67596153846154 44 18.804807692307694 32.8 21.28846153846154 32.8C 23.772115384615386 32.8 25.90096153846154 45.6 28.384615384615387 45.6C 30.868269230769233 45.6 32.997115384615384 42.4 35.48076923076923 42.4C 37.96442307692308 42.4 40.09326923076924 28 42.57692307692308 28C 45.06057692307692 28 47.18942307692308 36.8 49.67307692307693 36.8C 52.156730769230776 36.8 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 36.8 63.86538461538462 36.8C 66.34903846153847 36.8 68.47788461538462 46.4 70.96153846153847 46.4C 73.44519230769231 46.4 75.57403846153846 41.6 78.0576923076923 41.6C 80.54134615384615 41.6 82.67019230769232 44 85.15384615384616 44C 87.6375 44 89.76634615384616 34.4 92.25 34.4C 92.25 34.4 92.25 34.4 92.25 48 L 0 48z" fill="rgba(255,255,255,1)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMasknli7k1xf)" pathTo="M 0 28.8C 2.483653846153846 28.8 4.612500000000001 45.6 7.096153846153847 45.6C 9.579807692307693 45.6 11.708653846153847 44 14.192307692307693 44C 16.67596153846154 44 18.804807692307694 32.8 21.28846153846154 32.8C 23.772115384615386 32.8 25.90096153846154 45.6 28.384615384615387 45.6C 30.868269230769233 45.6 32.997115384615384 42.4 35.48076923076923 42.4C 37.96442307692308 42.4 40.09326923076924 28 42.57692307692308 28C 45.06057692307692 28 47.18942307692308 36.8 49.67307692307693 36.8C 52.156730769230776 36.8 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 36.8 63.86538461538462 36.8C 66.34903846153847 36.8 68.47788461538462 46.4 70.96153846153847 46.4C 73.44519230769231 46.4 75.57403846153846 41.6 78.0576923076923 41.6C 80.54134615384615 41.6 82.67019230769232 44 85.15384615384616 44C 87.6375 44 89.76634615384616 34.4 92.25 34.4C 92.25 34.4 92.25 34.4 92.25 48 L 0 48z" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48 L 0 48"></path>
-                                                                    <path id="SvgjsPath3157" d="M 0 28.8C 2.483653846153846 28.8 4.612500000000001 45.6 7.096153846153847 45.6C 9.579807692307693 45.6 11.708653846153847 44 14.192307692307693 44C 16.67596153846154 44 18.804807692307694 32.8 21.28846153846154 32.8C 23.772115384615386 32.8 25.90096153846154 45.6 28.384615384615387 45.6C 30.868269230769233 45.6 32.997115384615384 42.4 35.48076923076923 42.4C 37.96442307692308 42.4 40.09326923076924 28 42.57692307692308 28C 45.06057692307692 28 47.18942307692308 36.8 49.67307692307693 36.8C 52.156730769230776 36.8 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 36.8 63.86538461538462 36.8C 66.34903846153847 36.8 68.47788461538462 46.4 70.96153846153847 46.4C 73.44519230769231 46.4 75.57403846153846 41.6 78.0576923076923 41.6C 80.54134615384615 41.6 82.67019230769232 44 85.15384615384616 44C 87.6375 44 89.76634615384616 34.4 92.25 34.4" fill="none" fill-opacity="1" stroke="#17c653" stroke-opacity="1" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMasknli7k1xf)" pathTo="M 0 28.8C 2.483653846153846 28.8 4.612500000000001 45.6 7.096153846153847 45.6C 9.579807692307693 45.6 11.708653846153847 44 14.192307692307693 44C 16.67596153846154 44 18.804807692307694 32.8 21.28846153846154 32.8C 23.772115384615386 32.8 25.90096153846154 45.6 28.384615384615387 45.6C 30.868269230769233 45.6 32.997115384615384 42.4 35.48076923076923 42.4C 37.96442307692308 42.4 40.09326923076924 28 42.57692307692308 28C 45.06057692307692 28 47.18942307692308 36.8 49.67307692307693 36.8C 52.156730769230776 36.8 54.28557692307693 44 56.769230769230774 44C 59.252884615384616 44 61.38173076923077 36.8 63.86538461538462 36.8C 66.34903846153847 36.8 68.47788461538462 46.4 70.96153846153847 46.4C 73.44519230769231 46.4 75.57403846153846 41.6 78.0576923076923 41.6C 80.54134615384615 41.6 82.67019230769232 44 85.15384615384616 44C 87.6375 44 89.76634615384616 34.4 92.25 34.4" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48" fill-rule="evenodd"></path>
-                                                                    <g id="SvgjsG3154" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0"></g>
-                                                                </g>
-                                                                <g id="SvgjsG3155" class="apexcharts-datalabels" data:realIndex="0"></g>
-                                                            </g>
-                                                            <line id="SvgjsLine3166" x1="0" y1="0" x2="92.25" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line>
-                                                            <line id="SvgjsLine3167" x1="0" y1="0" x2="92.25" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line>
-                                                            <g id="SvgjsG3168" class="apexcharts-xaxis" transform="translate(0, 0)">
-                                                                <g id="SvgjsG3169" class="apexcharts-xaxis-texts-g" transform="translate(0, 4)"></g>
-                                                            </g>
-                                                            <g id="SvgjsG3185" class="apexcharts-yaxis-annotations"></g>
-                                                            <g id="SvgjsG3186" class="apexcharts-xaxis-annotations"></g>
-                                                            <g id="SvgjsG3187" class="apexcharts-point-annotations"></g>
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="symbol symbol-50px me-3">
-                                                    <img src="assets/media/stock/600x600/img-48.jpg" class="" alt="">
-                                                </div>
-                                                <div class="d-flex justify-content-start flex-column">
-                                                    <a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">9 Degree</a>
-                                                    <span class="text-gray-500 fw-semibold d-block fs-7">Savannah Nguyen</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end pe-0">
-                                            <span class="text-gray-600 fw-bold fs-6">$183,300</span>
-                                        </td>
-                                        <td class="text-end pe-0">
-                                            <!--begin::Label-->
-                                            <span class="badge badge-light-danger fs-base">
-																		<i class="ki-duotone ki-arrow-down fs-5 text-danger ms-n1">
-																			<span class="path1"></span>
-																			<span class="path2"></span>
-																		</i>0.4%</span>
-                                            <!--end::Label-->
-                                        </td>
-                                        <td class="text-end pe-12">
-                                            <span class="badge py-3 px-4 fs-7 badge-light-primary">In Process</span>
-                                        </td>
-                                        <td class="text-end pe-0">
-                                            <div id="kt_table_widget_14_chart_5" class="h-50px mt-n8 pe-7" data-kt-chart-color="danger" style="min-height: 50px;">
-                                                <div id="apexcharts5zk8hisc" class="apexcharts-canvas apexcharts5zk8hisc apexcharts-theme-light" style="width: 92.25px; height: 50px;">
-                                                    <svg id="SvgjsSvg3188" width="92.25" height="50" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;">
-                                                        <foreignObject x="0" y="0" width="92.25" height="50">
-                                                            <div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 25px;"></div>
-                                                        </foreignObject>
-                                                        <g id="SvgjsG3227" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g>
-                                                        <g id="SvgjsG3190" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 1)">
-                                                            <defs id="SvgjsDefs3189">
-                                                                <clipPath id="gridRectMask5zk8hisc">
-                                                                    <rect id="SvgjsRect3193" width="98.25" height="54" x="-3" y="-3" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                </clipPath>
-                                                                <clipPath id="forecastMask5zk8hisc"></clipPath>
-                                                                <clipPath id="nonForecastMask5zk8hisc"></clipPath>
-                                                                <clipPath id="gridRectMarkerMask5zk8hisc">
-                                                                    <rect id="SvgjsRect3194" width="96.25" height="52" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect>
-                                                                </clipPath>
-                                                            </defs>
-                                                            <g id="SvgjsG3201" class="apexcharts-grid">
-                                                                <g id="SvgjsG3202" class="apexcharts-gridlines-horizontal" style="display: none;">
-                                                                    <line id="SvgjsLine3205" x1="0" y1="0" x2="92.25" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                    <line id="SvgjsLine3206" x1="0" y1="48" x2="92.25" y2="48" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line>
-                                                                </g>
-                                                                <g id="SvgjsG3203" class="apexcharts-gridlines-vertical" style="display: none;"></g>
-                                                                <line id="SvgjsLine3208" x1="0" y1="48" x2="92.25" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                                <line id="SvgjsLine3207" x1="0" y1="1" x2="0" y2="48" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line>
-                                                            </g>
-                                                            <g id="SvgjsG3204" class="apexcharts-grid-borders" style="display: none;"></g>
-                                                            <g id="SvgjsG3195" class="apexcharts-area-series apexcharts-plot-series">
-                                                                <g id="SvgjsG3196" class="apexcharts-series" zIndex="0" seriesName="NetxProfit" data:longestSeries="true" rel="1" data:realIndex="0">
-                                                                    <path id="SvgjsPath3199" d="M 0 45.6C 2.483653846153846 45.6 4.612500000000001 29.6 7.096153846153847 29.6C 9.579807692307693 29.6 11.708653846153847 47.2 14.192307692307693 47.2C 16.67596153846154 47.2 18.804807692307694 32.8 21.28846153846154 32.8C 23.772115384615386 32.8 25.90096153846154 45.6 28.384615384615387 45.6C 30.868269230769233 45.6 32.997115384615384 34.4 35.48076923076923 34.4C 37.96442307692308 34.4 40.09326923076924 45.6 42.57692307692308 45.6C 45.06057692307692 45.6 47.18942307692308 40.8 49.67307692307693 40.8C 52.156730769230776 40.8 54.28557692307693 28 56.769230769230774 28C 59.252884615384616 28 61.38173076923077 44.8 63.86538461538462 44.8C 66.34903846153847 44.8 68.47788461538462 46.4 70.96153846153847 46.4C 73.44519230769231 46.4 75.57403846153846 33.6 78.0576923076923 33.6C 80.54134615384615 33.6 82.67019230769232 28 85.15384615384616 28C 87.6375 28 89.76634615384616 45.6 92.25 45.6C 92.25 45.6 92.25 45.6 92.25 48 L 0 48z" fill="rgba(255,255,255,1)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMask5zk8hisc)" pathTo="M 0 45.6C 2.483653846153846 45.6 4.612500000000001 29.6 7.096153846153847 29.6C 9.579807692307693 29.6 11.708653846153847 47.2 14.192307692307693 47.2C 16.67596153846154 47.2 18.804807692307694 32.8 21.28846153846154 32.8C 23.772115384615386 32.8 25.90096153846154 45.6 28.384615384615387 45.6C 30.868269230769233 45.6 32.997115384615384 34.4 35.48076923076923 34.4C 37.96442307692308 34.4 40.09326923076924 45.6 42.57692307692308 45.6C 45.06057692307692 45.6 47.18942307692308 40.8 49.67307692307693 40.8C 52.156730769230776 40.8 54.28557692307693 28 56.769230769230774 28C 59.252884615384616 28 61.38173076923077 44.8 63.86538461538462 44.8C 66.34903846153847 44.8 68.47788461538462 46.4 70.96153846153847 46.4C 73.44519230769231 46.4 75.57403846153846 33.6 78.0576923076923 33.6C 80.54134615384615 33.6 82.67019230769232 28 85.15384615384616 28C 87.6375 28 89.76634615384616 45.6 92.25 45.6C 92.25 45.6 92.25 45.6 92.25 48 L 0 48z" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48 L 0 48"></path>
-                                                                    <path id="SvgjsPath3200" d="M 0 45.6C 2.483653846153846 45.6 4.612500000000001 29.6 7.096153846153847 29.6C 9.579807692307693 29.6 11.708653846153847 47.2 14.192307692307693 47.2C 16.67596153846154 47.2 18.804807692307694 32.8 21.28846153846154 32.8C 23.772115384615386 32.8 25.90096153846154 45.6 28.384615384615387 45.6C 30.868269230769233 45.6 32.997115384615384 34.4 35.48076923076923 34.4C 37.96442307692308 34.4 40.09326923076924 45.6 42.57692307692308 45.6C 45.06057692307692 45.6 47.18942307692308 40.8 49.67307692307693 40.8C 52.156730769230776 40.8 54.28557692307693 28 56.769230769230774 28C 59.252884615384616 28 61.38173076923077 44.8 63.86538461538462 44.8C 66.34903846153847 44.8 68.47788461538462 46.4 70.96153846153847 46.4C 73.44519230769231 46.4 75.57403846153846 33.6 78.0576923076923 33.6C 80.54134615384615 33.6 82.67019230769232 28 85.15384615384616 28C 87.6375 28 89.76634615384616 45.6 92.25 45.6" fill="none" fill-opacity="1" stroke="#f8285a" stroke-opacity="1" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMask5zk8hisc)" pathTo="M 0 45.6C 2.483653846153846 45.6 4.612500000000001 29.6 7.096153846153847 29.6C 9.579807692307693 29.6 11.708653846153847 47.2 14.192307692307693 47.2C 16.67596153846154 47.2 18.804807692307694 32.8 21.28846153846154 32.8C 23.772115384615386 32.8 25.90096153846154 45.6 28.384615384615387 45.6C 30.868269230769233 45.6 32.997115384615384 34.4 35.48076923076923 34.4C 37.96442307692308 34.4 40.09326923076924 45.6 42.57692307692308 45.6C 45.06057692307692 45.6 47.18942307692308 40.8 49.67307692307693 40.8C 52.156730769230776 40.8 54.28557692307693 28 56.769230769230774 28C 59.252884615384616 28 61.38173076923077 44.8 63.86538461538462 44.8C 66.34903846153847 44.8 68.47788461538462 46.4 70.96153846153847 46.4C 73.44519230769231 46.4 75.57403846153846 33.6 78.0576923076923 33.6C 80.54134615384615 33.6 82.67019230769232 28 85.15384615384616 28C 87.6375 28 89.76634615384616 45.6 92.25 45.6" pathFrom="M 0 48 L 0 48 L 7.096153846153847 48 L 14.192307692307693 48 L 21.28846153846154 48 L 28.384615384615387 48 L 35.48076923076923 48 L 42.57692307692308 48 L 49.67307692307693 48 L 56.769230769230774 48 L 63.86538461538462 48 L 70.96153846153847 48 L 78.0576923076923 48 L 85.15384615384616 48 L 92.25 48" fill-rule="evenodd"></path>
-                                                                    <g id="SvgjsG3197" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0"></g>
-                                                                </g>
-                                                                <g id="SvgjsG3198" class="apexcharts-datalabels" data:realIndex="0"></g>
-                                                            </g>
-                                                            <line id="SvgjsLine3209" x1="0" y1="0" x2="92.25" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line>
-                                                            <line id="SvgjsLine3210" x1="0" y1="0" x2="92.25" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line>
-                                                            <g id="SvgjsG3211" class="apexcharts-xaxis" transform="translate(0, 0)">
-                                                                <g id="SvgjsG3212" class="apexcharts-xaxis-texts-g" transform="translate(0, 4)"></g>
-                                                            </g>
-                                                            <g id="SvgjsG3228" class="apexcharts-yaxis-annotations"></g>
-                                                            <g id="SvgjsG3229" class="apexcharts-xaxis-annotations"></g>
-                                                            <g id="SvgjsG3230" class="apexcharts-point-annotations"></g>
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                                <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                    <!--end::Table body-->
-                                </table>
-                            </div>
-                            <!--end::Table-->
-                        </div>
-                        <!--end: Card Body-->
-                    </div>
-                    <!--end::Table widget 14-->
-                </div>
-                <!--end::Col-->
-            </div>
-            <!--end::Row-->
-            <!--begin::Row-->
-            <div class="row gx-5 gx-xl-10">
-                <!--begin::Col-->
-                <div class="col-xl-4 mb-5 mb-xl-0">
-                    <!--begin::Chart widget 31-->
-                    <div class="card card-flush h-xl-100">
-                        <!--begin::Header-->
-                        <div class="card-header pt-7 mb-7">
-                            <!--begin::Title-->
-                            <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label fw-bold text-gray-800">Warephase stats</span>
-                                <span class="text-gray-500 mt-1 fw-semibold fs-6">8k social visitors</span>
-                            </h3>
-                            <!--end::Title-->
-                            <!--begin::Toolbar-->
-                            <div class="card-toolbar">
-                                <a href="apps/ecommerce/catalog/add-product.html" class="btn btn-sm btn-light">PDF Report</a>
-                            </div>
-                            <!--end::Toolbar-->
-                        </div>
-                        <!--end::Header-->
-                        <!--begin::Body-->
-                        <div class="card-body d-flex align-items-end pt-0">
-                            <!--begin::Chart-->
-                            <div id="kt_charts_widget_31_chart" class="w-100 h-300px">
-                                <div style="position: relative; width: 100%; height: 100%;">
-                                    <div aria-hidden="true" style="position: absolute; width: 316px; height: 300px;">
-                                        <div>
-                                            <canvas class="am5-layer-0" width="395" height="375" style="position: absolute; top: 0px; left: 0px; width: 316px; height: 300px;"></canvas>
-                                            <canvas class="am5-layer-30" width="395" height="375" style="position: absolute; top: 0px; left: 0px; width: 316px; height: 300px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="am5-html-container" style="position: absolute; pointer-events: none; overflow: hidden; width: 316px; height: 300px;"></div>
-                                    <div class="am5-reader-container" role="alert" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);"></div>
-                                    <div class="am5-focus-container" role="graphics-document" style="position: absolute; pointer-events: none; top: 0px; left: 0px; overflow: hidden; width: 316px; height: 300px;">
-                                        <div role="button" aria-label="Zoom Out" aria-hidden="true" style="position: absolute; pointer-events: none; top: -2px; left: -2px; width: 4px; height: 4px;"></div>
-                                        <div tabindex="0" role="checkbox" aria-label="Revenue; Press ENTER to toggle" aria-checked="true" style="position: absolute; pointer-events: none; top: -2px; left: -2px; width: 4px; height: 4px;"></div>
-                                        <div tabindex="0" role="checkbox" aria-label="Expense; Press ENTER to toggle" aria-checked="true" style="position: absolute; pointer-events: none; top: -2px; left: -2px; width: 4px; height: 4px;"></div>
-                                    </div>
-                                    <div class="am5-tooltip-container">
-                                        <div role="tooltip" aria-hidden="true" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); pointer-events: none;">Revenue:
-                                            Expense:
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end::Chart-->
-                        </div>
-                        <!--end::Body-->
-                    </div>
-                    <!--end::Chart widget 31-->
-                </div>
-                <!--end::Col-->
-                <!--begin::Col-->
-                <div class="col-xl-8">
-                    <!--begin::Chart widget 24-->
-                    <div class="card card-flush overflow-hidden h-xl-100">
+                <div class="col-lg-12 col-xl-12 col-xxl-6 mb-5 mb-xl-0">
+                    <!--begin::Chart widget 3-->
+                    <div class="card card-flush overflow-hidden h-md-100">
                         <!--begin::Header-->
                         <div class="card-header py-5">
                             <!--begin::Title-->
                             <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label fw-bold text-gray-900">Human Resources</span>
-                                <span class="text-gray-500 mt-1 fw-semibold fs-6">Reports by states and ganders</span>
+                                <span class="card-label fw-bold text-gray-900">Sales This Months</span>
+                                <span class="text-gray-500 mt-1 fw-semibold fs-6">Users from all channels</span>
                             </h3>
                             <!--end::Title-->
                             <!--begin::Toolbar-->
@@ -3628,29 +365,1978 @@
                         </div>
                         <!--end::Header-->
                         <!--begin::Card body-->
-                        <div class="card-body pt-0">
-                            <!--begin::Chart-->
-                            <div id="kt_charts_widget_24" class="min-h-auto" style="height: 300px">
-                                <div style="position: relative; width: 100%; height: 100%;">
-                                    <div aria-hidden="true" style="position: absolute; width: 725px; height: 300px;">
-                                        <div>
-                                            <canvas class="am5-layer-0" width="906" height="375" style="position: absolute; top: 0px; left: 0px; width: 725px; height: 300px;"></canvas>
-                                            <canvas class="am5-layer-30" width="906" height="375" style="position: absolute; top: 0px; left: 0px; width: 725px; height: 300px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="am5-html-container" style="position: absolute; pointer-events: none; overflow: hidden; width: 725px; height: 300px;"></div>
-                                    <div class="am5-reader-container" role="alert" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);"></div>
-                                    <div class="am5-focus-container" role="graphics-document" style="position: absolute; pointer-events: none; top: 0px; left: 0px; overflow: hidden; width: 725px; height: 300px;">
-                                        <div role="button" aria-label="Zoom Out" aria-hidden="true" style="position: absolute; pointer-events: none; top: -2px; left: -2px; width: 4px; height: 4px;"></div>
-                                    </div>
-                                    <div class="am5-tooltip-container"></div>
+                        <div class="card-body d-flex justify-content-between flex-column pb-1 px-0">
+                            <!--begin::Statistics-->
+                            <div class="px-9 mb-5">
+                                <!--begin::Statistics-->
+                                <div class="d-flex mb-2">
+                                    <span class="fs-4 fw-semibold text-gray-500 me-1">$</span>
+                                    <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1 ls-n2">14,094</span>
                                 </div>
+                                <!--end::Statistics-->
+                                <!--begin::Description-->
+                                <span class="fs-6 fw-semibold text-gray-500">Another $48,346 to Goal</span>
+                                <!--end::Description-->
                             </div>
+                            <!--end::Statistics-->
+                            <!--begin::Chart-->
+                            <div id="kt_charts_widget_3" class="min-h-auto ps-4 pe-6" style="height: 300px; min-height: 315px;"><div id="apexcharts6zijr134" class="apexcharts-canvas apexcharts6zijr134 apexcharts-theme-light" style="width: 579.5px; height: 300px;"><svg id="SvgjsSvg1006" width="579.5" height="300" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg apexcharts-zoomable" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><foreignObject x="0" y="0" width="579.5" height="300"><div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 150px;"></div></foreignObject><rect id="SvgjsRect1035" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe"></rect><g id="SvgjsG1098" class="apexcharts-yaxis" rel="0" transform="translate(37.765625, 0)"><g id="SvgjsG1099" class="apexcharts-yaxis-texts-g"><text id="SvgjsText1101" font-family="inherit" x="20" y="34" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1102">$24K</tspan><title>$24K</title></text><text id="SvgjsText1104" font-family="inherit" x="20" y="89.455" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1105">$20.5K</tspan><title>$20.5K</title></text><text id="SvgjsText1107" font-family="inherit" x="20" y="144.91" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1108">$17K</tspan><title>$17K</title></text><text id="SvgjsText1110" font-family="inherit" x="20" y="200.365" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1111">$13.5K</tspan><title>$13.5K</title></text><text id="SvgjsText1113" font-family="inherit" x="20" y="255.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1114">$10K</tspan><title>$10K</title></text></g></g><g id="SvgjsG1008" class="apexcharts-inner apexcharts-graphical" transform="translate(67.765625, 30)"><defs id="SvgjsDefs1007"><clipPath id="gridRectMask6zijr134"><rect id="SvgjsRect1012" width="508.734375" height="228.82" x="-3.5" y="-3.5" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMask6zijr134"></clipPath><clipPath id="nonForecastMask6zijr134"></clipPath><clipPath id="gridRectMarkerMask6zijr134"><rect id="SvgjsRect1013" width="505.734375" height="225.82" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><linearGradient id="SvgjsLinearGradient1018" x1="0" y1="0" x2="0" y2="1"><stop id="SvgjsStop1019" stop-opacity="0.4" stop-color="rgba(23,198,83,0.4)" offset="0"></stop><stop id="SvgjsStop1020" stop-opacity="0" stop-color="rgba(255,255,255,0)" offset="0.8"></stop><stop id="SvgjsStop1021" stop-opacity="0" stop-color="rgba(255,255,255,0)" offset="1"></stop></linearGradient></defs><g id="SvgjsG1024" class="apexcharts-grid"><g id="SvgjsG1025" class="apexcharts-gridlines-horizontal"><line id="SvgjsLine1029" x1="0" y1="55.455" x2="501.734375" y2="55.455" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1030" x1="0" y1="110.91" x2="501.734375" y2="110.91" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1031" x1="0" y1="166.365" x2="501.734375" y2="166.365" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line></g><g id="SvgjsG1026" class="apexcharts-gridlines-vertical"></g><line id="SvgjsLine1034" x1="0" y1="221.82" x2="501.734375" y2="221.82" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line><line id="SvgjsLine1033" x1="0" y1="1" x2="0" y2="221.82" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line></g><g id="SvgjsG1027" class="apexcharts-grid-borders"><line id="SvgjsLine1028" x1="0" y1="0" x2="501.734375" y2="0" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1032" x1="0" y1="221.82" x2="501.734375" y2="221.82" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line></g><g id="SvgjsG1014" class="apexcharts-area-series apexcharts-plot-series"><g id="SvgjsG1015" class="apexcharts-series" zIndex="0" seriesName="Sales" data:longestSeries="true" rel="1" data:realIndex="0"><path id="SvgjsPath1022" d="M0 95.06571428571425C9.755946180555554 95.06571428571425 18.11818576388889 95.06571428571425 27.874131944444443 95.06571428571425C37.630078125 95.06571428571425 45.99231770833333 63.377142857142815 55.748263888888886 63.377142857142815C65.50421006944444 63.377142857142815 73.86644965277777 63.377142857142815 83.62239583333333 63.377142857142815C93.37834201388888 63.377142857142815 101.74058159722222 95.06571428571425 111.49652777777777 95.06571428571425C121.25247395833333 95.06571428571425 129.61471354166667 95.06571428571425 139.37065972222223 95.06571428571425C149.12660590277778 95.06571428571425 157.4888454861111 31.68857142857138 167.24479166666666 31.68857142857138C177.0007378472222 31.68857142857138 185.36297743055556 31.68857142857138 195.11892361111111 31.68857142857138C204.87486979166667 31.68857142857138 213.237109375 63.377142857142815 222.99305555555554 63.377142857142815C232.7490017361111 63.377142857142815 241.11124131944445 63.377142857142815 250.8671875 63.377142857142815C260.62313368055555 63.377142857142815 268.9853732638889 95.06571428571425 278.74131944444446 95.06571428571425C288.497265625 95.06571428571425 296.8595052083333 95.06571428571425 306.61545138888886 95.06571428571425C316.3713975694444 95.06571428571425 324.73363715277776 63.377142857142815 334.4895833333333 63.377142857142815C344.24552951388887 63.377142857142815 352.6077690972222 63.377142857142815 362.36371527777777 63.377142857142815C372.1196614583333 63.377142857142815 380.4819010416667 95.06571428571425 390.23784722222223 95.06571428571425C399.9937934027778 95.06571428571425 408.3560329861111 95.06571428571425 418.11197916666663 95.06571428571425C427.8679253472222 95.06571428571425 436.23016493055553 63.377142857142815 445.9861111111111 63.377142857142815C455.74205729166664 63.377142857142815 464.104296875 63.377142857142815 473.86024305555554 63.377142857142815C483.6161892361111 63.377142857142815 491.97842881944445 31.68857142857138 501.734375 31.68857142857138C501.734375 31.68857142857138 501.734375 31.68857142857138 501.734375 221.82L0 221.82C0 221.82 0 95.06571428571425 0 95.06571428571425 " fill="url(#SvgjsLinearGradient1018)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMask6zijr134)" pathTo="M 0 95.06571428571425C 9.755946180555554 95.06571428571425 18.11818576388889 95.06571428571425 27.874131944444443 95.06571428571425C 37.630078125 95.06571428571425 45.99231770833333 63.377142857142815 55.748263888888886 63.377142857142815C 65.50421006944444 63.377142857142815 73.86644965277777 63.377142857142815 83.62239583333333 63.377142857142815C 93.37834201388888 63.377142857142815 101.74058159722222 95.06571428571425 111.49652777777777 95.06571428571425C 121.25247395833333 95.06571428571425 129.61471354166667 95.06571428571425 139.37065972222223 95.06571428571425C 149.12660590277778 95.06571428571425 157.4888454861111 31.68857142857138 167.24479166666666 31.68857142857138C 177.0007378472222 31.68857142857138 185.36297743055556 31.68857142857138 195.11892361111111 31.68857142857138C 204.87486979166667 31.68857142857138 213.237109375 63.377142857142815 222.99305555555554 63.377142857142815C 232.7490017361111 63.377142857142815 241.11124131944445 63.377142857142815 250.8671875 63.377142857142815C 260.62313368055555 63.377142857142815 268.9853732638889 95.06571428571425 278.74131944444446 95.06571428571425C 288.497265625 95.06571428571425 296.8595052083333 95.06571428571425 306.61545138888886 95.06571428571425C 316.3713975694444 95.06571428571425 324.73363715277776 63.377142857142815 334.4895833333333 63.377142857142815C 344.24552951388887 63.377142857142815 352.6077690972222 63.377142857142815 362.36371527777777 63.377142857142815C 372.1196614583333 63.377142857142815 380.4819010416667 95.06571428571425 390.23784722222223 95.06571428571425C 399.9937934027778 95.06571428571425 408.3560329861111 95.06571428571425 418.11197916666663 95.06571428571425C 427.8679253472222 95.06571428571425 436.23016493055553 63.377142857142815 445.9861111111111 63.377142857142815C 455.74205729166664 63.377142857142815 464.104296875 63.377142857142815 473.86024305555554 63.377142857142815C 483.6161892361111 63.377142857142815 491.97842881944445 31.68857142857138 501.734375 31.68857142857138C 501.734375 31.68857142857138 501.734375 31.68857142857138 501.734375 221.82 L 0 221.82z" pathFrom="M 0 380.2628571428571 L 0 380.2628571428571 L 27.874131944444443 380.2628571428571 L 55.748263888888886 380.2628571428571 L 83.62239583333333 380.2628571428571 L 111.49652777777777 380.2628571428571 L 139.37065972222223 380.2628571428571 L 167.24479166666666 380.2628571428571 L 195.11892361111111 380.2628571428571 L 222.99305555555554 380.2628571428571 L 250.8671875 380.2628571428571 L 278.74131944444446 380.2628571428571 L 306.61545138888886 380.2628571428571 L 334.4895833333333 380.2628571428571 L 362.36371527777777 380.2628571428571 L 390.23784722222223 380.2628571428571 L 418.11197916666663 380.2628571428571 L 445.9861111111111 380.2628571428571 L 473.86024305555554 380.2628571428571 L 501.734375 380.2628571428571 L 0 380.2628571428571"></path><path id="SvgjsPath1023" d="M0 95.06571428571425C9.755946180555554 95.06571428571425 18.11818576388889 95.06571428571425 27.874131944444443 95.06571428571425C37.630078125 95.06571428571425 45.99231770833333 63.377142857142815 55.748263888888886 63.377142857142815C65.50421006944444 63.377142857142815 73.86644965277777 63.377142857142815 83.62239583333333 63.377142857142815C93.37834201388888 63.377142857142815 101.74058159722222 95.06571428571425 111.49652777777777 95.06571428571425C121.25247395833333 95.06571428571425 129.61471354166667 95.06571428571425 139.37065972222223 95.06571428571425C149.12660590277778 95.06571428571425 157.4888454861111 31.68857142857138 167.24479166666666 31.68857142857138C177.0007378472222 31.68857142857138 185.36297743055556 31.68857142857138 195.11892361111111 31.68857142857138C204.87486979166667 31.68857142857138 213.237109375 63.377142857142815 222.99305555555554 63.377142857142815C232.7490017361111 63.377142857142815 241.11124131944445 63.377142857142815 250.8671875 63.377142857142815C260.62313368055555 63.377142857142815 268.9853732638889 95.06571428571425 278.74131944444446 95.06571428571425C288.497265625 95.06571428571425 296.8595052083333 95.06571428571425 306.61545138888886 95.06571428571425C316.3713975694444 95.06571428571425 324.73363715277776 63.377142857142815 334.4895833333333 63.377142857142815C344.24552951388887 63.377142857142815 352.6077690972222 63.377142857142815 362.36371527777777 63.377142857142815C372.1196614583333 63.377142857142815 380.4819010416667 95.06571428571425 390.23784722222223 95.06571428571425C399.9937934027778 95.06571428571425 408.3560329861111 95.06571428571425 418.11197916666663 95.06571428571425C427.8679253472222 95.06571428571425 436.23016493055553 63.377142857142815 445.9861111111111 63.377142857142815C455.74205729166664 63.377142857142815 464.104296875 63.377142857142815 473.86024305555554 63.377142857142815C483.6161892361111 63.377142857142815 491.97842881944445 31.68857142857138 501.734375 31.68857142857138C501.734375 31.68857142857138 501.734375 31.68857142857138 501.734375 31.68857142857138 " fill="none" fill-opacity="1" stroke="#17c653" stroke-opacity="1" stroke-linecap="butt" stroke-width="3" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMask6zijr134)" pathTo="M 0 95.06571428571425C 9.755946180555554 95.06571428571425 18.11818576388889 95.06571428571425 27.874131944444443 95.06571428571425C 37.630078125 95.06571428571425 45.99231770833333 63.377142857142815 55.748263888888886 63.377142857142815C 65.50421006944444 63.377142857142815 73.86644965277777 63.377142857142815 83.62239583333333 63.377142857142815C 93.37834201388888 63.377142857142815 101.74058159722222 95.06571428571425 111.49652777777777 95.06571428571425C 121.25247395833333 95.06571428571425 129.61471354166667 95.06571428571425 139.37065972222223 95.06571428571425C 149.12660590277778 95.06571428571425 157.4888454861111 31.68857142857138 167.24479166666666 31.68857142857138C 177.0007378472222 31.68857142857138 185.36297743055556 31.68857142857138 195.11892361111111 31.68857142857138C 204.87486979166667 31.68857142857138 213.237109375 63.377142857142815 222.99305555555554 63.377142857142815C 232.7490017361111 63.377142857142815 241.11124131944445 63.377142857142815 250.8671875 63.377142857142815C 260.62313368055555 63.377142857142815 268.9853732638889 95.06571428571425 278.74131944444446 95.06571428571425C 288.497265625 95.06571428571425 296.8595052083333 95.06571428571425 306.61545138888886 95.06571428571425C 316.3713975694444 95.06571428571425 324.73363715277776 63.377142857142815 334.4895833333333 63.377142857142815C 344.24552951388887 63.377142857142815 352.6077690972222 63.377142857142815 362.36371527777777 63.377142857142815C 372.1196614583333 63.377142857142815 380.4819010416667 95.06571428571425 390.23784722222223 95.06571428571425C 399.9937934027778 95.06571428571425 408.3560329861111 95.06571428571425 418.11197916666663 95.06571428571425C 427.8679253472222 95.06571428571425 436.23016493055553 63.377142857142815 445.9861111111111 63.377142857142815C 455.74205729166664 63.377142857142815 464.104296875 63.377142857142815 473.86024305555554 63.377142857142815C 483.6161892361111 63.377142857142815 491.97842881944445 31.68857142857138 501.734375 31.68857142857138" pathFrom="M 0 380.2628571428571 L 0 380.2628571428571 L 27.874131944444443 380.2628571428571 L 55.748263888888886 380.2628571428571 L 83.62239583333333 380.2628571428571 L 111.49652777777777 380.2628571428571 L 139.37065972222223 380.2628571428571 L 167.24479166666666 380.2628571428571 L 195.11892361111111 380.2628571428571 L 222.99305555555554 380.2628571428571 L 250.8671875 380.2628571428571 L 278.74131944444446 380.2628571428571 L 306.61545138888886 380.2628571428571 L 334.4895833333333 380.2628571428571 L 362.36371527777777 380.2628571428571 L 390.23784722222223 380.2628571428571 L 418.11197916666663 380.2628571428571 L 445.9861111111111 380.2628571428571 L 473.86024305555554 380.2628571428571 L 501.734375 380.2628571428571" fill-rule="evenodd"></path><g id="SvgjsG1016" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0"><g class="apexcharts-series-markers"><circle id="SvgjsCircle1118" r="0" cx="0" cy="0" class="apexcharts-marker woh6td5c5 no-pointer-events" stroke="#17c653" fill="#17c653" fill-opacity="1" stroke-width="3" stroke-opacity="0.9" default-marker-size="0"></circle></g></g></g><g id="SvgjsG1017" class="apexcharts-datalabels" data:realIndex="0"></g></g><line id="SvgjsLine1036" x1="0" y1="0" x2="0" y2="221.82" stroke="#17c653" stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-xcrosshairs" x="0" y="0" width="1" height="221.82" fill="#b1b9c4" filter="none" fill-opacity="0.9" stroke-width="1"></line><line id="SvgjsLine1037" x1="0" y1="0" x2="501.734375" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1038" x1="0" y1="0" x2="501.734375" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line><g id="SvgjsG1039" class="apexcharts-xaxis" transform="translate(0, 0)"><g id="SvgjsG1040" class="apexcharts-xaxis-texts-g" transform="translate(0, -10)"><text id="SvgjsText1042" font-family="inherit" x="0" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1043"></tspan><title></title></text><text id="SvgjsText1045" font-family="inherit" x="27.874131944444443" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1046"></tspan><title></title></text><text id="SvgjsText1048" font-family="inherit" x="55.74826388888889" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1049"></tspan><title></title></text><text id="SvgjsText1051" font-family="inherit" x="83.62239583333334" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 84.74544525146484 238.32000732421875)"><tspan id="SvgjsTspan1052">Apr 04</tspan><title>Apr 04</title></text><text id="SvgjsText1054" font-family="inherit" x="111.49652777777777" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1055"></tspan><title></title></text><text id="SvgjsText1057" font-family="inherit" x="139.37065972222223" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1058"></tspan><title></title></text><text id="SvgjsText1060" font-family="inherit" x="167.24479166666669" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 168.3444061279297 238.32000732421875)"><tspan id="SvgjsTspan1061">Apr 07</tspan><title>Apr 07</title></text><text id="SvgjsText1063" font-family="inherit" x="195.11892361111114" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1064"></tspan><title></title></text><text id="SvgjsText1066" font-family="inherit" x="222.9930555555556" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1067"></tspan><title></title></text><text id="SvgjsText1069" font-family="inherit" x="250.86718750000006" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 252.0751953125 238.32000732421875)"><tspan id="SvgjsTspan1070">Apr 10</tspan><title>Apr 10</title></text><text id="SvgjsText1072" font-family="inherit" x="278.7413194444445" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1073"></tspan><title></title></text><text id="SvgjsText1075" font-family="inherit" x="306.61545138888897" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1076"></tspan><title></title></text><text id="SvgjsText1078" font-family="inherit" x="334.4895833333334" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 335.4895935058594 238.32000732421875)"><tspan id="SvgjsTspan1079">Apr 13</tspan><title>Apr 13</title></text><text id="SvgjsText1081" font-family="inherit" x="362.3637152777779" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1082"></tspan><title></title></text><text id="SvgjsText1084" font-family="inherit" x="390.23784722222234" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1085"></tspan><title></title></text><text id="SvgjsText1087" font-family="inherit" x="418.1119791666668" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 419.1119689941406 238.32000732421875)"><tspan id="SvgjsTspan1088">Apr 16</tspan><title>Apr 16</title></text><text id="SvgjsText1090" font-family="inherit" x="445.98611111111126" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1091"></tspan><title></title></text><text id="SvgjsText1093" font-family="inherit" x="473.8602430555557" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1094"></tspan><title></title></text><text id="SvgjsText1096" font-family="inherit" x="501.73437500000017" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1097"></tspan><title></title></text></g></g><g id="SvgjsG1115" class="apexcharts-yaxis-annotations apexcharts-hidden-element-shown"></g><g id="SvgjsG1116" class="apexcharts-xaxis-annotations apexcharts-hidden-element-shown"></g><g id="SvgjsG1117" class="apexcharts-point-annotations apexcharts-hidden-element-shown"></g><rect id="SvgjsRect1119" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe" class="apexcharts-zoom-rect"></rect><rect id="SvgjsRect1120" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe" class="apexcharts-selection-rect"></rect></g></svg><div class="apexcharts-tooltip apexcharts-theme-light"><div class="apexcharts-tooltip-title" style="font-family: inherit; font-size: 12px;"></div><div class="apexcharts-tooltip-series-group" style="order: 1;"><span class="apexcharts-tooltip-marker" style="background-color: rgb(23, 198, 83);"></span><div class="apexcharts-tooltip-text" style="font-family: inherit; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span></div><div class="apexcharts-tooltip-goals-group"><span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div></div><div class="apexcharts-xaxistooltip apexcharts-xaxistooltip-bottom apexcharts-theme-light"><div class="apexcharts-xaxistooltip-text" style="font-family: inherit; font-size: 12px;"></div></div><div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-light"><div class="apexcharts-yaxistooltip-text"></div></div></div></div>
                             <!--end::Chart-->
                         </div>
                         <!--end::Card body-->
                     </div>
-                    <!--end::Chart widget 24-->
+                    <!--end::Chart widget 3-->
+                </div>
+                <!--end::Col-->
+            </div>
+            <!--end::Row-->
+            <!--begin::Row-->
+            <div class="row gy-5 g-xl-10">
+                <!--begin::Col-->
+                <div class="col-xl-6 mb-xl-10">
+                    <!--begin::Table widget 2-->
+                    <div class="card h-md-100">
+                        <!--begin::Header-->
+                        <div class="card-header align-items-center border-0">
+                            <!--begin::Title-->
+                            <h3 class="fw-bold text-gray-900 m-0">Recent Orders</h3>
+                            <!--end::Title-->
+                            <!--begin::Menu-->
+                            <button class="btn btn-icon btn-color-gray-500 btn-active-color-primary justify-content-end" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
+                                <i class="ki-duotone ki-dots-square fs-1">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                    <span class="path4"></span>
+                                </i>
+                            </button>
+                            <!--begin::Menu 2-->
+                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px" data-kt-menu="true">
+                                <!--begin::Menu item-->
+                                <div class="menu-item px-3">
+                                    <div class="menu-content fs-6 text-gray-900 fw-bold px-3 py-4">Quick Actions</div>
+                                </div>
+                                <!--end::Menu item-->
+                                <!--begin::Menu separator-->
+                                <div class="separator mb-3 opacity-75"></div>
+                                <!--end::Menu separator-->
+                                <!--begin::Menu item-->
+                                <div class="menu-item px-3">
+                                    <a href="#" class="menu-link px-3">New Ticket</a>
+                                </div>
+                                <!--end::Menu item-->
+                                <!--begin::Menu item-->
+                                <div class="menu-item px-3">
+                                    <a href="#" class="menu-link px-3">New Customer</a>
+                                </div>
+                                <!--end::Menu item-->
+                                <!--begin::Menu item-->
+                                <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
+                                    <!--begin::Menu item-->
+                                    <a href="#" class="menu-link px-3">
+                                        <span class="menu-title">New Group</span>
+                                        <span class="menu-arrow"></span>
+                                    </a>
+                                    <!--end::Menu item-->
+                                    <!--begin::Menu sub-->
+                                    <div class="menu-sub menu-sub-dropdown w-175px py-4">
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <a href="#" class="menu-link px-3">Admin Group</a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <a href="#" class="menu-link px-3">Staff Group</a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <a href="#" class="menu-link px-3">Member Group</a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                    </div>
+                                    <!--end::Menu sub-->
+                                </div>
+                                <!--end::Menu item-->
+                                <!--begin::Menu item-->
+                                <div class="menu-item px-3">
+                                    <a href="#" class="menu-link px-3">New Contact</a>
+                                </div>
+                                <!--end::Menu item-->
+                                <!--begin::Menu separator-->
+                                <div class="separator mt-3 opacity-75"></div>
+                                <!--end::Menu separator-->
+                                <!--begin::Menu item-->
+                                <div class="menu-item px-3">
+                                    <div class="menu-content px-3 py-3">
+                                        <a class="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
+                                    </div>
+                                </div>
+                                <!--end::Menu item-->
+                            </div>
+                            <!--end::Menu 2-->
+                            <!--end::Menu-->
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body pt-2">
+                            <!--begin::Nav-->
+                            <ul class="nav nav-pills nav-pills-custom mb-3" role="tablist">
+                                <!--begin::Item-->
+                                <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
+                                    <!--begin::Link-->
+                                    <a class="nav-link d-flex justify-content-between flex-column flex-center overflow-hidden active w-80px h-85px py-4" data-bs-toggle="pill" href="#kt_stats_widget_2_tab_1" aria-selected="true" role="tab">
+                                        <!--begin::Icon-->
+                                        <div class="nav-icon">
+                                            <img alt="" src="assets/media/svg/products-categories/t-shirt.svg" class="">
+                                        </div>
+                                        <!--end::Icon-->
+                                        <!--begin::Subtitle-->
+                                        <span class="nav-text text-gray-700 fw-bold fs-6 lh-1">T-shirt</span>
+                                        <!--end::Subtitle-->
+                                        <!--begin::Bullet-->
+                                        <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
+                                        <!--end::Bullet-->
+                                    </a>
+                                    <!--end::Link-->
+                                </li>
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
+                                    <!--begin::Link-->
+                                    <a class="nav-link d-flex justify-content-between flex-column flex-center overflow-hidden w-80px h-85px py-4" data-bs-toggle="pill" href="#kt_stats_widget_2_tab_2" aria-selected="false" tabindex="-1" role="tab">
+                                        <!--begin::Icon-->
+                                        <div class="nav-icon">
+                                            <img alt="" src="assets/media/svg/products-categories/gaming.svg" class="">
+                                        </div>
+                                        <!--end::Icon-->
+                                        <!--begin::Subtitle-->
+                                        <span class="nav-text text-gray-700 fw-bold fs-6 lh-1">Gaming</span>
+                                        <!--end::Subtitle-->
+                                        <!--begin::Bullet-->
+                                        <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
+                                        <!--end::Bullet-->
+                                    </a>
+                                    <!--end::Link-->
+                                </li>
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
+                                    <!--begin::Link-->
+                                    <a class="nav-link d-flex justify-content-between flex-column flex-center overflow-hidden w-80px h-85px py-4" data-bs-toggle="pill" href="#kt_stats_widget_2_tab_3" aria-selected="false" tabindex="-1" role="tab">
+                                        <!--begin::Icon-->
+                                        <div class="nav-icon">
+                                            <img alt="" src="assets/media/svg/products-categories/watch.svg" class="">
+                                        </div>
+                                        <!--end::Icon-->
+                                        <!--begin::Subtitle-->
+                                        <span class="nav-text text-gray-600 fw-bold fs-6 lh-1">Watch</span>
+                                        <!--end::Subtitle-->
+                                        <!--begin::Bullet-->
+                                        <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
+                                        <!--end::Bullet-->
+                                    </a>
+                                    <!--end::Link-->
+                                </li>
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <li class="nav-item mb-3 me-3 me-lg-6" role="presentation">
+                                    <!--begin::Link-->
+                                    <a class="nav-link d-flex justify-content-between flex-column flex-center overflow-hidden w-80px h-85px py-4" data-bs-toggle="pill" href="#kt_stats_widget_2_tab_4" aria-selected="false" tabindex="-1" role="tab">
+                                        <!--begin::Icon-->
+                                        <div class="nav-icon">
+                                            <img alt="" src="assets/media/svg/products-categories/gloves.svg" class="nav-icon">
+                                        </div>
+                                        <!--end::Icon-->
+                                        <!--begin::Subtitle-->
+                                        <span class="nav-text text-gray-600 fw-bold fs-6 lh-1">Gloves</span>
+                                        <!--end::Subtitle-->
+                                        <!--begin::Bullet-->
+                                        <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
+                                        <!--end::Bullet-->
+                                    </a>
+                                    <!--end::Link-->
+                                </li>
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <li class="nav-item mb-3" role="presentation">
+                                    <!--begin::Link-->
+                                    <a class="nav-link d-flex justify-content-between flex-column flex-center overflow-hidden w-80px h-85px py-4" data-bs-toggle="pill" href="#kt_stats_widget_2_tab_5" aria-selected="false" tabindex="-1" role="tab">
+                                        <!--begin::Icon-->
+                                        <div class="nav-icon">
+                                            <img alt="" src="assets/media/svg/products-categories/shoes.svg" class="nav-icon">
+                                        </div>
+                                        <!--end::Icon-->
+                                        <!--begin::Subtitle-->
+                                        <span class="nav-text text-gray-600 fw-bold fs-6 lh-1">Shoes</span>
+                                        <!--end::Subtitle-->
+                                        <!--begin::Bullet-->
+                                        <span class="bullet-custom position-absolute bottom-0 w-100 h-4px bg-primary"></span>
+                                        <!--end::Bullet-->
+                                    </a>
+                                    <!--end::Link-->
+                                </li>
+                                <!--end::Item-->
+                            </ul>
+                            <!--end::Nav-->
+                            <!--begin::Tab Content-->
+                            <div class="tab-content">
+                                <!--begin::Tap pane-->
+                                <div class="tab-pane fade show active" id="kt_stats_widget_2_tab_1" role="tabpanel">
+                                    <!--begin::Table container-->
+                                    <div class="table-responsive">
+                                        <!--begin::Table-->
+                                        <table class="table table-row-dashed align-middle gs-0 gy-4 my-0">
+                                            <!--begin::Table head-->
+                                            <thead>
+                                            <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
+                                                <th class="ps-0 w-50px">ITEM</th>
+                                                <th class="min-w-125px"></th>
+                                                <th class="text-end min-w-100px">QTY</th>
+                                                <th class="pe-0 text-end min-w-100px">PRICE</th>
+                                                <th class="pe-0 text-end min-w-100px">TOTAL PRICE</th>
+                                            </tr>
+                                            </thead>
+                                            <!--end::Table head-->
+                                            <!--begin::Table body-->
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/media/stock/ecommerce/210.png" class="w-50px ms-n1" alt="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 1802</a>
+                                                    <span class="text-gray-500 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2347</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">x1</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$72.00</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$126.00</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/media/stock/ecommerce/215.png" class="w-50px ms-n1" alt="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
+                                                    <span class="text-gray-500 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-1321</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">x2</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$45.00</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$76.00</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/media/stock/ecommerce/209.png" class="w-50px ms-n1" alt="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
+                                                    <span class="text-gray-500 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-4312</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">x3</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$84.00</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$168.00</span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                        <!--end::Table-->
+                                    </div>
+                                    <!--end::Table container-->
+                                </div>
+                                <!--end::Tap pane-->
+                                <!--begin::Tap pane-->
+                                <div class="tab-pane fade" id="kt_stats_widget_2_tab_2" role="tabpanel">
+                                    <!--begin::Table container-->
+                                    <div class="table-responsive">
+                                        <!--begin::Table-->
+                                        <table class="table table-row-dashed align-middle gs-0 gy-4 my-0">
+                                            <!--begin::Table head-->
+                                            <thead>
+                                            <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
+                                                <th class="ps-0 w-50px">ITEM</th>
+                                                <th class="min-w-125px"></th>
+                                                <th class="text-end min-w-100px">QTY</th>
+                                                <th class="pe-0 text-end min-w-100px">PRICE</th>
+                                                <th class="pe-0 text-end min-w-100px">TOTAL PRICE</th>
+                                            </tr>
+                                            </thead>
+                                            <!--end::Table head-->
+                                            <!--begin::Table body-->
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/media/stock/ecommerce/197.png" class="w-50px ms-n1" alt="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 1802</a>
+                                                    <span class="text-gray-500 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-4312</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">x1</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$32.00</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$312.00</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/media/stock/ecommerce/178.png" class="w-50px ms-n1" alt="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
+                                                    <span class="text-gray-500 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-3122</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">x2</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$53.00</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$62.00</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/media/stock/ecommerce/22.png" class="w-50px ms-n1" alt="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
+                                                    <span class="text-gray-500 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-1142</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">x3</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$74.00</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$139.00</span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                        <!--end::Table-->
+                                    </div>
+                                    <!--end::Table container-->
+                                </div>
+                                <!--end::Tap pane-->
+                                <!--begin::Tap pane-->
+                                <div class="tab-pane fade" id="kt_stats_widget_2_tab_3" role="tabpanel">
+                                    <!--begin::Table container-->
+                                    <div class="table-responsive">
+                                        <!--begin::Table-->
+                                        <table class="table table-row-dashed align-middle gs-0 gy-4 my-0">
+                                            <!--begin::Table head-->
+                                            <thead>
+                                            <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
+                                                <th class="ps-0 w-50px">ITEM</th>
+                                                <th class="min-w-125px"></th>
+                                                <th class="text-end min-w-100px">QTY</th>
+                                                <th class="pe-0 text-end min-w-100px">PRICE</th>
+                                                <th class="pe-0 text-end min-w-100px">TOTAL PRICE</th>
+                                            </tr>
+                                            </thead>
+                                            <!--end::Table head-->
+                                            <!--begin::Table body-->
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/media/stock/ecommerce/1.png" class="w-50px ms-n1" alt="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 1324</a>
+                                                    <span class="text-gray-500 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-1523</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">x1</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$43.00</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$231.00</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/media/stock/ecommerce/24.png" class="w-50px ms-n1" alt="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
+                                                    <span class="text-gray-500 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-5314</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">x2</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$71.00</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$53.00</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/media/stock/ecommerce/71.png" class="w-50px ms-n1" alt="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
+                                                    <span class="text-gray-500 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-4222</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">x3</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$23.00</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$213.00</span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                        <!--end::Table-->
+                                    </div>
+                                    <!--end::Table container-->
+                                </div>
+                                <!--end::Tap pane-->
+                                <!--begin::Tap pane-->
+                                <div class="tab-pane fade" id="kt_stats_widget_2_tab_4" role="tabpanel">
+                                    <!--begin::Table container-->
+                                    <div class="table-responsive">
+                                        <!--begin::Table-->
+                                        <table class="table table-row-dashed align-middle gs-0 gy-4 my-0">
+                                            <!--begin::Table head-->
+                                            <thead>
+                                            <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
+                                                <th class="ps-0 w-50px">ITEM</th>
+                                                <th class="min-w-125px"></th>
+                                                <th class="text-end min-w-100px">QTY</th>
+                                                <th class="pe-0 text-end min-w-100px">PRICE</th>
+                                                <th class="pe-0 text-end min-w-100px">TOTAL PRICE</th>
+                                            </tr>
+                                            </thead>
+                                            <!--end::Table head-->
+                                            <!--begin::Table body-->
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/media/stock/ecommerce/41.png" class="w-50px ms-n1" alt="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 2635</a>
+                                                    <span class="text-gray-500 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-1523</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">x1</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$65.00</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$163.00</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/media/stock/ecommerce/63.png" class="w-50px ms-n1" alt="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
+                                                    <span class="text-gray-500 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2745</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">x2</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$64.00</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$73.00</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/media/stock/ecommerce/59.png" class="w-50px ms-n1" alt="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
+                                                    <span class="text-gray-500 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-5173</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">x3</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$54.00</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$173.00</span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                        <!--end::Table-->
+                                    </div>
+                                    <!--end::Table container-->
+                                </div>
+                                <!--end::Tap pane-->
+                                <!--begin::Tap pane-->
+                                <div class="tab-pane fade" id="kt_stats_widget_2_tab_5" role="tabpanel">
+                                    <!--begin::Table container-->
+                                    <div class="table-responsive">
+                                        <!--begin::Table-->
+                                        <table class="table table-row-dashed align-middle gs-0 gy-4 my-0">
+                                            <!--begin::Table head-->
+                                            <thead>
+                                            <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
+                                                <th class="ps-0 w-50px">ITEM</th>
+                                                <th class="min-w-125px"></th>
+                                                <th class="text-end min-w-100px">QTY</th>
+                                                <th class="pe-0 text-end min-w-100px">PRICE</th>
+                                                <th class="pe-0 text-end min-w-100px">TOTAL PRICE</th>
+                                            </tr>
+                                            </thead>
+                                            <!--end::Table head-->
+                                            <!--begin::Table body-->
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/media/stock/ecommerce/10.png" class="w-50px ms-n1" alt="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Nike</a>
+                                                    <span class="text-gray-500 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2163</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">x1</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$64.00</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$287.00</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/media/stock/ecommerce/96.png" class="w-50px ms-n1" alt="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Adidas</a>
+                                                    <span class="text-gray-500 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2162</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">x2</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$76.00</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$51.00</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="assets/media/stock/ecommerce/13.png" class="w-50px ms-n1" alt="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Puma</a>
+                                                    <span class="text-gray-500 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-1537</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-gray-800 fw-bold d-block fs-6 ps-0 text-end">x3</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$27.00</span>
+                                                </td>
+                                                <td class="text-end pe-0">
+                                                    <span class="text-gray-800 fw-bold d-block fs-6">$167.00</span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                            <!--end::Table body-->
+                                        </table>
+                                        <!--end::Table-->
+                                    </div>
+                                    <!--end::Table container-->
+                                </div>
+                                <!--end::Tap pane-->
+                            </div>
+                            <!--end::Tab Content-->
+                        </div>
+                        <!--end: Card Body-->
+                    </div>
+                    <!--end::Table widget 2-->
+                </div>
+                <!--end::Col-->
+                <!--begin::Col-->
+                <div class="col-xl-6 mb-5 mb-xl-10">
+                    <!--begin::Chart widget 4-->
+                    <div class="card card-flush overflow-hidden h-md-100">
+                        <!--begin::Header-->
+                        <div class="card-header py-5">
+                            <!--begin::Title-->
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bold text-gray-900">Discounted Product Sales</span>
+                                <span class="text-gray-500 mt-1 fw-semibold fs-6">Users from all channels</span>
+                            </h3>
+                            <!--end::Title-->
+                            <!--begin::Toolbar-->
+                            <div class="card-toolbar">
+                                <!--begin::Menu-->
+                                <button class="btn btn-icon btn-color-gray-500 btn-active-color-primary justify-content-end" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
+                                    <i class="ki-duotone ki-dots-square fs-1">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                        <span class="path4"></span>
+                                    </i>
+                                </button>
+                                <!--begin::Menu 2-->
+                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px" data-kt-menu="true">
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <div class="menu-content fs-6 text-gray-900 fw-bold px-3 py-4">Quick Actions</div>
+                                    </div>
+                                    <!--end::Menu item-->
+                                    <!--begin::Menu separator-->
+                                    <div class="separator mb-3 opacity-75"></div>
+                                    <!--end::Menu separator-->
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="#" class="menu-link px-3">New Ticket</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="#" class="menu-link px-3">New Customer</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
+                                        <!--begin::Menu item-->
+                                        <a href="#" class="menu-link px-3">
+                                            <span class="menu-title">New Group</span>
+                                            <span class="menu-arrow"></span>
+                                        </a>
+                                        <!--end::Menu item-->
+                                        <!--begin::Menu sub-->
+                                        <div class="menu-sub menu-sub-dropdown w-175px py-4">
+                                            <!--begin::Menu item-->
+                                            <div class="menu-item px-3">
+                                                <a href="#" class="menu-link px-3">Admin Group</a>
+                                            </div>
+                                            <!--end::Menu item-->
+                                            <!--begin::Menu item-->
+                                            <div class="menu-item px-3">
+                                                <a href="#" class="menu-link px-3">Staff Group</a>
+                                            </div>
+                                            <!--end::Menu item-->
+                                            <!--begin::Menu item-->
+                                            <div class="menu-item px-3">
+                                                <a href="#" class="menu-link px-3">Member Group</a>
+                                            </div>
+                                            <!--end::Menu item-->
+                                        </div>
+                                        <!--end::Menu sub-->
+                                    </div>
+                                    <!--end::Menu item-->
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="#" class="menu-link px-3">New Contact</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                    <!--begin::Menu separator-->
+                                    <div class="separator mt-3 opacity-75"></div>
+                                    <!--end::Menu separator-->
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <div class="menu-content px-3 py-3">
+                                            <a class="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
+                                        </div>
+                                    </div>
+                                    <!--end::Menu item-->
+                                </div>
+                                <!--end::Menu 2-->
+                                <!--end::Menu-->
+                            </div>
+                            <!--end::Toolbar-->
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Card body-->
+                        <div class="card-body d-flex justify-content-between flex-column pb-1 px-0">
+                            <!--begin::Info-->
+                            <div class="px-9 mb-5">
+                                <!--begin::Statistics-->
+                                <div class="d-flex align-items-center mb-2">
+                                    <!--begin::Currency-->
+                                    <span class="fs-4 fw-semibold text-gray-500 align-self-start me-1">$</span>
+                                    <!--end::Currency-->
+                                    <!--begin::Value-->
+                                    <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1 ls-n2">3,706</span>
+                                    <!--end::Value-->
+                                    <!--begin::Label-->
+                                    <span class="badge badge-light-success fs-base">
+															<i class="ki-duotone ki-arrow-down fs-5 text-success ms-n1">
+																<span class="path1"></span>
+																<span class="path2"></span>
+															</i>4.5%</span>
+                                    <!--end::Label-->
+                                </div>
+                                <!--end::Statistics-->
+                                <!--begin::Description-->
+                                <span class="fs-6 fw-semibold text-gray-500">Total Discounted Sales This Month</span>
+                                <!--end::Description-->
+                            </div>
+                            <!--end::Info-->
+                            <!--begin::Chart-->
+                            <div id="kt_charts_widget_4" class="min-h-auto ps-4 pe-6" style="height: 300px; min-height: 315px;"><div id="apexchartsqcfxqs68" class="apexcharts-canvas apexchartsqcfxqs68 apexcharts-theme-light" style="width: 579.5px; height: 300px;"><svg id="SvgjsSvg1121" width="579.5" height="300" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg apexcharts-zoomable" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><foreignObject x="0" y="0" width="579.5" height="300"><div class="apexcharts-legend" xmlns="http://www.w3.org/1999/xhtml" style="max-height: 150px;"></div></foreignObject><rect id="SvgjsRect1152" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe"></rect><g id="SvgjsG1215" class="apexcharts-yaxis" rel="0" transform="translate(26.96875, 0)"><g id="SvgjsG1216" class="apexcharts-yaxis-texts-g"><text id="SvgjsText1218" font-family="inherit" x="20" y="34" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1219">$363</tspan><title>$363</title></text><text id="SvgjsText1221" font-family="inherit" x="20" y="70.97" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1222">$357</tspan><title>$357</title></text><text id="SvgjsText1224" font-family="inherit" x="20" y="107.94" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1225">$352</tspan><title>$352</title></text><text id="SvgjsText1227" font-family="inherit" x="20" y="144.91" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1228">$346</tspan><title>$346</title></text><text id="SvgjsText1230" font-family="inherit" x="20" y="181.88" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1231">$341</tspan><title>$341</title></text><text id="SvgjsText1233" font-family="inherit" x="20" y="218.85" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1234">$335</tspan><title>$335</title></text><text id="SvgjsText1236" font-family="inherit" x="20" y="255.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-yaxis-label " style="font-family: inherit;"><tspan id="SvgjsTspan1237">$330</tspan><title>$330</title></text></g></g><g id="SvgjsG1123" class="apexcharts-inner apexcharts-graphical" transform="translate(56.96875, 30)"><defs id="SvgjsDefs1122"><clipPath id="gridRectMaskqcfxqs68"><rect id="SvgjsRect1127" width="519.53125" height="228.82" x="-3.5" y="-3.5" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMaskqcfxqs68"></clipPath><clipPath id="nonForecastMaskqcfxqs68"></clipPath><clipPath id="gridRectMarkerMaskqcfxqs68"><rect id="SvgjsRect1128" width="516.53125" height="225.82" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><linearGradient id="SvgjsLinearGradient1133" x1="0" y1="0" x2="0" y2="1"><stop id="SvgjsStop1134" stop-opacity="0.4" stop-color="rgba(27,132,255,0.4)" offset="0"></stop><stop id="SvgjsStop1135" stop-opacity="0" stop-color="rgba(255,255,255,0)" offset="0.8"></stop><stop id="SvgjsStop1136" stop-opacity="0" stop-color="rgba(255,255,255,0)" offset="1"></stop></linearGradient></defs><g id="SvgjsG1139" class="apexcharts-grid"><g id="SvgjsG1140" class="apexcharts-gridlines-horizontal"><line id="SvgjsLine1144" x1="0" y1="36.97" x2="512.53125" y2="36.97" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1145" x1="0" y1="73.94" x2="512.53125" y2="73.94" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1146" x1="0" y1="110.91" x2="512.53125" y2="110.91" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1147" x1="0" y1="147.88" x2="512.53125" y2="147.88" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1148" x1="0" y1="184.85" x2="512.53125" y2="184.85" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line></g><g id="SvgjsG1141" class="apexcharts-gridlines-vertical"></g><line id="SvgjsLine1151" x1="0" y1="221.82" x2="512.53125" y2="221.82" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line><line id="SvgjsLine1150" x1="0" y1="1" x2="0" y2="221.82" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line></g><g id="SvgjsG1142" class="apexcharts-grid-borders"><line id="SvgjsLine1143" x1="0" y1="0" x2="512.53125" y2="0" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1149" x1="0" y1="221.82" x2="512.53125" y2="221.82" stroke="#dbdfe9" stroke-dasharray="4" stroke-linecap="butt" class="apexcharts-gridline"></line></g><g id="SvgjsG1129" class="apexcharts-area-series apexcharts-plot-series"><g id="SvgjsG1130" class="apexcharts-series" zIndex="0" seriesName="Sales" data:longestSeries="true" rel="1" data:realIndex="0"><path id="SvgjsPath1137" d="M0 120.99272727272773C9.965885416666667 120.99272727272773 18.50807291666667 120.99272727272773 28.473958333333336 120.99272727272773C38.43984375 120.99272727272773 46.982031250000006 87.38363636363647 56.94791666666667 87.38363636363647C66.91380208333334 87.38363636363647 75.45598958333335 87.38363636363647 85.42187500000001 87.38363636363647C95.38776041666668 87.38363636363647 103.92994791666668 53.77454545454566 113.89583333333334 53.77454545454566C123.86171875000001 53.77454545454566 132.40390625 53.77454545454566 142.36979166666669 53.77454545454566C152.33567708333337 53.77454545454566 160.87786458333335 87.38363636363647 170.84375000000003 87.38363636363647C180.80963541666668 87.38363636363647 189.3518229166667 87.38363636363647 199.31770833333334 87.38363636363647C209.28359375000002 87.38363636363647 217.82578125 53.77454545454566 227.79166666666669 53.77454545454566C237.75755208333334 53.77454545454566 246.29973958333335 53.77454545454566 256.265625 53.77454545454566C266.23151041666665 53.77454545454566 274.7736979166667 87.38363636363647 284.73958333333337 87.38363636363647C294.70546875 87.38363636363647 303.24765625000003 87.38363636363647 313.2135416666667 87.38363636363647C323.1794270833334 87.38363636363647 331.72161458333335 120.99272727272773 341.68750000000006 120.99272727272773C351.6533854166667 120.99272727272773 360.1955729166667 120.99272727272773 370.16145833333337 120.99272727272773C380.12734375 120.99272727272773 388.66953125000003 87.38363636363647 398.6354166666667 87.38363636363647C408.6013020833334 87.38363636363647 417.14348958333335 87.38363636363647 427.10937500000006 87.38363636363647C437.0752604166667 87.38363636363647 445.6174479166667 53.77454545454566 455.58333333333337 53.77454545454566C465.54921875 53.77454545454566 474.09140625000003 53.77454545454566 484.0572916666667 53.77454545454566C494.02317708333334 53.77454545454566 502.56536458333335 87.38363636363647 512.53125 87.38363636363647C512.53125 87.38363636363647 512.53125 87.38363636363647 512.53125 221.82000000000016L0 221.82000000000016C0 221.82000000000016 0 120.99272727272773 0 120.99272727272773 " fill="url(#SvgjsLinearGradient1133)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskqcfxqs68)" pathTo="M 0 120.99272727272773C 9.965885416666667 120.99272727272773 18.50807291666667 120.99272727272773 28.473958333333336 120.99272727272773C 38.43984375 120.99272727272773 46.982031250000006 87.38363636363647 56.94791666666667 87.38363636363647C 66.91380208333334 87.38363636363647 75.45598958333335 87.38363636363647 85.42187500000001 87.38363636363647C 95.38776041666668 87.38363636363647 103.92994791666668 53.77454545454566 113.89583333333334 53.77454545454566C 123.86171875000001 53.77454545454566 132.40390625 53.77454545454566 142.36979166666669 53.77454545454566C 152.33567708333337 53.77454545454566 160.87786458333335 87.38363636363647 170.84375000000003 87.38363636363647C 180.80963541666668 87.38363636363647 189.3518229166667 87.38363636363647 199.31770833333334 87.38363636363647C 209.28359375000002 87.38363636363647 217.82578125 53.77454545454566 227.79166666666669 53.77454545454566C 237.75755208333334 53.77454545454566 246.29973958333335 53.77454545454566 256.265625 53.77454545454566C 266.23151041666665 53.77454545454566 274.7736979166667 87.38363636363647 284.73958333333337 87.38363636363647C 294.70546875 87.38363636363647 303.24765625000003 87.38363636363647 313.2135416666667 87.38363636363647C 323.1794270833334 87.38363636363647 331.72161458333335 120.99272727272773 341.68750000000006 120.99272727272773C 351.6533854166667 120.99272727272773 360.1955729166667 120.99272727272773 370.16145833333337 120.99272727272773C 380.12734375 120.99272727272773 388.66953125000003 87.38363636363647 398.6354166666667 87.38363636363647C 408.6013020833334 87.38363636363647 417.14348958333335 87.38363636363647 427.10937500000006 87.38363636363647C 437.0752604166667 87.38363636363647 445.6174479166667 53.77454545454566 455.58333333333337 53.77454545454566C 465.54921875 53.77454545454566 474.09140625000003 53.77454545454566 484.0572916666667 53.77454545454566C 494.02317708333334 53.77454545454566 502.56536458333335 87.38363636363647 512.53125 87.38363636363647C 512.53125 87.38363636363647 512.53125 87.38363636363647 512.53125 221.82 L 0 221.82z" pathFrom="M 0 2440.0200000000023 L 0 2440.0200000000023 L 28.473958333333336 2440.0200000000023 L 56.94791666666667 2440.0200000000023 L 85.42187500000001 2440.0200000000023 L 113.89583333333334 2440.0200000000023 L 142.36979166666669 2440.0200000000023 L 170.84375000000003 2440.0200000000023 L 199.31770833333334 2440.0200000000023 L 227.79166666666669 2440.0200000000023 L 256.265625 2440.0200000000023 L 284.73958333333337 2440.0200000000023 L 313.2135416666667 2440.0200000000023 L 341.68750000000006 2440.0200000000023 L 370.16145833333337 2440.0200000000023 L 398.6354166666667 2440.0200000000023 L 427.10937500000006 2440.0200000000023 L 455.58333333333337 2440.0200000000023 L 484.0572916666667 2440.0200000000023 L 512.53125 2440.0200000000023 L 0 2440.0200000000023"></path><path id="SvgjsPath1138" d="M0 120.99272727272773C9.965885416666667 120.99272727272773 18.50807291666667 120.99272727272773 28.473958333333336 120.99272727272773C38.43984375 120.99272727272773 46.982031250000006 87.38363636363647 56.94791666666667 87.38363636363647C66.91380208333334 87.38363636363647 75.45598958333335 87.38363636363647 85.42187500000001 87.38363636363647C95.38776041666668 87.38363636363647 103.92994791666668 53.77454545454566 113.89583333333334 53.77454545454566C123.86171875000001 53.77454545454566 132.40390625 53.77454545454566 142.36979166666669 53.77454545454566C152.33567708333337 53.77454545454566 160.87786458333335 87.38363636363647 170.84375000000003 87.38363636363647C180.80963541666668 87.38363636363647 189.3518229166667 87.38363636363647 199.31770833333334 87.38363636363647C209.28359375000002 87.38363636363647 217.82578125 53.77454545454566 227.79166666666669 53.77454545454566C237.75755208333334 53.77454545454566 246.29973958333335 53.77454545454566 256.265625 53.77454545454566C266.23151041666665 53.77454545454566 274.7736979166667 87.38363636363647 284.73958333333337 87.38363636363647C294.70546875 87.38363636363647 303.24765625000003 87.38363636363647 313.2135416666667 87.38363636363647C323.1794270833334 87.38363636363647 331.72161458333335 120.99272727272773 341.68750000000006 120.99272727272773C351.6533854166667 120.99272727272773 360.1955729166667 120.99272727272773 370.16145833333337 120.99272727272773C380.12734375 120.99272727272773 388.66953125000003 87.38363636363647 398.6354166666667 87.38363636363647C408.6013020833334 87.38363636363647 417.14348958333335 87.38363636363647 427.10937500000006 87.38363636363647C437.0752604166667 87.38363636363647 445.6174479166667 53.77454545454566 455.58333333333337 53.77454545454566C465.54921875 53.77454545454566 474.09140625000003 53.77454545454566 484.0572916666667 53.77454545454566C494.02317708333334 53.77454545454566 502.56536458333335 87.38363636363647 512.53125 87.38363636363647C512.53125 87.38363636363647 512.53125 87.38363636363647 512.53125 87.38363636363647 " fill="none" fill-opacity="1" stroke="#1b84ff" stroke-opacity="1" stroke-linecap="butt" stroke-width="3" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskqcfxqs68)" pathTo="M 0 120.99272727272773C 9.965885416666667 120.99272727272773 18.50807291666667 120.99272727272773 28.473958333333336 120.99272727272773C 38.43984375 120.99272727272773 46.982031250000006 87.38363636363647 56.94791666666667 87.38363636363647C 66.91380208333334 87.38363636363647 75.45598958333335 87.38363636363647 85.42187500000001 87.38363636363647C 95.38776041666668 87.38363636363647 103.92994791666668 53.77454545454566 113.89583333333334 53.77454545454566C 123.86171875000001 53.77454545454566 132.40390625 53.77454545454566 142.36979166666669 53.77454545454566C 152.33567708333337 53.77454545454566 160.87786458333335 87.38363636363647 170.84375000000003 87.38363636363647C 180.80963541666668 87.38363636363647 189.3518229166667 87.38363636363647 199.31770833333334 87.38363636363647C 209.28359375000002 87.38363636363647 217.82578125 53.77454545454566 227.79166666666669 53.77454545454566C 237.75755208333334 53.77454545454566 246.29973958333335 53.77454545454566 256.265625 53.77454545454566C 266.23151041666665 53.77454545454566 274.7736979166667 87.38363636363647 284.73958333333337 87.38363636363647C 294.70546875 87.38363636363647 303.24765625000003 87.38363636363647 313.2135416666667 87.38363636363647C 323.1794270833334 87.38363636363647 331.72161458333335 120.99272727272773 341.68750000000006 120.99272727272773C 351.6533854166667 120.99272727272773 360.1955729166667 120.99272727272773 370.16145833333337 120.99272727272773C 380.12734375 120.99272727272773 388.66953125000003 87.38363636363647 398.6354166666667 87.38363636363647C 408.6013020833334 87.38363636363647 417.14348958333335 87.38363636363647 427.10937500000006 87.38363636363647C 437.0752604166667 87.38363636363647 445.6174479166667 53.77454545454566 455.58333333333337 53.77454545454566C 465.54921875 53.77454545454566 474.09140625000003 53.77454545454566 484.0572916666667 53.77454545454566C 494.02317708333334 53.77454545454566 502.56536458333335 87.38363636363647 512.53125 87.38363636363647" pathFrom="M 0 2440.0200000000023 L 0 2440.0200000000023 L 28.473958333333336 2440.0200000000023 L 56.94791666666667 2440.0200000000023 L 85.42187500000001 2440.0200000000023 L 113.89583333333334 2440.0200000000023 L 142.36979166666669 2440.0200000000023 L 170.84375000000003 2440.0200000000023 L 199.31770833333334 2440.0200000000023 L 227.79166666666669 2440.0200000000023 L 256.265625 2440.0200000000023 L 284.73958333333337 2440.0200000000023 L 313.2135416666667 2440.0200000000023 L 341.68750000000006 2440.0200000000023 L 370.16145833333337 2440.0200000000023 L 398.6354166666667 2440.0200000000023 L 427.10937500000006 2440.0200000000023 L 455.58333333333337 2440.0200000000023 L 484.0572916666667 2440.0200000000023 L 512.53125 2440.0200000000023" fill-rule="evenodd"></path><g id="SvgjsG1131" class="apexcharts-series-markers-wrap apexcharts-hidden-element-shown" data:realIndex="0"><g class="apexcharts-series-markers"><circle id="SvgjsCircle1241" r="0" cx="0" cy="0" class="apexcharts-marker wu7o4pgls no-pointer-events" stroke="#1b84ff" fill="#1b84ff" fill-opacity="1" stroke-width="3" stroke-opacity="0.9" default-marker-size="0"></circle></g></g></g><g id="SvgjsG1132" class="apexcharts-datalabels" data:realIndex="0"></g></g><line id="SvgjsLine1153" x1="0" y1="0" x2="0" y2="221.82" stroke="#1b84ff" stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-xcrosshairs" x="0" y="0" width="1" height="221.82" fill="#b1b9c4" filter="none" fill-opacity="0.9" stroke-width="1"></line><line id="SvgjsLine1154" x1="0" y1="0" x2="512.53125" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1155" x1="0" y1="0" x2="512.53125" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line><g id="SvgjsG1156" class="apexcharts-xaxis" transform="translate(0, 0)"><g id="SvgjsG1157" class="apexcharts-xaxis-texts-g" transform="translate(0, -10)"><text id="SvgjsText1159" font-family="inherit" x="0" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1160"></tspan><title></title></text><text id="SvgjsText1162" font-family="inherit" x="28.473958333333336" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1163"></tspan><title></title></text><text id="SvgjsText1165" font-family="inherit" x="56.947916666666664" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1166"></tspan><title></title></text><text id="SvgjsText1168" font-family="inherit" x="85.42187499999999" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 86.544921875 238.32000732421875)"><tspan id="SvgjsTspan1169">Apr 04</tspan><title>Apr 04</title></text><text id="SvgjsText1171" font-family="inherit" x="113.89583333333333" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1172"></tspan><title></title></text><text id="SvgjsText1174" font-family="inherit" x="142.36979166666669" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1175"></tspan><title></title></text><text id="SvgjsText1177" font-family="inherit" x="170.84375000000003" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 171.943359375 238.32000732421875)"><tspan id="SvgjsTspan1178">Apr 07</tspan><title>Apr 07</title></text><text id="SvgjsText1180" font-family="inherit" x="199.31770833333337" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1181"></tspan><title></title></text><text id="SvgjsText1183" font-family="inherit" x="227.7916666666667" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1184"></tspan><title></title></text><text id="SvgjsText1186" font-family="inherit" x="256.265625" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 257.4736328125 238.32000732421875)"><tspan id="SvgjsTspan1187">Apr 10</tspan><title>Apr 10</title></text><text id="SvgjsText1189" font-family="inherit" x="284.7395833333333" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1190"></tspan><title></title></text><text id="SvgjsText1192" font-family="inherit" x="313.21354166666663" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1193"></tspan><title></title></text><text id="SvgjsText1195" font-family="inherit" x="341.68749999999994" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 342.6875 238.32000732421875)"><tspan id="SvgjsTspan1196">Apr 13</tspan><title>Apr 13</title></text><text id="SvgjsText1198" font-family="inherit" x="370.16145833333326" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1199"></tspan><title></title></text><text id="SvgjsText1201" font-family="inherit" x="398.6354166666666" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1202"></tspan><title></title></text><text id="SvgjsText1204" font-family="inherit" x="427.1093749999999" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 428.109375 238.32000732421875)"><tspan id="SvgjsTspan1205">Apr 18</tspan><title>Apr 18</title></text><text id="SvgjsText1207" font-family="inherit" x="455.5833333333332" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1208"></tspan><title></title></text><text id="SvgjsText1210" font-family="inherit" x="484.0572916666665" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1211"></tspan><title></title></text><text id="SvgjsText1213" font-family="inherit" x="512.5312499999999" y="243.82" text-anchor="end" dominant-baseline="auto" font-size="12px" font-weight="400" fill="#99a1b7" class="apexcharts-text apexcharts-xaxis-label " style="font-family: inherit;" transform="rotate(0 1 -1)"><tspan id="SvgjsTspan1214"></tspan><title></title></text></g></g><g id="SvgjsG1238" class="apexcharts-yaxis-annotations apexcharts-hidden-element-shown"></g><g id="SvgjsG1239" class="apexcharts-xaxis-annotations apexcharts-hidden-element-shown"></g><g id="SvgjsG1240" class="apexcharts-point-annotations apexcharts-hidden-element-shown"></g><rect id="SvgjsRect1242" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe" class="apexcharts-zoom-rect"></rect><rect id="SvgjsRect1243" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe" class="apexcharts-selection-rect"></rect></g></svg><div class="apexcharts-tooltip apexcharts-theme-light"><div class="apexcharts-tooltip-title" style="font-family: inherit; font-size: 12px;"></div><div class="apexcharts-tooltip-series-group" style="order: 1;"><span class="apexcharts-tooltip-marker" style="background-color: rgb(27, 132, 255);"></span><div class="apexcharts-tooltip-text" style="font-family: inherit; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span></div><div class="apexcharts-tooltip-goals-group"><span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div></div><div class="apexcharts-xaxistooltip apexcharts-xaxistooltip-bottom apexcharts-theme-light"><div class="apexcharts-xaxistooltip-text" style="font-family: inherit; font-size: 12px;"></div></div><div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-light"><div class="apexcharts-yaxistooltip-text"></div></div></div></div>
+                            <!--end::Chart-->
+                        </div>
+                        <!--end::Card body-->
+                    </div>
+                    <!--end::Chart widget 4-->
+                </div>
+                <!--end::Col-->
+            </div>
+            <!--end::Row-->
+            <!--begin::Row-->
+            <div class="row gy-5 g-xl-10">
+                <!--begin::Col-->
+                <div class="col-xl-4 mb-xl-10">
+                    <!--begin::Engage widget 1-->
+                    <div class="card h-md-100" dir="ltr">
+                        <!--begin::Body-->
+                        <div class="card-body d-flex flex-column flex-center">
+                            <!--begin::Heading-->
+                            <div class="mb-2">
+                                <!--begin::Title-->
+                                <h1 class="fw-semibold text-gray-800 text-center lh-lg">Have you tried
+                                    <br>new
+                                    <span class="fw-bolder">eCommerce App ?</span></h1>
+                                <!--end::Title-->
+                                <!--begin::Illustration-->
+                                <div class="py-10 text-center">
+                                    <img src="assets/media/svg/illustrations/easy/2.svg" class="theme-light-show w-200px" alt="">
+                                    <img src="assets/media/svg/illustrations/easy/2-dark.svg" class="theme-dark-show w-200px" alt="">
+                                </div>
+                                <!--end::Illustration-->
+                            </div>
+                            <!--end::Heading-->
+                            <!--begin::Links-->
+                            <div class="text-center mb-1">
+                                <!--begin::Link-->
+                                <a class="btn btn-sm btn-primary me-2" href="apps/ecommerce/sales/listing.html">View App</a>
+                                <!--end::Link-->
+                                <!--begin::Link-->
+                                <a class="btn btn-sm btn-light" href="apps/ecommerce/catalog/add-product.html">New Product</a>
+                                <!--end::Link-->
+                            </div>
+                            <!--end::Links-->
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <!--end::Engage widget 1-->
+                </div>
+                <!--end::Col-->
+                <!--begin::Col-->
+                <div class="col-xl-8 mb-5 mb-xl-10">
+                    <!--begin::Table Widget 4-->
+                    <div class="card card-flush h-xl-100">
+                        <!--begin::Card header-->
+                        <div class="card-header pt-7">
+                            <!--begin::Title-->
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bold text-gray-800">Product Orders</span>
+                                <span class="text-gray-500 mt-1 fw-semibold fs-6">Avg. 57 orders per day</span>
+                            </h3>
+                            <!--end::Title-->
+                            <!--begin::Actions-->
+                            <div class="card-toolbar">
+                                <!--begin::Filters-->
+                                <div class="d-flex flex-stack flex-wrap gap-4">
+                                    <!--begin::Destination-->
+                                    <div class="d-flex align-items-center fw-bold">
+                                        <!--begin::Label-->
+                                        <div class="text-gray-500 fs-7 me-2">Cateogry</div>
+                                        <!--end::Label-->
+                                        <!--begin::Select-->
+                                        <select class="form-select form-select-transparent text-graY-800 fs-base lh-1 fw-bold py-0 ps-3 w-auto select2-hidden-accessible" data-control="select2" data-hide-search="true" data-dropdown-css-class="w-150px" data-placeholder="Select an option" data-select2-id="select2-data-7-yqj3" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
+                                            <option></option>
+                                            <option value="Show All" selected="selected" data-select2-id="select2-data-9-khv4">Show All</option>
+                                            <option value="a">Category A</option>
+                                            <option value="b">Category A</option>
+                                        </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-8-3r4q" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-transparent text-graY-800 fs-base lh-1 fw-bold py-0 ps-3 w-auto" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-pkn0-container" aria-controls="select2-pkn0-container"><span class="select2-selection__rendered" id="select2-pkn0-container" role="textbox" aria-readonly="true" title="Show All">Show All</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                        <!--end::Select-->
+                                    </div>
+                                    <!--end::Destination-->
+                                    <!--begin::Status-->
+                                    <div class="d-flex align-items-center fw-bold">
+                                        <!--begin::Label-->
+                                        <div class="text-gray-500 fs-7 me-2">Status</div>
+                                        <!--end::Label-->
+                                        <!--begin::Select-->
+                                        <select class="form-select form-select-transparent text-gray-900 fs-7 lh-1 fw-bold py-0 ps-3 w-auto select2-hidden-accessible" data-control="select2" data-hide-search="true" data-dropdown-css-class="w-150px" data-placeholder="Select an option" data-kt-table-widget-4="filter_status" data-select2-id="select2-data-10-723t" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
+                                            <option></option>
+                                            <option value="Show All" selected="selected" data-select2-id="select2-data-12-mnoe">Show All</option>
+                                            <option value="Shipped">Shipped</option>
+                                            <option value="Confirmed">Confirmed</option>
+                                            <option value="Rejected">Rejected</option>
+                                            <option value="Pending">Pending</option>
+                                        </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-11-zdku" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-transparent text-gray-900 fs-7 lh-1 fw-bold py-0 ps-3 w-auto" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-724x-container" aria-controls="select2-724x-container"><span class="select2-selection__rendered" id="select2-724x-container" role="textbox" aria-readonly="true" title="Show All">Show All</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                        <!--end::Select-->
+                                    </div>
+                                    <!--end::Status-->
+                                    <!--begin::Search-->
+                                    <div class="position-relative my-1">
+                                        <i class="ki-duotone ki-magnifier fs-2 position-absolute top-50 translate-middle-y ms-4">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                        </i>
+                                        <input type="text" data-kt-table-widget-4="search" class="form-control w-150px fs-7 ps-12" placeholder="Search">
+                                    </div>
+                                    <!--end::Search-->
+                                </div>
+                                <!--begin::Filters-->
+                            </div>
+                            <!--end::Actions-->
+                        </div>
+                        <!--end::Card header-->
+                        <!--begin::Card body-->
+                        <div class="card-body pt-2">
+                            <!--begin::Table-->
+                            <div id="kt_table_widget_4_table_wrapper" class="dt-container dt-bootstrap5 dt-empty-footer"><div id="" class="table-responsive"><table class="table align-middle table-row-dashed fs-6 gy-3 dataTable" id="kt_table_widget_4_table" style="width: 768.656px;"><colgroup><col data-dt-column="0" style="width: 114.938px;"><col data-dt-column="1" style="width: 114.938px;"><col data-dt-column="2" style="width: 143.672px;"><col data-dt-column="3" style="width: 114.938px;"><col data-dt-column="4" style="width: 114.938px;"><col data-dt-column="5" style="width: 125.219px;"><col data-dt-column="6" style="width: 40.0156px;"></colgroup>
+                                        <!--begin::Table head-->
+                                        <thead>
+                                        <!--begin::Table row-->
+                                        <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0" role="row"><th class="min-w-100px dt-orderable-none" data-dt-column="0" rowspan="1" colspan="1"><span class="dt-column-title">Order ID</span><span class="dt-column-order"></span></th><th class="text-end min-w-100px dt-orderable-none" data-dt-column="1" rowspan="1" colspan="1"><span class="dt-column-title">Created</span><span class="dt-column-order"></span></th><th class="text-end min-w-125px dt-orderable-none" data-dt-column="2" rowspan="1" colspan="1"><span class="dt-column-title">Customer</span><span class="dt-column-order"></span></th><th class="text-end min-w-100px dt-orderable-none dt-type-numeric" data-dt-column="3" rowspan="1" colspan="1"><span class="dt-column-title">Total</span><span class="dt-column-order"></span></th><th class="text-end min-w-100px dt-orderable-none dt-type-numeric" data-dt-column="4" rowspan="1" colspan="1"><span class="dt-column-title">Profit</span><span class="dt-column-order"></span></th><th class="text-end min-w-50px dt-orderable-none" data-dt-column="5" rowspan="1" colspan="1"><span class="dt-column-title">Status</span><span class="dt-column-order"></span></th><th class="text-end dt-orderable-none" data-dt-column="6" rowspan="1" colspan="1"><span class="dt-column-title"></span><span class="dt-column-order"></span></th></tr>
+                                        <!--end::Table row-->
+                                        </thead>
+                                        <!--end::Table head-->
+                                        <!--begin::Table body-->
+                                        <tbody class="fw-bold text-gray-600"><tr>
+                                            <td>
+                                                <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#XGY-346</a>
+                                            </td>
+                                            <td class="text-end">7 min ago</td>
+                                            <td class="text-end">
+                                                <a href="#" class="text-gray-600 text-hover-primary">Albert Flores</a>
+                                            </td>
+                                            <td class="text-end dt-type-numeric">$630.00</td>
+                                            <td class="text-end dt-type-numeric">
+                                                <span class="text-gray-800 fw-bolder">$86.70</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <span class="badge py-3 px-4 fs-7 badge-light-warning">Pending</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <button type="button" class="btn btn-sm btn-icon btn-light btn-active-light-primary toggle h-25px w-25px" data-kt-table-widget-4="expand_row">
+                                                    <i class="ki-duotone ki-plus fs-4 m-0 toggle-off"></i>
+                                                    <i class="ki-duotone ki-minus fs-4 m-0 toggle-on"></i>
+                                                </button>
+                                            </td>
+                                        </tr><tr>
+                                            <td>
+                                                <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#YHD-047</a>
+                                            </td>
+                                            <td class="text-end">52 min ago</td>
+                                            <td class="text-end">
+                                                <a href="#" class="text-gray-600 text-hover-primary">Jenny Wilson</a>
+                                            </td>
+                                            <td class="text-end dt-type-numeric">$25.00</td>
+                                            <td class="text-end dt-type-numeric">
+                                                <span class="text-gray-800 fw-bolder">$4.20</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <span class="badge py-3 px-4 fs-7 badge-light-primary">Confirmed</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <button type="button" class="btn btn-sm btn-icon btn-light btn-active-light-primary toggle h-25px w-25px" data-kt-table-widget-4="expand_row">
+                                                    <i class="ki-duotone ki-plus fs-4 m-0 toggle-off"></i>
+                                                    <i class="ki-duotone ki-minus fs-4 m-0 toggle-on"></i>
+                                                </button>
+                                            </td>
+                                        </tr><tr>
+                                            <td>
+                                                <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#SRR-678</a>
+                                            </td>
+                                            <td class="text-end">1 hour ago</td>
+                                            <td class="text-end">
+                                                <a href="#" class="text-gray-600 text-hover-primary">Robert Fox</a>
+                                            </td>
+                                            <td class="text-end dt-type-numeric">$1,630.00</td>
+                                            <td class="text-end dt-type-numeric">
+                                                <span class="text-gray-800 fw-bolder">$203.90</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <span class="badge py-3 px-4 fs-7 badge-light-warning">Pending</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <button type="button" class="btn btn-sm btn-icon btn-light btn-active-light-primary toggle h-25px w-25px" data-kt-table-widget-4="expand_row">
+                                                    <i class="ki-duotone ki-plus fs-4 m-0 toggle-off"></i>
+                                                    <i class="ki-duotone ki-minus fs-4 m-0 toggle-on"></i>
+                                                </button>
+                                            </td>
+                                        </tr><tr>
+                                            <td>
+                                                <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#PXF-534</a>
+                                            </td>
+                                            <td class="text-end">3 hour ago</td>
+                                            <td class="text-end">
+                                                <a href="#" class="text-gray-600 text-hover-primary">Cody Fisher</a>
+                                            </td>
+                                            <td class="text-end dt-type-numeric">$119.00</td>
+                                            <td class="text-end dt-type-numeric">
+                                                <span class="text-gray-800 fw-bolder">$12.00</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <span class="badge py-3 px-4 fs-7 badge-light-success">Shipped</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <button type="button" class="btn btn-sm btn-icon btn-light btn-active-light-primary toggle h-25px w-25px" data-kt-table-widget-4="expand_row">
+                                                    <i class="ki-duotone ki-plus fs-4 m-0 toggle-off"></i>
+                                                    <i class="ki-duotone ki-minus fs-4 m-0 toggle-on"></i>
+                                                </button>
+                                            </td>
+                                        </tr><tr>
+                                            <td>
+                                                <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#XGD-249</a>
+                                            </td>
+                                            <td class="text-end">2 day ago</td>
+                                            <td class="text-end">
+                                                <a href="#" class="text-gray-600 text-hover-primary">Arlene McCoy</a>
+                                            </td>
+                                            <td class="text-end dt-type-numeric">$660.00</td>
+                                            <td class="text-end dt-type-numeric">
+                                                <span class="text-gray-800 fw-bolder">$52.26</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <span class="badge py-3 px-4 fs-7 badge-light-success">Shipped</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <button type="button" class="btn btn-sm btn-icon btn-light btn-active-light-primary toggle h-25px w-25px" data-kt-table-widget-4="expand_row">
+                                                    <i class="ki-duotone ki-plus fs-4 m-0 toggle-off"></i>
+                                                    <i class="ki-duotone ki-minus fs-4 m-0 toggle-on"></i>
+                                                </button>
+                                            </td>
+                                        </tr><tr>
+                                            <td>
+                                                <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#SKP-035</a>
+                                            </td>
+                                            <td class="text-end">2 day ago</td>
+                                            <td class="text-end">
+                                                <a href="#" class="text-gray-600 text-hover-primary">Eleanor Pena</a>
+                                            </td>
+                                            <td class="text-end dt-type-numeric">$290.00</td>
+                                            <td class="text-end dt-type-numeric">
+                                                <span class="text-gray-800 fw-bolder">$29.00</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <span class="badge py-3 px-4 fs-7 badge-light-danger">Rejected</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <button type="button" class="btn btn-sm btn-icon btn-light btn-active-light-primary toggle h-25px w-25px" data-kt-table-widget-4="expand_row">
+                                                    <i class="ki-duotone ki-plus fs-4 m-0 toggle-off"></i>
+                                                    <i class="ki-duotone ki-minus fs-4 m-0 toggle-on"></i>
+                                                </button>
+                                            </td>
+                                        </tr><tr>
+                                            <td>
+                                                <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#SKP-567</a>
+                                            </td>
+                                            <td class="text-end">7 min ago</td>
+                                            <td class="text-end">
+                                                <a href="#" class="text-gray-600 text-hover-primary">Dan Wilson</a>
+                                            </td>
+                                            <td class="text-end dt-type-numeric">$590.00</td>
+                                            <td class="text-end dt-type-numeric">
+                                                <span class="text-gray-800 fw-bolder">$50.00</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <span class="badge py-3 px-4 fs-7 badge-light-success">Shipped</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <button type="button" class="btn btn-sm btn-icon btn-light btn-active-light-primary toggle h-25px w-25px" data-kt-table-widget-4="expand_row">
+                                                    <i class="ki-duotone ki-plus fs-4 m-0 toggle-off"></i>
+                                                    <i class="ki-duotone ki-minus fs-4 m-0 toggle-on"></i>
+                                                </button>
+                                            </td>
+                                        </tr></tbody>
+                                        <!--end::Table body-->
+                                        <tfoot></tfoot></table></div><div id="" class="row"><div id="" class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start dt-toolbar"></div><div id="" class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end"></div></div></div>
+                            <!--end::Table-->
+                        </div>
+                        <!--end::Card body-->
+                    </div>
+                    <!--end::Table Widget 4-->
+                </div>
+                <!--end::Col-->
+            </div>
+            <!--end::Row-->
+            <!--begin::Row-->
+            <div class="row gy-5 g-xl-10">
+                <!--begin::Col-->
+                <div class="col-xl-4">
+                    <!--begin::List widget 5-->
+                    <div class="card card-flush h-xl-100">
+                        <!--begin::Header-->
+                        <div class="card-header pt-7">
+                            <!--begin::Title-->
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bold text-gray-900">Product Delivery</span>
+                                <span class="text-gray-500 mt-1 fw-semibold fs-6">1M Products Shipped so far</span>
+                            </h3>
+                            <!--end::Title-->
+                            <!--begin::Toolbar-->
+                            <div class="card-toolbar">
+                                <a href="apps/ecommerce/sales/details.html" class="btn btn-sm btn-light">Order Details</a>
+                            </div>
+                            <!--end::Toolbar-->
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body">
+                            <!--begin::Scroll-->
+                            <div class="hover-scroll-overlay-y pe-6 me-n6" style="height: 415px">
+                                <!--begin::Item-->
+                                <div class="border border-dashed border-gray-300 rounded px-7 py-3 mb-6">
+                                    <!--begin::Info-->
+                                    <div class="d-flex flex-stack mb-3">
+                                        <!--begin::Wrapper-->
+                                        <div class="me-3">
+                                            <!--begin::Icon-->
+                                            <img src="assets/media/stock/ecommerce/210.png" class="w-50px ms-n1 me-1" alt="">
+                                            <!--end::Icon-->
+                                            <!--begin::Title-->
+                                            <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fw-bold">Elephant 1802</a>
+                                            <!--end::Title-->
+                                        </div>
+                                        <!--end::Wrapper-->
+                                        <!--begin::Action-->
+                                        <div class="m-0">
+                                            <!--begin::Menu-->
+                                            <button class="btn btn-icon btn-color-gray-500 btn-active-color-primary justify-content-end" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
+                                                <i class="ki-duotone ki-dots-square fs-1">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                    <span class="path4"></span>
+                                                </i>
+                                            </button>
+                                            <!--begin::Menu 2-->
+                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px" data-kt-menu="true">
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <div class="menu-content fs-6 text-gray-900 fw-bold px-3 py-4">Quick Actions</div>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu separator-->
+                                                <div class="separator mb-3 opacity-75"></div>
+                                                <!--end::Menu separator-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Ticket</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Customer</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
+                                                    <!--begin::Menu item-->
+                                                    <a href="#" class="menu-link px-3">
+                                                        <span class="menu-title">New Group</span>
+                                                        <span class="menu-arrow"></span>
+                                                    </a>
+                                                    <!--end::Menu item-->
+                                                    <!--begin::Menu sub-->
+                                                    <div class="menu-sub menu-sub-dropdown w-175px py-4">
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Admin Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Staff Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Member Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                    </div>
+                                                    <!--end::Menu sub-->
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Contact</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu separator-->
+                                                <div class="separator mt-3 opacity-75"></div>
+                                                <!--end::Menu separator-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <div class="menu-content px-3 py-3">
+                                                        <a class="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
+                                                    </div>
+                                                </div>
+                                                <!--end::Menu item-->
+                                            </div>
+                                            <!--end::Menu 2-->
+                                            <!--end::Menu-->
+                                        </div>
+                                        <!--end::Action-->
+                                    </div>
+                                    <!--end::Info-->
+                                    <!--begin::Customer-->
+                                    <div class="d-flex flex-stack">
+                                        <!--begin::Name-->
+                                        <span class="text-gray-500 fw-bold">To:
+																<a href="apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fw-bold">Jason Bourne</a></span>
+                                        <!--end::Name-->
+                                        <!--begin::Label-->
+                                        <span class="badge badge-light-success">Delivered</span>
+                                        <!--end::Label-->
+                                    </div>
+                                    <!--end::Customer-->
+                                </div>
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <div class="border border-dashed border-gray-300 rounded px-7 py-3 mb-6">
+                                    <!--begin::Info-->
+                                    <div class="d-flex flex-stack mb-3">
+                                        <!--begin::Wrapper-->
+                                        <div class="me-3">
+                                            <!--begin::Icon-->
+                                            <img src="assets/media/stock/ecommerce/209.png" class="w-50px ms-n1 me-1" alt="">
+                                            <!--end::Icon-->
+                                            <!--begin::Title-->
+                                            <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fw-bold">RiseUP</a>
+                                            <!--end::Title-->
+                                        </div>
+                                        <!--end::Wrapper-->
+                                        <!--begin::Action-->
+                                        <div class="m-0">
+                                            <!--begin::Menu-->
+                                            <button class="btn btn-icon btn-color-gray-500 btn-active-color-primary justify-content-end" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
+                                                <i class="ki-duotone ki-dots-square fs-1">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                    <span class="path4"></span>
+                                                </i>
+                                            </button>
+                                            <!--begin::Menu 2-->
+                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px" data-kt-menu="true">
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <div class="menu-content fs-6 text-gray-900 fw-bold px-3 py-4">Quick Actions</div>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu separator-->
+                                                <div class="separator mb-3 opacity-75"></div>
+                                                <!--end::Menu separator-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Ticket</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Customer</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
+                                                    <!--begin::Menu item-->
+                                                    <a href="#" class="menu-link px-3">
+                                                        <span class="menu-title">New Group</span>
+                                                        <span class="menu-arrow"></span>
+                                                    </a>
+                                                    <!--end::Menu item-->
+                                                    <!--begin::Menu sub-->
+                                                    <div class="menu-sub menu-sub-dropdown w-175px py-4">
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Admin Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Staff Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Member Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                    </div>
+                                                    <!--end::Menu sub-->
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Contact</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu separator-->
+                                                <div class="separator mt-3 opacity-75"></div>
+                                                <!--end::Menu separator-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <div class="menu-content px-3 py-3">
+                                                        <a class="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
+                                                    </div>
+                                                </div>
+                                                <!--end::Menu item-->
+                                            </div>
+                                            <!--end::Menu 2-->
+                                            <!--end::Menu-->
+                                        </div>
+                                        <!--end::Action-->
+                                    </div>
+                                    <!--end::Info-->
+                                    <!--begin::Customer-->
+                                    <div class="d-flex flex-stack">
+                                        <!--begin::Name-->
+                                        <span class="text-gray-500 fw-bold">To:
+																<a href="apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fw-bold">Marie Durant</a></span>
+                                        <!--end::Name-->
+                                        <!--begin::Label-->
+                                        <span class="badge badge-light-primary">Shipping</span>
+                                        <!--end::Label-->
+                                    </div>
+                                    <!--end::Customer-->
+                                </div>
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <div class="border border-dashed border-gray-300 rounded px-7 py-3 mb-6">
+                                    <!--begin::Info-->
+                                    <div class="d-flex flex-stack mb-3">
+                                        <!--begin::Wrapper-->
+                                        <div class="me-3">
+                                            <!--begin::Icon-->
+                                            <img src="assets/media/stock/ecommerce/214.png" class="w-50px ms-n1 me-1" alt="">
+                                            <!--end::Icon-->
+                                            <!--begin::Title-->
+                                            <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fw-bold">Yellow Stone</a>
+                                            <!--end::Title-->
+                                        </div>
+                                        <!--end::Wrapper-->
+                                        <!--begin::Action-->
+                                        <div class="m-0">
+                                            <!--begin::Menu-->
+                                            <button class="btn btn-icon btn-color-gray-500 btn-active-color-primary justify-content-end" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
+                                                <i class="ki-duotone ki-dots-square fs-1">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                    <span class="path4"></span>
+                                                </i>
+                                            </button>
+                                            <!--begin::Menu 2-->
+                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px" data-kt-menu="true">
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <div class="menu-content fs-6 text-gray-900 fw-bold px-3 py-4">Quick Actions</div>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu separator-->
+                                                <div class="separator mb-3 opacity-75"></div>
+                                                <!--end::Menu separator-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Ticket</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Customer</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
+                                                    <!--begin::Menu item-->
+                                                    <a href="#" class="menu-link px-3">
+                                                        <span class="menu-title">New Group</span>
+                                                        <span class="menu-arrow"></span>
+                                                    </a>
+                                                    <!--end::Menu item-->
+                                                    <!--begin::Menu sub-->
+                                                    <div class="menu-sub menu-sub-dropdown w-175px py-4">
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Admin Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Staff Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Member Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                    </div>
+                                                    <!--end::Menu sub-->
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Contact</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu separator-->
+                                                <div class="separator mt-3 opacity-75"></div>
+                                                <!--end::Menu separator-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <div class="menu-content px-3 py-3">
+                                                        <a class="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
+                                                    </div>
+                                                </div>
+                                                <!--end::Menu item-->
+                                            </div>
+                                            <!--end::Menu 2-->
+                                            <!--end::Menu-->
+                                        </div>
+                                        <!--end::Action-->
+                                    </div>
+                                    <!--end::Info-->
+                                    <!--begin::Customer-->
+                                    <div class="d-flex flex-stack">
+                                        <!--begin::Name-->
+                                        <span class="text-gray-500 fw-bold">To:
+																<a href="apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fw-bold">Dan Wilson</a></span>
+                                        <!--end::Name-->
+                                        <!--begin::Label-->
+                                        <span class="badge badge-light-danger">Confirmed</span>
+                                        <!--end::Label-->
+                                    </div>
+                                    <!--end::Customer-->
+                                </div>
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <div class="border border-dashed border-gray-300 rounded px-7 py-3 mb-6">
+                                    <!--begin::Info-->
+                                    <div class="d-flex flex-stack mb-3">
+                                        <!--begin::Wrapper-->
+                                        <div class="me-3">
+                                            <!--begin::Icon-->
+                                            <img src="assets/media/stock/ecommerce/211.png" class="w-50px ms-n1 me-1" alt="">
+                                            <!--end::Icon-->
+                                            <!--begin::Title-->
+                                            <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fw-bold">Elephant 1802</a>
+                                            <!--end::Title-->
+                                        </div>
+                                        <!--end::Wrapper-->
+                                        <!--begin::Action-->
+                                        <div class="m-0">
+                                            <!--begin::Menu-->
+                                            <button class="btn btn-icon btn-color-gray-500 btn-active-color-primary justify-content-end" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
+                                                <i class="ki-duotone ki-dots-square fs-1">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                    <span class="path4"></span>
+                                                </i>
+                                            </button>
+                                            <!--begin::Menu 2-->
+                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px" data-kt-menu="true">
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <div class="menu-content fs-6 text-gray-900 fw-bold px-3 py-4">Quick Actions</div>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu separator-->
+                                                <div class="separator mb-3 opacity-75"></div>
+                                                <!--end::Menu separator-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Ticket</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Customer</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
+                                                    <!--begin::Menu item-->
+                                                    <a href="#" class="menu-link px-3">
+                                                        <span class="menu-title">New Group</span>
+                                                        <span class="menu-arrow"></span>
+                                                    </a>
+                                                    <!--end::Menu item-->
+                                                    <!--begin::Menu sub-->
+                                                    <div class="menu-sub menu-sub-dropdown w-175px py-4">
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Admin Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Staff Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Member Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                    </div>
+                                                    <!--end::Menu sub-->
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Contact</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu separator-->
+                                                <div class="separator mt-3 opacity-75"></div>
+                                                <!--end::Menu separator-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <div class="menu-content px-3 py-3">
+                                                        <a class="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
+                                                    </div>
+                                                </div>
+                                                <!--end::Menu item-->
+                                            </div>
+                                            <!--end::Menu 2-->
+                                            <!--end::Menu-->
+                                        </div>
+                                        <!--end::Action-->
+                                    </div>
+                                    <!--end::Info-->
+                                    <!--begin::Customer-->
+                                    <div class="d-flex flex-stack">
+                                        <!--begin::Name-->
+                                        <span class="text-gray-500 fw-bold">To:
+																<a href="apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fw-bold">Lebron Wayde</a></span>
+                                        <!--end::Name-->
+                                        <!--begin::Label-->
+                                        <span class="badge badge-light-success">Delivered</span>
+                                        <!--end::Label-->
+                                    </div>
+                                    <!--end::Customer-->
+                                </div>
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <div class="border border-dashed border-gray-300 rounded px-7 py-3 mb-6">
+                                    <!--begin::Info-->
+                                    <div class="d-flex flex-stack mb-3">
+                                        <!--begin::Wrapper-->
+                                        <div class="me-3">
+                                            <!--begin::Icon-->
+                                            <img src="assets/media/stock/ecommerce/215.png" class="w-50px ms-n1 me-1" alt="">
+                                            <!--end::Icon-->
+                                            <!--begin::Title-->
+                                            <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fw-bold">RiseUP</a>
+                                            <!--end::Title-->
+                                        </div>
+                                        <!--end::Wrapper-->
+                                        <!--begin::Action-->
+                                        <div class="m-0">
+                                            <!--begin::Menu-->
+                                            <button class="btn btn-icon btn-color-gray-500 btn-active-color-primary justify-content-end" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
+                                                <i class="ki-duotone ki-dots-square fs-1">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                    <span class="path4"></span>
+                                                </i>
+                                            </button>
+                                            <!--begin::Menu 2-->
+                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px" data-kt-menu="true">
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <div class="menu-content fs-6 text-gray-900 fw-bold px-3 py-4">Quick Actions</div>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu separator-->
+                                                <div class="separator mb-3 opacity-75"></div>
+                                                <!--end::Menu separator-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Ticket</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Customer</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
+                                                    <!--begin::Menu item-->
+                                                    <a href="#" class="menu-link px-3">
+                                                        <span class="menu-title">New Group</span>
+                                                        <span class="menu-arrow"></span>
+                                                    </a>
+                                                    <!--end::Menu item-->
+                                                    <!--begin::Menu sub-->
+                                                    <div class="menu-sub menu-sub-dropdown w-175px py-4">
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Admin Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Staff Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Member Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                    </div>
+                                                    <!--end::Menu sub-->
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Contact</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu separator-->
+                                                <div class="separator mt-3 opacity-75"></div>
+                                                <!--end::Menu separator-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <div class="menu-content px-3 py-3">
+                                                        <a class="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
+                                                    </div>
+                                                </div>
+                                                <!--end::Menu item-->
+                                            </div>
+                                            <!--end::Menu 2-->
+                                            <!--end::Menu-->
+                                        </div>
+                                        <!--end::Action-->
+                                    </div>
+                                    <!--end::Info-->
+                                    <!--begin::Customer-->
+                                    <div class="d-flex flex-stack">
+                                        <!--begin::Name-->
+                                        <span class="text-gray-500 fw-bold">To:
+																<a href="apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fw-bold">Ana Simmons</a></span>
+                                        <!--end::Name-->
+                                        <!--begin::Label-->
+                                        <span class="badge badge-light-primary">Shipping</span>
+                                        <!--end::Label-->
+                                    </div>
+                                    <!--end::Customer-->
+                                </div>
+                                <!--end::Item-->
+                                <!--begin::Item-->
+                                <div class="border border-dashed border-gray-300 rounded px-7 py-3">
+                                    <!--begin::Info-->
+                                    <div class="d-flex flex-stack mb-3">
+                                        <!--begin::Wrapper-->
+                                        <div class="me-3">
+                                            <!--begin::Icon-->
+                                            <img src="assets/media/stock/ecommerce/192.png" class="w-50px ms-n1 me-1" alt="">
+                                            <!--end::Icon-->
+                                            <!--begin::Title-->
+                                            <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fw-bold">Yellow Stone</a>
+                                            <!--end::Title-->
+                                        </div>
+                                        <!--end::Wrapper-->
+                                        <!--begin::Action-->
+                                        <div class="m-0">
+                                            <!--begin::Menu-->
+                                            <button class="btn btn-icon btn-color-gray-500 btn-active-color-primary justify-content-end" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
+                                                <i class="ki-duotone ki-dots-square fs-1">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                    <span class="path4"></span>
+                                                </i>
+                                            </button>
+                                            <!--begin::Menu 2-->
+                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px" data-kt-menu="true">
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <div class="menu-content fs-6 text-gray-900 fw-bold px-3 py-4">Quick Actions</div>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu separator-->
+                                                <div class="separator mb-3 opacity-75"></div>
+                                                <!--end::Menu separator-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Ticket</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Customer</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
+                                                    <!--begin::Menu item-->
+                                                    <a href="#" class="menu-link px-3">
+                                                        <span class="menu-title">New Group</span>
+                                                        <span class="menu-arrow"></span>
+                                                    </a>
+                                                    <!--end::Menu item-->
+                                                    <!--begin::Menu sub-->
+                                                    <div class="menu-sub menu-sub-dropdown w-175px py-4">
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Admin Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Staff Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="#" class="menu-link px-3">Member Group</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                    </div>
+                                                    <!--end::Menu sub-->
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">New Contact</a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu separator-->
+                                                <div class="separator mt-3 opacity-75"></div>
+                                                <!--end::Menu separator-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <div class="menu-content px-3 py-3">
+                                                        <a class="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
+                                                    </div>
+                                                </div>
+                                                <!--end::Menu item-->
+                                            </div>
+                                            <!--end::Menu 2-->
+                                            <!--end::Menu-->
+                                        </div>
+                                        <!--end::Action-->
+                                    </div>
+                                    <!--end::Info-->
+                                    <!--begin::Customer-->
+                                    <div class="d-flex flex-stack">
+                                        <!--begin::Name-->
+                                        <span class="text-gray-500 fw-bold">To:
+																<a href="apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fw-bold">Kevin Leonard</a></span>
+                                        <!--end::Name-->
+                                        <!--begin::Label-->
+                                        <span class="badge badge-light-danger">Confirmed</span>
+                                        <!--end::Label-->
+                                    </div>
+                                    <!--end::Customer-->
+                                </div>
+                                <!--end::Item-->
+                            </div>
+                            <!--end::Scroll-->
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <!--end::List widget 5-->
+                </div>
+                <!--end::Col-->
+                <!--begin::Col-->
+                <div class="col-xl-8">
+                    <!--begin::Table Widget 5-->
+                    <div class="card card-flush h-xl-100">
+                        <!--begin::Card header-->
+                        <div class="card-header pt-7">
+                            <!--begin::Title-->
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bold text-gray-900">Stock Report</span>
+                                <span class="text-gray-500 mt-1 fw-semibold fs-6">Total 2,356 Items in the Stock</span>
+                            </h3>
+                            <!--end::Title-->
+                            <!--begin::Actions-->
+                            <div class="card-toolbar">
+                                <!--begin::Filters-->
+                                <div class="d-flex flex-stack flex-wrap gap-4">
+                                    <!--begin::Destination-->
+                                    <div class="d-flex align-items-center fw-bold">
+                                        <!--begin::Label-->
+                                        <div class="text-muted fs-7 me-2">Cateogry</div>
+                                        <!--end::Label-->
+                                        <!--begin::Select-->
+                                        <select class="form-select form-select-transparent text-gray-900 fs-7 lh-1 fw-bold py-0 ps-3 w-auto select2-hidden-accessible" data-control="select2" data-hide-search="true" data-dropdown-css-class="w-150px" data-placeholder="Select an option" data-select2-id="select2-data-13-yxmn" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
+                                            <option></option>
+                                            <option value="Show All" selected="selected" data-select2-id="select2-data-15-bxvl">Show All</option>
+                                            <option value="a">Category A</option>
+                                            <option value="b">Category B</option>
+                                        </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-14-oz11" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-transparent text-gray-900 fs-7 lh-1 fw-bold py-0 ps-3 w-auto" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-ao8p-container" aria-controls="select2-ao8p-container"><span class="select2-selection__rendered" id="select2-ao8p-container" role="textbox" aria-readonly="true" title="Show All">Show All</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                        <!--end::Select-->
+                                    </div>
+                                    <!--end::Destination-->
+                                    <!--begin::Status-->
+                                    <div class="d-flex align-items-center fw-bold">
+                                        <!--begin::Label-->
+                                        <div class="text-muted fs-7 me-2">Status</div>
+                                        <!--end::Label-->
+                                        <!--begin::Select-->
+                                        <select class="form-select form-select-transparent text-gray-900 fs-7 lh-1 fw-bold py-0 ps-3 w-auto select2-hidden-accessible" data-control="select2" data-hide-search="true" data-dropdown-css-class="w-150px" data-placeholder="Select an option" data-kt-table-widget-5="filter_status" data-select2-id="select2-data-16-20bf" tabindex="-1" aria-hidden="true" data-kt-initialized="1">
+                                            <option></option>
+                                            <option value="Show All" selected="selected" data-select2-id="select2-data-18-me18">Show All</option>
+                                            <option value="In Stock">In Stock</option>
+                                            <option value="Out of Stock">Out of Stock</option>
+                                            <option value="Low Stock">Low Stock</option>
+                                        </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-17-5dku" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-transparent text-gray-900 fs-7 lh-1 fw-bold py-0 ps-3 w-auto" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-47n9-container" aria-controls="select2-47n9-container"><span class="select2-selection__rendered" id="select2-47n9-container" role="textbox" aria-readonly="true" title="Show All">Show All</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                        <!--end::Select-->
+                                    </div>
+                                    <!--end::Status-->
+                                    <!--begin::Search-->
+                                    <a href="apps/ecommerce/catalog/products.html" class="btn btn-light btn-sm">View Stock</a>
+                                    <!--end::Search-->
+                                </div>
+                                <!--begin::Filters-->
+                            </div>
+                            <!--end::Actions-->
+                        </div>
+                        <!--end::Card header-->
+                        <!--begin::Card body-->
+                        <div class="card-body">
+                            <!--begin::Table-->
+                            <div id="kt_table_widget_5_table_wrapper" class="dt-container dt-bootstrap5 dt-empty-footer"><div id="" class="table-responsive"><table class="table align-middle table-row-dashed fs-6 gy-3 dataTable" id="kt_table_widget_5_table" style="width: 768.656px;"><colgroup><col data-dt-column="0" style="width: 166.016px;"><col data-dt-column="1" style="width: 110.672px;"><col data-dt-column="2" style="width: 166.016px;"><col data-dt-column="3" style="width: 110.672px;"><col data-dt-column="4" style="width: 132.234px;"><col data-dt-column="5" style="width: 83.0469px;"></colgroup>
+                                        <!--begin::Table head-->
+                                        <thead>
+                                        <!--begin::Table row-->
+                                        <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0" role="row"><th class="min-w-150px dt-orderable-asc dt-orderable-desc" data-dt-column="0" rowspan="1" colspan="1" aria-label="Item: Activate to sort" tabindex="0"><span class="dt-column-title" role="button">Item</span><span class="dt-column-order"></span></th><th class="text-end pe-3 min-w-100px dt-orderable-none" data-dt-column="1" rowspan="1" colspan="1" aria-label="Product ID"><span class="dt-column-title">Product ID</span><span class="dt-column-order"></span></th><th class="text-end pe-3 min-w-150px dt-orderable-asc dt-orderable-desc" data-dt-column="2" rowspan="1" colspan="1" aria-label="Date Added: Activate to sort" tabindex="0"><span class="dt-column-title" role="button">Date Added</span><span class="dt-column-order"></span></th><th class="text-end pe-3 min-w-100px dt-type-numeric dt-orderable-asc dt-orderable-desc" data-dt-column="3" rowspan="1" colspan="1" aria-label="Price: Activate to sort" tabindex="0"><span class="dt-column-title" role="button">Price</span><span class="dt-column-order"></span></th><th class="text-end pe-3 min-w-100px dt-orderable-asc dt-orderable-desc" data-dt-column="4" rowspan="1" colspan="1" aria-label="Status: Activate to sort" tabindex="0"><span class="dt-column-title" role="button">Status</span><span class="dt-column-order"></span></th><th class="text-end pe-0 min-w-75px dt-type-numeric dt-orderable-asc dt-orderable-desc" data-dt-column="5" rowspan="1" colspan="1" aria-label="Qty: Activate to sort" tabindex="0"><span class="dt-column-title" role="button">Qty</span><span class="dt-column-order"></span></th></tr>
+                                        <!--end::Table row-->
+                                        </thead>
+                                        <!--end::Table head-->
+                                        <!--begin::Table body-->
+                                        <tbody class="fw-bold text-gray-600"><tr>
+                                            <!--begin::Item-->
+                                            <td>
+                                                <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-900 text-hover-primary">Macbook Air M1</a>
+                                            </td>
+                                            <!--end::Item-->
+                                            <!--begin::Product ID-->
+                                            <td class="text-end">#XGY-356</td>
+                                            <!--end::Product ID-->
+                                            <!--begin::Date added-->
+                                            <td class="text-end" data-order="2024-04-20T00:00:00+07:00">02 Apr, 2024</td>
+                                            <!--end::Date added-->
+                                            <!--begin::Price-->
+                                            <td class="text-end dt-type-numeric">$1,230</td>
+                                            <!--end::Price-->
+                                            <!--begin::Status-->
+                                            <td class="text-end">
+                                                <span class="badge py-3 px-4 fs-7 badge-light-primary">In Stock</span>
+                                            </td>
+                                            <!--end::Status-->
+                                            <!--begin::Qty-->
+                                            <td class="text-end dt-type-numeric" data-order="58">
+                                                <span class="text-gray-900 fw-bold">58 PCS</span>
+                                            </td>
+                                            <!--end::Qty-->
+                                        </tr><tr>
+                                            <!--begin::Item-->
+                                            <td>
+                                                <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-900 text-hover-primary">Surface Laptop 4</a>
+                                            </td>
+                                            <!--end::Item-->
+                                            <!--begin::Product ID-->
+                                            <td class="text-end">#YHD-047</td>
+                                            <!--end::Product ID-->
+                                            <!--begin::Date added-->
+                                            <td class="text-end" data-order="2024-04-20T00:00:00+07:00">01 Apr, 2024</td>
+                                            <!--end::Date added-->
+                                            <!--begin::Price-->
+                                            <td class="text-end dt-type-numeric">$1,060</td>
+                                            <!--end::Price-->
+                                            <!--begin::Status-->
+                                            <td class="text-end">
+                                                <span class="badge py-3 px-4 fs-7 badge-light-danger">Out of Stock</span>
+                                            </td>
+                                            <!--end::Status-->
+                                            <!--begin::Qty-->
+                                            <td class="text-end dt-type-numeric" data-order="0">
+                                                <span class="text-gray-900 fw-bold">0 PCS</span>
+                                            </td>
+                                            <!--end::Qty-->
+                                        </tr><tr>
+                                            <!--begin::Item-->
+                                            <td>
+                                                <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-900 text-hover-primary">Logitech MX 250</a>
+                                            </td>
+                                            <!--end::Item-->
+                                            <!--begin::Product ID-->
+                                            <td class="text-end">#SRR-678</td>
+                                            <!--end::Product ID-->
+                                            <!--begin::Date added-->
+                                            <td class="text-end" data-order="2024-03-20T00:00:00+07:00">24 Mar, 2024</td>
+                                            <!--end::Date added-->
+                                            <!--begin::Price-->
+                                            <td class="text-end dt-type-numeric">$64</td>
+                                            <!--end::Price-->
+                                            <!--begin::Status-->
+                                            <td class="text-end">
+                                                <span class="badge py-3 px-4 fs-7 badge-light-primary">In Stock</span>
+                                            </td>
+                                            <!--end::Status-->
+                                            <!--begin::Qty-->
+                                            <td class="text-end dt-type-numeric" data-order="290">
+                                                <span class="text-gray-900 fw-bold">290 PCS</span>
+                                            </td>
+                                            <!--end::Qty-->
+                                        </tr><tr>
+                                            <!--begin::Item-->
+                                            <td>
+                                                <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-900 text-hover-primary">AudioEngine HD3</a>
+                                            </td>
+                                            <!--end::Item-->
+                                            <!--begin::Product ID-->
+                                            <td class="text-end">#PXF-578</td>
+                                            <!--end::Product ID-->
+                                            <!--begin::Date added-->
+                                            <td class="text-end" data-order="2024-03-20T00:00:00+07:00">24 Mar, 2024</td>
+                                            <!--end::Date added-->
+                                            <!--begin::Price-->
+                                            <td class="text-end dt-type-numeric">$1,060</td>
+                                            <!--end::Price-->
+                                            <!--begin::Status-->
+                                            <td class="text-end">
+                                                <span class="badge py-3 px-4 fs-7 badge-light-danger">Out of Stock</span>
+                                            </td>
+                                            <!--end::Status-->
+                                            <!--begin::Qty-->
+                                            <td class="text-end dt-type-numeric" data-order="46">
+                                                <span class="text-gray-900 fw-bold">46 PCS</span>
+                                            </td>
+                                            <!--end::Qty-->
+                                        </tr><tr>
+                                            <!--begin::Item-->
+                                            <td>
+                                                <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-900 text-hover-primary">HP Hyper LTR</a>
+                                            </td>
+                                            <!--end::Item-->
+                                            <!--begin::Product ID-->
+                                            <td class="text-end">#PXF-778</td>
+                                            <!--end::Product ID-->
+                                            <!--begin::Date added-->
+                                            <td class="text-end" data-order="2024-01-20T00:00:00+07:00">16 Jan, 2024</td>
+                                            <!--end::Date added-->
+                                            <!--begin::Price-->
+                                            <td class="text-end dt-type-numeric">$4500</td>
+                                            <!--end::Price-->
+                                            <!--begin::Status-->
+                                            <td class="text-end">
+                                                <span class="badge py-3 px-4 fs-7 badge-light-primary">In Stock</span>
+                                            </td>
+                                            <!--end::Status-->
+                                            <!--begin::Qty-->
+                                            <td class="text-end dt-type-numeric" data-order="78">
+                                                <span class="text-gray-900 fw-bold">78 PCS</span>
+                                            </td>
+                                            <!--end::Qty-->
+                                        </tr><tr>
+                                            <!--begin::Item-->
+                                            <td>
+                                                <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-900 text-hover-primary">Dell 32 UltraSharp</a>
+                                            </td>
+                                            <!--end::Item-->
+                                            <!--begin::Product ID-->
+                                            <td class="text-end">#XGY-356</td>
+                                            <!--end::Product ID-->
+                                            <!--begin::Date added-->
+                                            <td class="text-end" data-order="2024-12-20T00:00:00+07:00">22 Dec, 2024</td>
+                                            <!--end::Date added-->
+                                            <!--begin::Price-->
+                                            <td class="text-end dt-type-numeric">$1,060</td>
+                                            <!--end::Price-->
+                                            <!--begin::Status-->
+                                            <td class="text-end">
+                                                <span class="badge py-3 px-4 fs-7 badge-light-warning">Low Stock</span>
+                                            </td>
+                                            <!--end::Status-->
+                                            <!--begin::Qty-->
+                                            <td class="text-end dt-type-numeric" data-order="8">
+                                                <span class="text-gray-900 fw-bold">8 PCS</span>
+                                            </td>
+                                            <!--end::Qty-->
+                                        </tr><tr>
+                                            <!--begin::Item-->
+                                            <td>
+                                                <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-900 text-hover-primary">Google Pixel 6 Pro</a>
+                                            </td>
+                                            <!--end::Item-->
+                                            <!--begin::Product ID-->
+                                            <td class="text-end">#XVR-425</td>
+                                            <!--end::Product ID-->
+                                            <!--begin::Date added-->
+                                            <td class="text-end" data-order="2024-12-20T00:00:00+07:00">27 Dec, 2024</td>
+                                            <!--end::Date added-->
+                                            <!--begin::Price-->
+                                            <td class="text-end dt-type-numeric">$1,060</td>
+                                            <!--end::Price-->
+                                            <!--begin::Status-->
+                                            <td class="text-end">
+                                                <span class="badge py-3 px-4 fs-7 badge-light-primary">In Stock</span>
+                                            </td>
+                                            <!--end::Status-->
+                                            <!--begin::Qty-->
+                                            <td class="text-end dt-type-numeric" data-order="124">
+                                                <span class="text-gray-900 fw-bold">124 PCS</span>
+                                            </td>
+                                            <!--end::Qty-->
+                                        </tr></tbody>
+                                        <!--end::Table body-->
+                                        <tfoot></tfoot></table></div><div id="" class="row"><div id="" class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start dt-toolbar"></div><div id="" class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end"></div></div></div>
+                            <!--end::Table-->
+                        </div>
+                        <!--end::Card body-->
+                    </div>
+                    <!--end::Table Widget 5-->
                 </div>
                 <!--end::Col-->
             </div>

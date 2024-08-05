@@ -28,7 +28,7 @@ class SupplierController extends Controller
             $query->where('status', $status === 'active' ? 1 : 0);
         }
 
-        $suppliers = $query->orderBy('id', 'desc')->get();
+        $suppliers = $query->orderBy('id', 'desc')->paginate(5);
 
         return view('pages.admin.suppliers.list-supplier', ['suppliers' => $suppliers]);
     }

@@ -128,6 +128,9 @@
                                 </tbody>
                                 <tfoot></tfoot>
                             </table>
+                            <div>
+                                {{$suppliers->links()}}
+                            </div>
                         </div>
                     </div>
                     <!--end::Table-->

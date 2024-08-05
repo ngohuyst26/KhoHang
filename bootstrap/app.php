@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
             $systemRoutes = [
                 'category.php',
                 'customer.php',
+                'order.php',
                 'product.php',
                 'supplier.php'
             ];
@@ -39,6 +40,7 @@ return Application::configure(basePath: dirname(__DIR__))
             foreach ($clientRoutes as $route) {
                 Route::middleware(['web','auth'])
                     ->prefix('')
+                    ->name('sale.')
                     ->group(base_path("routes/sale/{$route}"));
             }
 

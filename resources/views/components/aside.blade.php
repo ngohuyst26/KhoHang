@@ -46,16 +46,16 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                         <!--begin:Menu link-->
                         <span class="menu-link">
-											<span class="menu-icon">
-												<i class="ki-duotone ki-address-book fs-2">
-													<span class="path1"></span>
-													<span class="path2"></span>
-													<span class="path3"></span>
-												</i>
-											</span>
-											<span class="menu-title">Loại hàng</span>
-											<span class="menu-arrow"></span>
-										</span>
+                            <span class="menu-icon">
+                                <i class="ki-duotone ki-address-book fs-2">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                </i>
+                            </span>
+                            <span class="menu-title">Loại hàng</span>
+                            <span class="menu-arrow"></span>
+                        </span>
                         <!--end:Menu link-->
                         <!--begin:Menu sub-->
                         <div class="menu-sub menu-sub-accordion">
@@ -63,9 +63,9 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                             <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <a class="menu-link" href="{{ route('category.list') }}">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
                                     <span class="menu-title">Danh sách</span>
                                 </a>
                                 <!--end:Menu link-->
@@ -75,9 +75,9 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                             <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <a class="menu-link" href="{{ route('category.add') }}">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
                                     <span class="menu-title">Thêm loại</span>
                                 </a>
                                 <!--end:Menu link-->
@@ -91,18 +91,18 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                         <!--begin:Menu link-->
                         <span class="menu-link">
-											<span class="menu-icon">
-												<i class="ki-duotone ki-element-plus fs-2">
-													<span class="path1"></span>
-													<span class="path2"></span>
-													<span class="path3"></span>
-													<span class="path4"></span>
-													<span class="path5"></span>
-												</i>
-											</span>
-											<span class="menu-title">Nhà cung cấp</span>
-											<span class="menu-arrow"></span>
-										</span>
+                            <span class="menu-icon">
+                                <i class="ki-duotone ki-element-plus fs-2">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                    <span class="path4"></span>
+                                    <span class="path5"></span>
+                                </i>
+                            </span>
+                            <span class="menu-title">Nhà cung cấp</span>
+                            <span class="menu-arrow"></span>
+                        </span>
                         <!--end:Menu link-->
                         <!--begin:Menu sub-->
                         <div class="menu-sub menu-sub-accordion">
@@ -110,9 +110,9 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                             <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <a class="menu-link" href="{{route('supplier.list')}}">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
                                     <span class="menu-title">Danh sách</span>
                                 </a>
                                 <!--end:Menu link-->
@@ -122,9 +122,9 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                             <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <a class="menu-link" href="{{route('supplier.add')}}">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
                                     <span class="menu-title">Thêm nhà cung cấp</span>
                                 </a>
                                 <!--end:Menu link-->
@@ -139,17 +139,17 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                         <!--begin:Menu link-->
                         <span class="menu-link">
-											<span class="menu-icon">
-												<i class="ki-duotone ki-basket fs-2">
-														<span class="path1"></span>
-														<span class="path2"></span>
-														<span class="path3"></span>
-														<span class="path4"></span>
-													</i>
-											</span>
-											<span class="menu-title">Sản phẩm</span>
-											<span class="menu-arrow"></span>
-										</span>
+                            <span class="menu-icon">
+                                <i class="ki-duotone ki-basket fs-2">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                        <span class="path4"></span>
+                                    </i>
+                            </span>
+                            <span class="menu-title">Sản phẩm</span>
+                            <span class="menu-arrow"></span>
+                        </span>
                         <!--end:Menu link-->
                         <!--begin:Menu sub-->
                         <div class="menu-sub menu-sub-accordion">
@@ -157,9 +157,9 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                             <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <a class="menu-link" href="{{route('products.index')}}">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
                                     <span class="menu-title">Danh sách sản phẩm</span>
                                 </a>
                                 <!--end:Menu link-->
@@ -169,9 +169,9 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                             <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <a class="menu-link" href="{{route('products.create')}}">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
                                     <span class="menu-title">Thêm sản phẩm</span>
                                 </a>
                                 <!--end:Menu link-->
@@ -186,15 +186,15 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                         <!--begin:Menu link-->
                         <span class="menu-link">
-											<span class="menu-icon">
-												<i class="ki-duotone ki-abstract-38 fs-2">
-														<span class="path1"></span>
-														<span class="path2"></span>
-													</i>
-											</span>
-											<span class="menu-title">Khách hàng</span>
-											<span class="menu-arrow"></span>
-										</span>
+                            <span class="menu-icon">
+                                <i class="ki-duotone ki-abstract-38 fs-2">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                    </i>
+                            </span>
+                            <span class="menu-title">Khách hàng</span>
+                            <span class="menu-arrow"></span>
+                        </span>
                         <!--end:Menu link-->
                         <!--begin:Menu sub-->
                         <div class="menu-sub menu-sub-accordion">
@@ -202,10 +202,40 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                             <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <a class="menu-link" href="{{ route('customers.index') }}">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
                                     <span class="menu-title">Danh sách khách hàng</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
+                        </div>
+                        <!--end:Menu sub-->
+                    </div>
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                        <!--begin:Menu link-->
+                        <span class="menu-link">
+                            <span class="menu-icon">
+                                <i class="ki-duotone ki-abstract-38 fs-2">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                    </i>
+                            </span>
+                            <span class="menu-title">Giao dịch</span>
+                            <span class="menu-arrow"></span>
+                        </span>
+                        <!--end:Menu link-->
+                        <!--begin:Menu sub-->
+                        <div class="menu-sub menu-sub-accordion">
+                            <!--begin:Menu item-->
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="{{ route('orders.index') }}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Đơn hàng</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>

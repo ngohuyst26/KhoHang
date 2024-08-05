@@ -313,7 +313,7 @@
                 $('#toggleProduct').removeClass('ng-hide');
                 var query = $(this).val();
                 $.ajax({
-                    url: "{{ route('search') }}",
+                    url: "{{ route('sale.search') }}",
                     type: "GET",
                     data: {'query': query},
                     success: function (data) {
@@ -481,7 +481,7 @@
                 let grandTotal = $('#amountDue').data('amount-due');
                 let createdAt = $('#created_at').val();
                 $.ajax({
-                    url: '{{ route("orders.store") }}',
+                    url: '{{ route("sale.orders.store") }}',
                     method: 'POST',
                     data: {
                         cartItems: cartItems,

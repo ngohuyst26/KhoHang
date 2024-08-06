@@ -97,11 +97,14 @@
                                     <th class="text-end min-w-75px dt-type-numeric dt-orderable-asc dt-orderable-desc" data-dt-column="4" rowspan="1" colspan="1" aria-label="No. Orders: Activate to sort" tabindex="0">
                                         <span class="dt-column-title" role="button">Khách đã trả</span><span class="dt-column-order"></span>
                                     </th>
+                                    <th class="text-end min-w-75px dt-type-numeric dt-orderable-asc dt-orderable-desc" data-dt-column="4" rowspan="1" colspan="1" aria-label="No. Orders: Activate to sort" tabindex="0">
+                                        <span class="dt-column-title" role="button">Trạng thái</span><span class="dt-column-order"></span>
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody class="fw-semibold text-gray-600">
                                 @foreach($orders as $item)
-                                    <tr>
+                                    <tr class="main-row">
                                         <td>
                                             <a href="#" class="text-gray-900 text-hover-primary">HD000{{$item->id ?? ''}}</a>
                                         </td>
@@ -118,70 +121,157 @@
                                         <td class="text-end">
                                             <div class="badge badge-light">{{number_format($item->total_payment, 0, ',', '.')}} đ</div>
                                         </td>
+                                        @if($item->order_status == '1')
+                                            <td class="text-end">
+                                                <div class="badge badge-light-success">Hoàn thành</div>
+                                            </td>
+                                        @elseif($item->order_status == '0')
+                                            <td class="text-end">
+                                                <div class="badge badge-light-danger">Đã hủy</div>
+                                            </td>
+                                        @endif
                                     </tr>
-                                @endforeach
+                                    <tr class="details-row h-100px w-100px d-none">
+                                        <td colspan="7">
+                                            <div class="card border-gray-300 bg-gray-100">
+                                                <div class="card-body py-20">
+                                                    <div class="pb-4">
+                                                        <div class="d-flex flex-column gap-7 gap-md-10">
+                                                            <div class="d-flex flex-column flex-sm-row gap-7 gap-md-10 fw-bold">
+                                                                <div class="flex-root d-flex flex-column">
+                                                                    <span class="text-muted">Mã đơn:</span>
+                                                                    <span class="fs-5">#HD000{{$item->id ?? ''}} </span>
+                                                                </div>
+                                                                <div class="flex-root d-flex flex-column">
+                                                                    <span class="text-muted">Ngày tạo</span>
+                                                                    <span class="fs-5">{{$item->created_at ?? ''}}</span>
+                                                                </div>
+                                                                <div class="flex-root d-flex flex-column">
+                                                                    <span class="text-muted">Người tạo</span>
+                                                                    <span class="fs-6">{{$item->user->name ?? ''}}</span>
+                                                                </div>
+                                                                <div class="flex-root d-flex flex-column">
+                                                                    <span class="text-muted">Trạng thái</span>
+                                                                    @if($item->order_status == '0')
+                                                                        <span>
+                                                                            <div class="badge badge-light-danger">Đã hủy</div>
+                                                                        </span>
+                                                                    @elseif($item->order_status == '1')
+                                                                        <span>
+                                                                            <div class="badge badge-light-success">Hoàn thành</div>
+                                                                        </span>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex flex-column flex-sm-row gap-7 gap-md-10 fw-bold">
+                                                                <div class="flex-root d-flex flex-column">
+                                                                    <span class="text-muted">Khách hàng</span>
+                                                                    <span class="fs-6">{{$item->customers->name ?? ''}}
+                                                                        <br>{{$item->customers->city_name ?? ''}}
+                                                                    </span>
+                                                                </div>
+                                                                <div class="flex-root d-flex flex-column">
+                                                                    <span class="text-muted">Người bán</span>
+                                                                    <span class="fs-6">{{$item->user->name ?? ''}}</span>
+                                                                </div>
+                                                                <div class="flex-root d-flex flex-column">
 
-                                </tbody>
-                                <tfoot>
+                                                                </div>
+                                                                <div class="flex-root d-flex flex-column">
 
-                                </tfoot>
+                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex justify-content-between flex-column">
+                                                                <div class="table-responsive border-bottom mb-9">
+                                                                    <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0">
+                                                                        <thead>
+                                                                        <tr class="border-bottom fs-6 fw-bold text-muted">
+                                                                            <th class="min-w-50px pb-2">Mã hàng</th>
+                                                                            <th class="min-w-175px pb-2">Tên hàng</th>
+                                                                            <th class="min-w-70px text-center pb-2">Số lượng</th>
+                                                                            <th class="min-w-80px text-end pb-2">Đơn giá</th>
+                                                                            <th class="min-w-100px text-end pb-2">Giảm giá</th>
+                                                                            <th class="min-w-100px text-end pb-2">Thành tiền</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody class="fw-semibold text-gray-600">
+                                                                        @foreach($item->orderItems as $orderItem)
+                                                                            <tr>
+                                                                                <td class="text-start">MH000{{$orderItem->id ?? ''}}</td>
+                                                                                <td>
+                                                                                    <div class="d-flex align-items-center">
+                                                                                        {{--                                                                                        <a href="#" class="symbol symbol-50px">--}}
+                                                                                        {{--                                                                                            <span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/1.png);"></span>--}}
+                                                                                        {{--                                                                                        </a>--}}
+                                                                                        <div class="ms-5">
+                                                                                            <div class="fw-bold">{{$orderItem->product->name ?? ''}}</div>
+                                                                                            {{--                                                                                            <div class="fs-7 text-muted">Delivery Date: 23/06/2024</div>--}}
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="text-center">{{$orderItem->quantity ?? ''}}</td>
+                                                                                <td class="text-end">{{number_format($orderItem->unit_amount , 0, ',', '.')}} đ</td>
+                                                                                <td class="text-end">0 %</td>
+                                                                                <td class="text-end">{{number_format($orderItem->unit_amount , 0, ',', '.')}} đ</td>
+                                                                            </tr>
+                                                                        @endforeach
+                                                                        <tr>
+                                                                            <td colspan="5" class="text-end">Subtotal</td>
+                                                                            <td class="text-end">{{number_format($item->grand_total , 0, ',', '.')}} đ</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td colspan="5" class="text-end">VAT (0%)</td>
+                                                                            <td class="text-end">0</td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td colspan="5" class="fs-3 text-gray-900 fw-bold text-end">Grand Total</td>
+                                                                            <td class="text-gray-900 fs-3 fw-bolder text-end">{{number_format($item->grand_total , 0, ',', '.')}} đ</td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-stack flex-wrap mt-lg-5 pt-3 ">
+                                                        <div class="my-1 me-5 ">
+                                                            <button type="button" class="btn btn-success my-1 me-12" onclick="window.print();">In hóa đơn</button>
+                                                            <button type="button" class="btn btn-light-success my-1">Xuất file</button>
+                                                        </div>
+                                                        <a href="#" class="btn btn-danger my-1">Hủy đơn </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach</tbody>
+                                <tfoot></tfoot>
                             </table>
                         </div>
                         <div id="" class="row">
-                            <div id="" class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start dt-toolbar">
-                                {{--                                <div>--}}
-                                {{--                                    <select name="kt_ecommerce_report_customer_orders_table_length" aria-controls="kt_ecommerce_report_customer_orders_table" class="form-select form-select-solid form-select-sm" id="dt-length-0">--}}
-                                {{--                                        <option value="10">10</option>--}}
-                                {{--                                        <option value="25">25</option>--}}
-                                {{--                                        <option value="50">50</option>--}}
-                                {{--                                        <option value="100">100</option>--}}
-                                {{--                                    </select>--}}
-                                {{--                                    <label for="dt-length-0"></label>--}}
-                                {{--                                </div>--}}
-                            </div>
+                            <div id="" class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start dt-toolbar"></div>
                             <div id="" class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
                                 {{$orders->links()}}
-                                {{--                                <div class="dt-paging paging_simple_numbers">--}}
-                                {{--                                    <ul class="pagination">--}}
-                                {{--                                        <li class="dt-paging-button page-item disabled">--}}
-                                {{--                                            <a class="page-link previous" aria-controls="kt_ecommerce_report_customer_orders_table" aria-disabled="true" aria-label="Previous" data-dt-idx="previous" tabindex="-1"><i class="previous"></i></a>--}}
-                                {{--                                        </li>--}}
-                                {{--                                        <li class="dt-paging-button page-item active">--}}
-                                {{--                                            <a href="#" class="page-link" aria-controls="kt_ecommerce_report_customer_orders_table" aria-current="page" data-dt-idx="0" tabindex="0">1</a>--}}
-                                {{--                                        </li>--}}
-                                {{--                                        <li class="dt-paging-button page-item">--}}
-                                {{--                                            <a href="#" class="page-link" aria-controls="kt_ecommerce_report_customer_orders_table" data-dt-idx="1" tabindex="0">2</a>--}}
-                                {{--                                        </li>--}}
-                                {{--                                        <li class="dt-paging-button page-item">--}}
-                                {{--                                            <a href="#" class="page-link" aria-controls="kt_ecommerce_report_customer_orders_table" data-dt-idx="2" tabindex="0">3</a>--}}
-                                {{--                                        </li>--}}
-                                {{--                                        <li class="dt-paging-button page-item">--}}
-                                {{--                                            <a href="#" class="page-link" aria-controls="kt_ecommerce_report_customer_orders_table" data-dt-idx="3" tabindex="0">4</a>--}}
-                                {{--                                        </li>--}}
-                                {{--                                        <li class="dt-paging-button page-item">--}}
-                                {{--                                            <a href="#" class="page-link" aria-controls="kt_ecommerce_report_customer_orders_table" data-dt-idx="4" tabindex="0">5</a>--}}
-                                {{--                                        </li>--}}
-                                {{--                                        <li class="dt-paging-button page-item">--}}
-                                {{--                                            <a href="#" class="page-link next" aria-controls="kt_ecommerce_report_customer_orders_table" aria-label="Next" data-dt-idx="next" tabindex="0"><i class="next"></i></a>--}}
-                                {{--                                        </li>--}}
-                                {{--                                    </ul>--}}
-                                {{--                                </div>--}}
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--end::Card body-->
             </div>
-            <!--end::Products-->
         </div>
-        <!--end::Content container-->
     </div>
 @endsection
 @push('style')
-    <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
-    <style>
-
-    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.main-row').click(function () {
+                var nextRow = $(this).next('.details-row');
+                nextRow.toggleClass('d-none');
+            });
+        });
+    </script>
 @endpush
+
 
 

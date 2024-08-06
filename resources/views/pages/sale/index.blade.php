@@ -38,11 +38,11 @@
                                                 <span unselectable="on" class="k-icon k-i-arrow-s">select</span>
                                             </span>
                                         </span>
-                                        <select class="dropdown-control dropdown-control-sm saleman-dropdown" data-role="dropdownlist" style="display: none;">
-                                            <option value="1000342177">Lê Thanh Quang</option>
-                                            <option value="1000342178">Nguyễn Thị Thái Hòa</option>
-                                            <option value="1000342179">Lê Thị Bảo Trân</option>
-                                        </select>
+{{--                                        <select class="dropdown-control dropdown-control-sm saleman-dropdown" data-role="dropdownlist" style="display: none;">--}}
+                                        {{--                                            <option value="1000342177">Lê Thanh Quang</option>--}}
+                                        {{--                                            <option value="1000342178">Nguyễn Thị Thái Hòa</option>--}}
+                                        {{--                                            <option value="1000342179">Lê Thị Bảo Trân</option>--}}
+                                        {{--                                        </select>--}}
                                     </span>
                                 </div>
                             </sold-by-dropdown-component>
@@ -76,8 +76,22 @@
                                     <div class="autocomplete " id="">
                                         <i class="fal fa-search"></i>
                                         <input type="text" autocomplete="off" ng-model="vm.searchParam" placeholder="Tìm khách hàng (F4)" class="form-control tabBut_0 form-control-custom ng-empty" id="customerSearchInput" ng-disabled="vm.kvDisable" kv-select-text="" tabindex="2010" kv-tab-index="">
-                                        <div class="output-complete ng-hide is-offline" ng-class="{'has-add-new':vm.getStateAddNewProduct(vm.isAddNew, vm.listItems), 'show-only': vm.getStateSelectMulti(vm.listItems,vm.isMultiSelect), 'is-offline': !vm.isOnline}" ng-show="vm.completing">
-                                            <ul ng-hide="vm.searchParam &amp;&amp; vm.suggestions.length == 0"><!----></ul>
+                                        <div class="output-complete is-offline" ng-show="vm.completing">
+                                            <ul ng-hide="vm.searchParam &amp;&amp; vm.suggestions.length == 0" class=""><!---->
+                                                <li suggestion="" ng-repeat="suggestion in vm.suggestions track by $index" index="0" val="Anh Hoàng - Sài Gòn" ng-class="{active:($index == vm.selectedIndex)}" ng-click="vm.itemClicked(suggestion)" class="output-item active">
+                                                    <div class="output-body">
+                                                        <div class="output-info">
+                                                            <h5 class="output-name">Anh Hoàng - Sài Gòn</h5>
+                                                            <div class="output-value">
+                                                                <span class="output-code">Mã: KH000004</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="output-phone">
+
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                             <div class="not-found ng-hide" ng-show="vm.searchParam &amp;&amp; vm.suggestions.length == 0">Không tìm thấy khách hàng phù hợp</div>
                                             <a class="add-new-product ng-hide" ng-click="vm.onAddNew()" ng-show="vm.isAddNew &amp;&amp; !vm.getStateSelectMulti(vm.listItems,vm.isMultiSelect)" href="javascript:;">+ Thêm mới hàng hóa</a>
                                             <div class="multi-select-actions ng-hide" ng-show="vm.getStateSelectMulti(vm.listItems, vm.isMultiSelect)">
@@ -94,7 +108,7 @@
                         </div>
 
                     </customer-search-component><!----><!----></div>
-                <pricebook-component id="pricebook1"  uib-tooltip="Bảng giá chung" tooltip-placement="bottom" tooltip-append-to-body="true" class="ng-hide">
+                <pricebook-component id="pricebook1" uib-tooltip="Bảng giá chung" tooltip-placement="bottom" tooltip-append-to-body="true" class="ng-hide">
                     <span title="" style="" class="k-widget k-dropdown k-header dropdown-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="2014" aria-owns="pricebook_listbox" aria-disabled="false" aria-busy="false" aria-activedescendant="96945982-1650-44ec-868e-42d2982320e7">
                         <span unselectable="on" class="k-dropdown-wrap k-state-default">
                             <span unselectable="on" class="k-input">
@@ -307,6 +321,7 @@
                 if (!$(event.target).closest('#productSearchInput, #productSearchList').length) {
                     $('#toggleProduct').hide();
                 }
+
                 if (!$(event.target).closest('#sale-menu-bar').length) {
                     $('#sale-menu-bar').removeClass('open');
                 }
@@ -424,8 +439,8 @@
 
                 let grandTotal = $('#amountDue').data('amount-due');
                 let createdAt = $('#created_at').val();
-                let discount =  $('#discount').val();
-                let totalPayment =  $('#amountPaid-hidden').val();
+                let discount = $('#discount').val();
+                let totalPayment = $('#amountPaid-hidden').val();
                 $.ajax({
                     url: '{{ route("sale.orders.store") }}',
                     method: 'POST',

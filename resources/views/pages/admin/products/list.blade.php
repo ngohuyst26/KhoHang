@@ -193,7 +193,7 @@
                                                                             <span class="dt-column-title" role="button">Tồn kho</span><span class="dt-column-order"></span>
                                                                         </th>
                                                                         <th class="text-end min-w-100px dt-type-numeric dt-orderable-asc dt-orderable-desc" data-dt-column="4" rowspan="1" colspan="1" aria-label="Price: Activate to sort" tabindex="0">
-                                                                            <span class="dt-column-title" role="button">Giá vốn</span><span class="dt-column-order"></span>
+                                                                       ``     <span class="dt-column-title" role="button">Giá vốn</span><span class="dt-column-order"></span>
                                                                         </th>
                                                                         <th class="text-end min-w-100px dt-type-numeric dt-orderable-asc dt-orderable-desc" data-dt-column="4" rowspan="1" colspan="1" aria-label="Price: Activate to sort" tabindex="0">
                                                                             <span class="dt-column-title" role="button">Giá bán</span><span class="dt-column-order"></span>

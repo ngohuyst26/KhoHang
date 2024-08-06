@@ -41,14 +41,14 @@
                             <i class="ki-duotone ki-exit-up fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
-                            </i>Export Report
+                            </i>Export
                         </button>
                         <div id="kt_ecommerce_report_customer_orders_export_menu" class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-200px py-4" data-kt-menu="true">
                             <div class="menu-item px-3">
                                 <a href="#" class="menu-link px-3" data-kt-ecommerce-export="copy">Copy to clipboard</a>
                             </div>
                             <div class="menu-item px-3">
-                                <a href="#" class="menu-link px-3" data-kt-ecommerce-export="excel">Export as Excel</a>
+                                <a href="{{route('exportOrder')}}" class="menu-link px-3" data-kt-ecommerce-export="excel">Export as Excel</a>
                             </div>
                             <div class="menu-item px-3">
                                 <a href="#" class="menu-link px-3" data-kt-ecommerce-export="csv">Export as CSV</a>

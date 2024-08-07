@@ -4,9 +4,11 @@ namespace App\Repositories\Product;
 
 use App\Repositories\BaseRepositoryInterface;
 
-interface ProductRepositoryInterface extends BaseRepositoryInterface
-{
+interface ProductRepositoryInterface extends BaseRepositoryInterface{
+
     public function getAll(int $page);
+
+    public function getTrash(int $page);
 
     public function createProduct($data);
 

@@ -23,5 +23,4 @@ class Option extends Model{
     public function skuValue(){
         return $this->hasMany(SkuValue::class, 'option_id');
     }
-
 }

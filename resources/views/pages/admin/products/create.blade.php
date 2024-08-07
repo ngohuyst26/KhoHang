@@ -162,20 +162,21 @@
                                                 class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="mb-10 fv-row fv-plugins-icon-container col-3 mt-8">
-                                            <button type="button" data-repeater-delete
-                                                    class="btn btn-flex btn-sm btn-light-danger mt-1">
-                                                <i class="ki-duotone ki-trash fs-5"><span class="path1"></span><span
-                                                        class="path2"></span><span class="path3"></span><span
-                                                        class="path4"></span><span class="path5"></span></i>Xóa
+                                            <button type="button" data-repeater-delete class="btn btn-flex btn-sm btn-light-danger mt-1">
+                                                <i class="ki-duotone ki-trash fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>Xóa
                                             </button>
                                         </div>
                                     </div>
                                 </div>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_option">Tạo biến thể
+                                </button>
                                 <button type="button" data-repeater-create class="btn btn-flex btn-light-primary">
                                     <i class="ki-duotone ki-plus fs-3"></i>Thêm
                                 </button>
                                 <button type="button" id="generate-forms" class="btn btn-light-primary">Tạo kết hợp
                                 </button>
+
+
                             </div>
                         </div>
 
@@ -196,14 +197,49 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary mt-5"><i class="fs-2 ki-duotone ki-tablet-ok"><span class="path1"></span><span
-                            class="path2"></span><span class="path3"></span></i>Lưu sản phẩm
+                <button class="btn btn-primary mt-5"><i class="fs-2 ki-duotone ki-tablet-ok"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>Lưu sản phẩm
                 </button>
             </form>
             <!--end::Form-->
         </div>
     </div>
+    <div class="modal fade" tabindex="-1" id="kt_modal_add_option">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Tạo biến thể</h3>
 
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <form action="" id="add_option_form">
+                    <div class="modal-body">
+                        <div class="mb-10 fv-row fv-plugins-icon-container">
+                            <!--begin::Label-->
+                            <label class="required form-label">Tên biến thể</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <input type="text" id="name_option" name="name" class="form-control mb-2" placeholder="Tên biến thể" value="">
+                            <!--end::Input-->
+                            <p></p>
+                            <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                            Đóng
+                        </button>
+                        <button type="submit" id="add_option" class="btn btn-primary">Lưu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('script')
 
@@ -223,6 +259,58 @@
             });
 
         $(document).ready(function () {
+
+
+            $("#kt_modal_add_option").on('click', function () {
+                console.log('hahaha');
+            })
+
+            //Hanlde submit adding form
+            $("#add_option_form").submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '{{route('options.store')}}',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        // $('#customers-list').html(data);
+                        $('#kt_modal_add_option').modal('hide');
+                        clearErrors();
+                        Swal.fire({
+                            text: "Thêm mới thành công!",
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: {
+                                confirmButton: "btn btn-primary"
+                            }
+                        });
+                        window.location = "{{route('products.create')}}";
+                    },
+                    error: function (err) {
+                        if (err.responseJSON.errors) {
+                            let errors = err.responseJSON.errors;
+                            console.log(errors.name);
+                            handleFieldError("#name_option", errors.name);
+
+                            Swal.fire({
+                                text: "Vui lòng kiểm tra lại các trường đã nhập",
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "Cancel",
+                                customClass: {
+                                    confirmButton: "btn btn-danger"
+                                }
+                            });
+                        }
+                        if (err.status == 404) {
+                            console.log('No query results for model');
+                        }
+                    }
+                })
+            })
+
+
             const tagifyInstances = [];
 
             // Initialize Repeater

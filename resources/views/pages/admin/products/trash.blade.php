@@ -20,14 +20,13 @@
 
                     <!--begin::Card toolbar-->
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                        <a type="button" href="{{route('products.trash')}}" class="btn btn-light-primary me-3">
-                            <i class="ki-duotone ki-trash-square fs-2">
+                        <a type="button" href="{{route('products.index')}}" class="btn btn-light-primary me-3">
+                            <i class="ki-duotone ki-archive">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                                 <span class="path3"></span>
-                                <span class="path4"></span>
                             </i>
-                            Thùng rác
+                            Danh sách sản phẩm
                         </a>
 
                         <!--begin::Add product-->
@@ -100,7 +99,7 @@
                                             <div class="d-flex align-items-center">
                                                 <!--begin::Thumbnail-->
                                                 <a href="#" class="symbol symbol-50px">
-                                                    <span class="symbol-label" style="background-image:url({{!$product->productSku->first()?->photo->isEmpty() ? Storage::url($product->productSku->first()?->photo->first()->url) : ''}});"></span>
+                                                        <span class="symbol-label" style="background-image:url({{!$product->productSku->first()?->photo->isEmpty() ? Storage::url($product->productSku->first()?->photo->first()->url) : ''}});"></span>
                                                 </a>
                                                 <!--end::Thumbnail-->
 
@@ -128,7 +127,7 @@
                                         </td>
                                         <td class="text-end pe-0" data-order="Published">
                                             <!--begin::Badges-->
-                                            <div class="badge badge-light-success">Hoạt động</div>
+                                            <div class="badge badge-light-danger">Đã xóa</div>
                                             <!--end::Badges-->
                                         </td>
                                         <td class="text-end">
@@ -149,19 +148,19 @@
 
                                                 <!--begin::Menu item-->
                                                 <div class="menu-item px-3">
-                                                    <a class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#delete_{{$product->id}}" data-kt-ecommerce-product-filter="delete_row">
-                                                        Xóa
+                                                    <a class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#restore_{{$product->id}}" data-kt-ecommerce-product-filter="delete_row">
+                                                        Khôi phục
                                                     </a>
                                                 </div>
                                                 <!--end::Menu item-->
                                             </div>
                                             <!--end::Menu-->
                                         </td>
-                                        <div class="modal fade" tabindex="-1" id="delete_{{$product->id}}">
+                                        <div class="modal fade" tabindex="-1" id="restore_{{$product->id}}">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h3 class="modal-title">Xóa sản phẩm</h3>
+                                                        <h3 class="modal-title">Khôi phục sản phẩm</h3>
                                                         <!--begin::Close-->
                                                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
                                                             <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
@@ -172,11 +171,11 @@
                                                         @method('DELETE')
                                                         @csrf
                                                         <div class="modal-body">
-                                                            <p>Bạn có chắc là muốn xóa sản phẩm "{{$product->name}}" !</p>
+                                                            <p>Bạn có chắc là muốn khôi phục sản phẩm "{{$product->name}}" !</p>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Đóng</button>
-                                                            <button type="submit" class="btn btn-danger">Xóa luôn</button>
+                                                            <button type="submit" class="btn btn-primary">Khôi phục luôn</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -336,7 +335,7 @@
         $(document).ready(function () {
             $('.main-row').click(function () {
                 var nextRow = $(this).next('.details-row'); // Chọn hàng kế tiếp có class 'details-row'
-                nextRow.toggleClass('d-none');
+                nextRow.toggleClass('d-none'); // Thêm hoặc xóa class 'd-none'
             });
         });
     </script>

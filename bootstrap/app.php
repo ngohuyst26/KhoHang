@@ -13,6 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
         using: function () {
             $systemRoutes = [
                 'category.php',
+                'checkstock.php',
+                'customer.php',
+                'option.php',
                 'export.php',
                 'order.php',
                 'product.php',

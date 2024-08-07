@@ -10,7 +10,7 @@ class ProductSku extends Model{
     use HasFactory;
 
     protected $table = 'product_sku';
-    protected $fillable = ['product_id', 'price', 'sale_price', 'inventory'];
+    protected $fillable = ['product_id', 'price', 'sale_price', 'inventory', 'barcode'];
 
     public function product(){
         return $this->belongsTo(Product::class);

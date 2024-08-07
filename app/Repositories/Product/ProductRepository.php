@@ -46,7 +46,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         ]);
         if (!isset($data['generated'])){
             $sku = $this->createSku($product->id, $request->price, $request->sale_price,
-                $request->inventory);
+                $request->inventory, $request->barcode);
             DetailCheckStock::create([
                 'check_stock_id'   => $checkStock->id,
                 'product_sku_id'   => $sku->id,
@@ -71,7 +71,9 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                 $price      = $combination['price'];
                 $sale_price = $combination['sale_price'];
                 $inventory  = $combination['stock'];
-                $sku        = $this->createSku($product->id, $price, $sale_price, $inventory);
+                $barcode    = 0;
+                $sku        = $this->createSku($product->id, $price, $sale_price, $inventory,
+                    $barcode);
                 DetailCheckStock::create([
                     'check_stock_id'   => $checkStock->id,
                     'product_sku_id'   => $sku->id,
@@ -123,12 +125,13 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
 
-    public function createSku($productId, $price, $sale_price, $inventory){
+    public function createSku($productId, $price, $sale_price, $inventory, $barcode){
         return ProductSku::create([
             'product_id' => $productId,
             'price'      => $price,
             'sale_price' => $sale_price,
             'inventory'  => $inventory,
+            'barcode'    => $barcode,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

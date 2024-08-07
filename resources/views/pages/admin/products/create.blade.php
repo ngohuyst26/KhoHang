@@ -15,15 +15,26 @@
                     </div>
                     <div class="card-body pt-0">
                         <!--begin::Input group-->
-                        <div class="mb-10 fv-row fv-plugins-icon-container">
-                            <!--begin::Label-->
-                            <label class="required form-label">Tên sản phẩm</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            <input type="text" id="name" name="name" class="form-control mb-2"
-                                   placeholder="Tên sản phẩm" value="">
-                            <!--end::Input-->
-                            <p></p>
+                        <div class="row">
+                            <div class="col-6 mb-10 fv-row fv-plugins-icon-container">
+                                <!--begin::Label-->
+                                <label class="required form-label">Tên sản phẩm</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="text" id="name" name="name" class="form-control mb-2" placeholder="Tên sản phẩm" value="">
+                                <!--end::Input-->
+                                <p></p>
+                            </div>
+                            <div class="col-6 mb-10 fv-row fv-plugins-icon-container">
+                                <!--begin::Label-->
+                                <label class="form-label">Mã vạch</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="text" id="barcode" name="barcode" class="form-control mb-2" placeholder="Mã vạch của sản phẩm" value="">
+                                <!--end::Input-->
+                                <p></p>
+                                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-4 mb-10 fv-row fv-plugins-icon-container">
@@ -31,9 +42,7 @@
                                 <label class="required form-label">Giá vốn</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" id="price" name="price" class="form-control mb-2"
-                                       placeholder="Giá vốn"
-                                       value="">
+                                <input type="text" id="price" name="price" class="form-control mb-2" placeholder="Giá vốn" value="">
                                 <!--end::Input-->
                                 <p></p>
                                 <div
@@ -63,6 +72,7 @@
                                 <div
                                     class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                             </div>
+
                         </div>
 
                         <div class="row">

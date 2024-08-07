@@ -270,7 +270,6 @@
         }
     </script>
     <!-- APP CONFIG -->
-{{--    <script src="https://cdn-app.kiotviet.vn/clientsdk/kv-sdk-3.0.5.js"></script>--}}
     <link rel="stylesheet" href="https://cdn-pos1.kiotviet.vn/2024/7/26/5_15/assets/css/mains.92303bb3.css">
 
     <style>
@@ -2240,11 +2239,6 @@
 			color: #0CB1C7
 		}
     </style>
-{{--    <link rel="stylesheet" type="text/css" href="https://cdn-shipping.kiotviet.vn/shipping-api/widget/20240729145821/widget_price/price-v4.min.css">--}}
-{{--    <link rel="stylesheet" type="text/css" href="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/css/chunk-vendors.css" media="all">--}}
-{{--    <link rel="stylesheet" type="text/css" href="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/css/k_fin_onboarding.css" media="all">--}}
-{{--    <link rel="stylesheet" type="text/css" href="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/css/k_pay_register.css" media="all">--}}
-{{--    <link rel="stylesheet" type="text/css" href="https://d3no7hcvthy7pu.cloudfront.net/1.0.23/css/k_pay_checkout.css" media="all">--}}
     <style type="text/css">
 		.vodal,
 		.vodal-mask {

@@ -72,42 +72,35 @@
                     <customer-search-component customer="$root.activeCart.Customer" cdisabled="$root.activeCart.CustomerDisabled" on-change="vm.onChangeCustomer(customer)" ng-if="$root.saleScreenMode === 1 || $root.activeCart.isRefund() || $root.activeCart.isWarrantyCart()" ng-show="((!$root.activeCart.isRefund() || $root.activeCart.IsQuickReturn || root.activeCart.IsReturnImport) &amp;&amp; !$root.activeCart.OrderId &amp;&amp; !$root.activeCart.WarrantyOrderId) || $root.activeCart.Customer">
                         <div class="autocomplete-full"><!---->
                             <div ng-if="!vm.currentCustomer" class="autocomplete-input">
-                                <div kv-autocomplete="vm.autocomplete" ng-model="vm.customerSearchTerm" template-id="customerItemTempl" data="vm.customers" attr-placeholder="Tìm khách hàng (F4)" attr-iconclass="fal fa-search" attr-inputclass="tabBut_0 form-control-custom" attr-inputid="customerSearchInput" on-tindex="vm.tabIndex+1" on-type="vm.searchTermChanged" on-select="vm.changeCustomer" kv-disabled="vm.cdisabled" kv-message="'Không tìm thấy khách hàng phù hợp' | translate" class="ng-pristine ng-untouched ng-valid ng-empty">
-                                    <div class="autocomplete " id="">
+                                <div kv-autocomplete="vm.autocomplete" ng-model="vm.customerSearchTerm" template-id="customerItemTempl" data="vm.customers" attr-placeholder="Tìm khách hàng (F4)" attr-iconclass="fal fa-search" attr-inputclass="tabBut_0 form-control-custom" on-tindex="vm.tabIndex+1" on-type="vm.searchTermChanged" on-select="vm.changeCustomer" kv-disabled="vm.cdisabled" kv-message="'Không tìm thấy khách hàng phù hợp' | translate" class="ng-pristine ng-untouched ng-valid ng-empty">
+                                    <div class="autocomplete" id="">
                                         <i class="fal fa-search"></i>
-                                        <input type="text" autocomplete="off" ng-model="vm.searchParam" placeholder="Tìm khách hàng (F4)" class="form-control tabBut_0 form-control-custom ng-empty" id="customerSearchInput" ng-disabled="vm.kvDisable" kv-select-text="" tabindex="2010" kv-tab-index="">
-                                        <div class="output-complete is-offline" ng-show="vm.completing">
-                                            <ul ng-hide="vm.searchParam &amp;&amp; vm.suggestions.length == 0" class=""><!---->
-                                                <li suggestion="" ng-repeat="suggestion in vm.suggestions track by $index" index="0" val="Anh Hoàng - Sài Gòn" ng-class="{active:($index == vm.selectedIndex)}" ng-click="vm.itemClicked(suggestion)" class="output-item active">
-                                                    <div class="output-body">
-                                                        <div class="output-info">
-                                                            <h5 class="output-name">Anh Hoàng - Sài Gòn</h5>
-                                                            <div class="output-value">
-                                                                <span class="output-code">Mã: KH000004</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="output-phone">
+                                        <input type="text" autocomplete="on" ng-model="vm.searchParam" placeholder="Tìm khách hàng (F4)" class="form-control tabBut_0 form-control-custom ng-empty" id="customerSearchInput" kv-select-text="" tabindex="2010" kv-tab-index="">
+                                        <div id="suggestions" class="output-complete is-offlin" style="display: none">
 
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="not-found ng-hide" ng-show="vm.searchParam &amp;&amp; vm.suggestions.length == 0">Không tìm thấy khách hàng phù hợp</div>
-                                            <a class="add-new-product ng-hide" ng-click="vm.onAddNew()" ng-show="vm.isAddNew &amp;&amp; !vm.getStateSelectMulti(vm.listItems,vm.isMultiSelect)" href="javascript:;">+ Thêm mới hàng hóa</a>
-                                            <div class="multi-select-actions ng-hide" ng-show="vm.getStateSelectMulti(vm.listItems, vm.isMultiSelect)">
-                                                <span><span class="total-product">false</span> <span translate=""><span>sản phẩm</span></span></span>
-                                                <a class="btn btn-primary add-list-product" ng-click="vm.addMultiItemsToCart(vm.listItems)" href="javascript:;">Thêm vào đơn</a>
-                                            </div>
+                                            {{--                                            <div class="not-found ng-hide" ng-show="vm.searchParam &amp;&amp; vm.suggestions.length == 0">Không tìm thấy khách hàng phù hợp</div>--}}
+                                            {{--                                            <a class="add-new-product ng-hide" ng-click="vm.onAddNew()" ng-show="vm.isAddNew &amp;&amp; !vm.getStateSelectMulti(vm.listItems,vm.isMultiSelect)" href="javascript:;">+ Thêm mới hàng hóa</a>--}}
+                                            {{--                                            <div class="multi-select-actions ng-hide" ng-show="vm.getStateSelectMulti(vm.listItems, vm.isMultiSelect)">--}}
+                                            {{--                                                <span><span class="total-product">false</span> <span translate=""><span>sản phẩm</span></span></span>--}}
+                                            {{--                                                <a class="btn btn-primary add-list-product" ng-click="vm.addMultiItemsToCart(vm.listItems)" href="javascript:;">Thêm vào đơn</a>--}}
+                                            {{--                                            </div>--}}
 
                                         </div>
-                                    </div>
-                                </div><!---->
-                                <button class="btn-icon btn-icon-default" title="Thêm khách hàng" tabindex="2011">
-                                    <i class="far fa-plus"></i></button><!---->
-                            </div><!----><!---->
-                        </div>
 
-                    </customer-search-component><!----><!----></div>
+                                    </div>
+                                </div>
+                                <button class="btn-icon btn-icon-default" title="Thêm khách hàng" tabindex="2011">
+                                    <i class="far fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="selected-customer" id="selected-customer" style="display: none;">
+                                <span id="customer-name"></span>
+                                <button class="border-none" type="button" id="remove-customer">x</button>
+                            </div>
+
+                        </div>
+                    </customer-search-component>
+                </div>
                 <pricebook-component id="pricebook1" uib-tooltip="Bảng giá chung" tooltip-placement="bottom" tooltip-append-to-body="true" class="ng-hide">
                     <span title="" style="" class="k-widget k-dropdown k-header dropdown-control" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="2014" aria-owns="pricebook_listbox" aria-disabled="false" aria-busy="false" aria-activedescendant="96945982-1650-44ec-868e-42d2982320e7">
                         <span unselectable="on" class="k-dropdown-wrap k-state-default">
@@ -118,7 +111,7 @@
                                 <span unselectable="on" class="k-icon k-i-arrow-s">select</span>
                             </span>
                         </span>
-                        <select class="dropdown-control" id="pricebook" k-ng-model="vm.pricebook" ng-disabled="vm.readOnly" " data-role="dropdownlist" style="display: none;">
+                        <select class="dropdown-control" id="pricebook" k-ng-model="vm.pricebook" ng-disabled="vm.readOnly" data-role="dropdownlist" style="display: none;">
                             <option>Bảng giá chung</option>
                         </select>
                     </span>
@@ -247,7 +240,40 @@
 @endsection
 
 @push('style')
-
+    <style>
+		#remove-customer {
+			border: none;
+			border-radius: 5px;
+			color: gray;
+		}
+		.suggestions {
+			border: 1px solid #ccc;
+			max-height: 200px;
+			overflow-y: auto;
+			position: absolute;
+			z-index: 1000;
+			background-color: white;
+			width: calc(100% - 22px);
+		}
+		.suggestion-item {
+			padding: 8px;
+			cursor: pointer;
+		}
+		.suggestion-item:hover {
+			background-color: #f0f0f0;
+		}
+		.selected-customer {
+			display: flex;
+			align-items: center;
+			margin-top: 10px;
+		}
+		.selected-customer span {
+			margin-right: 10px;
+		}
+		.selected-customer button {
+			cursor: pointer;
+		}
+    </style>
 @endpush
 @push('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -259,6 +285,61 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
+            });
+
+            $('#customerSearchInput').on('keyup', function () {
+                let query = $(this).val();
+                if (query.length > 0) {
+                    $.ajax({
+                        url: '{{ route('sale.customer.index') }}',
+                        data: {query: query},
+                        success: function (data) {
+                            let suggestions = $('#suggestions');
+                            suggestions.empty();
+                            $.each(data, function (index, customer) {
+                                suggestions.append(
+                                    ` <ul class="suggestion-item" data-id="${customer.id}" data-label="${customer.name} - ${customer.city_name}">
+                                        <li suggestion="" index="0" val="Anh Hoàng - Sài Gòn" class="output-item">
+                                            <div class="output-body">
+                                                <div class="output-info">
+                                                    <h5 class="output-name">${customer.name}</h5>
+                                                    <div class="output-value">
+                                                        <span class="output-code">Mã: KH00${customer.id}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="output-phone">
+                                                    <span class="output-code">${customer.phone}</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>`
+                                );
+                            });
+                            suggestions.show();
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    });
+                }
+                else {
+                    $('#suggestions').hide();
+                }
+            });
+
+            $(document).on('click', '.suggestion-item', function () {
+                let selectedCustomer = $(this).data('label');
+                $('#customer-input').val(selectedCustomer);
+                $('#customer-name').text(selectedCustomer);
+                $('#selected-customer').show();
+                $('#suggestions').hide();
+                $('#customerSearchInput').val('');
+            });
+
+            $('#remove-customer').click(function () {
+                $('#customer-input').val('');
+                $('#selected-customer').hide();
+                $('#suggestions').hide();
             });
 
             //Show 'product list' render from VIEW

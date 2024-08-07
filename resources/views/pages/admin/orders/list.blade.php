@@ -67,8 +67,8 @@
                             <table class="table align-middle table-row-dashed fs-6 gy-5 dataTable" id="kt_ecommerce_report_customer_orders_table" style="width: 1199.5px;">
                                 <colgroup>
                                     <col data-dt-column="0" style="width: 161px;">
-                                    <col data-dt-column="1" style="width: 228.516px;">
-                                    <col data-dt-column="2" style="width: 145.484px;">
+                                    <col data-dt-column="1" style="width: 150px;">
+                                    <col data-dt-column="2" style="width: 200px;">
                                     <col data-dt-column="3" style="width: 244.641px;">
                                     <col data-dt-column="4" style="width: 123.547px;">
                                     <col data-dt-column="5" style="width: 150.781px;">
@@ -82,7 +82,7 @@
                                     <th class="min-w-50px dt-orderable-asc dt-orderable-desc text-center" data-dt-column="0" rowspan="1" colspan="1" aria-label="Customer Name: Activate to sort" tabindex="0">
                                         <span class="dt-column-title" role="button">Thời gian</span><span class="dt-column-order"></span>
                                     </th>
-                                    <th class="min-w-100px dt-orderable-asc dt-orderable-desc text-end" data-dt-column="1" rowspan="1" colspan="1" aria-label="Email: Activate to sort" tabindex="0">
+                                    <th class="min-w-100px dt-orderable-asc dt-orderable-desc text-center" data-dt-column="1" rowspan="1" colspan="1" aria-label="Email: Activate to sort" tabindex="0">
                                         <span class="dt-column-title" role="button">Khách hàng</span><span class="dt-column-order"></span>
                                     </th>
                                     <th class="min-w-100px dt-orderable-asc dt-orderable-desc text-end" data-dt-column="2" rowspan="1" colspan="1" aria-label="Status: Activate to sort" tabindex="0">
@@ -108,8 +108,8 @@
                                         <td class="text-center">
                                             <div class="badge">{{$item->created_at ?? ''}}</div>
                                         </td>
-                                        <td class="text-end">
-                                            <a href="#" class="text-gray-900 text-hover-primary">{{$item->customer_id ?? 'Khách lẻ'}}</a>
+                                        <td class="text-center">
+                                            <a href="#" class="text-gray-900 text-hover-primary">{{$item->customers->name ?? 'Khách lẻ'}}</a>
                                         </td>
                                         <td class="text-end">
                                             <div class="badge badge-light-success">{{ number_format($item->grand_total, 0, ',', '.')}} đ</div>

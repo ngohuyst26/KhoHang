@@ -302,13 +302,13 @@
                                         <li suggestion="" index="0" val="Anh Hoàng - Sài Gòn" class="output-item">
                                             <div class="output-body">
                                                 <div class="output-info">
-                                                    <h5 class="output-name">${customer.name}</h5>
+                                                    <h5 class="output-name">${customer.name ?? ''}</h5>
                                                     <div class="output-value">
-                                                        <span class="output-code">Mã: KH00${customer.id}</span>
+                                                        <span class="output-code">Mã: KH00${customer.id ?? ''}</span>
                                                     </div>
                                                 </div>
                                                 <div class="output-phone">
-                                                    <span class="output-code">${customer.phone}</span>
+                                                    <span class="output-code">${customer.phone ?? ''}</span>
                                                 </div>
                                             </div>
                                         </li>
@@ -439,7 +439,7 @@
                     let item = '<div class="carts active cart-materials" style="margin-bottom: 3px;">' +
                         '<div class="carts-item" data-id="' + id + '">' +
                         '<div class="carts-left">' +
-                        '<div class="cell-order" >3</div>' +
+                        '<div class="cell-order" ></div>' +
                         '<div class="cell-actions carts-actions" >' +
                         '<button class="btn-icon btn-icon-default remove-item"  title="Xóa hàng hóa" tabindex="4">' +
                         '<i class="far fa-trash-alt"></i></button>' +
@@ -524,6 +524,7 @@
                 let createdAt = $('#created_at').val();
                 let discount = $('#discount').val();
                 let totalPayment = $('#amountPaid-hidden').val();
+                $('#change').text('');
 
                 let customerId = $('#customer-name').data('id');
                 $.ajax({

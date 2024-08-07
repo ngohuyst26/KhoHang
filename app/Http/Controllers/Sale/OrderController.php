@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\OrderItems;
 use App\Models\Orders;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -35,10 +36,13 @@ class OrderController extends Controller
         $created_at = $request->input('createdAt', []);
         $discount = $request->input('discount', []);
         $total_payment = $request->input('totalPayment', []);
+        $customer_id = $request->input('customerId', []);
         $order = Orders::create([
             'grand_total' => $grandTotal,
             'discount' => $discount,
             'total_payment' => $total_payment,
+            'customer_id' =>$customer_id,
+            'user_create_id' => Auth::user()->id
         ]);
 
         foreach ($cartItems as $item) {

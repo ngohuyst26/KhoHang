@@ -94,7 +94,7 @@
                                 </button>
                             </div>
                             <div class="selected-customer" id="selected-customer" style="display: none;">
-                                <span id="customer-name"></span>
+                                <span id="customer-name" data-id=""></span>
                                 <button class="border-none" type="button" id="remove-customer">x</button>
                             </div>
 
@@ -329,8 +329,10 @@
 
             $(document).on('click', '.suggestion-item', function () {
                 let selectedCustomer = $(this).data('label');
+                let customerId = $(this).data('id');
                 $('#customer-input').val(selectedCustomer);
                 $('#customer-name').text(selectedCustomer);
+                $('#customer-name').data('id',customerId);
                 $('#selected-customer').show();
                 $('#suggestions').hide();
                 $('#customerSearchInput').val('');
@@ -522,6 +524,8 @@
                 let createdAt = $('#created_at').val();
                 let discount = $('#discount').val();
                 let totalPayment = $('#amountPaid-hidden').val();
+
+                let customerId = $('#customer-name').data('id');
                 $.ajax({
                     url: '{{ route("sale.orders.store") }}',
                     method: 'POST',
@@ -530,7 +534,8 @@
                         grandTotal: grandTotal,
                         createdAt: createdAt,
                         discount: discount,
-                        totalPayment: totalPayment
+                        totalPayment: totalPayment,
+                        customerId: customerId
                     },
                     success: function (response) {
                         if (response.status === 'success') {
@@ -659,7 +664,6 @@
                 if (!change) {
                     change = 0;
                 }
-
                 $('#change').text(change.toLocaleString('vi-VN'));
             }
 
@@ -677,6 +681,8 @@
                     $('#amountPaid-hidden').val('');
                 }
             }
+
+
 
             $('#amountPaid').on('input', setFormat);
             $('#amountPaid').on('input', calculateChange);

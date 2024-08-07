@@ -40,6 +40,8 @@
                                     {{$errors->first('address')}}
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" name="email"
@@ -48,8 +50,6 @@
                                     {{$errors->first('email')}}
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="tax_code" class="form-label">Mã Số Thuế</label>
                                 <input type="text" class="form-control" id="tax_code" name="tax_code"
@@ -60,22 +60,21 @@
                             </div>
                             <div class="mb-3">
                                 <label for="status" class="form-label">Trạng Thái</label>
-                                <select class="form-select" id="status" name="status" value="{{old('status')}}">
-                                    <option value="1">Hoạt Động</option>
-                                    <option value="0">Không Hoạt Động</option>
+                                <select class="form-select" id="status" name="status">
+                                    <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>Hoạt Động</option>
+                                    <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Không Hoạt Động</option>
                                 </select>
                                 <div class="text-danger">
                                     {{$errors->first('status')}}
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="notes" class="form-label">Ghi Chú</label>
-                                <textarea class="form-control" id="notes" name="notes" value="{{old('notes')}}"
-                                          rows="3"></textarea>
-                                <div class="text-danger">
-                                    {{$errors->first('notes')}}
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="notes" class="form-label">Ghi Chú</label>
+                        <textarea class="form-control" id="notes" name="notes" rows="3">{{old('notes')}}</textarea>
+                        <div class="text-danger">
+                            {{$errors->first('notes')}}
                         </div>
                     </div>
                     <div class="text-end">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCategoriesRequest;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,7 @@ class CategoryController extends Controller
         return view('pages.admin.categories.add-category');
     }
 
-    public function store(Request $request)
+    public function store(StoreCategoriesRequest $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',

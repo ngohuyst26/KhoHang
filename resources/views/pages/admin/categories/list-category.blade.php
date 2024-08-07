@@ -1,77 +1,143 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="post d-flex flex-column-fluid" id="kt_post">
-        <!--begin::Container-->
-        <div id="kt_content_container" class="container-xxl">
-            <!--begin::Card-->
-            <div class="card">
+    <div id="kt_app_content" class="app-content flex-column-fluid">
+        <!--begin::Content container-->
+        <div id="kt_app_content_container" class="app-container container-xxl">
+            <!--begin::Categories-->
+            <div class="card card-flush py-4 mt-10">
                 <!--begin::Card header-->
-                <div class="card-header border-0 pt-6">
+                <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                     <!--begin::Card title-->
                     <div class="card-title">
                         <!--begin::Search-->
                         <div class="d-flex align-items-center position-relative my-1">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-                            <span class="svg-icon svg-icon-1 position-absolute ms-6">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="black"/>
-                                    <path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="black"/>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                            <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search user"/>
+                            <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-4">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                            <input type="text" data-kt-ecommerce-category-filter="search"
+                                   class="form-control form-control-solid w-250px ps-12" placeholder="Tìm kiếm danh mục">
                         </div>
                         <!--end::Search-->
                     </div>
+                    <!--end::Card title-->
+
+                    <!--begin::Card toolbar-->
+                    <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+                        <div class="w-100 mw-150px">
+                            <!--begin::Select2-->
+                            <select class="form-select form-select-solid"
+                                    id="category-status-filter"
+                                    data-control="select2" data-hide-search="true" data-placeholder="Trạng thái">
+                                <option value="all">Tất cả</option>
+                                <option value="active">Hoạt động</option>
+                                <option value="inactive">Không hoạt động</option>
+                            </select>
+                            <!--end::Select2-->
+                        </div>
+
+                        <!--begin::Add category-->
+                        <a href="{{ route('category.add') }}" class="btn btn-primary">
+                            Thêm danh mục
+                        </a>
+                        <!--end::Add category-->
+                    </div>
+                    <!--end::Card toolbar-->
                 </div>
                 <!--end::Card header-->
-                <div class="card-body pt-0">
-                    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
-                        <thead>
-                        <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-                            <th class="min-w-125px">Tên danh mục</th>
-                            <th class="min-w-125px">Mô tả</th>
-                            <th class="min-w-125px">Trạng thái</th>
-                            <th class="min-w-125px">Thao tác</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($categories as $category)
-                            <tr>
-                                <td> {{$category->name}} </td>
-                                <td> {{$category->description}} </td>
-                                <td>
-                                    @if($category->status == 1)
-                                        Hoạt động
-                                    @else
-                                        Không hoạt động
-                                    @endif
-                                </td>
-                                <td>
 
-                                    <a href="{{ route('category.edit', $category->id) }}" class="btn btn-sm btn-light btn-active-light-primary">
-                                        Sửa
-                                    </a>
-                                    <form action="{{ route('category.delete', $category->id) }}" method="POST" style="display:inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-light btn-active-light-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục này?');">Xóa</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                    <div>
-                        {{$categories ->links()}}
+                <!--begin::Card body-->
+                <div class="card-body pt-0">
+                    <!--begin::Table-->
+                    <div id="kt_ecommerce_categories_table_wrapper" class="dt-container dt-bootstrap5 dt-empty-footer">
+                        <div class="table-responsive">
+                            <table class="table align-middle table-row-dashed fs-6 gy-5 dataTable"
+                                   id="kt_ecommerce_categories_table">
+                                <thead>
+                                <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0" role="row">
+                                    <th class="w-5 pe-2">
+                                        <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                            <input class="form-check-input" type="checkbox" data-kt-check="true"
+                                                   data-kt-check-target="#kt_ecommerce_categories_table .form-check-input">
+                                        </div>
+                                    </th>
+                                    <th class="min-w-150">
+                                        <span class="dt-column-title">Tên danh mục</span>
+                                    </th>
+                                    <th class="min-w-150">
+                                        <span class="dt-column-title">Mô tả</span>
+                                    </th>
+                                    <th class="text-end min-w-100">
+                                        <span class="dt-column-title">Trạng thái</span>
+                                    </th>
+                                    <th class="text-end min-w-120">
+                                        <span class="dt-column-title">Hành động</span>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody class="fw-semibold text-gray-600">
+                                <!-- Lặp qua danh sách danh mục -->
+                                @foreach($categories as $category)
+                                    <tr>
+                                        <td>
+                                            <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                                <input class="form-check-input" type="checkbox" value="{{ $category->id }}">
+                                            </div>
+                                        </td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->description }}</td>
+                                        <td class="text-end">
+                                            <!--begin::Badges-->
+                                            <div class="badge {{ $category->status == 1 ? 'badge-light-success' : 'badge-light-danger' }}">
+                                                {{ $category->status == 1 ? 'Hoạt động' : 'Không hoạt động' }}
+                                            </div>
+                                            <!--end::Badges-->
+                                        </td>
+                                        <td class="text-end">
+                                            <a href="{{ route('category.edit', $category->id) }}"
+                                               class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary">
+                                                Sửa
+                                            </a>
+                                            <form action="{{ route('category.delete', $category->id) }}" method="POST" style="display:inline-block;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary">
+                                                    Xóa
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                                <tfoot></tfoot>
+                            </table>
+                            <div>
+                                {{$categories->links()}}
+                            </div>
+                        </div>
                     </div>
+                    <!--end::Table-->
                 </div>
                 <!--end::Card body-->
             </div>
-            <!--end::Card-->
+            <!--end::Categories-->
         </div>
-        <!--end::Container-->
+        <!--end::Content container-->
     </div>
-    <!--end::Post-->
+
+    @push('scripts')
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const statusFilter = document.getElementById('category-status-filter');
+
+                statusFilter.addEventListener('change', function () {
+                    const status = this.value;
+                    const url = new URL(window.location.href);
+                    url.searchParams.set('status', status);
+                    window.location.href = url.toString();
+                });
+            });
+        </script>
+    @endpush
 @endsection

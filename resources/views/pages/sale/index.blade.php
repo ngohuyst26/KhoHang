@@ -358,35 +358,43 @@
                     type: "GET",
                     data: {'query': query},
                     success: function (data) {
+                        console.log(data);
                         $('#productSearchList').empty();
                         $.each(data, function (index, product) {
                             const formatter = new Intl.NumberFormat('vi-VN', {
                                 style: 'currency',
                                 currency: 'VND',
                             });
-                            const price = product.product_sku[0].sale_price;
-                            const formattedPrice = formatter.format(price);
+                            let id = product.product_id;
+                            let product_name = product.product.name;
+                            let price = product.sale_price;
+                            let formattedPrice = formatter.format(price);
 
-                            $('#productSearchList').append(' <li class="addProduct output-item is-on-cart " data-id="' + product.id + '" data-name="' + product.name + '" data-price="' + product.product_sku[0].sale_price + '"   index="0" val="Áo vest nam màu xanh lá" >' +
+                            let optionValueName = '';
+                            for(x in product.sku_value){
+                                optionValueName+=  product.sku_value[x].option_value.name + ' ' ;
+                            }
+
+                            $('#productSearchList').append(' <li class="addProduct output-item is-on-cart " data-id="' + id + '" data-name="' + product_name + '" data-price="' + price + '">' +
                                 '<div class="output-thumb-wrap">' +
                                 '<div class="output-thumb">' +
                                 '<button class="output-product-lk" >' +
                                 '<i class="far fa-ellipsis-h"></i>' +
-                                '</button> <!----><img loading="lazy" src="https://cdn-app.kiotviet.vn/sample/fashion/1.png"><!----> <!---->' +
+                                '</button> <!----><img loading="lazy" src="">' +
                                 '</div>' +
                                 '<div class="output-thumb-secondary"><i class="fas fa-image img-default"></i>' +
                                 '</div>' +
                                 '</div> <!---->' +
                                 '<div class="output-body" ng-if="suggestion.Id">' +
                                 '<div class="output-info"><h5 class="output-name font-medium">' +
-                                '<span class="">' + product.name + '</span>' +
+                                '<span class="">' + product_name + '  ' + optionValueName + '</span>' +
                                 '<span class="tag tag-xxs tag-light-warning"></span>' +
                                 '<span class="tag tag-xxs tag-light-primary"></span></h5> <!---->' +
                                 '<div ng-if="!vm.isLimitViewPriceWarrantyOrder" class="output-price">' +
                                 '<span class="product-price-new has-currency">' + formattedPrice + '</span>' +
                                 '</div><!---->' +
                                 '</div>' +
-                                '<div class="output-value"><span class="output-code">SP000' + product.id + '</span>' +
+                                '<div class="output-value"><span class="output-code">SP000' + id + '</span>' +
                                 '</div> <!---->' +
                                 ' <div class="output-unit" ng-if="$root.session.User.IsAdmin || $root.session.Privileges.Invoice_ReadOnHand">' +
                                 '<span class="output-tag"> <span translate=""><span>Tồn</span></span>: <span class="onHandValue">0</span> </span>' +
@@ -682,8 +690,6 @@
                     $('#amountPaid-hidden').val('');
                 }
             }
-
-
 
             $('#amountPaid').on('input', setFormat);
             $('#amountPaid').on('input', calculateChange);

@@ -20,7 +20,7 @@ class SkuValue extends Model{
         return $this->belongsTo(ProductSku::class, 'sku_id', 'id');
     }
 
-    public function option(){
+    public function options(){
         return $this->belongsTo(Option::class,);
     }
 

@@ -13,7 +13,7 @@ class ProductSku extends Model{
     protected $fillable = ['product_id', 'price', 'sale_price', 'inventory', 'barcode'];
 
     public function product(){
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class,'product_id',);
     }
 
     public function photo(){
@@ -31,5 +31,9 @@ class ProductSku extends Model{
 
     public function skuUnit(){
         return $this->hasMany(SkuUnit::class, 'product_sku_id');
+    }
+
+    public function skuValue(){
+        return $this->hasMany(SkuValue::class, 'sku_id','id');
     }
 }

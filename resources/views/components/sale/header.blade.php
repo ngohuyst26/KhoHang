@@ -10,36 +10,41 @@
                             <div class="output-complete" id="toggleProduct" style="display: none;">
                                 <ul id="productSearchList">
                                     @php
-                                        $products = \App\Models\Product::with(['productSku','productSku.optionValue.option'])->paginate(5);
+                                        $productSkus = \App\Models\ProductSku::with(['product','skuValue.optionValue.option','photo'])->limit(10)->get();
                                     @endphp
-                                    @foreach($products as $product)
-
-                                        <li class="output-item is-on-cart addProduct" data-id="{{$product->id}}" data-name="{{$product->name}}" data-price="{{$product->productSku->first()->sale_price}}" index="0" val="Áo vest nam màu xanh lá">
+                                    @foreach($productSkus as $productSku)
+                                        <li class="output-item is-on-cart addProduct" data-id="{{$productSku->product->id ?? ''}}" data-name="{{$productSku->product->name ?? ''}}" data-price="{{$productSku->sale_price ?? ''}}" index="0" val="Áo vest nam màu xanh lá">
                                             <div class="output-thumb-wrap">
                                                 <div class="output-thumb">
                                                     <button class="output-product-lk">
                                                         <i class="far fa-ellipsis-h"></i>
-                                                    </button> <!----><img loading="lazy" ng-if="!(suggestion.Image == null || suggestion.Image == '') " ng-src="https://cdn-app.kiotviet.vn/sample/fashion/1.png" onerror="loadFallBackImage(this)" kv-fallback-img="" src="https://cdn-app.kiotviet.vn/sample/fashion/1.png"><!----> <!---->
+                                                    </button>
+                                                    <img loading="lazy" src="{{Storage::url($productSku->photo->first()?->url)}}">
                                                 </div>
                                                 <div class="output-thumb-secondary">
                                                     <i class="fas fa-image img-default"></i>
                                                 </div>
-                                            </div> <!---->
-                                            <div class="output-body" ng-if="suggestion.Id">
+                                            </div>
+                                            <div class="output-body">
                                                 <div class="output-info"><h5 class="output-name font-medium">
-                                                        <span class="">{{$product->name}}</span>
+                                                        <span class="">{{$productSku->product->name ?? ''}}
+                                                            @if( $productSku->optionValue->count() > 0)
+                                                                @foreach ($productSku->optionValue as $optionValue)
+                                                                    {{$optionValue->name}} 
+                                                                @endforeach
+                                                            @endif</span>
                                                         <span class="tag tag-xxs tag-light-warning"></span>
-                                                        <span class="tag tag-xxs tag-light-primary"></span></h5> <!---->
+                                                        <span class="tag tag-xxs tag-light-primary"></span></h5>
                                                     <div ng-if="!vm.isLimitViewPriceWarrantyOrder" class="output-price">
-                                                        <span class="product-price-new has-currency">{{number_format($product->productSku->first()->sale_price, 0, ',', '.') }} đ</span>
-                                                    </div><!---->
+                                                        <span class="product-price-new has-currency">{{number_format($productSku->sale_price, 0, ',', '.') }} đ</span>
+                                                    </div>
                                                 </div>
                                                 <div class="output-value">
-                                                    <span class="output-code">SP000{{$product->id}}</span>
+                                                    <span class="output-code">SP000{{$productSku->product->id ?? ''}}</span>
                                                 </div> <!---->
-                                                <div class="output-unit" ng-if="$root.session.User.IsAdmin || $root.session.Privileges.Invoice_ReadOnHand">
-                                                    <span class="output-tag"> <span translate=""><span>Tồn</span></span>: <span class="onHandValue">0</span> </span>
-                                                    <span class="output-tag ng-hide" ng-show="vm.isUseOrderSupplier"> <span translate=""><span>Đặt NCC</span></span>: <span class="priceValue">0</span> </span>
+                                                <div class="output-unit">
+                                                    <span class="output-tag"> <span translate=""><span>Tồn</span></span>: <span class="onHandValue">{{$productSku->inventory ?? ''}}</span> </span>
+                                                    <span class="output-tag ng-hide" > <span translate=""><span>Đặt NCC</span></span>: <span class="priceValue">0</span> </span>
                                                     <span class="output-tag"> <span translate=""><span>KH đặt</span></span>: <span class="reservedValue"> 0 </span> </span>
                                                 </div><!---->
                                             </div><!----> <!---->
@@ -201,7 +206,7 @@
                         <span translate=""><span>Phím tắt</span></span></a>
                     <a class="dropdown-item" href="{{route('orders.index')}}" skip-disable=""><span class="dropdown-icon"><i class="far fa-poll"></i></span>
                         <span translate=""><span>Quản lý</span></span></a>
-                    <a class="dropdown-item" href="{{route('logout')}}"  skip-disable=""><span class="dropdown-icon"><i class="far fa-sign-out"></i></span>
+                    <a class="dropdown-item" href="{{route('logout')}}" skip-disable=""><span class="dropdown-icon"><i class="far fa-sign-out"></i></span>
                         <span translate=""><span>Đăng xuất</span></span></a></div>
             </li>
         </ul>

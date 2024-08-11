@@ -66,8 +66,15 @@ class SaleController extends Controller
 
     public function search(Request $request)
     {
-        $query = $request->input('query');
-        $products = Product::where('name', 'LIKE', "%$query%")->with('productSku')->get();
-        return response()->json($products);
+        $querySearch = $request->input('query');
+        $productSkus = \App\Models\ProductSku::where('barcode', 'LIKE', "%$querySearch%")->with('product','photo','skuValue.optionValue')
+                                             ->orWhereHas('product', function ($query) use ($querySearch) {
+                                                 $query->where('name', 'like', "%$querySearch%");
+                                             })
+                                             ->orWhereHas('skuValue.optionValue', function ($query) use ($querySearch) {
+                                                 $query->where('name', 'like', "%$querySearch%");
+                                             })
+                                             ->get();
+        return response()->json($productSkus);
     }
 }

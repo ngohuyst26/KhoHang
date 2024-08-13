@@ -128,11 +128,11 @@
                                             </td>
                                         @endif
                                     </tr>
-                                    <tr class="details-row h-100px w-100px d-none">
+                                    <tr class="details-row h-100px w-100px">
                                         <td colspan="7">
                                             <div class="card border-gray-300 bg-gray-100">
                                                 <div class="card-body py-20">
-                                                    <div class="pb-4">
+                                                    <div class="pb-4" id="content-to-print-{{$item->id}}">
                                                         <div class="d-flex flex-column gap-7 gap-md-10">
                                                             <div class="d-flex flex-column flex-sm-row gap-7 gap-md-10 fw-bold">
                                                                 <div class="flex-root d-flex flex-column">
@@ -178,15 +178,15 @@
 
                                                                 </div>
                                                             </div>
-                                                            <div class="d-flex justify-content-between flex-column">
-                                                                <div class="table-responsive border-bottom mb-9">
+                                                            <div class="d-flex justify-content-between  flex-column">
+                                                                <div class=" border-bottom mb-9">
                                                                     <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0">
                                                                         <thead>
                                                                         <tr class="border-bottom fs-6 fw-bold text-muted">
-                                                                            <th class="min-w-50px pb-2">Mã hàng</th>
-                                                                            <th class="min-w-175px pb-2">Tên hàng</th>
-                                                                            <th class="min-w-70px text-center pb-2">Số lượng</th>
-                                                                            <th class="min-w-80px text-end pb-2">Đơn giá</th>
+                                                                            <th class="min-w-70px pb-2">Mã hàng</th>
+                                                                            <th class="min-w-300px pb-2">Tên hàng</th>
+                                                                            <th class="min-w-100px text-center pb-2">Số lượng</th>
+                                                                            <th class="min-w-100px text-end pb-2">Đơn giá</th>
                                                                             <th class="min-w-100px text-end pb-2">Giảm giá</th>
                                                                             <th class="min-w-100px text-end pb-2">Thành tiền</th>
                                                                         </tr>
@@ -197,12 +197,12 @@
                                                                                 <td class="text-start">MH000{{$orderItem->id ?? ''}}</td>
                                                                                 <td>
                                                                                     <div class="d-flex align-items-center">
-                                                                                        {{--                                                                                        <a href="#" class="symbol symbol-50px">--}}
-                                                                                        {{--                                                                                            <span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/1.png);"></span>--}}
-                                                                                        {{--                                                                                        </a>--}}
-                                                                                        <div class="ms-5">
+                                                                                        <a href="#" class="symbol symbol-50px">
+                                                                                            <span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/1.png);"></span>
+                                                                                        </a>
+                                                                                        <div style="width: 100%">
                                                                                             <div class="fw-bold">{{$orderItem->product->name ?? ''}}</div>
-                                                                                            {{--                                                                                            <div class="fs-7 text-muted">Delivery Date: 23/06/2024</div>--}}
+                                                                                            {{--<div class="fs-7 text-muted">Delivery Date: 23/06/2024</div>--}}
                                                                                         </div>
                                                                                     </div>
                                                                                 </td>
@@ -233,7 +233,7 @@
                                                     </div>
                                                     <div class="d-flex flex-stack flex-wrap mt-lg-5 pt-3 ">
                                                         <div class="my-1 me-5 ">
-                                                            <button type="button" class="btn btn-success my-1 me-12" onclick="window.print();">In hóa đơn</button>
+                                                            <button type="button" id="print-button" onclick="printInvoice({{$item->id}})" class="btn btn-success my-1 me-12">In hóa đơn</button>
                                                             <button type="button" class="btn btn-light-success my-1">Xuất file</button>
                                                         </div>
                                                         <a href="#" class="btn btn-danger my-1">Hủy đơn </a>
@@ -259,7 +259,13 @@
     </div>
 @endsection
 @push('style')
+    <style>
+
+    </style>
+@endpush
+@push('script')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.main-row').click(function () {
@@ -267,6 +273,14 @@
                 nextRow.toggleClass('d-none');
             });
         });
+
+        function printInvoice(id) {
+            printJS({
+                printable: 'content-to-print-' + id,
+                type: 'html',
+                targetStyles: ['*']
+            });
+        }
     </script>
 @endpush
 

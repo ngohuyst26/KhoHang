@@ -145,7 +145,7 @@
                                                                                             </div>
                                                                                         </div>
                                                                                     </td>
-                                                                                    <td class="text-end">{{ c}}</td>
+                                                                                    <td class="text-end">{{ \Carbon\Carbon::parse($product->created_at)->format('d/m/Y')  ?? ''}}</td>
                                                                                 </tr>
                                                                             @endforeach
                                                                             </tbody>
@@ -175,7 +175,7 @@
     </div>
 
     @push('script')
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="{{ asset('assets/js/jquery-3.6.0.min.js')}}"></script>
         <script>
             $(document).ready(function () {
                 $('.main-row').click(function () {

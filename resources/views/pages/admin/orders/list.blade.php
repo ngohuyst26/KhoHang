@@ -267,8 +267,8 @@
     </style>
 @endpush
 @push('script')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.min.js"></script>
+    <script src="{{ asset('assets/js/jquery-3.6.0.min.js')}}"></script>
+    <script src="{{ asset('assets/js/print.min.js')}}"></script>
     <script>
         $(document).ready(function () {
             $('#formCancelOrder').submit(function(e){

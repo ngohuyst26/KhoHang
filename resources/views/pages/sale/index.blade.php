@@ -276,8 +276,9 @@
     </style>
 @endpush
 @push('script')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets/js/jquery-3.6.0.min.js')}}"></script>
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>--}}
+    <script src="{{ asset('assets/js/sweetalert2@11.js')}}"></script>
 
     <script>
         $(document).ready(function () {

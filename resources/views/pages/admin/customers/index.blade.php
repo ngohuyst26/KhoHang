@@ -536,7 +536,7 @@
     <script src=" {{asset('assets/js/custom/apps/customers/list/export.js') }}"></script>
     <script src=" {{asset('assets/js/custom/apps/customers/list/list.js') }}"></script>
     <script src=" {{asset('assets/js/custom/apps/customers/add.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src=" {{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             //Clear errors

@@ -82,23 +82,23 @@
                                 </thead>
                                 <tbody class="fw-semibold text-gray-600">
                                 @foreach($suppliers as $supplier)
-                                    <tr class="text-start main-row">
+                                    <tr class="text-start ">
                                         <td>
                                             <div class="form-check form-check-sm form-check-custom form-check-solid">
                                                 <input class="form-check-input" type="checkbox" value="{{ $supplier->id }}">
                                             </div>
                                         </td>
-                                        <td>{{ $supplier->name }}</td>
-                                        <td class="">{{ $supplier->phone }}</td>
-                                        <td class="">{{ $supplier->address }}</td>
-                                        <td class="">{{ $supplier->email }}</td>
-                                        <td class="">{{ $supplier->tax_code }}</td>
+                                        <td class="main-row">{{ $supplier->name }}</td>
+                                        <td class="main-row">{{ $supplier->phone }}</td>
+                                        <td class="main-row">{{ $supplier->address }}</td>
+                                        <td class="main-row">{{ $supplier->email }}</td>
+                                        <td class="main-row">{{ $supplier->tax_code }}</td>
                                         <td class="">
                                             <div class="badge {{ $supplier->status == 1 ? 'badge-light-success' : 'badge-light-danger' }}">
                                                 {{ $supplier->status == 1 ? 'Hoạt động' : 'Không hoạt động' }}
                                             </div>
                                         </td>
-                                        <td class="text-end">
+                                        <td class="text-end" id="action">
                                             <a href="{{ route('supplier.edit', $supplier->id) }}" class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary">
                                                 <span class="svg-icon svg-icon-2">
                                                     @include('icons.edit')
@@ -115,48 +115,51 @@
                                             </form>
                                         </td>
                                     </tr>
-                                    <tr class="details-row h-100px w-100px d-none">
-                                        <td colspan="3">
-                                        </td>
-                                        <td colspan="6">
-                                            <div class="card border-gray-300 bg-gray-100">
-                                                <div class="card-body py-20">
-                                                    <div class="pb-4">
-                                                        <div class="d-flex flex-column gap-7 gap-md-10">
-                                                            <div class="d-flex justify-content-between  flex-column">
-                                                                <div class=" border-bottom mb-3">
-                                                                    <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0">
-                                                                        <thead>
-                                                                        <tr class="border-bottom fs-6 fw-bold text-muted">
-                                                                            <th class="min-w-70px pb-2">Mã hàng</th>
-                                                                            <th class="min-w-300px pb-2">Tên hàng</th>
-                                                                            <th class="min-w-100px text-end pb-2">Ngày cung cấp</th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody class="fw-semibold text-gray-600">
-                                                                        @foreach($supplier->products as $product)
-                                                                            <tr>
-                                                                                <td class="text-start">MH000{{$product->id ?? ''}}</td>
-                                                                                <td>
-                                                                                    <div class="d-flex align-items-center">
-                                                                                        <div style="width: 100%">
-                                                                                            <div class="fw-bold">{{$product->name ?? ''}}</div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td class="text-end">{{ $product->created_at ?? ''}}</td>
+                                    @if($supplier->products->count() > 0)
+                                        <tr class="details-row h-100px w-100px d-none">
+                                            <td colspan="3">
+                                            </td>
+                                            <td colspan="6">
+                                                <div class="card border-gray-300 bg-gray-100">
+                                                    <div class="card-body py-20">
+                                                        <div class="pb-4">
+                                                            <div class="d-flex flex-column gap-7 gap-md-10">
+                                                                <div class="d-flex justify-content-between  flex-column">
+                                                                    <div class=" border-bottom mb-3">
+                                                                        <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0">
+                                                                            <thead>
+                                                                            <tr class="border-bottom fs-6 fw-bold text-muted">
+                                                                                <th class="min-w-70px pb-2">Mã hàng</th>
+                                                                                <th class="min-w-300px pb-2">Tên hàng</th>
+                                                                                <th class="min-w-100px text-end pb-2">Ngày cung cấp</th>
                                                                             </tr>
-                                                                        @endforeach
-                                                                        </tbody>
-                                                                    </table>
+                                                                            </thead>
+                                                                            <tbody class="fw-semibold text-gray-600">
+                                                                            @foreach($supplier->products as $product)
+                                                                                <tr>
+                                                                                    <td class="text-start">MH000{{$product->id ?? ''}}</td>
+                                                                                    <td>
+                                                                                        <div class="d-flex align-items-center">
+                                                                                            <div style="width: 100%">
+                                                                                                <div class="fw-bold">{{$product->name ?? ''}}</div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td class="text-end">{{ c}}</td>
+                                                                                </tr>
+                                                                            @endforeach
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+
+                                    @endif
                                 @endforeach
                                 </tbody>
                                 <tfoot></tfoot>
@@ -176,9 +179,10 @@
         <script>
             $(document).ready(function () {
                 $('.main-row').click(function () {
-                    var nextRow = $(this).next('.details-row');
+                    var nextRow = $(this).parent().next('.details-row');
                     nextRow.toggleClass('d-none');
                 });
+
             });
 
             document.addEventListener('DOMContentLoaded', function () {

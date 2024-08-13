@@ -13,7 +13,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Orders::orderBy('id','desc')->with(['user','customers','orderItems.product'])->paginate(10);
+        $orders = Orders::orderBy('id','desc')->with(['user','customers','orderItems.product'])->paginate(5);
         return view('pages.admin.orders.list',[
             'orders'=>$orders
         ]);

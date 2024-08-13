@@ -97,13 +97,17 @@
                                         <td class="text-end">
                                             <a href="{{ route('category.edit', $category->id) }}"
                                                class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary">
-                                                Sửa
+                                                <span class="svg-icon svg-icon-2">
+                                                    @include('icons.edit')
+                                                </span>
                                             </a>
                                             <form action="{{ route('category.delete', $category->id) }}" method="POST" style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary">
-                                                    Xóa
+                                                   <span class="svg-icon svg-icon-2">
+                                                      @include('icons.trash')
+                                                </span>
                                                 </button>
                                             </form>
                                         </td>

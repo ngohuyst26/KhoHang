@@ -11,11 +11,11 @@
                         <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1">
                     </div>
                 </th>
-                <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" aria-label="Customer Name: activate to sort column ascending" style="width: 145.688px;">Customer Name</th>
-                <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 100px;">Phone</th>
+                <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" aria-label="Customer Name: activate to sort column ascending" style="width: 145.688px;">Tên khách hàng</th>
+                <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 100px;">Điện thoại</th>
                 <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 190.9px;">Email</th>
-                <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" aria-label="Payment Method: activate to sort column ascending" style="width: 145.688px;">Type</th>
-                <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" aria-label="Created Date: activate to sort column ascending" style="width: 152.225px;">Created Date</th>
+                <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" aria-label="Payment Method: activate to sort column ascending" style="width: 145.688px;">Loại khách hàng</th>
+                <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" aria-label="Created Date: activate to sort column ascending" style="width: 152.225px;">Ngày tạo</th>
                 <th class="text-end min-w-70px sorting_disabled" rowspan="1" colspan="1" aria-label="Actions" style="width: 111.262px;">Actions</th>
             </tr>
             <!--end::Table row-->
@@ -51,7 +51,7 @@
                     </td>
                     <!--end::Payment method=-->
                     <!--begin::Date=-->
-                    <td data-order="2020-12-14T20:43:00+07:00">{{$item->created_at}}</td>
+                    <td data-order="2020-12-14T20:43:00+07:00">{{\Carbon\Carbon::parse($item->created_at)->format('d/m/Y')  ?? ''}}</td>
                     <!--end::Date=-->
                     <!--begin::Action=-->
                     <td class="text-end">

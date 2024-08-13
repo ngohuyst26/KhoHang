@@ -17,7 +17,7 @@ class CustomerController extends Controller
         $status = $request->filter === 'trash' ? '0' : '1';
         $customers = Customer::orderBy('id','desc')
                              ->where('status',$status)
-                             ->paginate(10);
+                             ->paginate(5);
 
         if ($request->ajax()) {
             return view('pages.admin.customers.pagination', [
@@ -63,7 +63,7 @@ class CustomerController extends Controller
         if ($request->ajax()) {
             $customers = Customer::orderBy('id','desc')
                                  ->where('status','1')
-                                 ->paginate(10);
+                                 ->paginate(5);
             return view('pages.admin.customers.pagination', [
                 'customers'=>$customers,
                 'status' => '1'
@@ -102,7 +102,7 @@ class CustomerController extends Controller
             $status =  $request->status == '0' ? '1' : '0';
             $customers = Customer::orderBy('id','desc')
                                  ->where('status',$status)
-                                 ->paginate(10);
+                                 ->paginate(5);
 
             return view('pages.admin.customers.pagination', [
                 'customers'=>$customers,
@@ -139,7 +139,7 @@ class CustomerController extends Controller
         if ($request->ajax()) {
             $customers = Customer::orderBy('id','desc')
                                  ->where('status','1')
-                                 ->paginate(10);
+                                 ->paginate(5);
 
             return view('pages.admin.customers.pagination', [
                 'customers'=>$customers,
@@ -158,7 +158,7 @@ class CustomerController extends Controller
 
         $customers = Customer::orderBy('id','desc')
                              ->where('status','0')
-                             ->paginate(10);
+                             ->paginate(5);
         if ($request->ajax()) {
             return view('pages.admin.customers.pagination', [
                 'customers' => $customers,

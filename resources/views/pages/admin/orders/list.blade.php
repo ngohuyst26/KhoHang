@@ -128,7 +128,7 @@
                                             </td>
                                         @endif
                                     </tr>
-                                    <tr class="details-row h-100px w-100px">
+                                    <tr class="details-row h-100px w-100px d-none">
                                         <td colspan="7">
                                             <div class="card border-gray-300 bg-gray-100">
                                                 <div class="card-body py-20">
@@ -232,11 +232,14 @@
                                                         </div>
                                                     </div>
                                                     <div class="d-flex flex-stack flex-wrap mt-lg-5 pt-3 ">
-                                                        <div class="my-1 me-5 ">
-                                                            <button type="button" id="print-button" onclick="printInvoice({{$item->id}})" class="btn btn-success my-1 me-12">In hóa đơn</button>
-                                                            <button type="button" class="btn btn-light-success my-1">Xuất file</button>
-                                                        </div>
-                                                        <a href="#" class="btn btn-danger my-1">Hủy đơn </a>
+                                                        <form id="formCancelOrder">
+                                                            <div class="my-1 me-5 ">
+                                                                <button type="button" id="print-button" onclick="printInvoice({{$item->id}})" class="btn btn-success my-1 me-12">In hóa đơn</button>
+                                                                <button type="submit" class="btn btn-danger my-1">Hủy đơn </button>
+                                                                <input name="order_status" id="order_status" hidden="true" value="0">
+                                                                <input id="idOrder" hidden="true" value="{{$item->id}}">
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -268,6 +271,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.min.js"></script>
     <script>
         $(document).ready(function () {
+            $('#formCancelOrder').submit(function(e){
+                e.preventDefault();
+                let id = $('#idOrder').val();
+                $.ajax({
+                    url: '{{route('orders.update',':id')}}'.replace(':id', id),
+                    type: 'PATCH',
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        Swal.fire({
+                            text: "Hủy đơn thành công!",
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "OK, Got it!",
+                            customClass: {
+                                confirmButton: "btn btn-primary"
+                            }
+                        });
+                        window.location.reload();
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            });
+
             $('.main-row').click(function () {
                 var nextRow = $(this).next('.details-row');
                 nextRow.toggleClass('d-none');

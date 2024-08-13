@@ -56,7 +56,11 @@ class OrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if ($request->order_status != null){
+            $order = Orders::findOrFail($id);
+            $order->order_status = $request->order_status;
+            $order->save();
+        }
     }
 
     /**

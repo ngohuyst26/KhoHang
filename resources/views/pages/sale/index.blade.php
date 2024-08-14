@@ -189,14 +189,17 @@
                             </div>
                             <div class="form-group-row form-check-methods" ng-show="$root.activeCart.BalanceDue > 0.00001 &amp;&amp; !vm.isOnlyShowTotalPaidAmount()">
                                 <div class="flex-1" ng-class="{'disabled': $root.activeCart.isHideSinglePayment}">
-                                    <label class="form-check form-check-inline"><input class="form-check-input ng-pristine ng-untouched ng-valid ng-not-empty" name="payment_method" type="radio" ng-value="0" ng-model="$root.activeCart.singlePaymentType" tabindex="2099" ng-click="vm.changeSinglePaymentType('Cash')" name="238" value="0">
-                                        <span class="text-check" translate=""><span>Tiền mặt</span></span></label>
-                                    <label class="form-check form-check-inline"><input class="form-check-input ng-pristine ng-untouched ng-valid ng-not-empty" name="payment_method" type="radio" ng-value="2" ng-model="$root.activeCart.singlePaymentType" tabindex="2100" ng-click="vm.changeSinglePaymentType('Transfer')" name="239" value="2">
-                                        <span class="text-check" translate=""><span>Chuyển khoản</span></span></label>
-                                    <label class="form-check form-check-inline"><input class="form-check-input ng-pristine ng-untouched ng-valid ng-not-empty" name="payment_method" type="radio" ng-value="1" ng-model="$root.activeCart.singlePaymentType" tabindex="2101" ng-click="vm.changeSinglePaymentType('Card')" name="240" value="1">
-                                        <span class="text-check" translate=""><span>Thẻ</span></span></label> <!---->
-                                    <label class="form-check form-check-inline"><input class="form-check-input ng-pristine ng-untouched ng-valid ng-not-empty" name="payment_method" type="radio" ng-value="3" ng-model="$root.activeCart.singlePaymentType" tabindex="2102" ng-click="vm.changeSinglePaymentType('Wallet')" name="745" value="3">
-                                        <span class="text-check" translate=""><span>Ví</span></span></label><!---->
+                                    <label class="form-check form-check-inline"><input class="form-check-input ng-pristine ng-untouched ng-valid ng-not-empty" checked name="payment_method" type="radio" ng-value="0" ng-model="$root.activeCart.singlePaymentType" tabindex="2099" ng-click="vm.changeSinglePaymentType('Cash')" name="238" value="0">
+                                        <span class="text-check" translate=""><span>Tiền mặt</span></span>
+                                    </label>
+
+{{--                                    <label class="form-check form-check-inline"><input class="form-check-input ng-pristine ng-untouched ng-valid ng-not-empty" name="payment_method" type="radio" ng-value="2" ng-model="$root.activeCart.singlePaymentType" tabindex="2100" ng-click="vm.changeSinglePaymentType('Transfer')" name="239" value="2">--}}
+{{--                                        <span class="text-check" translate=""><span>Chuyển khoản</span></span></label>--}}
+{{--                                    <label class="form-check form-check-inline"><input class="form-check-input ng-pristine ng-untouched ng-valid ng-not-empty" name="payment_method" type="radio" ng-value="1" ng-model="$root.activeCart.singlePaymentType" tabindex="2101" ng-click="vm.changeSinglePaymentType('Card')" name="240" value="1">--}}
+{{--                                        <span class="text-check" translate=""><span>Momo</span></span></label> <!---->--}}
+{{--                                    <label class="form-check form-check-inline"><input class="form-check-input ng-pristine ng-untouched ng-valid ng-not-empty" name="payment_method" type="radio" ng-value="3" ng-model="$root.activeCart.singlePaymentType" tabindex="2102" ng-click="vm.changeSinglePaymentType('Wallet')" name="745" value="3">--}}
+{{--                                        <span class="text-check" translate=""><span>Ví</span></span>--}}
+{{--                                    </label>--}}
                                 </div>
                                 <div>
                                     <button class="btn-icon btn-icon-default btn-multi-methods" uib-tooltip="Thanh toán kết hợp" tooltip-placement="bottom" tooltip-append-to-body="true" tooltip-class="tooltip-popup-multi-currency tooltip-widget" ng-click="vm.doOpenPaymentPopup()" tabindex="2103">
@@ -359,7 +362,6 @@
                     type: "GET",
                     data: {'query': query},
                     success: function (data) {
-                        console.log(data);
                         $('#productSearchList').empty();
                         $.each(data, function (index, product) {
                             const formatter = new Intl.NumberFormat('vi-VN', {
@@ -370,6 +372,7 @@
                             let product_name = product.product.name;
                             let price = product.sale_price;
                             let formattedPrice = formatter.format(price);
+                            let photo = product.photo[0].url;
 
                             let optionValueName = '';
                             for(x in product.sku_value){
@@ -381,7 +384,7 @@
                                 '<div class="output-thumb">' +
                                 '<button class="output-product-lk" >' +
                                 '<i class="far fa-ellipsis-h"></i>' +
-                                '</button> <!----><img loading="lazy" src="">' +
+                                '</button> <!----><img loading="lazy" src="/storage/' + photo + '">' +
                                 '</div>' +
                                 '<div class="output-thumb-secondary"><i class="fas fa-image img-default"></i>' +
                                 '</div>' +
@@ -458,7 +461,7 @@
                         '<div class="carts-container">' +
                         '<div class="carts-content-info">' +
                         '<div class="carts-content-top">' +
-                        '<div class="cell-code"  title="Tồn: 0  − KH đặt: 0">' + id + '</div><!---->' +
+                        '<div class="cell-code"  title="Tồn: 0  − KH đặt: 0">SP000' + id + '</div><!---->' +
                         '<div class="cell-info">' +
                         '<div class="info-content" ><span title="Tồn: 0 − KH đặt: 0">' + name + '</span> ' +
                         '<button class="btn-icon btn-inventory" >' +
@@ -477,11 +480,11 @@
                         '<button type="button" class="btn-icon btn-icon-bg-default up plus">' +
                         '<i class="fal fa-plus"></i>' +
                         '</button>' +
-                        ' <span class="sub-label ng-hide" >/ 0</span>' +
+                        '<span class="sub-label ng-hide" >/ 0</span>' +
                         '</div>' +
                         '</div>' +
                         '<div class="cell-auto" ></div>' +
-                        ' <div class="cell-change-price" ><!---->' +
+                        '<div class="cell-change-price" ><!---->' +
                         '<div class="popup-anchor" >' +
                         '<button class="form-control form-control-sm text-right cart-item-0 "> <span class="sale_price">' + price + '</span></button>' +
                         '</div>' +
@@ -503,8 +506,8 @@
                         '<a class="form-conversion-unit text-link ng-hide" href="javascript:void(0)" ><span translate=""><span>Tương đương</span></span>' +
                         '<span class="font-bold"> </span></a></div>' +
                         '</div>' +
-                        ' </div>' +
-                        '<div class="cell-actions carts-actions"><!----><a class="btn-icon btn-icon-default"  href="#" tabindex="11"><i class="far fa-plus"></i></a>' +
+                        '</div>' +
+                        '<div class="cell-actions carts-actions"><!---->' +
                         '<a class="btn-icon btn-icon-default btn-more"  href="#" tabindex="12" ><i class="far fa-ellipsis-v"></i></a>' +
                         '</div>' +
                         '</div>' +

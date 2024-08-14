@@ -37,6 +37,7 @@ class ProductController extends Controller{
     public function index(){
         $products = $this->productRepository->getAll(5);
 
+        //        dd($products);
         return view('pages.admin.products.list', [
             'products' => $products,
         ]);
@@ -84,7 +85,7 @@ class ProductController extends Controller{
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id, int $skuId){
+    public function edit(string $id, string $skuId){
         $product    = Product::with(['productSku' => function ($query) use ($skuId){
             $query->where('id', $skuId)->with('optionValue.option', 'photo');
         }])->find($id);
@@ -111,8 +112,64 @@ class ProductController extends Controller{
             'categories' => $categories,
             'supplier'   => $supplier,
             'images'     => $images
+        ]);
+    }
+
+    public function addVariant(string $id, int $skuId){
+        $product    = Product::with(['productSku' => function ($query) use ($skuId){
+            $query->where('id', $skuId)->with('optionValue.option', 'photo');
+        }])->find($id);
+        $option     = Option::all();
+        $categories = Category::all();
+        $supplier   = Supplier::all();
+        session()->put('product_id', $id);
+
+        return view('pages.admin.products.add-variant', [
+            'options'    => $option,
+            'product'    => $product,
+            'categories' => $categories,
+            'supplier'   => $supplier,
 
         ]);
+    }
+
+    public function add(Request $request){
+        $optionValues = [];
+        foreach ($request->data as $option){
+            $optionValues[] = $option['value'];
+        }
+        $productSkuQuery = ProductSku::query();
+
+        $productSkuQuery->whereHas('optionValue', function ($query) use ($optionValues){
+            $query->whereIn('name', $optionValues);
+        }, '=', count($optionValues));
+
+        $productSku = $productSkuQuery->get();
+        if (!$productSku->isEmpty()){
+            return response()->json(['error' => 'Biến thể ' . implode(", ",
+                    $optionValues) . ' đã tồn tại vui lòng tạo biến thể khác'], 400);
+        }
+        $sku = $this->productRepository->createSku(session()->get('product_id'), $request->price,
+            $request->sale_price, $request->inventory);
+
+        $optionValues = [];
+        foreach ($request->data as $option){
+            $optionValue = $this->productRepository->createOptionValue(session()->get('product_id'),
+                $option['type'], $option['value']);
+            if ($optionValue){
+                $optionValues[] = [
+                    'option_id'       => $option['type'],
+                    'option_value_id' => $optionValue->id,
+                ];
+            }
+        }
+        foreach ($optionValues as $optionValue){
+            $this->productRepository->createSkuValue(session()->get('product_id'), $sku->id,
+                $optionValue);
+        }
+        session()->forget('product_id');
+
+        return response()->json(['mess' => 'Tạo thành công'], 200);
     }
 
     /**
@@ -237,4 +294,14 @@ class ProductController extends Controller{
 
         return response()->json(['error'], 400);
     }
+
+    public function search(Request $request){
+        $search   = $request->input('query');
+        $products = ProductSku::with(['product' => function ($query) use ($search){
+            $query->where('name', 'LIKE', "%{$search}%");
+        }])->get();
+
+        return view('pages.admin.checkstock.product_results', ['products' => $products]);
+    }
 }
+

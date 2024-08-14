@@ -261,6 +261,13 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                         <div class="menu-sub menu-sub-accordion">
                             <!--begin:Menu item-->
                             <div class="menu-item">
+                                <a class="menu-link" href="{{ route('check-stocks.create') }}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Kiểm kho</span>
+                                </a>
+
                                 <!--begin:Menu link-->
                                 <a class="menu-link" href="{{ route('check-stocks.index') }}">
                                     <span class="menu-bullet">

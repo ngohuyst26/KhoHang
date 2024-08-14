@@ -3,14 +3,13 @@
     <div id="kt_app_content" class="app-content flex-column-fluid">
         <!--begin::Content container-->
         <div id="kt_app_content_container" class="app-container container-xxl">
-            <form id="form_add_product" class="form" action="#" method="post"
-                  enctype="multipart/form-data">
+            <form id="form_add_product" class="form" action="#" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card card-flush py-4">
                     <!--begin::Form-->
                     <div class="card-header">
                         <div class="card-title">
-                            <h2>Thông tin sản phẩm</h2>
+                            <h2>Thêm sản phẩm cùng loại</h2>
                         </div>
                     </div>
                     <div class="card-body pt-0">
@@ -20,8 +19,8 @@
                             <label class="required form-label">Tên sản phẩm</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" id="name" name="name" class="form-control mb-2"
-                                   placeholder="Tên sản phẩm" value="{{$product->name}}">
+
+                            <input type="text" id="name" name="name" class="form-control mb-2" placeholder="Tên sản phẩm" value="{{$product->name}}">
                             <!--end::Input-->
                             <p></p>
                         </div>
@@ -31,21 +30,17 @@
                                 <label class="required form-label">Giá vốn</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" id="price" name="price" class="form-control mb-2"
-                                       placeholder="Giá vốn"
-                                       value="{{$product->productSku->first()->price}}">
+                                <input type="text" id="price" name="price" class="form-control mb-2" placeholder="Giá vốn" value="{{$product->productSku->first()->price}}">
                                 <!--end::Input-->
                                 <p></p>
-                                <div
-                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                             </div>
                             <div class="col-4 mb-10 fv-row fv-plugins-icon-container">
                                 <!--begin::Label-->
                                 <label class="required form-label">Giá bán</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" id="sale_price" name="sale_price" class="form-control mb-2"
-                                       placeholder="Giá bán" value="{{$product->productSku->first()->sale_price}}">
+                                <input type="text" id="sale_price" name="sale_price" class="form-control mb-2" placeholder="Giá bán" value="{{$product->productSku->first()->sale_price}}">
                                 <!--end::Input-->
                                 <p></p>
                                 <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
@@ -66,11 +61,9 @@
                             <div class="col-6 mb-10 fv-row fv-plugins-icon-container">
                                 <!--begin::Label-->
                                 <label class="required form-label">Danh mục sản phẩm</label>
-                                <select name="category_id" id="category_id" class="form-select col-3 select-2"
-                                        data-control="select2" data-placeholder="Select an option">
+                                <select name="category_id" id="category_id" class="form-select col-3 select-2" data-control="select2" data-placeholder="Select an option">
                                     @foreach($categories as $attribute)
-                                        <option
-                                            {{$product->category_id == $attribute->id ? 'selected' : ""}} value="{{ $attribute->id }}">{{ $attribute->name }}</option>
+                                        <option {{$product->category_id == $attribute->id ? 'selected' : ""}} value="{{ $attribute->id }}">{{ $attribute->name }}</option>
                                     @endforeach
                                 </select>
                                 <p></p>
@@ -79,11 +72,9 @@
                             <div class="col-6 mb-10 fv-row fv-plugins-icon-container">
                                 <!--begin::Label-->
                                 <label class="required form-label">Nhà cung cấp</label>
-                                <select name="supplier_id" id="supplier_id" class="form-select col-3 select-2"
-                                        data-control="select2" data-placeholder="Select an option">
+                                <select name="supplier_id" id="supplier_id" class="form-select col-3 select-2" data-control="select2" data-placeholder="Select an option">
                                     @foreach($supplier as $attribute)
-                                        <option
-                                            {{$product->supplier_id == $attribute->id ? 'selected' : ""}} value="{{ $attribute->id }}">{{ $attribute->name }}</option>
+                                        <option {{$product->supplier_id == $attribute->id ? 'selected' : ""}} value="{{ $attribute->id }}">{{ $attribute->name }}</option>
                                     @endforeach
                                 </select>
                                 <p></p>
@@ -113,8 +104,7 @@
                             <div class="dropzone" id="kt_dropzonejs_example_1">
                                 <!--begin::Message-->
                                 <div class="dz-message needsclick">
-                                    <i class="ki-duotone ki-file-up fs-3x text-primary"><span class="path1"></span><span
-                                            class="path2"></span></i>
+                                    <i class="ki-duotone ki-file-up fs-3x text-primary"><span class="path1"></span><span class="path2"></span></i>
                                     <!--begin::Info-->
                                     <div class="ms-4">
                                         <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files here or click to
@@ -141,18 +131,14 @@
                                 <div id="repeater">
                                     <div data-repeater-list="data">
                                         {{--                                    {{dd($product->productSku)}}--}}
-                                        @foreach($product->productSku->first()->optionValue as $optionValue)
+                                        @foreach($product->productSku->first()->optionValue as $index => $optionValue)
                                             <div data-repeater-item class="repeater-item form-group row">
                                                 <div class="mb-10 fv-row fv-plugins-icon-container col-3">
                                                     <!--begin::Label-->
                                                     <label class=" form-label">Tên biến thể</label>
-                                                    <select disabled name="data[0][type]"
-                                                            class="form-select col-3 select-2"
-                                                            data-placeholder="Select an option">
-                                                        @foreach($options as $attribute)
-                                                            <option
-                                                                {{$optionValue->option->id == $attribute->id ? 'selected' : ""}} value="{{ $attribute->id }}">{{ $attribute->name }}</option>
-                                                        @endforeach
+                                                    <select name="data[{{$index}}][type]" class="form-select col-3 select-2" data-placeholder="Select an option">
+
+                                                        <option {{$optionValue->option->id == $attribute->id ? 'selected' : ""}} value="{{$optionValue->option->id }}">{{ $optionValue->option->name }}</option>
                                                     </select>
                                                 </div>
                                                 <div class="mb-10 fv-row fv-plugins-icon-container col-4">
@@ -160,13 +146,9 @@
                                                     <label class=" form-label">Giá trị của biến thể</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <input type="text" name="data[0][value]"
-                                                           value="{{$optionValue->name}}"
-                                                           class="tagify-input form-control"
-                                                           placeholder="Nhập giá trị của biến thể">
+                                                    <input type="text" name="data[{{$index}}][value]" value="{{$optionValue->name}}" class="tagify-input form-control" placeholder="Nhập giá trị của biến thể">
                                                     <!--end::Input-->
-                                                    <div
-                                                        class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -178,8 +160,7 @@
                     </div>
                     {{-- End biến thể--}}
                 @endif
-                <button class="btn btn-primary mt-5"><i class="fs-2 ki-duotone ki-tablet-ok"><span class="path1"></span><span
-                            class="path2"></span><span class="path3"></span></i>Lưu sản phẩm
+                <button class="btn btn-primary mt-5"><i class="fs-2 ki-duotone ki-tablet-ok"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>Lưu sản phẩm
                 </button>
             </form>
             <!--end::Form-->
@@ -243,17 +224,13 @@
                                 console.log(e);
                             }
                         });
-                    } else {
+                    }
+                    else {
                         console.log('File ID is missing.');
                     }
                 });
                 // Hiển thị các tệp tin đã tồn tại
-                var existingFiles = @json($images); // Chuyển danh sách hình ảnh tới JavaScript
 
-                existingFiles.forEach(function (file) {
-                    var mockFile = {name: file.name, size: file.size, id: file.id}; // Tạo đối tượng mock file
-                    self.displayExistingFile(mockFile, file.url); // Hiển thị file trong Dropzone
-                });
 
             }
         })
@@ -268,7 +245,7 @@
                 e.preventDefault();
                 console.log($(this).serialize());
                 $.ajax({
-                    url: '{{route('sku.update',['product' => $product->id, 'skuId' => $product->productSku->first()->id])}}',
+                    url: '{{route('sku.add',['product' => $product->id, 'skuId' => $product->productSku->first()->id])}}',
                     type: 'POST',
                     data: $(this).serialize(),
                     success: function (data) {
@@ -279,7 +256,7 @@
                             myDropzone.processQueue(); // Bắt đầu tải lên các file
                         }
                         Swal.fire({
-                            text: "Sửa sản phẩm thành công",
+                            text: "Thêm sản phẩm thành công",
                             icon: "success",
                             buttonsStyling: false,
                             confirmButtonText: "Ok, got it!",
@@ -287,7 +264,7 @@
                                 confirmButton: "btn btn-primary"
                             }
                         });
-                        window.location = "{{route('sku.edit',['product' => $product->id, 'skuId' => $product->productSku->first()->id])}}";
+                        window.location = "{{route('products.index')}}";
                     },
                     error: function (err) {
                         console.log(err)
@@ -353,7 +330,8 @@
             if (error) {
                 element.addClass('is-invalid border-danger');
                 feedbackElement.addClass('invalid-feedback').html(error);
-            } else {
+            }
+            else {
                 element.removeClass('is-invalid border-danger');
                 feedbackElement.removeClass('invalid-feedback').html('');
             }

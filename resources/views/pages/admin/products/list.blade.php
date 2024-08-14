@@ -100,7 +100,7 @@
                                             <div class="d-flex align-items-center">
                                                 <!--begin::Thumbnail-->
                                                 <a href="#" class="symbol symbol-50px">
-                                                    <span class="symbol-label" style="background-image:url({{!$product->productSku->first()?->photo->isEmpty() ? Storage::url($product->productSku->first()?->photo->first()->url) : ''}});"></span>
+                                                    <span class="symbol-label" style="background-image:url({{!$product->productSku->first()?->photo->isEmpty() ? Storage::url($product->productSku->first()?->photo->first()->url) : asset('asset/media/default-product-images.png')}});"></span>
                                                 </a>
                                                 <!--end::Thumbnail-->
 
@@ -108,7 +108,7 @@
                                                     <!--begin::Title-->
                                                     <h2 href="" class="text-gray-800 text-hover-primary fs-5 fw-bold cursor-pointer" data-kt-ecommerce-product-filter="product_name">
                                                         {{$product->name.' '}}
-                                                        @if($product->productSku->first()->optionValue->count() > 0)
+                                                        @if(!$product->productSku->first()?->optionValue->isEmpty())
                                                             (Có {{$product->productSku->count()}} biến thể)
                                                         @endif
                                                     </h2>
@@ -184,7 +184,7 @@
                                         </div>
                                     </tr>
 
-                                    @if($product->productSku->first()->optionValue->count() > 0)
+                                    @if($product->productSku->first()?->optionValue->count() > 0)
 
                                         <tr class="gs-0 details-row d-none" role="row">
                                             <td></td>
@@ -272,7 +272,7 @@
                                                                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
                                                                                     <!--begin::Menu item-->
                                                                                     <div class="menu-item px-3">
-                                                                                        <a href="{{route('products.edit',['product' => $product->id,'skuId' => $sku->id])}}" class="menu-link px-3">
+                                                                                        <a href="{{route('sku.edit',['product' => $product->id,'skuId' => $sku->id])}}" class="menu-link px-3">
                                                                                             Sửa
                                                                                         </a>
                                                                                     </div>
@@ -294,8 +294,15 @@
                                     @endif
                                 @endforeach
                                 </tbody>
-                                <tfoot></tfoot>
+                                <tfoot>
+
+                                </tfoot>
                             </table>
+                        </div>
+                        <div class="text-end">
+                            <a class="btn btn-primary" href="{{route('products.add-variant',['product' => $product->id, 'skuId' => $product->productSku->first()->id])}}">
+                                Thêm sản phẩm cùng loại
+                            </a>
                         </div>
                         <div id="" class="row">
                             <div id="" class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start dt-toolbar">

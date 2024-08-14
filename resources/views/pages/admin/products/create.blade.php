@@ -57,20 +57,17 @@
                                        placeholder="Giá bán" value="">
                                 <!--end::Input-->
                                 <p></p>
-                                <div
-                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                             </div>
                             <div class="col-4 mb-10 fv-row fv-plugins-icon-container">
                                 <!--begin::Label-->
                                 <label class="required form-label">Tồn kho</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" id="inventory" name="inventory" class="form-control mb-2"
-                                       placeholder="Giá bán" value="">
+                                <input type="text" id="inventory" name="inventory" class="form-control mb-2" placeholder="Tồn kho" value="">
                                 <!--end::Input-->
                                 <p></p>
-                                <div
-                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                             </div>
 
                         </div>
@@ -251,13 +248,14 @@
         </div>
     </div>
 @endsection
-@push('script')
-
+@push('style')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/repeater.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <script src="{{asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js')}}"></script>
+@endpush
+@push('script')
     <script>
         ClassicEditor
             .create(document.querySelector('#kt_docs_ckeditor_classic'))

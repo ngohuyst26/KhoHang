@@ -125,7 +125,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
 
-    public function createSku($productId, $price, $sale_price, $inventory, $barcode){
+    public function createSku($productId, $price, $sale_price, $inventory, $barcode = NULL){
         return ProductSku::create([
             'product_id' => $productId,
             'price'      => $price,

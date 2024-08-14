@@ -289,6 +289,11 @@
                                                         <!--end::Table-->    </div>
                                                     <!--end::Card body-->
                                                 </div>
+                                                <div class="text-end mt-3">
+                                                    <a class="btn btn-primary" href="{{route('products.add-variant',['product' => $product->id, 'skuId' => $product->productSku->first()->id])}}">
+                                                        Thêm sản phẩm cùng loại
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endif
@@ -298,11 +303,6 @@
 
                                 </tfoot>
                             </table>
-                        </div>
-                        <div class="text-end">
-                            <a class="btn btn-primary" href="{{route('products.add-variant',['product' => $product->id, 'skuId' => $product->productSku->first()->id])}}">
-                                Thêm sản phẩm cùng loại
-                            </a>
                         </div>
                         <div id="" class="row">
                             <div id="" class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start dt-toolbar">

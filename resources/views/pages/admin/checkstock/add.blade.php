@@ -236,9 +236,10 @@
                     let quantity = $(this).val();
                     let row = $(this).closest('tr');
                     let stock = parseInt(row.find('td:eq(2)').text());
+                    let difference = parseInt(row.find('.stock-difference').text());
                     let price = parseFloat(row.find('.price').val());
-                    console.log(price);
-                    let total = (price * quantity);
+
+                    let total = (price * difference);
                     let number = total.toLocaleString('vi-VN', {
                         style: 'decimal',
                         maximumFractionDigits: 0,

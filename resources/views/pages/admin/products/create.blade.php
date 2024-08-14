@@ -248,14 +248,12 @@
         </div>
     </div>
 @endsection
-@push('style')
+@push('script')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/repeater.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <script src="{{asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js')}}"></script>
-@endpush
-@push('script')
     <script>
         ClassicEditor
             .create(document.querySelector('#kt_docs_ckeditor_classic'))
@@ -281,7 +279,6 @@
                     type: 'POST',
                     data: $(this).serialize(),
                     success: function (data) {
-                        // $('#customers-list').html(data);
                         $('#kt_modal_add_option').modal('hide');
                         clearErrors();
                         Swal.fire({

@@ -298,7 +298,7 @@ class ProductController extends Controller{
     public function search(Request $request){
         $search   = $request->input('query');
         $products = ProductSku::with(['product' => function ($query) use ($search){
-            $query->where('name', 'LIKE', "%{$search}%");
+            $query->where('name', 'LIKE', "%{$search}%")->where('status', 1);
         }])->get();
 
         return view('pages.admin.checkstock.product_results', ['products' => $products]);

@@ -22,13 +22,13 @@ class StoreSuppliersRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
-            'address' => 'required|string|max:255',
-            'email' => 'required|email|unique:suppliers,email',
+            'name'     => 'required|string|max:255',
+            'phone'    => 'required|string|max:20',
+            'address'  => 'required|string|max:255',
+            'email'    => "required|email|unique:suppliers,email,$this->id,id",
             'tax_code' => 'required|string|max:20',
-            'status' => 'required|boolean',
-            'notes' => 'nullable|string|max:500'
+            'status'   => 'required|boolean',
+            'notes'    => 'nullable|string|max:500'
         ];
     }
     public function messages()

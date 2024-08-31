@@ -70,7 +70,7 @@
 																<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_ecommerce_products_table .form-check-input" value="1">
 															</div>
 														</span><span class="dt-column-order"></span></th>
-                                            <th class="min-w-300px dt-orderable-asc dt-orderable-desc dt-ordering-asc" data-dt-column="1" rowspan="1" colspan="1" aria-label="Product: Activate to invert sorting" tabindex="0" aria-sort="ascending">
+                                            <th class="min-w-280px dt-orderable-asc dt-orderable-desc dt-ordering-asc" data-dt-column="1" rowspan="1" colspan="1" aria-label="Product: Activate to invert sorting" tabindex="0" aria-sort="ascending">
                                                 <span class="dt-column-title" role="button">Tên sản phẩm</span><span class="dt-column-order"></span>
                                             </th>
                                             <th class="text-start min-w-100px dt-type-numeric dt-orderable-asc dt-orderable-desc" data-dt-column="2" rowspan="1" colspan="1" aria-label="SKU: Activate to sort" tabindex="0">
@@ -289,6 +289,15 @@
                     success: function (response) {
                         $('#cart-table tbody').empty();
                         updateTotalQuantity();
+                        Swal.fire({
+                            text: "Tạo thành công!",
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: {
+                                confirmButton: "btn btn-primary"
+                            }
+                        });
                     },
                     error: function () {
                     }

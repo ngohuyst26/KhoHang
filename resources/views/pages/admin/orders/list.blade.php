@@ -106,7 +106,7 @@
                                             <a href="#" class="text-gray-900 text-hover-primary">HD000{{$item->id ?? ''}}</a>
                                         </td>
                                         <td class="text-center">
-                                            <div class="badge">{{$item->created_at ?? ''}}</div>
+                                            <div class="badge">{{\Carbon\Carbon::parse($item->created_at)->format('d/m/Y')  ?? ''}}</div>
                                         </td>
                                         <td class="text-center">
                                             <a href="#" class="text-gray-900 text-hover-primary">{{$item->customers->name ?? 'Khách lẻ'}}</a>

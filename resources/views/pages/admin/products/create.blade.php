@@ -248,9 +248,11 @@
         </div>
     </div>
 @endsection
-@push('script')
+@push('style')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/repeater.min.css">
+@endpush
+@push('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <script src="{{asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js')}}"></script>
@@ -279,6 +281,7 @@
                     type: 'POST',
                     data: $(this).serialize(),
                     success: function (data) {
+                        // $('#customers-list').html(data);
                         $('#kt_modal_add_option').modal('hide');
                         clearErrors();
                         Swal.fire({
@@ -348,17 +351,18 @@
                 const generatedForms = $('#gen-form');
                 generatedForms.empty(); // Clear existing forms
                 const allCombinations = generateCombinations(repeaterItems);
+                console.log(allCombinations);
                 allCombinations.forEach((combination, index) => {
                     const form = $('<div data-repeater-item class="repeater-item generated-form"></div>');
 
                     let formContent = '';
 
                     Object.keys(combination).forEach(key => {
-                        console.log(key)
                         formContent += `<input type="hidden" name="generated[${index}][${key}]" value="${combination[key]}">`;
                     });
 
                     formContent += `
+
                                 <div class="col-3">
                                       <label class=" form-label">Giá vốn</label>
                                       <input type="text" id="generated_${index}_price" class="is_valid_input tagify-input form-control" name="generated[${index}][price]" placeholder="Nhập giá" >
@@ -405,6 +409,7 @@
             function generateCombinations(items) {
                 let result = [{}];
                 items.forEach((item, index) => {
+                    console.log(item)
                     const type = item.querySelector('select').value;
                     const tagifyInstance = tagifyInstances[index];
                     const tagifyValues = tagifyInstance.value.map(tag => tag.value); // Get array of tag values

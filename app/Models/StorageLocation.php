@@ -13,7 +13,8 @@ class StorageLocation extends Model{
     protected $fillable = ['name', 'status'];
 
     public function productSku(){
-        return $this->belongsToMany(ProductSku::class, 'sku_location', 'storage_location_id',
+        return $this->belongsToMany(ProductSku::class, 'product_sku_location',
+            'storage_location_id',
             'products_sku_id');
     }
 }

@@ -26,22 +26,22 @@ class StoreProductsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:255',
-            'price' => 'nullable|numeric',
-            'sale_price' => 'nullable|numeric',
-            'inventory' => 'nullable|numeric',
-            'generated.*.price' => 'sometimes|required|numeric',
-            'generated.*.sale_price' => 'sometimes|required|numeric',
-            'generated.*.stock' => 'sometimes|required|numeric',
-            'category_id' => 'exists:App\Models\Category,id',
-            'supplier_id' => 'exists:App\Models\Supplier,id'
+            'name'                  => 'required|max:255',
+            'price'                 => 'nullable|numeric',
+            'sale_price'            => 'nullable|numeric',
+            'inventory'             => 'nullable|numeric',
+            'variants.*.price'      => 'sometimes|required|numeric',
+            'variants.*.sale_price' => 'sometimes|required|numeric',
+            'variants.*.stock'      => 'sometimes|required|numeric',
+            'category_id'           => 'exists:App\Models\Category,id',
+            'supplier_id'           => 'exists:App\Models\Supplier,id'
         ];
     }
 
     public function withValidator(Validator $validator)
     {
         $validator->sometimes(['price', 'sale_price', 'inventory'], 'required', function ($input) {
-            return !isset($input->generated);
+            return !isset($input->variants);
         });
     }
 
@@ -54,21 +54,20 @@ class StoreProductsRequest extends FormRequest
         ];
     }
 
-    protected function failedValidation(Validator $validator)
-    {
-        $errors = $validator->errors();
-        $price = $errors->get('generated.*.price');
-        $salePrice = $errors->get('generated.*.sale_price');
-        $stock = $errors->get('generated.*.stock');
+    protected function failedValidation(Validator $validator){
+        $errors      = $validator->errors();
+        $price       = $errors->get('variants.*.price');
+        $salePrice   = $errors->get('variants.*.sale_price');
+        $stock       = $errors->get('variants.*.stock');
         $otherErrors = [];
-        foreach ($errors->toArray() as $key => $messages) {
-            if (strpos($key, 'generated.') !== 0) {
+        foreach ($errors->toArray() as $key => $messages){
+            if (strpos($key, 'variants.') !== 0){
                 $otherErrors[$key] = $messages;
             }
         }
         $stockErrors = [];
-        foreach ($stock as $key => $messages) {
-            $changeKey = str_replace('.', '_', $key);
+        foreach ($stock as $key => $messages){
+            $changeKey               = str_replace('.', '_', $key);
             $stockErrors[$changeKey] = $messages;
         }
         $priceErrors = [];

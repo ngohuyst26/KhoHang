@@ -11,8 +11,7 @@ use App\Models\SkuValue;
 use App\Repositories\BaseRepository;
 use App\Repositories\CheckStock\CheckStockRepositoryInterface;
 
-class ProductRepository extends BaseRepository implements ProductRepositoryInterface
-{
+class ProductRepository extends BaseRepository implements ProductRepositoryInterface{
 
     protected $checkStockRepository;
 
@@ -24,7 +23,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     public function getAll(int $page){
-        return Product::with(['productSku.photo', 'productSku.optionValue.option'])
+        return Product::with(['productSku.photo', 'productSku.optionValue.option', 'productSku.storageLocation'])
                       ->where('status', '=', 1)
                       ->orderBy('id', 'DESC')
                       ->paginate($page);
@@ -39,7 +38,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
     public function addProduct($request){
         $data = $request->all();
-
+        dd($data);
         $product    = $this->createProduct($request);
         $checkStock = $this->checkStockRepository->create([
             'description' => 'Được tạo tự động khi thêm sản phẩm'
@@ -62,11 +61,12 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             ]);
 
             return $sku->id;
-        } else{
+        }else{
             $ac_number        = 0;
             $ac_total         = 0;
             $total_difference = 0;
             $qty_increased    = 0;
+            //            dd($data['generated']);
             foreach ($data['generated'] as $index => $combination){
                 $price      = $combination['price'];
                 $sale_price = $combination['sale_price'];
@@ -74,6 +74,9 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                 $barcode    = 0;
                 $sku        = $this->createSku($product->id, $price, $sale_price, $inventory,
                     $barcode);
+                //                if($data['location']){
+                //                    dd($data['location']);
+                //                }
                 DetailCheckStock::create([
                     'check_stock_id'   => $checkStock->id,
                     'product_sku_id'   => $sku->id,
@@ -88,6 +91,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                 $qty_increased    += $sku->inventory;
 
                 $optionValues = [];
+                //                dd($combination);
                 foreach ($combination as $key => $value){
                     if ($key !== 'price' && $key !== 'stock' && $key !== 'sale_price'){
                         $optionId    = $key;
@@ -104,6 +108,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                     $this->createSkuValue($product->id, $sku->id, $optionValue);
                 }
             }
+
             $this->checkStockRepository->update($checkStock->id, [
                 'ac_number'        => $ac_number,
                 'ac_total'         => $ac_total,
@@ -112,7 +117,91 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             ]);
         }
 
-        return true;
+        return TRUE;
+    }
+
+    public function addProductApi($request){
+        $data = $request->all();
+        //        dd($data);
+        $product    = $this->createProduct($request);
+        $checkStock = $this->checkStockRepository->create([
+            'description' => 'Được tạo tự động khi thêm sản phẩm'
+        ]);
+        if (!isset($data['variants'])){
+            $sku = $this->createSku($product->id, $request->price, $request->sale_price,
+                $request->inventory, $request->barcode);
+            DetailCheckStock::create([
+                'check_stock_id'   => $checkStock->id,
+                'product_sku_id'   => $sku->id,
+                'ac_number'        => $sku->inventory,
+                'total_difference' => $sku->inventory,
+                'value'            => $sku->price * $sku->inventory
+            ]);
+            $this->checkStockRepository->update($checkStock->id, [
+                'ac_number'        => $sku->inventory,
+                'ac_total'         => $sku->price * $sku->inventory,
+                'total_difference' => $sku->inventory,
+                'qty_increased'    => $sku->inventory,
+            ]);
+
+            return $sku->id;
+        }else{
+            $ac_number        = 0;
+            $ac_total         = 0;
+            $total_difference = 0;
+            $qty_increased    = 0;
+            //            dd($data['generated']);
+            foreach ($data['variants'] as $index => $combination){
+                $price      = $combination['price'];
+                $sale_price = $combination['sale_price'];
+                $inventory  = $combination['stock'] ?? 0;
+                $barcode    = $combination['barcode'] ?? 0;
+                $sku        = $this->createSku($product->id, $price, $sale_price, $inventory,
+                    $barcode);
+                if ($data['locations']){
+                    $sku_location = ProductSku::find($sku->id);
+                    $sku_location->storageLocation()->attach([1, 2]);
+                }
+                DetailCheckStock::create([
+                    'check_stock_id'   => $checkStock->id,
+                    'product_sku_id'   => $sku->id,
+                    'ac_number'        => $sku->inventory,
+                    'total_difference' => $sku->inventory,
+                    'value'            => $sku->price * $sku->inventory
+                ]);
+
+                $ac_number        += $sku->inventory;
+                $ac_total         += ($sku->price * $sku->inventory);
+                $total_difference += $sku->inventory;
+                $qty_increased    += $sku->inventory;
+
+                $optionValues = [];
+                //                dd($combination);
+                foreach ($combination['options'] as $value){
+                    $optionId    = $value['id'];
+                    $valueOption = $value['value'];
+                    $optionValue = $this->createOptionValue($product->id, $optionId, $valueOption);
+                    if ($optionValue){
+                        $optionValues[] = [
+                            'option_id'       => $optionId,
+                            'option_value_id' => $optionValue->id,
+                        ];
+                    }
+                }
+                foreach ($optionValues as $optionValue){
+                    $this->createSkuValue($product->id, $sku->id, $optionValue);
+                }
+            }
+
+            $this->checkStockRepository->update($checkStock->id, [
+                'ac_number'        => $ac_number,
+                'ac_total'         => $ac_total,
+                'total_difference' => $total_difference,
+                'qty_increased'    => $qty_increased,
+            ]);
+        }
+
+        return TRUE;
     }
 
     public function createProduct($request){
@@ -144,6 +233,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         ]);
     }
 
+
     public function createOptionValue($productId, $optionId, $value){
         return OptionValue::updateOrCreate(
             ['product_id' => $productId, 'option_id' => $optionId, 'name' => $value],
@@ -153,9 +243,9 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
     public function getOptionValue($productId, $optionId, $value){
         return OptionValue::where('product_id', $productId)
-            ->where('option_id', $optionId)
-            ->where('name', $value)
-            ->value('id');
+                          ->where('option_id', $optionId)
+                          ->where('name', $value)
+                          ->value('id');
     }
 
     public function createSkuValue($productId, $skuId, $optionValue){

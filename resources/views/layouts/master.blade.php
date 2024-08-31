@@ -28,6 +28,8 @@
     <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
     <!--end::Global Stylesheets Bundle-->
     <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
+    <script src="{{asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js')}}"></script>
+
     @stack('style')
 </head>
 <!--end::Head-->

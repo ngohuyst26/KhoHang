@@ -21,7 +21,8 @@ class ProductSku extends Model{
     }
 
     public function storageLocation(){
-        return $this->belongsToMany(StorageLocation::class, 'sku_location', 'products_sku_id',
+        return $this->belongsToMany(StorageLocation::class, 'product_sku_location',
+            'product_sku_id',
             'storage_location_id');
     }
 

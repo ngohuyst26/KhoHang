@@ -14,6 +14,8 @@ interface ProductRepositoryInterface extends BaseRepositoryInterface{
 
     public function addProduct($request);
 
+    public function addProductApi($request);
+
     public function createSku($productId, $price, $sale_price, $inventory, $barcode = NULL);
 
     public function createPhoto($request, $skuId);

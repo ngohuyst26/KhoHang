@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class BaseRepository implements BaseRepositoryInterface
 {
 
-    protected Model $model;
+    protected $model;
 
     protected function __construct(Model $model)
     {
@@ -64,15 +64,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     public function update(int $id, array $data): bool|Model
     {
-        $modelInstance = $this->model->find($id);
-
-        if (!$modelInstance) {
-            return throw new ModelNotFoundException('Record not found!');
-        }
-
-        $modelInstance->update($data);
-
-        return $modelInstance;
+        return $this->model->where('id',$id)->update($data);
     }
 
     /**

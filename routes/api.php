@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CheckStockController;
+use App\Http\Controllers\API\Admin\CustomerController;
 use App\Http\Controllers\Api\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,3 +17,4 @@ Route::get('checkstock', [CheckStockController::class, 'index']);
 Route::get('checkstock/{checkstock}', [CheckStockController::class, 'show']);
 Route::post('checkstock/create', [CheckStockController::class, 'store']);
 Route::put('checkstock/update/{checkstock}', [CheckStockController::class, 'update']);
+Route::resource('customers',CustomerController::class);

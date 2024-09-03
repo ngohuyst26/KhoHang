@@ -60,7 +60,7 @@ return Application::configure(basePath: dirname(__DIR__))
                       },
                   )
                   ->withMiddleware(function (Middleware $middleware){
-                      $middleware->pushMiddleware(Cors::class);
+                      $middleware->append(Cors::class);
                   })
                   ->withExceptions(function (Exceptions $exceptions){
                       //

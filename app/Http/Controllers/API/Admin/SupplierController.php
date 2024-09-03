@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\API\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Customer\CustomerRepositoryInterface;
+use App\Repositories\Supplier\SupplierRepositoryInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-class CustomerController extends Controller
+class SupplierController extends Controller
 {
-    protected $customerRepository;
+    protected $supplierRepository;
 
-    public function __construct(CustomerRepositoryInterface $customerRepository)
-    {
-        $this->customerRepository = $customerRepository;
+    public function __construct(SupplierRepositoryInterface $supplierRepository){
+        $this->supplierRepository = $supplierRepository;
     }
 
     /**
@@ -22,12 +21,13 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = $this->customerRepository->all();
+        $suppliers = $this->supplierRepository->all();
+
         return response()->json([
             'status'  => true,
-            'message' => "Danh sách khách hàng",
-            'data'    => $customers
-        ],200);
+            'message' => "Danh sách nhà cung cấp",
+            'data'    => $suppliers
+        ], 200);
     }
 
     /**
@@ -36,19 +36,19 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         try {
-            $customers = $this->customerRepository->create($request->all());
+            $supplier = $this->supplierRepository->create($request->all());
             return response()->json([
                 'status'  => true,
                 'message' => "Thêm thành công",
-                'data'    => $customers
-            ],201);
+                'data'    => $supplier
+            ], 200);
         }
-        catch (ValidationException $e){
+        catch(ValidationException $e){
             return response()->json([
                 'status'  => false,
-                'message' => "Lỗi",
+                'message' => "Thêm thất bại",
                 'data'    => $e->validator->errors()
-            ], 422);
+            ], 201);
         }
     }
 
@@ -58,21 +58,20 @@ class CustomerController extends Controller
     public function show(string $id)
     {
         try {
-            $customer = $this->customerRepository->find($id);
+            $supplier = $this->supplierRepository->find($id);
             return response()->json([
                 'status'  => true,
-                'message' => "Chi tiết khách hàng",
-                'data'    => $customer
-            ],200);
+                'message' => "Thông tin nhà cung cấp",
+                'data'    => $supplier
+            ], 200);
         }
-        catch(ModelNotFoundException  $exception){
+        catch(ModelNotFoundException $exception){
             return response()->json([
                 'status'  => false,
-                'message' => "Chi tiết khách hàng",
-                'data'    => "Không tìm thấy khách hàng"
-            ],201);
+                'message' => "Không tồn tại nhà cung cấp",
+                'data'    => []
+            ], 201);
         }
-
     }
 
     /**
@@ -89,10 +88,10 @@ class CustomerController extends Controller
     public function update(Request $request, string $id)
     {
         try {
-            $customer = $this->customerRepository->update($id, $request->all());
+            $customer = $this->supplierRepository->update($id, $request->all());
             return response()->json([
                 'status'  => true,
-                'message' => "Đã cập nhật thông tin khách hàng",
+                'message' => "Cập nhật thành công",
                 'data'    => $customer
             ],200);
         }
@@ -111,10 +110,10 @@ class CustomerController extends Controller
     public function destroy(string $id)
     {
         try {
-            $customer = $this->customerRepository->delete($id);
+            $this->supplierRepository->delete($id);
             return response()->json([
                 'status'  => true,
-                'message' => "Đã xóa thông tin khách hàng",
+                'message' => "Xóa thành công",
                 'data'    => []
             ],200);
         }

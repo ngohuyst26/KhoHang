@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Repositories\Customer;
+namespace App\Repositories\Supplier;
 
-use App\Models\Customer;
+use App\Models\Supplier;
 use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class CustomerRepository extends BaseRepository implements CustomerRepositoryInterface{
-
+class SupplierRepository extends BaseRepository implements SupplierRepositoryInterface{
     protected $rules = [
         'name' => 'required|max:255',
     ];
@@ -19,7 +18,7 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
         'max' => 'Dữ liệu'
     ];
 
-    public function __construct(Customer $model)
+    public function __construct(Supplier $model)
     {
         parent::__construct($model);
     }
@@ -27,15 +26,6 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
     public function all(): Collection
     {
         return $this->model->all();
-    }
-
-    public function latest($perPage = 0): Model
-    {
-        return $this->model->orderBy('id', 'DESC')
-               ->when($perPage !== 0, function ($query) use ($perPage) {
-                   return $query->paginate($perPage);
-               })
-               ->get();
     }
 
     public function create(array $data)
@@ -63,5 +53,4 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
         }
         return  $customer->delete();
     }
-
 }

@@ -8,6 +8,8 @@ use App\Repositories\Customer\CustomerRepository;
 use App\Repositories\Customer\CustomerRepositoryInterface;
 use App\Repositories\Option\OptionRepository;
 use App\Repositories\Option\OptionRepositoryInterface;
+use App\Repositories\Order\OrderRepository;
+use App\Repositories\Order\OrderRepositoryInterface;
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\Product\ProductRepositoryInterface;
 use App\Repositories\Supplier\SupplierRepository;
@@ -23,5 +25,6 @@ class RepositoryServiceProvider extends ServiceProvider{
         $this->app->bind(OptionRepositoryInterface::class, OptionRepository::class);
         $this->app->bind(CustomerRepositoryInterface::class, CustomerRepository::class);
         $this->app->bind(SupplierRepositoryInterface::class, SupplierRepository::class);
+        $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
     }
 }

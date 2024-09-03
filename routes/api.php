@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CheckStockController;
 use App\Http\Controllers\API\Admin\CustomerController;
+use App\Http\Controllers\API\Admin\OrderController;
 use App\Http\Controllers\API\Admin\SupplierController;
 use App\Http\Controllers\Api\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,4 @@ Route::post('checkstock/create', [CheckStockController::class, 'store']);
 Route::put('checkstock/update/{checkstock}', [CheckStockController::class, 'update']);
 Route::resource('customers',CustomerController::class);
 Route::resource('suppliers',SupplierController::class);
+Route::resource('orders',OrderController::class);

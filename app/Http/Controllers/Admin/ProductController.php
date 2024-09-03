@@ -25,7 +25,8 @@ class ProductController extends Controller{
 
     public function __construct(
         ProductRepositoryInterface $productRepository,
-        CheckStockRepositoryInterface $stockRepository){
+        CheckStockRepositoryInterface $stockRepository
+    ){
         $this->productRepository    = $productRepository;
         $this->checkStockRepository = $stockRepository;
     }
@@ -70,9 +71,23 @@ class ProductController extends Controller{
      * Store a newly created resource in storage.
      */
     public function store(StoreProductsRequest $request){
-        $skuId = $this->productRepository->addProduct($request);
+        $data = $request->validated();
 
-        return response()->json(['skuId' => $skuId], 200);
+        if (empty($data['code'])){
+            $data['code'] = ProductSku::generateNextCode();
+        }else{
+            // Check if the provided code already exists
+            $existingSku = ProductSku::where('code', $data['code'])->first();
+            if ($existingSku){
+                // If the code already exists, generate a new one
+                $data['code'] = ProductSku::generateNextCode();
+            }
+        }
+        dd($data);
+        $skuId = $this->productRepository->addProduct($data);
+        dd($skuId);
+
+        return response()->json(['skuId' => $skuId, 'code' => $data['code']], 201);
     }
 
     /**
@@ -86,9 +101,11 @@ class ProductController extends Controller{
      * Show the form for editing the specified resource.
      */
     public function edit(string $id, string $skuId){
-        $product    = Product::with(['productSku' => function ($query) use ($skuId){
-            $query->where('id', $skuId)->with('optionValue.option', 'photo');
-        }])->find($id);
+        $product    = Product::with([
+            'productSku' => function ($query) use ($skuId){
+                $query->where('id', $skuId)->with('optionValue.option', 'photo');
+            }
+        ])->find($id);
         $option     = Option::all();
         $categories = Category::all();
         $supplier   = Supplier::all();
@@ -116,9 +133,11 @@ class ProductController extends Controller{
     }
 
     public function addVariant(string $id, int $skuId){
-        $product    = Product::with(['productSku' => function ($query) use ($skuId){
-            $query->where('id', $skuId)->with('optionValue.option', 'photo');
-        }])->find($id);
+        $product    = Product::with([
+            'productSku' => function ($query) use ($skuId){
+                $query->where('id', $skuId)->with('optionValue.option', 'photo');
+            }
+        ])->find($id);
         $option     = Option::all();
         $categories = Category::all();
         $supplier   = Supplier::all();
@@ -146,16 +165,27 @@ class ProductController extends Controller{
 
         $productSku = $productSkuQuery->get();
         if (!$productSku->isEmpty()){
-            return response()->json(['error' => 'Biến thể ' . implode(", ",
-                    $optionValues) . ' đã tồn tại vui lòng tạo biến thể khác'], 400);
+            return response()->json([
+                'error' => 'Biến thể ' . implode(
+                        ", ",
+                        $optionValues
+                    ) . ' đã tồn tại vui lòng tạo biến thể khác'
+            ], 400);
         }
-        $sku = $this->productRepository->createSku(session()->get('product_id'), $request->price,
-            $request->sale_price, $request->inventory);
+        $sku = $this->productRepository->createSku(
+            session()->get('product_id'),
+            $request->price,
+            $request->sale_price,
+            $request->inventory
+        );
 
         $optionValues = [];
         foreach ($request->data as $option){
-            $optionValue = $this->productRepository->createOptionValue(session()->get('product_id'),
-                $option['type'], $option['value']);
+            $optionValue = $this->productRepository->createOptionValue(
+                session()->get('product_id'),
+                $option['type'],
+                $option['value']
+            );
             if ($optionValue){
                 $optionValues[] = [
                     'option_id'       => $option['type'],
@@ -164,8 +194,11 @@ class ProductController extends Controller{
             }
         }
         foreach ($optionValues as $optionValue){
-            $this->productRepository->createSkuValue(session()->get('product_id'), $sku->id,
-                $optionValue);
+            $this->productRepository->createSkuValue(
+                session()->get('product_id'),
+                $sku->id,
+                $optionValue
+            );
         }
         session()->forget('product_id');
 
@@ -213,6 +246,14 @@ class ProductController extends Controller{
             'inventory'  => $request->inventory,
         ]);
 
+        return response()->json([
+            'data' => [
+                'status'  => 200,
+                'message' => 'Cập nhật thành công'
+            ]
+        ], 200);
+
+
     }
 
     /**
@@ -235,8 +276,11 @@ class ProductController extends Controller{
             if (is_numeric($skuId)){
                 $file           = $request->file('file');
                 $uniqueFileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
-                $path           = $file->storeAs('uploads/' . date('Y/m'), $uniqueFileName,
-                    'public');
+                $path           = $file->storeAs(
+                    'uploads/' . date('Y/m'),
+                    $uniqueFileName,
+                    'public'
+                );
                 $this->productRepository->createPhoto($skuId, $path);
             }
         }else{
@@ -249,8 +293,11 @@ class ProductController extends Controller{
             $file           = $request->file('file');
             $uniqueFileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
 
-            $path        = $file->storeAs('uploads/' . date('Y/m'), $uniqueFileName,
-                'public');
+            $path        = $file->storeAs(
+                'uploads/' . date('Y/m'),
+                $uniqueFileName,
+                'public'
+            );
             $filePaths   = $request->session()->get('temporary_files', []);
             $filePaths[] = $path;
             $request->session()->put('temporary_files', $filePaths);
@@ -297,11 +344,12 @@ class ProductController extends Controller{
 
     public function search(Request $request){
         $search   = $request->input('query');
-        $products = ProductSku::with(['product' => function ($query) use ($search){
-            $query->where('name', 'LIKE', "%{$search}%")->where('status', 1);
-        }])->get();
+        $products = ProductSku::with([
+            'product' => function ($query) use ($search){
+                $query->where('name', 'LIKE', "%{$search}%")->where('status', 1);
+            }
+        ])->get();
 
         return view('pages.admin.checkstock.product_results', ['products' => $products]);
     }
 }
-

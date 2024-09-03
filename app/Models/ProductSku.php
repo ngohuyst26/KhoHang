@@ -10,10 +10,10 @@ class ProductSku extends Model{
     use HasFactory;
 
     protected $table = 'product_sku';
-    protected $fillable = ['product_id', 'price', 'sale_price', 'inventory', 'barcode'];
+    protected $fillable = ['product_id', 'price', 'sale_price', 'inventory', 'barcode', 'code'];
 
     public function product(){
-        return $this->belongsTo(Product::class,'product_id',);
+        return $this->belongsTo(Product::class, 'product_id',);
     }
 
     public function photo(){
@@ -21,9 +21,12 @@ class ProductSku extends Model{
     }
 
     public function storageLocation(){
-        return $this->belongsToMany(StorageLocation::class, 'product_sku_location',
+        return $this->belongsToMany(
+            StorageLocation::class,
+            'product_sku_location',
             'product_sku_id',
-            'storage_location_id');
+            'storage_location_id'
+        );
     }
 
     public function optionValue(){
@@ -35,6 +38,27 @@ class ProductSku extends Model{
     }
 
     public function skuValue(){
-        return $this->hasMany(SkuValue::class, 'sku_id','id');
+        return $this->hasMany(SkuValue::class, 'sku_id', 'id');
+    }
+
+    public static function generateNextCode(){
+        $lastSku = self::where('code', 'LIKE', 'SP%')
+                       ->get()
+                       ->sortByDesc(function ($sku){
+                           preg_match('/SP(\d+)/', $sku->code, $matches);
+
+                           return $matches ? intval($matches[1]) : 0;
+                       })
+                       ->first();
+
+        if (!$lastSku){
+            return 'SP000001';
+        }
+        $lastCode = $lastSku->code;
+        preg_match('/SP(\d+)/', $lastCode, $matches);
+        $numericPart     = $matches ? intval($matches[1]) : 0;
+        $nextNumericPart = $numericPart + 1;
+
+        return 'SP' . str_pad($nextNumericPart, 6, '0', STR_PAD_LEFT);
     }
 }

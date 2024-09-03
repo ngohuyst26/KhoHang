@@ -3,8 +3,7 @@
     <div id="kt_app_content" class="app-content flex-column-fluid">
         <!--begin::Content container-->
         <div id="kt_app_content_container" class="app-container container-xxl">
-            <form id="form_add_product" class="form" action="{{route('products.store')}}" method="post"
-                  enctype="multipart/form-data">
+            <form id="form_add_product" class="form" action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card card-flush py-4">
                     <!--begin::Form-->
@@ -45,16 +44,14 @@
                                 <input type="text" id="price" name="price" class="form-control mb-2" placeholder="Giá vốn" value="">
                                 <!--end::Input-->
                                 <p></p>
-                                <div
-                                    class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                             </div>
                             <div class="col-4 mb-10 fv-row fv-plugins-icon-container">
                                 <!--begin::Label-->
                                 <label class="required form-label">Giá bán</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" id="sale_price" name="sale_price" class="form-control mb-2"
-                                       placeholder="Giá bán" value="">
+                                <input type="text" id="sale_price" name="sale_price" class="form-control mb-2" placeholder="Giá bán" value="">
                                 <!--end::Input-->
                                 <p></p>
                                 <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
@@ -76,8 +73,7 @@
                             <div class="col-6 mb-10 fv-row fv-plugins-icon-container">
                                 <!--begin::Label-->
                                 <label class="required form-label">Danh mục sản phẩm</label>
-                                <select name="category_id" id="category_id" class="form-select col-3 select-2"
-                                        data-control="select2" data-placeholder="Select an option">
+                                <select name="category_id" id="category_id" class="form-select col-3 select-2" data-control="select2" data-placeholder="Select an option">
                                     @foreach($categories as $attribute)
                                         <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
                                     @endforeach
@@ -88,8 +84,7 @@
                             <div class="col-6 mb-10 fv-row fv-plugins-icon-container">
                                 <!--begin::Label-->
                                 <label class="required form-label">Nhà cung cấp</label>
-                                <select name="supplier_id" id="supplier_id" class="form-select col-3 select-2"
-                                        data-control="select2" data-placeholder="Select an option">
+                                <select name="supplier_id" id="supplier_id" class="form-select col-3 select-2" data-control="select2" data-placeholder="Select an option">
                                     @foreach($supplier as $attribute)
                                         <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
                                     @endforeach
@@ -120,8 +115,7 @@
                             <div class="dropzone" id="kt_dropzonejs_example_1">
                                 <!--begin::Message-->
                                 <div class="dz-message needsclick">
-                                    <i class="ki-duotone ki-file-up fs-3x text-primary"><span class="path1"></span><span
-                                            class="path2"></span></i>
+                                    <i class="ki-duotone ki-file-up fs-3x text-primary"><span class="path1"></span><span class="path2"></span></i>
                                     <!--begin::Info-->
                                     <div class="ms-4">
                                         <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files here or click to
@@ -135,7 +129,7 @@
                         </div>
                     </div>
                 </div>
-                {{--  Biến  thể--}}
+                {{-- Biến thể--}}
                 <div class="card card-flush py-4 mt-10">
                     <div class="card-header">
                         <div class="card-title">
@@ -150,8 +144,7 @@
                                         <div class="mb-10 fv-row fv-plugins-icon-container col-3">
                                             <!--begin::Label-->
                                             <label class=" form-label">Tên biến thể</label>
-                                            <select name="data[0][type]" class="form-select col-3 select-2"
-                                                    data-placeholder="Select an option">
+                                            <select name="data[0][type]" class="form-select col-3 select-2" data-placeholder="Select an option">
                                                 @foreach($options as $attribute)
                                                     <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
                                                 @endforeach
@@ -162,11 +155,9 @@
                                             <label class=" form-label">Giá trị của biến thể</label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input type="text" name="data[0][value]" class="tagify-input form-control"
-                                                   placeholder="Nhập giá trị của biến thể">
+                                            <input type="text" name="data[0][value]" class="tagify-input form-control" placeholder="Nhập giá trị của biến thể">
                                             <!--end::Input-->
-                                            <div
-                                                class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                            <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
                                         </div>
                                         <div class="mb-10 fv-row fv-plugins-icon-container col-3 mt-8">
                                             <button type="button" data-repeater-delete class="btn btn-flex btn-sm btn-light-danger mt-1">
@@ -363,33 +354,33 @@
 
                     formContent += `
 
-                                <div class="col-3">
-                                      <label class=" form-label">Giá vốn</label>
-                                      <input type="text" id="generated_${index}_price" class="is_valid_input tagify-input form-control" name="generated[${index}][price]" placeholder="Nhập giá" >
-                                      <p class="is_valid"></p>
-                                </div>
-                                <div class="col-3">
-                                      <label class=" form-label">Giá bán</label>
-                                      <input type="text" id="generated_${index}_sale_price" class="is_valid_input tagify-input form-control" name="generated[${index}][sale_price]" placeholder="Nhập giá" >
-                                      <p class="is_valid"></p>
-                                </div>
-                                <div class="col-3">
-                                    <label class=" form-label">Tồn kho</label>
-                                    <input type="text" id="generated_${index}_stock" class="is_valid_input tagify-input form-control" name="generated[${index}][stock]" placeholder="Nhập tồn kho" >
-                                    <p class="is_valid"></p>
+                                    <div class="col-3">
+                                          <label class=" form-label">Giá vốn</label>
+                                          <input type="text" id="generated_${index}_price" class="is_valid_input tagify-input form-control" name="generated[${index}][price]" placeholder="Nhập giá" >
+                                          <p class="is_valid"></p>
                                     </div>
-                                <div class="col-2">
-                                    <button type="button" data-repeater-delete class="btn btn-flex btn-sm btn-light-danger mt-8"><i class="ki-duotone ki-trash fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>Xóa</button>
-                                </div>
-                                `;
+                                    <div class="col-3">
+                                          <label class=" form-label">Giá bán</label>
+                                          <input type="text" id="generated_${index}_sale_price" class="is_valid_input tagify-input form-control" name="generated[${index}][sale_price]" placeholder="Nhập giá" >
+                                          <p class="is_valid"></p>
+                                    </div>
+                                    <div class="col-3">
+                                        <label class=" form-label">Tồn kho</label>
+                                        <input type="text" id="generated_${index}_stock" class="is_valid_input tagify-input form-control" name="generated[${index}][stock]" placeholder="Nhập tồn kho" >
+                                        <p class="is_valid"></p>
+                                        </div>
+                                    <div class="col-2">
+                                        <button type="button" data-repeater-delete class="btn btn-flex btn-sm btn-light-danger mt-8"><i class="ki-duotone ki-trash fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>Xóa</button>
+                                    </div>
+                                    `;
 
                     // Add to HTML to show result
                     form.html(`
-                        <div  class=" result-item d-flex gap-3 align-items-center mb-8">
-                            <div class="col-2"><p class="fs-5 m-0 mt-2">${Object.entries(combination).map(([key, value]) => `${value}`).join(' - ')}</p></div>
-                            ${formContent}
-                        </div>
-                    `);
+                            <div  class=" result-item d-flex gap-3 align-items-center mb-8">
+                                <div class="col-2"><p class="fs-5 m-0 mt-2">${Object.entries(combination).map(([key, value]) => `${value}`).join(' - ')}</p></div>
+                                ${formContent}
+                            </div>
+                        `);
 
                     generatedForms.append(form);
                 });

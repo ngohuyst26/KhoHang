@@ -16,7 +16,7 @@ interface ProductRepositoryInterface extends BaseRepositoryInterface{
 
     public function addProductApi($request);
 
-    public function createSku($productId, $price, $sale_price, $inventory, $barcode = NULL);
+    public function createSku($productId, $price, $sale_price, $inventory, $barcode = NULL, $code);
 
     public function createPhoto($request, $skuId);
 
@@ -24,5 +24,12 @@ interface ProductRepositoryInterface extends BaseRepositoryInterface{
 
     public function createSkuValue($productId, $skuId, $optionValue);
 
+    public function getOneSku($product_id, $sku_id);
+
+    public function updateProductSku($request, $id, $skuId);
+
+    public function deleteProduct($id);
+
+    public function restoreProduct($id);
 
 }

@@ -26,12 +26,13 @@ class UpdateProductsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:255',
-            'price' => 'required|numeric',
-            'sale_price' => 'required|numeric',
-            'inventory' => 'required|numeric',
+            'name'        => 'required|max:255',
+            'price'       => 'required|numeric',
+            'sale_price'  => 'required|numeric',
+            'inventory'   => 'required|numeric',
             'category_id' => 'exists:App\Models\Category,id',
-            'supplier_id' => 'exists:App\Models\Supplier,id'
+            'supplier_id' => 'exists:App\Models\Supplier,id',
+            'code'        => 'nullable|string|max:255|unique:product_sku,code,' . $this->route('skuId')
         ];
     }
 
@@ -39,8 +40,9 @@ class UpdateProductsRequest extends FormRequest
     {
         return [
             'required' => 'Dữ liệu không được trống!',
-            'max' => 'Dữ liệu phải nhỏ hơn 255 ký tự',
-            'numeric' => 'Dữ liệu phải là số'
+            'max'      => 'Dữ liệu phải nhỏ hơn 255 ký tự',
+            'numeric'  => 'Dữ liệu phải là số',
+            'unique'   => 'Mã sản phẩm đã tồn tại'
         ];
     }
 
@@ -50,10 +52,12 @@ class UpdateProductsRequest extends FormRequest
 
         throw new HttpResponseException(response()->json(
             [
-                'errors' => [
+                'errors'      => [
                     'other' => $errors,
                 ],
                 'status_code' => 422,
-            ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY));
+            ],
+            JsonResponse::HTTP_UNPROCESSABLE_ENTITY
+        ));
     }
 }

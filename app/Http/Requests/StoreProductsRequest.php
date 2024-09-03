@@ -29,28 +29,28 @@ class StoreProductsRequest extends FormRequest
             'name'                  => 'required|max:255',
             'price'                 => 'nullable|numeric',
             'sale_price'            => 'nullable|numeric',
-            'inventory'             => 'nullable|numeric',
+            'stock'                 => 'nullable|numeric',
             'variants.*.price'      => 'sometimes|required|numeric',
             'variants.*.sale_price' => 'sometimes|required|numeric',
             'variants.*.stock'      => 'sometimes|required|numeric',
             'category_id'           => 'exists:App\Models\Category,id',
-            'supplier_id'           => 'exists:App\Models\Supplier,id'
+            'supplier_id'           => 'exists:App\Models\Supplier,id',
+            'code'                  => 'nullable|string|max:255'
         ];
     }
 
     public function withValidator(Validator $validator)
     {
-        $validator->sometimes(['price', 'sale_price', 'inventory'], 'required', function ($input) {
+        $validator->sometimes(['price', 'sale_price', 'stock'], 'required', function ($input){
             return !isset($input->variants);
         });
     }
 
-    public function messages()
-    {
+    public function messages(){
         return [
             'required' => 'Dữ liệu không được trống!',
-            'max' => 'Dữ liệu phải nhỏ hơn 255 ký tự',
-            'numeric' => 'Dữ liệu phải là số'
+            'max'      => 'Dữ liệu phải nhỏ hơn 255 ký tự',
+            'numeric'  => 'Dữ liệu phải là số'
         ];
     }
 
@@ -71,24 +71,26 @@ class StoreProductsRequest extends FormRequest
             $stockErrors[$changeKey] = $messages;
         }
         $priceErrors = [];
-        foreach ($price as $key => $messages) {
-            $changeKey = str_replace('.', '_', $key);
+        foreach ($price as $key => $messages){
+            $changeKey               = str_replace('.', '_', $key);
             $priceErrors[$changeKey] = $messages;
         }
         $salePriceErrors = [];
-        foreach ($salePrice as $key => $messages) {
-            $changeKey = str_replace('.', '_', $key);
+        foreach ($salePrice as $key => $messages){
+            $changeKey                   = str_replace('.', '_', $key);
             $salePriceErrors[$changeKey] = $messages;
         }
         throw new HttpResponseException(response()->json(
             [
-                'errors' => [
-                    'price' => $priceErrors,
+                'errors'      => [
+                    'price'      => $priceErrors,
                     'sale_price' => $salePriceErrors,
-                    'stock' => $stockErrors,
-                    'other' => $otherErrors,
+                    'stock'      => $stockErrors,
+                    'other'      => $otherErrors,
                 ],
                 'status_code' => 422,
-            ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY));
+            ],
+            JsonResponse::HTTP_UNPROCESSABLE_ENTITY
+        ));
     }
 }

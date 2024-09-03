@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\CheckStock;
@@ -10,12 +10,8 @@ use App\Repositories\CheckStock\CheckStockRepositoryInterface;
 use App\Repositories\Product\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 
-
 class CheckStockController extends Controller{
 
-    /**
-     * Display a listing of the resource.
-     */
     protected $productRepository;
     protected $checkStockRepository;
 
@@ -26,29 +22,19 @@ class CheckStockController extends Controller{
         $this->checkStockRepository = $stockRepository;
     }
 
-    public function index(){
-        $checkstock = CheckStock::with(['detailStock.productSku.product', 'detailStock.productSku.optionValue.option'])
-                                ->orderBy('id', 'DESC')
-                                ->get();
-
-        return view('pages.admin.checkstock.list', [
-            'stocks' => $checkstock,
-        ]);
-    }
-
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      */
-    public function create(){
-
-        return view('pages.admin.checkstock.add');
+    public function index(){
+        return CheckStock::with(['detailStock.productSku.product', 'detailStock.productSku.optionValue.option'])
+                         ->orderBy('id', 'DESC')
+                         ->paginate(5);
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request){
-        dd($request);
         if ($request->has('cart')){
             $checkStock       = $this->checkStockRepository->create([]);
             $ac_number        = 0;
@@ -57,7 +43,8 @@ class CheckStockController extends Controller{
             $qty_increased    = 0;
             $qty_decreased    = 0;
             foreach ($request->cart as $cart){
-                $sku = ProductSku::find($cart['skuId']);
+                $sku = ProductSku::find($cart['sku_id']);
+
                 DetailCheckStock::create([
                     'check_stock_id'   => $checkStock->id,
                     'product_sku_id'   => $sku->id,
@@ -71,6 +58,12 @@ class CheckStockController extends Controller{
                 $total_difference += $cart['quantity'] - $sku->inventory;
                 $qty_increased    += ($sku->inventory < $cart['quantity'] ? $cart['quantity'] - $sku->inventory : 0);
                 $qty_decreased    += ($sku->inventory > $cart['quantity'] ? $cart['quantity'] - $sku->inventory : 0);
+
+                if ($request->status == 2){
+                    $sku->update([
+                        'inventory' => $cart['quantity']
+                    ]);
+                }
             }
             $this->checkStockRepository->update($checkStock->id, [
                 'ac_number'        => $ac_number,
@@ -79,28 +72,39 @@ class CheckStockController extends Controller{
                 'qty_increased'    => $qty_increased,
                 'qty_decreased'    => $qty_decreased,
             ]);
+
+            return response()->json([
+                "data" => [
+                    'status'  => 201,
+                    'message' => 'Thêm kiểm kho thành công'
+                ]
+            ], 201);
         }
+
+        return response()->json([
+            "data" => [
+                'status'  => 400,
+                'message' => 'Thêm kiểm kho thất bại đã có lỗi xảy ra!'
+            ]
+        ], 400);
     }
 
     /**
      * Display the specified resource.
      */
     public function show(string $id){
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id){
-        //
+        return $this->checkStockRepository->getOneCheckStock($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id){
-        //
+        return $this->checkStockRepository->updateCheckStock($request, $id);
+    }
+
+    public function cancel($id){
+
     }
 
     /**

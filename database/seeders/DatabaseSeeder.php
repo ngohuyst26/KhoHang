@@ -13,14 +13,29 @@ class DatabaseSeeder extends Seeder{
      */
     public function run()
     : void{
-        // User::factory(10)->create();
+        //        User::factory(10)->create();
 
         //        User::factory()->create([
-        //            'name' => 'Ngô Huy',
-        //            'email' => 'ngohuyst77@gmail.com',
+        //            'name'     => 'Admin',
+        //            'email'    => 'admin@gmail.com',
         //            'password' => bcrypt('123'),
         //        ]);
-
+        //        Category::factory(5)->create([
+        //            'name'        => fake()->name,
+        //            'description' => 'hong có'
+        //        ]);
+        //        Supplier::factory([
+        //            'name'  => fake()->company,
+        //            'email' => fake()->companyEmail,
+        //        ]);
+        //        StorageLocation::factory([
+        //            [
+        //                'name' => 'Kệ a'
+        //            ],
+        //            [
+        //                'name' => 'Kệ b'
+        //            ]
+        //        ]);
         $this->call([
             CustomerSeeder::class
         ]);

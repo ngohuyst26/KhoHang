@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CheckStockController;
+use App\Http\Controllers\API\Admin\CategoryController;
 use App\Http\Controllers\API\Admin\CustomerController;
 use App\Http\Controllers\API\Admin\OrderController;
 use App\Http\Controllers\API\Admin\SupplierController;
@@ -22,3 +23,4 @@ Route::put('checkstock/update/{checkstock}', [CheckStockController::class, 'upda
 Route::resource('customers',CustomerController::class);
 Route::resource('suppliers',SupplierController::class);
 Route::resource('orders',OrderController::class);
+Route::resource('categories',CategoryController::class);

@@ -4,7 +4,10 @@ namespace App\Http\Controllers\API\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Customer\CustomerRepositoryInterface;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use PHPUnit\Exception;
 
 class CustomerController extends Controller
 {
@@ -21,15 +24,11 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = $this->customerRepository->all();
-        return response()->json($customers);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-
+        return response()->json([
+            'status'  => true,
+            'message' => "Danh sách khách hàng",
+            'data'    => $customers
+        ],200);
     }
 
     /**
@@ -37,8 +36,21 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $customers = $this->customerRepository->create($request->all());
-        return response()->json($customers);
+        try {
+            $customers = $this->customerRepository->create($request->all());
+            return response()->json([
+                'status'  => true,
+                'message' => "Thêm thành công",
+                'data'    => $customers
+            ],201);
+        }
+        catch (ValidationException $e){
+            return response()->json([
+                'status'  => false,
+                'message' => "Lỗi",
+                'data'    => $e->validator->errors()
+            ], 422);
+        }
     }
 
     /**
@@ -46,8 +58,22 @@ class CustomerController extends Controller
      */
     public function show(string $id)
     {
-        $customer = $this->customerRepository->find($id);
-        return response()->json($customer);
+        try {
+            $customer = $this->customerRepository->find($id);
+            return response()->json([
+                'status'  => true,
+                'message' => "Chi tiết khách hàng",
+                'data'    => $customer
+            ],200);
+        }
+        catch(ModelNotFoundException  $exception){
+            return response()->json([
+                'status'  => false,
+                'message' => "Chi tiết khách hàng",
+                'data'    => "Không tìm thấy khách hàng"
+            ],201);
+        }
+
     }
 
     /**
@@ -63,8 +89,21 @@ class CustomerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $customer = $this->customerRepository->update($id, $request->all());
-        return response()->json($customer);
+        try {
+            $customer = $this->customerRepository->update($id, $request->all());
+            return response()->json([
+                'status'  => true,
+                'message' => "Đã cập nhật thông tin khách hàng",
+                'data'    => $customer
+            ],200);
+        }
+        catch (ValidationException $e){
+            return response()->json([
+                'status'  => false,
+                'message' => "Cập nhật thất bại",
+                'data'    => $e->validator->errors()
+            ],422);
+        }
     }
 
     /**
@@ -72,7 +111,20 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        $customer = $this->customerRepository->delete($id);
-        return response()->json($customer);
+        try {
+            $customer = $this->customerRepository->delete($id);
+            return response()->json([
+                'status'  => true,
+                'message' => "Đã xóa thông tin khách hàng",
+                'data'    => []
+            ],200);
+        }
+        catch (ModelNotFoundException $e){
+            return response()->json([
+                'status'  => false,
+                'message' => "Xóa thất bại",
+                'data'    => []
+            ],201);
+        }
     }
 }

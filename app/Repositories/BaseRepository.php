@@ -5,6 +5,8 @@ namespace App\Repositories;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class BaseRepository implements BaseRepositoryInterface
 {
@@ -49,7 +51,7 @@ class BaseRepository implements BaseRepositoryInterface
      *
      * @return Model
      */
-    public function create(array $data): Model
+    public function create(array $data)
     {
         return $this->model->create($data);
     }
@@ -97,5 +99,14 @@ class BaseRepository implements BaseRepositoryInterface
         $modelInstance->delete();
 
         return $modelInstance;
+    }
+
+    protected function validate(array $data, array $rules, array $message)
+    {
+        $validator = Validator::make($data, $rules, $message);
+
+        if ($validator->fails()) {
+            throw new ValidationException($validator);
+        }
     }
 }

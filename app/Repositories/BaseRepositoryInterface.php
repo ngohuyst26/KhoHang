@@ -10,11 +10,11 @@ interface BaseRepositoryInterface
 
     public function latest($perPage = 0);
 
-    public function create(array $data): Model;
+    public function create(array $data);
 
     public function update(int $id, array $data);
 
-    public function delete(int $id): bool|Model;
+    public function delete(int $id);
 
-    public function find(int $id): ?Model;
+    public function find(int $id);
 }

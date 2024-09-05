@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Admin\BrandController;
 use App\Http\Controllers\Api\CheckStockController;
 use App\Http\Controllers\API\Admin\CategoryController;
 use App\Http\Controllers\API\Admin\CustomerController;
@@ -20,7 +21,9 @@ Route::get('checkstock', [CheckStockController::class, 'index']);
 Route::get('checkstock/{checkstock}', [CheckStockController::class, 'show']);
 Route::post('checkstock/create', [CheckStockController::class, 'store']);
 Route::put('checkstock/update/{checkstock}', [CheckStockController::class, 'update']);
+
 Route::resource('customers',CustomerController::class);
 Route::resource('suppliers',SupplierController::class);
 Route::resource('orders',OrderController::class);
 Route::resource('categories',CategoryController::class);
+Route::resource('brands',BrandController::class);

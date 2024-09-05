@@ -27,3 +27,4 @@ Route::resource('suppliers',SupplierController::class);
 Route::resource('orders',OrderController::class);
 Route::resource('categories',CategoryController::class);
 Route::resource('brands',BrandController::class);
+Route::resource('job-titles',BrandController::class);

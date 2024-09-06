@@ -20,6 +20,8 @@ use App\Repositories\Order\OrderRepository;
 use App\Repositories\Order\OrderRepositoryInterface;
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\Product\ProductRepositoryInterface;
+use App\Repositories\Staff\StaffRepository;
+use App\Repositories\Staff\StaffRepositoryInterface;
 use App\Repositories\Supplier\SupplierRepository;
 use App\Repositories\Supplier\SupplierRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
@@ -38,5 +40,6 @@ class RepositoryServiceProvider extends ServiceProvider{
         $this->app->bind(BrandRepositoryInterface::class, BrandRepository::class);
         $this->app->bind(JobTitleRepositoryInterface::class, JobTitleRepository::class);
         $this->app->bind(DepartmentRepositoryInterface::class, DepartmentRepository::class);
+        $this->app->bind(StaffRepositoryInterface::class, StaffRepository::class);
     }
 }

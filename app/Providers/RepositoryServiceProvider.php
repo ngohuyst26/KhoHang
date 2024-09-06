@@ -10,6 +10,8 @@ use App\Repositories\CheckStock\CheckStockRepository;
 use App\Repositories\CheckStock\CheckStockRepositoryInterface;
 use App\Repositories\Customer\CustomerRepository;
 use App\Repositories\Customer\CustomerRepositoryInterface;
+use App\Repositories\Department\DepartmentRepository;
+use App\Repositories\Department\DepartmentRepositoryInterface;
 use App\Repositories\JobTitle\JobTitleRepository;
 use App\Repositories\JobTitle\JobTitleRepositoryInterface;
 use App\Repositories\Option\OptionRepository;
@@ -35,5 +37,6 @@ class RepositoryServiceProvider extends ServiceProvider{
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
         $this->app->bind(BrandRepositoryInterface::class, BrandRepository::class);
         $this->app->bind(JobTitleRepositoryInterface::class, JobTitleRepository::class);
+        $this->app->bind(DepartmentRepositoryInterface::class, DepartmentRepository::class);
     }
 }

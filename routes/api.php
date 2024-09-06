@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\Admin\BrandController;
+use App\Http\Controllers\API\Admin\DepartmentController;
 use App\Http\Controllers\Api\CheckStockController;
 use App\Http\Controllers\API\Admin\CategoryController;
 use App\Http\Controllers\API\Admin\CustomerController;
@@ -28,3 +29,4 @@ Route::resource('orders',OrderController::class);
 Route::resource('categories',CategoryController::class);
 Route::resource('brands',BrandController::class);
 Route::resource('job-titles',BrandController::class);
+Route::resource('departments',DepartmentController::class);

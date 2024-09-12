@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Product;
 
+use App\Models\CheckStock;
 use App\Models\DetailCheckStock;
 use App\Models\OptionValue;
 use App\Models\Photo;
@@ -25,13 +26,13 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
     public function getAll(int $page){
         return Product::with(['productSku.photo', 'productSku.optionValue.option', 'productSku.storageLocation'])
-                      ->where('status', '=', 1)
-                      ->orderBy('id', 'DESC')
-                      ->paginate($page);
+            ->where('status', '=', 1)
+            ->orderBy('id', 'DESC')
+            ->paginate($page);
     }
 
     public function getTrash(int $page){
-        return Product::with(['productSku.photo', 'productSku.optionValue.option'])
+        return Product::with(['productSku.photo', 'productSku.optionValue.option', 'productSku.storageLocation'])
                       ->where('status', '=', 2)
                       ->orderBy('id', 'DESC')
                       ->paginate($page);
@@ -127,12 +128,13 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     public function addProductApi($request){
-        $data       = $request->all();
-        $product    = $this->createProduct($request);
+        $data    = $request->all();
+        $product = $this->createProduct($request);
         $checkStock = $this->checkStockRepository->create([
+            'code'        => CheckStock::generateNextCode(),
             'description' => 'Được tạo tự động khi thêm sản phẩm'
         ]);
-        $sku_id     = [];
+        $sku_id  = [];
         if (!isset($data['variants'])){
             if (empty($request->code)){
                 $request->merge(['code' => ProductSku::generateNextCode()]);
@@ -282,9 +284,9 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
     public function getOptionValue($productId, $optionId, $value){
         return OptionValue::where('product_id', $productId)
-                          ->where('option_id', $optionId)
-                          ->where('name', $value)
-                          ->value('id');
+            ->where('option_id', $optionId)
+            ->where('name', $value)
+            ->value('id');
     }
 
     public function createSkuValue($productId, $skuId, $optionValue){
@@ -302,7 +304,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         return Product::with([
             'productSku' => function ($query) use ($sku_id){
                 $query->where('id', $sku_id)
-                      ->with('optionValue.option', 'photo', 'storageLocation');
+                    ->with('optionValue.option', 'photo', 'storageLocation');
             }
         ])->find($product_id);
     }

@@ -55,7 +55,7 @@ class JobTitleController extends Controller
                 'status'  => false,
                 'message' => "Lỗi",
                 'data'    => $e->validator->errors()
-            ], 422);
+            ], 400);
         }
     }
 
@@ -77,7 +77,7 @@ class JobTitleController extends Controller
                 'status'  => false,
                 'message' => "Chi tiết chức danh",
                 'data'    => "Không tìm thấy chức danh"
-            ],201);
+            ],404);
         }
     }
 
@@ -107,7 +107,7 @@ class JobTitleController extends Controller
                 'status'  => false,
                 'message' => "Cập nhật thất bại",
                 'data'    => $e->validator->errors()
-            ],422);
+            ],400);
         }
     }
 
@@ -129,7 +129,7 @@ class JobTitleController extends Controller
                 'status'  => false,
                 'message' => "Xóa thất bại",
                 'data'    => []
-            ],201);
+            ],404);
         }
     }
 }

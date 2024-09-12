@@ -48,7 +48,7 @@ class CustomerController extends Controller
                 'status'  => false,
                 'message' => "Lỗi",
                 'data'    => $e->validator->errors()
-            ], 422);
+            ], 400);
         }
     }
 
@@ -70,7 +70,7 @@ class CustomerController extends Controller
                 'status'  => false,
                 'message' => "Chi tiết khách hàng",
                 'data'    => "Không tìm thấy khách hàng"
-            ],201);
+            ],404);
         }
 
     }
@@ -101,7 +101,7 @@ class CustomerController extends Controller
                 'status'  => false,
                 'message' => "Cập nhật thất bại",
                 'data'    => $e->validator->errors()
-            ],422);
+            ],400);
         }
     }
 
@@ -123,7 +123,7 @@ class CustomerController extends Controller
                 'status'  => false,
                 'message' => "Xóa thất bại",
                 'data'    => []
-            ],201);
+            ],404);
         }
     }
 }

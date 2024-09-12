@@ -48,7 +48,7 @@ class StaffController extends Controller
                 'status'  => false,
                 'message' => "Thêm thất bại",
                 'data'    => $e->validator->errors()
-            ], 201);
+            ], 400);
         }
     }
 
@@ -70,7 +70,7 @@ class StaffController extends Controller
                 'status'  => false,
                 'message' => "Không tồn tại nhân viên",
                 'data'    => []
-            ], 201);
+            ], 404);
         }
     }
 
@@ -100,7 +100,7 @@ class StaffController extends Controller
                 'status'  => false,
                 'message' => "Cập nhật thất bại",
                 'data'    => $e->validator->errors()
-            ],422);
+            ],400);
         }
     }
 
@@ -122,7 +122,7 @@ class StaffController extends Controller
                 'status'  => false,
                 'message' => "Xóa thất bại",
                 'data'    => []
-            ],201);
+            ],404);
         }
     }
 }

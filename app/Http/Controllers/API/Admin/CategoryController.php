@@ -114,8 +114,8 @@ class CategoryController extends Controller
         catch(ModelNotFoundException  $exception){
             return response()->json([
                 'status'  => false,
-                'message' => "Chi tiết loại hàng",
-                'data'    => "Không tìm thấy loại hàng"
+                'message' => "Không tìm thấy loại hàng",
+                'data'    => []
             ],404);
         }
 

@@ -114,8 +114,8 @@ class DepartmentController extends Controller
         catch(ModelNotFoundException  $exception){
             return response()->json([
                 'status'  => false,
-                'message' => "Chi tiết phòng ban",
-                'data'    => "Không tìm thấy phòng ban"
+                'message' =>  "Không tìm thấy phòng ban",
+                'data'    => []
             ],404);
         }
     }

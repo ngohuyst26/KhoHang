@@ -115,8 +115,8 @@ class BrandController extends Controller
         catch(ModelNotFoundException  $exception){
             return response()->json([
                 'status'  => false,
-                'message' => "Chi tiết thương hiệu",
-                'data'    => "Không tìm thấy thương hiệu"
+                'message' => "Không tìm thấy thương hiệu",
+                'data'    => []
             ],404);
         }
     }

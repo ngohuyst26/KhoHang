@@ -114,8 +114,8 @@ class JobTitleController extends Controller
         catch(ModelNotFoundException  $exception){
             return response()->json([
                 'status'  => false,
-                'message' => "Chi tiết chức danh",
-                'data'    => "Không tìm thấy chức danh"
+                'message' => "Không tìm thấy chức danh",
+                'data'    => []
             ],404);
         }
     }

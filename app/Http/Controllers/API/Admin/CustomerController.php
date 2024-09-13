@@ -108,8 +108,8 @@ class CustomerController extends Controller
         catch(ModelNotFoundException  $exception){
             return response()->json([
                 'status'  => false,
-                'message' => "Chi tiết khách hàng",
-                'data'    => "Không tìm thấy khách hàng"
+                'message' => "Không tìm thấy khách hàng",
+                'data'    => []
             ],404);
         }
 

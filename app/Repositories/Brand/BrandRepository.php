@@ -47,7 +47,7 @@ class BrandRepository extends BaseRepository implements BrandRepositoryInterface
     public function update(int $id, array $data): bool|Model
     {
         $this->validate($data, $this->rules, $this->messages);
-        return $this->model->find($id)->update($data);
+        return $this->model->findOrFail($id)->update($data);
     }
 
     public function find(int $id): ?Model

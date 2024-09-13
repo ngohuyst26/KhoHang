@@ -17,7 +17,7 @@ class JobTitleRepository extends BaseRepository implements JobTitleRepositoryInt
 
     protected $messages = [
         'required' => 'Dữ liệu không được trống!',
-        'max' => 'Dữ liệu tối đa 255 kí tự'
+        'max' => 'Dữ liệu tối đa :max kí tự'
     ];
 
     public function __construct(JobTitle $model){

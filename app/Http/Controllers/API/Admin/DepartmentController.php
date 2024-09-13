@@ -95,19 +95,28 @@ class DepartmentController extends Controller
     public function update(Request $request, string $id)
     {
         try {
-            $department = $this->departmentRepository->update($id, $request->all());
-            return response()->json([
-                'status'  => true,
-                'message' => "Cập nhật thành công",
-                'data'    => $department
-            ],200);
+            try {
+                $department = $this->departmentRepository->update($id, $request->all());
+                return response()->json([
+                    'status'  => true,
+                    'message' => "Cập nhật thành công",
+                    'data'    => $department
+                ],200);
+            }
+            catch (ValidationException $e){
+                return response()->json([
+                    'status'  => false,
+                    'message' => "Cập nhật thất bại",
+                    'data'    => $e->validator->errors()
+                ],400);
+            }
         }
-        catch (ValidationException $e){
+        catch(ModelNotFoundException  $exception){
             return response()->json([
                 'status'  => false,
-                'message' => "Cập nhật thất bại",
-                'data'    => $e->validator->errors()
-            ],400);
+                'message' => "Chi tiết phòng ban",
+                'data'    => "Không tìm thấy phòng ban"
+            ],404);
         }
     }
 

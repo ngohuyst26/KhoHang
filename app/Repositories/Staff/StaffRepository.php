@@ -16,7 +16,7 @@ class StaffRepository extends BaseRepository implements StaffRepositoryInterface
 
     protected $messages = [
         'required' => 'Dữ liệu không được trống!',
-        'max' => 'Dữ liệu'
+        'max' => 'Dữ liệu tối đa :max kí tự'
     ];
 
     public function __construct(Staff $model)

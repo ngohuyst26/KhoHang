@@ -16,7 +16,7 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
 
     protected $messages = [
         'required' => 'Dữ liệu không được trống!',
-        'max' => 'Dữ liệu'
+        'max' => 'Dữ liệu tối đa :max kí tự'
     ];
 
     public function __construct(Customer $model)
@@ -47,7 +47,7 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
     public function update(int $id, array $data): bool|Model
     {
         $this->validate($data, $this->rules, $this->messages);
-        return $this->model->find($id)->update($data);
+        return $this->model->findOrFail($id)->update($data);
     }
 
     public function find(int $id): ?Model

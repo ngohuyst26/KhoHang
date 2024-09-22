@@ -29,6 +29,15 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
         return $this->model->all();
     }
 
+    public function filter($keyword = '',$limit = 10, $status = '1')
+    {
+        return  $this->model->orderBy('id', 'DESC')
+                            ->where('name','like','%'.$keyword.'%')
+                            ->where('status',$status)->paginate($limit);
+    }
+
+
+
     public function latest($perPage = 0): Model
     {
         return $this->model->orderBy('id', 'DESC')

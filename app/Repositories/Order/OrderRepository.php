@@ -17,4 +17,25 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
     {
         return $this->model->all();
     }
+
+    public function filter($keyword = '',$limit = 10, $status = '1')
+    {
+        $brands = $this->model->orderBy('id', 'DESC');
+
+        if(!empty($keyword)){
+            $brands = $brands->where('name','like','%'.$keyword.'%');
+        }
+
+        if(!empty($status)){
+            $brands = $brands->where('status',$status);
+        }
+
+        if(!empty($limit)){
+            $brands = $brands->paginate($limit);
+        }else{
+            $brands = $brands->paginate(10);
+        }
+
+        return $brands;
+    }
 }

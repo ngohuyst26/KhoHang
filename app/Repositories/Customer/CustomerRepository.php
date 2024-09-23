@@ -29,11 +29,25 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
         return $this->model->all();
     }
 
-    public function filter($keyword = '',$limit = 10, $status = '1')
+    public function filter($keyword, $limit, $status)
     {
-        return  $this->model->orderBy('id', 'DESC')
-                            ->where('name','like','%'.$keyword.'%')
-                            ->where('status',$status)->paginate($limit);
+        $customers = $this->model->orderBy('id', 'DESC');
+
+        if(!empty($keyword)){
+            $customers = $customers->where('name','like','%'.$keyword.'%');
+        }
+
+        if(!empty($status)){
+            $customers = $customers->where('status',$status);
+        }
+
+        if(!empty($limit)){
+            $customers = $customers->paginate($limit);
+        }else{
+            $customers = $customers->paginate(10);
+        }
+
+        return $customers;
     }
 
 
@@ -66,11 +80,11 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
 
     public function delete(int $id): bool|Model
     {
-        $customer = $this->model->find($id);
-        if (!$customer) {
+        $customers = $this->model->find($id);
+        if (!$customers) {
             return throw new ModelNotFoundException('Record not found!');
         }
-        return  $customer->delete();
+        return  $customers->delete();
     }
 
 }

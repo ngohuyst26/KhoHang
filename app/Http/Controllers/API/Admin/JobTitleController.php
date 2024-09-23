@@ -19,9 +19,9 @@ class JobTitleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $job_titles = $this->jobTitleRepository->all();
+        $job_titles = $this->jobTitleRepository->filter( $request->keyword, $request->limit,$request->status);
         return response()->json([
             'status'  => true,
             'message' => "Danh sách chức danh",

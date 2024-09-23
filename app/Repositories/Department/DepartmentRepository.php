@@ -29,6 +29,27 @@ class DepartmentRepository extends BaseRepository implements DepartmentRepositor
         return $this->model->all();
     }
 
+    public function filter($keyword = '',$limit = 10, $status = '1')
+    {
+        $brands = $this->model->orderBy('id', 'DESC');
+
+        if(!empty($keyword)){
+            $brands = $brands->where('name','like','%'.$keyword.'%');
+        }
+
+        if(!empty($status)){
+            $brands = $brands->where('status',$status);
+        }
+
+        if(!empty($limit)){
+            $brands = $brands->paginate($limit);
+        }else{
+            $brands = $brands->paginate(10);
+        }
+
+        return $brands;
+    }
+
     public function latest($perPage = 0): Model
     {
         return $this->model->orderBy('id', 'DESC')

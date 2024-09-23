@@ -19,9 +19,9 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = $this->categoryRepository->all();
+        $categories = $this->categoryRepository->filter( $request->keyword, $request->limit,$request->status);
         return response()->json([
             'status'  => true,
             'message' => "Danh sách loại hàng",

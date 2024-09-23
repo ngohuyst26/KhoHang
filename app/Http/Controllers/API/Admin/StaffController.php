@@ -19,9 +19,9 @@ class StaffController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $staffs = $this->staffRepository->all();
+        $staffs = $this->staffRepository->filter( $request->keyword, $request->limit,$request->status);
 
         return response()->json([
             'status'  => true,

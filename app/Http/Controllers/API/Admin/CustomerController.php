@@ -22,7 +22,7 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-        $customers = $this->customerRepository->filter( $request->keyword, $request->limit,$request->status);
+        $customers = $this->customerRepository->filter($request->keyword, $request->limit,$request->status);
         return response()->json([
             'status'  => true,
             'message' => "Danh sách khách hàng",

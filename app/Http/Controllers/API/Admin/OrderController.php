@@ -16,9 +16,9 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = $this->orderRepository->all();
+        $orders = $this->orderRepository->filter( $request->keyword, $request->limit,$request->status);
         return response()->json([
             'status'  => true,
             'message' => 'Danh sách đơn hàng',

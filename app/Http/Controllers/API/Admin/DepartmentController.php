@@ -19,9 +19,9 @@ class DepartmentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $departments = $this->departmentRepository->all();
+        $departments = $this->departmentRepository->filter( $request->keyword, $request->limit,$request->status);
         return response()->json([
             'status'  => true,
             'message' => "Danh sách phòng ban",

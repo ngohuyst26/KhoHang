@@ -6,7 +6,7 @@ use App\Repositories\BaseRepositoryInterface;
 
 interface ProductRepositoryInterface extends BaseRepositoryInterface{
 
-    public function getAll(int $page);
+    public function getAll($request);
 
     public function getTrash(int $page);
 

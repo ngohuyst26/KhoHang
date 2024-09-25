@@ -24,8 +24,10 @@ class ProductController extends Controller{
     /**
      * Display a listing of the resource.
      */
-    public function index(){
-        return $this->productRepository->getAll(5);
+    public function index(Request $request){
+        //        dd($request->input());
+
+        return $this->productRepository->getAll($request);
     }
 
     /**

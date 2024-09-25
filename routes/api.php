@@ -8,7 +8,6 @@ use App\Http\Controllers\API\Admin\OrderController;
 use App\Http\Controllers\API\Admin\StaffController;
 use App\Http\Controllers\API\Admin\SupplierController;
 use App\Http\Controllers\Api\CheckStockController;
-use App\Http\Controllers\Api\CheckStockController;
 use App\Http\Controllers\Api\ProductController;
 use Illuminate\Support\Facades\Route;
 

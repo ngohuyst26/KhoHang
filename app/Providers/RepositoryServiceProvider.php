@@ -12,6 +12,8 @@ use App\Repositories\Customer\CustomerRepository;
 use App\Repositories\Customer\CustomerRepositoryInterface;
 use App\Repositories\Department\DepartmentRepository;
 use App\Repositories\Department\DepartmentRepositoryInterface;
+use App\Repositories\ImportGoods\ImportGoodsRepository;
+use App\Repositories\ImportGoods\ImportGoodsRepositoryInterface;
 use App\Repositories\JobTitle\JobTitleRepository;
 use App\Repositories\JobTitle\JobTitleRepositoryInterface;
 use App\Repositories\Option\OptionRepository;
@@ -30,6 +32,7 @@ class RepositoryServiceProvider extends ServiceProvider{
 
     public function register()
     : void{
+        $this->app->bind(ImportGoodsRepositoryInterface::class, ImportGoodsRepository::class);
         $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
         $this->app->bind(CheckStockRepositoryInterface::class, CheckStockRepository::class);
         $this->app->bind(OptionRepositoryInterface::class, OptionRepository::class);

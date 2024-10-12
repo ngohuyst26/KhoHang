@@ -33,7 +33,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             $orderBy     = ['id', 'name', 'category', 'price', 'sale_price'];
 
 
-            $query = Product::with(['productSku.photo', 'productSku.optionValue.option', 'productSku.storageLocation']);
+            $query = Product::with(['productSku.photo', 'category', 'supplier', 'productSku.optionValue.option', 'productSku.storageLocation']);
 
             if ($request->has('status')){
                 $query->where('status', '=', $request->input('status'));
@@ -371,7 +371,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                 $query->where('id', $sku_id)
                       ->with('optionValue.option', 'photo', 'storageLocation');
             }
-        ])->find($product_id);
+            , 'category', 'supplier'])->find($product_id);
     }
 
     public function updateProductSku($request, $id, $skuId){

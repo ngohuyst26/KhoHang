@@ -9,6 +9,7 @@ use App\Http\Controllers\API\Admin\OrderController;
 use App\Http\Controllers\API\Admin\StaffController;
 use App\Http\Controllers\API\Admin\SupplierController;
 use App\Http\Controllers\Api\CheckStockController;
+use App\Http\Controllers\API\OptionController;
 use App\Http\Controllers\Api\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,7 @@ Route::delete('checkstock/delete/{checkstock}', [CheckStockController::class, 'c
 
 
 Route::resource('import-goods', ImportGoodsController::class);
+Route::resource('option', OptionController::class);
 
 Route::resource('customers', CustomerController::class);
 Route::resource('customers', CustomerController::class);

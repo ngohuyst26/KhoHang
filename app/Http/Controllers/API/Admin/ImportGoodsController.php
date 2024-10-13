@@ -33,8 +33,6 @@ class ImportGoodsController extends Controller{
      * Store a newly created resource in storage.
      */
     public function store(StoreImportGoodsRequest $request){
-        dd($request);
-
         return $this->importGoodsRepository->createImportGoods($request);
     }
 

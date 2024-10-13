@@ -88,6 +88,19 @@ class CheckStockRepository extends BaseRepository implements CheckStockRepositor
             $total_difference = 0;
             $qty_increased    = 0;
             $qty_decreased    = 0;
+
+            $currentProducts = DetailCheckStock::where('check_stock_id', $id)
+                                               ->pluck('product_sku_id')
+                                               ->toArray();
+
+            $newProducts = collect($request->cart)->pluck('sku_id')->toArray();
+
+            $productsToDelete = array_diff($currentProducts, $newProducts);
+
+            DetailCheckStock::where('check_stock_id', $id)
+                            ->whereIn('product_sku_id', $productsToDelete)
+                            ->delete();
+
             foreach ($request->cart as $cart){
                 $sku = ProductSku::find($cart['sku_id']);
                 if (!isset($sku->id)){
@@ -96,6 +109,8 @@ class CheckStockRepository extends BaseRepository implements CheckStockRepositor
                         "message" => "Mã sản phẩm không hợp lệ"
                     ], 400);
                 }
+
+                // Cập nhật hoặc thêm sản phẩm vào bảng DetailCheckStock
                 DetailCheckStock::updateOrCreate(
                     [
                         'check_stock_id' => $id,
@@ -106,19 +121,25 @@ class CheckStockRepository extends BaseRepository implements CheckStockRepositor
                         'ac_number'        => $cart['quantity'],
                         'total_difference' => $cart['quantity'] - $sku->inventory,
                         'value'            => $sku->price * ($cart['quantity'] - $sku->inventory)
-                    ]);
+                    ]
+                );
+
+                // Tính toán các giá trị tổng
                 $ac_number        += $cart['quantity'];
                 $ac_total         += $sku->price * ($cart['quantity'] - $sku->inventory);
                 $total_difference += $cart['quantity'] - $sku->inventory;
                 $qty_increased    += ($sku->inventory < $cart['quantity'] ? $cart['quantity'] - $sku->inventory : 0);
                 $qty_decreased    += ($sku->inventory > $cart['quantity'] ? $cart['quantity'] - $sku->inventory : 0);
 
+                // Nếu trạng thái là 2, cập nhật kho hàng
                 if ($request->status == 2){
                     $sku->update([
                         'inventory' => $cart['quantity']
                     ]);
                 }
             }
+
+            // Cập nhật các giá trị kiểm kho
             $this->update($id, [
                 'ac_number'        => $ac_number,
                 'ac_total'         => $ac_total,
@@ -127,6 +148,7 @@ class CheckStockRepository extends BaseRepository implements CheckStockRepositor
                 'qty_decreased'    => $qty_decreased,
             ]);
 
+            // Trả về thông báo thành công
             return response()->json([
                 "data" => [
                     'status'  => TRUE,
@@ -135,6 +157,7 @@ class CheckStockRepository extends BaseRepository implements CheckStockRepositor
             ], 200);
         }
 
+        // Trả về thông báo lỗi
         return response()->json([
             "data" => [
                 'status'  => 400,
@@ -142,6 +165,7 @@ class CheckStockRepository extends BaseRepository implements CheckStockRepositor
             ]
         ], 400);
     }
+
 
     public function cancelCheckStock($id){
         $checkStock = $this->getOneCheckStock($id);

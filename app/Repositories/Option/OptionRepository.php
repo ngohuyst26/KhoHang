@@ -22,6 +22,5 @@ class OptionRepository extends BaseRepository implements OptionRepositoryInterfa
                 'detail'  => $e
             ], 400);
         }
-
     }
 }

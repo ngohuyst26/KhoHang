@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ImportGoodsRequest;
+use App\Http\Requests\StoreImportGoodsRequest;
 use App\Repositories\ImportGoods\ImportGoodsRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -32,7 +32,9 @@ class ImportGoodsController extends Controller{
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ImportGoodsRequest $request){
+    public function store(StoreImportGoodsRequest $request){
+        dd($request);
+
         return $this->importGoodsRepository->createImportGoods($request);
     }
 

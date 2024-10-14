@@ -110,7 +110,6 @@ class CheckStockRepository extends BaseRepository implements CheckStockRepositor
                     ], 400);
                 }
 
-                // Cập nhật hoặc thêm sản phẩm vào bảng DetailCheckStock
                 DetailCheckStock::updateOrCreate(
                     [
                         'check_stock_id' => $id,
@@ -124,14 +123,12 @@ class CheckStockRepository extends BaseRepository implements CheckStockRepositor
                     ]
                 );
 
-                // Tính toán các giá trị tổng
                 $ac_number        += $cart['quantity'];
                 $ac_total         += $sku->price * ($cart['quantity'] - $sku->inventory);
                 $total_difference += $cart['quantity'] - $sku->inventory;
                 $qty_increased    += ($sku->inventory < $cart['quantity'] ? $cart['quantity'] - $sku->inventory : 0);
                 $qty_decreased    += ($sku->inventory > $cart['quantity'] ? $cart['quantity'] - $sku->inventory : 0);
 
-                // Nếu trạng thái là 2, cập nhật kho hàng
                 if ($request->status == 2){
                     $sku->update([
                         'inventory' => $cart['quantity']
@@ -139,7 +136,6 @@ class CheckStockRepository extends BaseRepository implements CheckStockRepositor
                 }
             }
 
-            // Cập nhật các giá trị kiểm kho
             $this->update($id, [
                 'ac_number'        => $ac_number,
                 'ac_total'         => $ac_total,
@@ -148,7 +144,6 @@ class CheckStockRepository extends BaseRepository implements CheckStockRepositor
                 'qty_decreased'    => $qty_decreased,
             ]);
 
-            // Trả về thông báo thành công
             return response()->json([
                 "data" => [
                     'status'  => TRUE,
@@ -157,7 +152,6 @@ class CheckStockRepository extends BaseRepository implements CheckStockRepositor
             ], 200);
         }
 
-        // Trả về thông báo lỗi
         return response()->json([
             "data" => [
                 'status'  => 400,

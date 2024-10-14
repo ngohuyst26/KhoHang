@@ -12,5 +12,7 @@ interface ImportGoodsRepositoryInterface extends BaseRepositoryInterface{
 
     public function updateImportGoods($request, $id);
 
+    public function cancelImportGoods($id);
+
 }
 

@@ -15,7 +15,8 @@ class ImportGoodsRepository extends BaseRepository implements ImportGoodsReposit
 
     public function getAll(){
         try{
-            return ImportGoods::with(['supplier', 'detailImportGoods.product.product', 'detailImportGoods.product.photo', 'detailImportGoods.product.optionValue.option'])
+            return ImportGoods::where('status', "=", 1)
+                              ->with(['supplier', 'detailImportGoods.product.product', 'detailImportGoods.product.photo', 'detailImportGoods.product.optionValue.option'])
                               ->paginate();
         }catch (Exception $e){
             return response()->json([
@@ -70,23 +71,20 @@ class ImportGoodsRepository extends BaseRepository implements ImportGoodsReposit
                 'description'       => $request->description
             ]);
 
-            // Lấy danh sách sản phẩm hiện tại từ database
+
             $currentProducts = DetailImportGoods::where('import_goods_id', $id)
                                                 ->pluck('product_id')
                                                 ->toArray();
 
-            // Lấy danh sách sản phẩm từ request
             $newProducts = collect($request->detail_import_goods)->pluck('product_id')->toArray();
 
-            // Tìm những sản phẩm cần xóa
+
             $productsToDelete = array_diff($currentProducts, $newProducts);
 
-            // Xóa những sản phẩm không có trong danh sách mới
             DetailImportGoods::where('import_goods_id', $id)
                              ->whereIn('product_id', $productsToDelete)
                              ->delete();
 
-            // Thêm mới hoặc cập nhật sản phẩm từ request
             foreach ($request->detail_import_goods as $import_good){
                 $sku = ProductSku::find($import_good['product_id']);
                 if (!isset($sku->id)){
@@ -110,10 +108,9 @@ class ImportGoodsRepository extends BaseRepository implements ImportGoodsReposit
                 );
             }
 
-            // Trả về dữ liệu sau khi cập nhật thành công
             return response()->json([
                 'data' => [
-                    'status'  => 200,
+                    'status'  => TRUE,
                     'message' => 'Cập nhật thành công',
                     'data'    => ImportGoods::with([
                         'supplier',
@@ -125,14 +122,35 @@ class ImportGoodsRepository extends BaseRepository implements ImportGoodsReposit
             ], 200);
 
         }catch (Exception $e){
-            // Xử lý lỗi
             return response()->json([
                 'data' => [
-                    'status'  => 400,
+                    'status'  => FALSE,
                     'message' => 'Đã có lỗi xảy ra trong quá trình cập nhật',
                     'detail'  => $e->getMessage()
                 ]
             ], 400);
         }
+    }
+
+    public function cancelImportGoods($id){
+        try{
+            $this->update($id, [
+                'status' => 2
+            ]);
+
+        }catch (Exception $e){
+            return response()->json([
+                'data' => [
+                    'status'  => FALSE,
+                    'message' => 'Đã có lỗi xảy ra trong quá trình xóa phiếu!',
+                    'detail'  => $e->getMessage()
+                ]
+            ], 400);
+        }
+
+        return response()->json([
+            'status'  => TRUE,
+            'message' => "Hủy phiếu nhập kho thành công!"
+        ], 200);
     }
 }

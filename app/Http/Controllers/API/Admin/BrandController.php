@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\API\Admin;
-
 use App\Http\Controllers\Controller;
 use App\Repositories\Brand\BrandRepositoryInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+
 
 class BrandController extends Controller
 {

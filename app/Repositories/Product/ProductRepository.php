@@ -378,7 +378,6 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $sku = ProductSku::find($skuId);
         try{
             if (isset($sku)){
-                // Kiểm tra mã sản phẩm mới
                 if ($request->has('code') && !empty($request->code)){
                     $existingSku = ProductSku::where('code', $request->code)->first();
                     if ($existingSku && $existingSku->id != $skuId){
@@ -401,6 +400,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
                 if ($sku->inventory != $request->inventory){
                     $checkStock = $this->checkStockRepository->create([
+                        'code'        => CheckStock::generateNextCode(),
                         'description' => 'Được tạo tự động khi cập nhật sản phẩm',
                     ]);
 

@@ -21,7 +21,7 @@ class SupplierController extends Controller
      */
     public function index(Request $request)
     {
-        $suppliers = $this->supplierRepository->filter( $request->keyword, $request->limit,$request->status);
+        $suppliers = $this->supplierRepository->filter($request);
 
         return response()->json([
             'status'  => true,

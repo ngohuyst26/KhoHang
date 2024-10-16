@@ -29,25 +29,25 @@ class StaffRepository extends BaseRepository implements StaffRepositoryInterface
         return $this->model->all();
     }
 
-    public function filter($keyword = '',$limit = 10, $status = '1')
+    public function filter($request)
     {
-        $brands = $this->model->orderBy('id', 'DESC');
+        $staffs = $this->model->orderBy('id', 'DESC');
 
-        if(!empty($keyword)){
-            $brands = $brands->where('name','like','%'.$keyword.'%');
+        if($request->has('keyword')){
+            $staffs = $staffs->where('name','like','%'.$request->keyword.'%');
         }
 
-        if(!empty($status)){
-            $brands = $brands->where('status',$status);
+        if($request->has('status') && $request->status != '' ){
+            $staffs = $staffs->where('status',$request->status);
         }
 
-        if(!empty($limit)){
-            $brands = $brands->paginate($limit);
+        if($request->has('limit')){
+            $staffs = $staffs->paginate($request->limit);
         }else{
-            $brands = $brands->paginate(10);
+            $staffs = $staffs->paginate(10);
         }
 
-        return $brands;
+        return $staffs;
     }
 
     public function create(array $data)

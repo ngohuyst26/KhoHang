@@ -21,7 +21,7 @@ class DepartmentController extends Controller
      */
     public function index(Request $request)
     {
-        $departments = $this->departmentRepository->filter( $request->keyword, $request->limit,$request->status);
+        $departments = $this->departmentRepository->filter($request);
         return response()->json([
             'status'  => true,
             'message' => "Danh sách phòng ban",

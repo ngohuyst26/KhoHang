@@ -28,25 +28,26 @@ class SupplierRepository extends BaseRepository implements SupplierRepositoryInt
         return $this->model->all();
     }
 
-    public function filter($keyword = '',$limit = 10, $status = '1')
+    public function filter($request)
     {
-        $brands = $this->model->orderBy('id', 'DESC');
 
-        if(!empty($keyword)){
-            $brands = $brands->where('name','like','%'.$keyword.'%');
+        $suppliers = $this->model->orderBy('id', 'DESC');
+
+        if($request->has('keyword')){
+            $suppliers = $suppliers->where('name','like','%'.$request->keyword.'%');
         }
 
-        if(!empty($status)){
-            $brands = $brands->where('status',$status);
+        if($request->has('status') && $request->status != '' ){
+            $suppliers = $suppliers->where('status',$request->status);
         }
 
-        if(!empty($limit)){
-            $brands = $brands->paginate($limit);
+        if($request->has('limit')){
+            $suppliers = $suppliers->paginate($request->limit);
         }else{
-            $brands = $brands->paginate(10);
+            $suppliers = $suppliers->paginate(10);
         }
 
-        return $brands;
+        return $suppliers;
     }
 
     public function create(array $data)

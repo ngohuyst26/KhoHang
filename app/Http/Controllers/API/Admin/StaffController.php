@@ -21,7 +21,7 @@ class StaffController extends Controller
      */
     public function index(Request $request)
     {
-        $staffs = $this->staffRepository->filter( $request->keyword, $request->limit,$request->status);
+        $staffs = $this->staffRepository->filter($request);
 
         return response()->json([
             'status'  => true,

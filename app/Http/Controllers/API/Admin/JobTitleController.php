@@ -21,7 +21,7 @@ class JobTitleController extends Controller
      */
     public function index(Request $request)
     {
-        $job_titles = $this->jobTitleRepository->filter( $request->keyword, $request->limit,$request->status);
+        $job_titles = $this->jobTitleRepository->filter($request);
         return response()->json([
             'status'  => true,
             'message' => "Danh sách chức danh",

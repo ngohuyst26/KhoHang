@@ -21,7 +21,7 @@ class BrandController extends Controller
      */
     public function index(Request $request)
     {
-        $brands = $this->brandRepository->filter( $request->keyword, $request->limit,$request->status);
+        $brands = $this->brandRepository->filter($request);
         return response()->json([
             'status'  => true,
             'message' => "Danh sách thương hiệu",

@@ -29,20 +29,20 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
         return $this->model->all();
     }
 
-    public function filter($keyword, $limit, $status)
+    public function filter($request)
     {
         $customers = $this->model->orderBy('id', 'DESC');
 
-        if(!empty($keyword)){
-            $customers = $customers->where('name','like','%'.$keyword.'%');
+        if($request->has('keyword')){
+            $customers = $customers->where('name','like','%'.$request->keyword.'%');
         }
 
-        if(!empty($status)){
-            $customers = $customers->where('status',$status);
+        if($request->has('status')  && $request->status != '' ){
+            $customers = $customers->where('status',$request->status);
         }
 
-        if(!empty($limit)){
-            $customers = $customers->paginate($limit);
+        if($request->has('limit')){
+            $customers = $customers->paginate($request->limit);
         }else{
             $customers = $customers->paginate(10);
         }

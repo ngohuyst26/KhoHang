@@ -29,25 +29,25 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         return $this->model->all();
     }
 
-    public function filter($keyword = '',$limit = 10, $status = '1')
+    public function filter($request)
     {
-        $brands = $this->model->orderBy('id', 'DESC');
+        $categories = $this->model->orderBy('id', 'DESC');
 
-        if(!empty($keyword)){
-            $brands = $brands->where('name','like','%'.$keyword.'%');
+        if($request->has('keyword')){
+            $categories = $categories->where('name','like','%'.$request->keyword.'%');
         }
 
-        if(!empty($status)){
-            $brands = $brands->where('status',$status);
+        if($request->has('status') && $request->status != '' ){
+            $categories = $categories->where('status',$request->status);
         }
 
-        if(!empty($limit)){
-            $brands = $brands->paginate($limit);
+        if($request->has('limit')){
+            $categories = $categories->paginate($request->limit);
         }else{
-            $brands = $brands->paginate(10);
+            $categories = $categories->paginate(10);
         }
 
-        return $brands;
+        return $categories;
     }
 
     public function latest($perPage = 0): Model

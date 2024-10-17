@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProductsRequest;
 use App\Repositories\CheckStock\CheckStockRepositoryInterface;
 use App\Repositories\Product\ProductRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller{
 
@@ -78,4 +79,33 @@ class ProductController extends Controller{
     public function restore(string $id){
         return $this->productRepository->restoreProduct($id);
     }
+
+    public function upload(Request $request){
+        if ($request->hasFile('file')){
+            $skuId = $request->sku_id;
+
+            if (is_numeric($skuId)){
+                $files = $request->file('file');
+                $paths = [];
+                foreach ($files as $file){
+                    $uniqueFileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
+                    $path           = $file->storeAs(
+                        'uploads/' . date('Y/m'),
+                        $uniqueFileName,
+                        'public'
+                    );
+                    $paths[]        = $path;
+                    $this->productRepository->createPhoto($skuId, $path);
+                }
+
+                return response()->json([
+                    'success' => 'Tệp đã được tải lên thành công.',
+                    'paths'   => $paths,
+                ]);
+            }
+        }else{
+            return response()->json(['error' => 'Không có tệp được tải lên.']);
+        }
+    }
+
 }

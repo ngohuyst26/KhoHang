@@ -32,10 +32,9 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             $order       = 'desc';
             $orderBy     = ['id', 'name', 'category', 'price', 'sale_price'];
 
-
             $query = Product::with(['productSku.photo', 'category', 'supplier', 'productSku.optionValue.option', 'productSku.storageLocation']);
 
-            if ($request->has('status')){
+            if ($request->has('status') && $request->input('status') != ''){
                 $query->where('status', '=', $request->input('status'));
             }
 
@@ -56,7 +55,6 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                 $keyWord = $request->input('keyWord');
                 $query->where('name', 'like', "%$keyWord%");
             }
-
 
             if ($request->has('orderBy')){
                 if ($request->has('order')){

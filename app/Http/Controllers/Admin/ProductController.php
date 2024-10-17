@@ -138,6 +138,7 @@ class ProductController extends Controller{
                 $query->where('id', $skuId)->with('optionValue.option', 'photo');
             }
         ])->find($id);
+
         $option     = Option::all();
         $categories = Category::all();
         $supplier   = Supplier::all();
@@ -148,7 +149,6 @@ class ProductController extends Controller{
             'product'    => $product,
             'categories' => $categories,
             'supplier'   => $supplier,
-
         ]);
     }
 

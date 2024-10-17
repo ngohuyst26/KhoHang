@@ -44,7 +44,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                 });
             }
 
-            if ($request->has('categoryID')){
+            if ($request->has('categoryID') && $request->input('categoryID') != ''){
                 $category = $request->input('categoryID');
                 $query->whereHas('category', function ($query) use ($category){
                     $query->where('id', '=', $category);

@@ -38,9 +38,9 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                 $query->where('status', '=', $request->input('status'));
             }
 
-            if ($request->has('onHand') && $request->input('onHand') == 1){
+            if ($request->has('onHand') && $request->input('onHand') == 1 && $request->input('onHand') != ''){
                 $query->whereHas('productSku', function ($query){
-                    $query->where('inventory', '>', 0);
+                    $query->where('inventory', '<=', 0);
                 });
             }
 

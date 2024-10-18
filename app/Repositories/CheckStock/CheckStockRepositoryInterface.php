@@ -6,6 +6,8 @@ use App\Repositories\BaseRepositoryInterface;
 
 interface CheckStockRepositoryInterface extends BaseRepositoryInterface{
 
+    public function getAll($request);
+
     public function getOneCheckStock($id);
 
     public function updateCheckStock($request, $id);

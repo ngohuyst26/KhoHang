@@ -13,6 +13,32 @@ class CheckStockRepository extends BaseRepository implements CheckStockRepositor
         parent::__construct($model);
     }
 
+    public function getAll($request){
+        $page  = 1;
+        $limit = 10;
+        $order = 'desc';
+        $query = CheckStock::with(['detailStock.productSku.product', 'detailStock.productSku.optionValue.option']);
+
+        if ($request->has('status') && $request->input('status') != ''){
+            $query->where('status', "=", $request->input('status'));
+        }
+
+        if ($request->has('order')){
+            $order = $request->input('order');
+        }
+        $query->orderBy('id', $order);
+
+        if ($request->has('limit') && $request->input('limit') > 0){
+            $limit = $request->input('limit');
+        }
+
+        if ($request->has('page') && $request->input('page') > 0){
+            $page = $request->input('page');
+        }
+
+        return $query->paginate($limit);
+    }
+
     public function getOneCheckStock($id){
         return CheckStock::with(['detailStock.productSku.product', 'detailStock.productSku.optionValue.option', 'detailStock.productSku.photo'])
                          ->find($id);

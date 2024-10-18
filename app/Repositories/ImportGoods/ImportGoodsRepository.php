@@ -13,11 +13,32 @@ class ImportGoodsRepository extends BaseRepository implements ImportGoodsReposit
 
     public function __construct(ImportGoods $model){ parent::__construct($model); }
 
-    public function getAll(){
+    public function getAll($request){
         try{
-            return ImportGoods::where('status', "=", 1)
-                              ->with(['supplier', 'detailImportGoods.product.product', 'detailImportGoods.product.photo', 'detailImportGoods.product.optionValue.option'])
-                              ->paginate();
+            $page  = 1;
+            $limit = 10;
+            $order = 'desc';
+            $query = ImportGoods::with(['supplier', 'detailImportGoods.product.product', 'detailImportGoods.product.photo', 'detailImportGoods.product.optionValue.option']);
+
+            if ($request->has('status') && $request->input('status') != ''){
+                $query->where('status', "=", $request->input('status'));
+            }
+
+            if ($request->has('order') && $request->input('order') != ''){
+                $order = $request->input('order');
+            }
+            $query->orderBy('id', $order);
+
+            if ($request->has('limit') && $request->input('limit') > 0){
+                $limit = $request->input('limit');
+            }
+
+            if ($request->has('page') && $request->input('page') > 0){
+                $page = $request->input('page');
+            }
+
+            return $query->paginate($limit);
+
         }catch (Exception $e){
             return response()->json([
                 'status'  => FALSE,
@@ -26,8 +47,22 @@ class ImportGoodsRepository extends BaseRepository implements ImportGoodsReposit
         }
     }
 
+    public function getOne($id){
+        return ImportGoods::with(['supplier', 'detailImportGoods.product.product', 'detailImportGoods.product.photo', 'detailImportGoods.product.optionValue.option'])
+                          ->find($id);
+    }
+
     public function createImportGoods($request){
         try{
+            if (empty($request->code)){
+                $request->merge(['code' => ImportGoods::generateNextCode()]);
+            }else{
+                $existingImportGoods = ImportGoods::where('code', $request->code)->first();
+                if ($existingImportGoods){
+                    $request->merge(['code' => ImportGoods::generateNextCode()]);
+                }
+            }
+
             $importGoods = $this->create([
                 'supplier_id'       => $request->supplier_id,
                 'code'              => $request->code,

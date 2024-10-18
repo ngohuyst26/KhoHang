@@ -18,8 +18,8 @@ class ImportGoodsController extends Controller{
     /**
      * Display a listing of the resource.
      */
-    public function index(){
-        return $this->importGoodsRepository->getAll();
+    public function index(Request $request){
+        return $this->importGoodsRepository->getAll($request);
     }
 
     /**
@@ -40,7 +40,7 @@ class ImportGoodsController extends Controller{
      * Display the specified resource.
      */
     public function show(string $id){
-        //
+        return $this->importGoodsRepository->getOne($id);
     }
 
     /**

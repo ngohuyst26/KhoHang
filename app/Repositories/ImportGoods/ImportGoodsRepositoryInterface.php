@@ -6,7 +6,9 @@ use App\Repositories\BaseRepositoryInterface;
 
 interface ImportGoodsRepositoryInterface extends BaseRepositoryInterface{
 
-    public function getAll();
+    public function getAll($request);
+
+    public function getOne($id);
 
     public function createImportGoods($request);
 

@@ -15,7 +15,6 @@ class ImportGoodsRepository extends BaseRepository implements ImportGoodsReposit
 
     public function getAll($request){
         try{
-            $page  = 1;
             $limit = 10;
             $order = 'desc';
             $query = ImportGoods::with(['supplier', 'detailImportGoods.product.product', 'detailImportGoods.product.photo', 'detailImportGoods.product.optionValue.option']);

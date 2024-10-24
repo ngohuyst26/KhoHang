@@ -117,6 +117,8 @@ return [
          */
         Module\ModuleServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+
     ])->toArray(),
 
     /*

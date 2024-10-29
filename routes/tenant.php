@@ -42,6 +42,14 @@ Route::middleware([
         Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);
         Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);
         Route::post('product/restore/{product}', [ProductController::class, 'restore']);
+        Route::post('upload-file', [ProductController::class, 'upload'])->name('upload');
+
+//        Route::get('products', [ProductController::class, 'index']);
+//        Route::get('product/{product}/{skuId}', [ProductController::class, 'show']);
+//        Route::post('product/create', [ProductController::class, 'store']);
+//        Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);
+//        Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);
+//        Route::post('product/restore/{product}', [ProductController::class, 'restore']);
 
 
         Route::get('checkstock', [CheckStockController::class, 'index']);

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\API\Admin\BrandController;
 use App\Http\Controllers\API\Auth\AuthController;
+use App\Http\Middleware\VerifyTenantToken;
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
@@ -34,8 +35,9 @@ Route::middleware([
     'api',
     InitializeTenancyByDomain::class,
     PreventAccessFromCentralDomains::class,
+
 ])->prefix('api')->group(function () {
-    Route::middleware('auth:api')->group(function (){
+    Route::middleware(['auth:api',VerifyTenantToken::class])->group(function (){
         Route::get('products', [ProductController::class, 'index']);
         Route::get('product/{product}/{skuId}', [ProductController::class, 'show']);
         Route::post('product/create', [ProductController::class, 'store']);

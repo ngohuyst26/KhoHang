@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -33,6 +34,13 @@ class AuthController extends Controller
         $user->email    = request()->email;
         $user->password = bcrypt(request()->password);
         $user->save();
+
+        $user->customer()->create([
+            'name' => $user->name,
+            'email' => $user->email,
+        ]);
+
+        $user->assignRole('customer');
 
         return response()->json($user, 201);
     }

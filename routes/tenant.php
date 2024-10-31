@@ -38,13 +38,33 @@ Route::middleware([
 
 ])->prefix('api')->group(function () {
     Route::middleware(['auth:api',VerifyTenantToken::class])->group(function (){
-        Route::get('products', [ProductController::class, 'index']);
-        Route::get('product/{product}/{skuId}', [ProductController::class, 'show']);
-        Route::post('product/create', [ProductController::class, 'store']);
-        Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);
-        Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);
-        Route::post('product/restore/{product}', [ProductController::class, 'restore']);
-        Route::post('upload-file', [ProductController::class, 'upload'])->name('upload');
+        Route::group(['middleware' => ['role:admin']], function () {
+            Route::resource('brands', BrandController::class);
+            Route::get('products', [ProductController::class, 'index']);
+            Route::get('product/{product}/{skuId}', [ProductController::class, 'show']);
+            Route::post('product/create', [ProductController::class, 'store']);
+            Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);
+            Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);
+            Route::post('product/restore/{product}', [ProductController::class, 'restore']);
+            Route::post('upload-file', [ProductController::class, 'upload'])->name('upload');
+
+            Route::get('checkstock', [CheckStockController::class, 'index']);
+            Route::get('checkstock/{checkstock}', [CheckStockController::class, 'show']);
+            Route::post('checkstock/create', [CheckStockController::class, 'store']);
+            Route::put('checkstock/update/{checkstock}', [CheckStockController::class, 'update']);
+            Route::delete('checkstock/delete/{checkstock}', [CheckStockController::class, 'cancel']);
+
+            Route::resource('import-goods', ImportGoodsController::class);
+            Route::resource('option', OptionController::class);
+            Route::resource('customers', CustomerController::class);
+            Route::resource('suppliers', SupplierController::class);
+            Route::resource('orders', OrderController::class);
+            Route::resource('categories', CategoryController::class);
+            Route::resource('job-titles', BrandController::class);
+            Route::resource('departments', DepartmentController::class);
+            Route::resource('staffs', StaffController::class);
+        });
+
 
 //        Route::get('products', [ProductController::class, 'index']);
 //        Route::get('product/{product}/{skuId}', [ProductController::class, 'show']);
@@ -52,27 +72,6 @@ Route::middleware([
 //        Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);
 //        Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);
 //        Route::post('product/restore/{product}', [ProductController::class, 'restore']);
-
-
-        Route::get('checkstock', [CheckStockController::class, 'index']);
-        Route::get('checkstock/{checkstock}', [CheckStockController::class, 'show']);
-        Route::post('checkstock/create', [CheckStockController::class, 'store']);
-        Route::put('checkstock/update/{checkstock}', [CheckStockController::class, 'update']);
-        Route::delete('checkstock/delete/{checkstock}', [CheckStockController::class, 'cancel']);
-
-        Route::resource('import-goods', ImportGoodsController::class);
-        Route::resource('option', OptionController::class);
-
-        Route::resource('customers', CustomerController::class);
-        Route::resource('customers', CustomerController::class);
-        Route::resource('suppliers', SupplierController::class);
-        Route::resource('orders', OrderController::class);
-        Route::resource('categories', CategoryController::class);
-        Route::resource('brands', BrandController::class);
-        Route::resource('job-titles', BrandController::class);
-        Route::resource('departments', DepartmentController::class);
-        Route::resource('staffs', StaffController::class);
-
     });
 
     Route::prefix('auth')->group(function (){

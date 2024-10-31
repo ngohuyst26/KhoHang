@@ -28,6 +28,10 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Orders::class,'user_create_id', 'id');
     }
 
+    public function customer(){
+        return $this->hasOne(Customer::class,'user_id', 'id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

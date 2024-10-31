@@ -191,6 +191,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     public function addProductApi($request){
+//        dd($request);
         $data       = $request->all();
         $product    = $this->createProduct($request);
         $checkStock = $this->checkStockRepository->create([
@@ -201,6 +202,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         if (!isset($data['variants'])){
             if (empty($request->code)){
                 $request->merge(['code' => ProductSku::generateNextCode()]);
+                dd($request);
             }else{
                 $existingSku = ProductSku::where('code', $request->code)->first();
                 if ($existingSku){
@@ -281,8 +283,9 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
                 $optionValues = [];
                 foreach ($combination['options'] as $value){
-                    $optionId    = $value['id'];
-                    $valueOption = $value['value'];
+                    //                    dd($value->id);
+                    $optionId    = $value['id'] ?? NULL;
+                    $valueOption = $value['value'] ?? NULL;
                     $optionValue = $this->createOptionValue($product->id, $optionId, $valueOption);
                     if ($optionValue){
                         $optionValues[] = [
@@ -308,11 +311,13 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     public function createProduct($request){
+        //        dd($request->tiktok_product_id ?? NULL);
         return Product::create([
-            'name'        => $request->name,
-            'category_id' => $request->category_id,
-            'supplier_id' => $request->supplier_id,
-            'description' => $request->description
+            'name'              => $request->name,
+            'category_id'       => $request->category_id,
+            'supplier_id'       => $request->supplier_id,
+            'description'       => $request->description,
+            'tiktok_product_id' => $request->tiktok_product_id ?? NULL
         ]);
     }
 

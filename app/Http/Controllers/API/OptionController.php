@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\OptionRequest;
 use App\Repositories\Option\OptionRepositoryInterface;
 use Exception;
+use Illuminate\Http\Request;
+
 
 class OptionController extends Controller{
 
@@ -38,8 +40,9 @@ class OptionController extends Controller{
     /**
      * Show the form for creating a new resource.
      */
-    public function create(){
-        //
+    public function create(Request $request){
+
+        return 'hehehe';
     }
 
     /**

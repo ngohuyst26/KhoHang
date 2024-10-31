@@ -9,7 +9,7 @@ class Product extends Model{
 
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'status', 'category_id', 'brand_id', 'supplier_id'];
+    protected $fillable = ['name', 'description', 'status', 'category_id', 'brand_id', 'supplier_id', 'tiktok_product_id'];
 
     public function productSku(){
         return $this->hasMany(ProductSku::class, 'product_id', 'id',);

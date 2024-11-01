@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class CheckStock extends Model{
 
-    use HasFactory;
+    use HasApiTokens, HasFactory;
 
     protected $fillable = ['code', 'ac_number', 'ac_total', 'total_difference', 'qty_increased', 'qty_decreased', 'description', 'status'];
 

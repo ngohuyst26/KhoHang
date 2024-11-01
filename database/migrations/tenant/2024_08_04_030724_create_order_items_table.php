@@ -19,9 +19,9 @@ return new class extends Migration
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
 
-            $table->foreignId('product_id')
+            $table->foreignId('product_sku_id')
                   ->nullable()
-                  ->constrained('products')
+                  ->constrained('product_sku')
                   ->cascadeOnUpdate()
                   ->nullOnDelete();
 

@@ -59,6 +59,7 @@ Route::middleware([
             Route::resource('customers', CustomerController::class);
             Route::resource('suppliers', SupplierController::class);
             Route::resource('orders', OrderController::class);
+            Route::get('orders/restore/{id}',[OrderController::class,'restore']);
             Route::resource('categories', CategoryController::class);
             Route::resource('job-titles', BrandController::class);
             Route::resource('departments', DepartmentController::class);

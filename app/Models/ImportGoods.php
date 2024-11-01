@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class ImportGoods extends Model{
 
-    use HasFactory;
+    use HasApiTokens, HasFactory;
 
     protected $fillable = ['id', 'supplier_id', 'code', 'status', 'total_goods', 'discount', 'supplier_payments', 'description'];
 

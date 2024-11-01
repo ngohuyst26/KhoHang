@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class ProductSku extends Model{
 
-    use HasFactory;
+    use HasApiTokens, HasFactory;
 
     protected $table = 'product_sku';
     protected $fillable = ['product_id', 'price', 'sale_price', 'inventory', 'barcode', 'code'];

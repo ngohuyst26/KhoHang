@@ -5,6 +5,7 @@ namespace App\Repositories\Order;
 use App\Models\Orders;
 use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 class OrderRepository extends BaseRepository implements OrderRepositoryInterface{
     protected $model;
@@ -38,4 +39,19 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
 
         return $brands;
     }
+
+    public function getOrder(int $id){
+        return $this->model->with('orderItems')->find($id);
+    }
+
+    public function delete(int $id)
+    : Model|bool{
+        return $this->model->findOrFail($id)->delete();
+    }
+
+    public function restore(int $id)
+    {
+        return $this->model->withTrashed()->findOrFail($id)->restore();
+    }
+
 }

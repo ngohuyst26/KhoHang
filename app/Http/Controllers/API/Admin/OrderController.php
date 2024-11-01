@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OrderRequest;
+use App\Models\Orders;
 use App\Repositories\Order\OrderRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -31,15 +33,30 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(OrderRequest $request)
     {
-        //
+        $order = $this->orderRepository->create($request->all());
+        foreach ($request->order_items as $item){
+            $order->orderItems()->create([
+                'order_id'       => $order->id,
+                'product_sku_id' => $item['product_sku_id'],
+                'quantity'       => $item['quantity'],
+                'unit_amount'    => $item['unit_amount'],
+                'total_amount'   => $item['total_amount'],
+            ]);
+        }
+
+        return response()->json([
+            'status'  => true,
+            'message' => "Đã thêm đơn hàng",
+            'data'    => $order
+        ],200);
     }
 
     /**
@@ -47,7 +64,19 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $order = $this->orderRepository->getOrder($id);
+        if ($order === NULL){
+            return response()->json([
+                'status'  => false,
+                'message' => "Không tìm thấy đơn hàng",
+                'data'    => ""
+            ],404);
+        }
+        return response()->json([
+            'status'  => true,
+            'message' => "Chi tiết đơn hàng",
+            'data'    => $order
+        ],200);
     }
 
     /**
@@ -63,7 +92,30 @@ class OrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->orderRepository->update($id,[
+            'customer_id'    =>$request->customer_id,
+            'total_payment'  =>$request->customer_id,
+            'discount'       =>$request->discount,
+            'payment_method' =>$request->payment_method,
+            'notes'          =>$request->notes,
+        ]);
+
+        $order = Orders::findOrFail($id);
+        foreach ($request->order_items as $item){
+            $order->orderItems()->update([
+                'order_id'       => $order->id,
+                'product_sku_id' => $item['product_sku_id'],
+                'quantity'       => $item['quantity'],
+                'unit_amount'    => $item['unit_amount'],
+                'total_amount'   => $item['total_amount'],
+            ]);
+        }
+
+        return response()->json([
+            'status'  => true,
+            'message' => "Cập nhật thành công",
+            'data'    => ""
+        ],200);
     }
 
     /**
@@ -71,6 +123,35 @@ class OrderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try{
+            $this->orderRepository->delete($id);
+        }catch (\Exception $e){
+            return response()->json([
+                'status'  => false,
+                'message' => "Không tồn tại mã đơn hàng",
+            ],404);
+        }
+        return response()->json([
+            'status'  => true,
+            'message' => "Xóa thành công",
+            'data'    => ""
+        ],200);
+    }
+
+    public function restore(int $id){
+        try{
+            $this->orderRepository->restore($id);
+        }catch (\Exception $e){
+            return response()->json([
+                'status'  => false,
+                'message' => "Không tồn tại mã đơn hàng",
+            ],404);
+        }
+
+        return response()->json([
+            'status'  => true,
+            'message' => "Khôi phục thành công",
+            'data'    => ""
+        ],200);
     }
 }

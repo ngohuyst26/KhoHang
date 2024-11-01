@@ -60,6 +60,7 @@ class AuthController extends Controller
                 return response()->json(['error' => 'Unauthorized'], 401);
             }
         } catch (JWTException $e) {
+
             return response()->json(['error' => 'Could not create token'], 500);
         }
 

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\API\Admin\BrandController;
-use App\Http\Controllers\API\Auth\AuthController;
+use App\Http\Controllers\API\Auth\AuthTenantController;
 use App\Http\Middleware\VerifyTenantToken;
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
@@ -76,11 +76,17 @@ Route::middleware([
     });
 
     Route::prefix('auth')->group(function (){
-        Route::post('/register', [AuthController::class, 'register'])->name('register');
-        Route::post('/login', [AuthController::class, 'login'])->name('login');
-        Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api')->name('logout');
-        Route::post('/refresh', [AuthController::class, 'refresh'])->middleware('auth:api')->name('refresh');
-        Route::post('/me', [AuthController::class, 'me'])->middleware('auth:api')->name('me');
+        Route::post('/register', [AuthTenantController::class, 'register'])->name('register');
+        Route::post('/login', [AuthTenantController::class, 'login'])->name('login');
+        Route::post('/logout', [AuthTenantController::class, 'logout'])->middleware('auth:api')->name('logout');
+        Route::post('/refresh', [AuthTenantController::class, 'refresh'])->middleware('auth:api')->name('refresh');
+        Route::post('/me', [AuthTenantController::class, 'me'])->middleware('auth:api')->name('me');
+
+        Route::prefix('system')->group(function (){
+            Route::post('/login', [AuthTenantController::class, 'login'])->name('login');
+            Route::post('/logout', [AuthTenantController::class, 'logout'])->middleware('auth:api')->name('logout');
+        });
     });
+
 });
 

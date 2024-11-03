@@ -40,10 +40,7 @@ Route::middleware([
     Route::get('products', [ProductController::class, 'index']);
     Route::get('product/{product}/{skuId}', [ProductController::class, 'show']);
     Route::prefix('tiktok')->group(function (){
-
-        Route::get('/callback', [TikTokController::class, 'handleCallback'])
-             ->name('tiktok.callback');
-
+        Route::get('/callback', [TikTokController::class, 'handleCallback']) ->name('tiktok.callback');
         Route::middleware(['auth:api', VerifyTenantToken::class])->group(function (){
             Route::get('/access-token/{userId}', [TikTokController::class, 'getValidAccessToken'])
                  ->name('tiktok.access_token');
@@ -57,7 +54,6 @@ Route::middleware([
             Route::post('/sync-product', [TikTokController::class, 'syncProductTikTok'])
                  ->name('tiktok.sync_product');
         });
-
     });
 
     Route::middleware(['auth:api', VerifyTenantToken::class])->group(function (){
@@ -66,30 +62,23 @@ Route::middleware([
         Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);
         Route::post('product/restore/{product}', [ProductController::class, 'restore']);
         Route::post('upload-file', [ProductController::class, 'upload'])->name('upload');
-
         Route::get('checkstock', [CheckStockController::class, 'index']);
         Route::get('checkstock/{checkstock}', [CheckStockController::class, 'show']);
         Route::post('checkstock/create', [CheckStockController::class, 'store']);
         Route::put('checkstock/update/{checkstock}', [CheckStockController::class, 'update']);
         Route::delete('checkstock/delete/{checkstock}', [CheckStockController::class, 'cancel']);
-
-            Route::resource('import-goods', ImportGoodsController::class);
-            Route::resource('option', OptionController::class);
-            Route::resource('customers', CustomerController::class);
-            Route::resource('suppliers', SupplierController::class);
-            Route::resource('orders', OrderController::class);
-            Route::get('orders/restore/{id}',[OrderController::class,'restore']);
-            Route::resource('categories', CategoryController::class)->only([
-                'show', 'create', 'store', 'update', 'destroy','edit'
-            ]);
-        });
-
-//        Route::get('products', [ProductController::class, 'index']);
-//        Route::get('product/{product}/{skuId}', [ProductController::class, 'show']);
-//        Route::post('product/create', [ProductController::class, 'store']);
-//        Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);
-//        Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);
-//        Route::post('product/restore/{product}', [ProductController::class, 'restore']);
+        Route::resource('import-goods', ImportGoodsController::class);
+        Route::resource('option', OptionController::class);
+        Route::resource('customers', CustomerController::class);
+        Route::resource('suppliers', SupplierController::class);
+        Route::resource('orders', OrderController::class);
+        Route::get('orders/restore/{id}',[OrderController::class,'restore']);
+        Route::resource('categories', CategoryController::class)->only([
+            'show', 'create', 'store', 'update', 'destroy','edit'
+        ]);
+        Route::resource('brands', BrandController::class)->only([
+            'show', 'create', 'store', 'update', 'destroy','edit'
+        ]);
     });
 
     Route::resource('categories', CategoryController::class)->only([
@@ -111,6 +100,5 @@ Route::middleware([
             Route::post('/logout', [AuthTenantController::class, 'logout'])->middleware('auth:api')->name('logout');
         });
     });
-
 });
 

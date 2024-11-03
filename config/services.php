@@ -18,11 +18,17 @@ return [
         'token' => env('POSTMARK_TOKEN'),
     ],
 
+    'tiktok' => [
+        'app_key'    => env('TIKTOK_APP_KEY'),
+        'app_secret' => env('TIKTOK_APP_SECRET'),
+    ],
+
     'ses' => [
-        'key' => env('AWS_ACCESS_KEY_ID'),
+        'key'    => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+
 
     'resend' => [
         'key' => env('RESEND_KEY'),

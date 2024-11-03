@@ -14,6 +14,7 @@ use App\Http\Controllers\API\Auth\AuthTenantController;
 use App\Http\Controllers\Api\CheckStockController;
 use App\Http\Controllers\API\OptionController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\TikTokController;
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
@@ -82,24 +83,25 @@ Route::middleware([
         Route::resource('staffs', StaffController::class);
     });
 
-});
 
-Route::prefix('auth')->group(function (){
-    Route::post('/register', [AuthTenantController::class, 'register'])->name('register');
-    Route::post('/login', [AuthTenantController::class, 'login'])->name('login');
-    Route::post('/logout', [AuthTenantController::class, 'logout'])
-         ->middleware('auth:api')
-         ->name('logout');
-    Route::post('/refresh', [AuthTenantController::class, 'refresh'])
-         ->middleware('auth:api')
-         ->name('refresh');
-    Route::post('/me', [AuthTenantController::class, 'me'])->middleware('auth:api')->name('me');
-
-    Route::prefix('system')->group(function (){
+    Route::prefix('auth')->group(function (){
+        Route::post('/register', [AuthTenantController::class, 'register'])->name('register');
         Route::post('/login', [AuthTenantController::class, 'login'])->name('login');
         Route::post('/logout', [AuthTenantController::class, 'logout'])
              ->middleware('auth:api')
              ->name('logout');
+        Route::post('/refresh', [AuthTenantController::class, 'refresh'])
+             ->middleware('auth:api')
+             ->name('refresh');
+        Route::post('/me', [AuthTenantController::class, 'me'])->middleware('auth:api')->name('me');
+
+        Route::prefix('system')->group(function (){
+            Route::post('/login', [AuthTenantController::class, 'login'])->name('login');
+            Route::post('/logout', [AuthTenantController::class, 'logout'])
+                 ->middleware('auth:api')
+                 ->name('logout');
+        });
     });
 });
+
 

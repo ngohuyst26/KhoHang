@@ -12,6 +12,7 @@ class ProductSku extends Model{
 
     protected $table = 'product_sku';
     protected $fillable = ['product_id', 'price', 'sale_price', 'inventory', 'barcode', 'code'];
+    protected $guarded = ['open_id'];
 
     public function product(){
         return $this->belongsTo(Product::class, 'product_id',);

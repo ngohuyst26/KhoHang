@@ -32,11 +32,19 @@ class TenantController extends Controller
      */
     public function store(Request $request)
     {
-        $validate =  Validator::make($request->all(), [
+        $data = $request->all();
+        $data['domain_name'] = $request->domain_name.'.'.config('app.domain');
+        $validate =  Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email|max:255|unique:tenants,email',
             'domain_name' => 'required|string|max:255|unique:domains,domain',
             'password' =>  ['required', 'confirmed', Password::defaults()],
+        ],
+        [
+            'required' => "Vui lòng nhập dữ liệu",
+            'string'   =>"Dữ liệu phải là ký tự",
+            'max'      =>"Độ dài ký tự tối đa :max",
+            "unique"   => "Dữ liệu đã tồn tại trong hệ thống"
         ]);
 
         if ($validate->fails()) {

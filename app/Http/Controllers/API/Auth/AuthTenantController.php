@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules;
 use PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException;
@@ -63,8 +64,10 @@ class AuthTenantController extends Controller
 
             return response()->json(['error' => 'Could not create token'], 500);
         }
-
-        return response()->json(compact('token'));
+        return response()->json([
+            'token' => $token,
+            'roles' => auth()->user()->getRoleNames()
+        ]);
     }
 
     /**
@@ -74,7 +77,14 @@ class AuthTenantController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+       $user = auth()->user();
+        return response()->json([
+            'user_id' => $user->id,
+            'name'    => $user->name,
+            'email'   => $user->email,
+            'roles'   => $user->getRoleNames(),
+
+        ]);
     }
 
     /**

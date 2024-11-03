@@ -64,7 +64,10 @@ class AuthController extends Controller
             return response()->json(['error' => 'Could not create token'], 500);
         }
 
-        return response()->json(compact('token'));
+        return response()->json([
+            'token' => $token,
+            'roles' => auth()->user()->getRoleNames()
+        ]);
     }
 
     /**
@@ -74,7 +77,13 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        $user = auth()->user();
+        return response()->json([
+            'user_id' => $user->id,
+            'name'    => $user->name,
+            'email'   => $user->email,
+            'roles'   => $user->getRoleNames(),
+        ]);
     }
 
     /**

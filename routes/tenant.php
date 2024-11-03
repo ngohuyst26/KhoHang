@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use App\Http\Controllers\API\Admin\BrandController;
 use App\Http\Controllers\API\Admin\CategoryController;
@@ -84,26 +84,45 @@ Route::middleware([
         Route::resource('departments', DepartmentController::class);
         Route::resource('staffs', StaffController::class);
     });
+            Route::resource('import-goods', ImportGoodsController::class);
+            Route::resource('option', OptionController::class);
+            Route::resource('customers', CustomerController::class);
+            Route::resource('suppliers', SupplierController::class);
+            Route::resource('orders', OrderController::class);
+            Route::get('orders/restore/{id}',[OrderController::class,'restore']);
+            Route::resource('categories', CategoryController::class)->only([
+                'show', 'create', 'store', 'update', 'destroy','edit'
+            ]);
+            Route::resource('job-titles', BrandController::class);
+            Route::resource('departments', DepartmentController::class);
+            Route::resource('staffs', StaffController::class);
+        });
 
+        Route::resource('categories', CategoryController::class)->only([
+            'index',
+        ]);
+
+
+//        Route::get('products', [ProductController::class, 'index']);
+//        Route::get('product/{product}/{skuId}', [ProductController::class, 'show']);
+//        Route::post('product/create', [ProductController::class, 'store']);
+//        Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);
+//        Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);
+//        Route::post('product/restore/{product}', [ProductController::class, 'restore']);
+    });
 
     Route::prefix('auth')->group(function (){
         Route::post('/register', [AuthTenantController::class, 'register'])->name('register');
         Route::post('/login', [AuthTenantController::class, 'login'])->name('login');
-        Route::post('/logout', [AuthTenantController::class, 'logout'])
-             ->middleware('auth:api')
-             ->name('logout');
-        Route::post('/refresh', [AuthTenantController::class, 'refresh'])
-             ->middleware('auth:api')
-             ->name('refresh');
+        Route::post('/logout', [AuthTenantController::class, 'logout'])->middleware('auth:api')->name('logout');
+        Route::post('/refresh', [AuthTenantController::class, 'refresh'])->middleware('auth:api')->name('refresh');
         Route::post('/me', [AuthTenantController::class, 'me'])->middleware('auth:api')->name('me');
 
         Route::prefix('system')->group(function (){
             Route::post('/login', [AuthTenantController::class, 'login'])->name('login');
-            Route::post('/logout', [AuthTenantController::class, 'logout'])
-                 ->middleware('auth:api')
-                 ->name('logout');
+            Route::post('/logout', [AuthTenantController::class, 'logout'])->middleware('auth:api')->name('logout');
         });
     });
-});
 
+});
 

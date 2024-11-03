@@ -120,9 +120,7 @@ class TikTokController extends Controller{
                 'message' => 'Tài khoản TikTok không tồn tại',
             ]);
         }
-        //        dd(Carbon::now());
         $expiresAt = Carbon::createFromTimestamp($tiktokAccount->expires_in, 'UTC');
-        //        dd(Carbon::createFromTimestamp($tiktokAccount->expires_in));
         if (Carbon::now()->lessThan($expiresAt)){
             return $tiktokAccount->access_token;
         }
@@ -137,12 +135,10 @@ class TikTokController extends Controller{
             'refresh_token' => $tiktokAccount->refresh_token,
             'grant_type'    => 'refresh_token',
         ]);
-        //        dd($response->collect());
 
         if ($response->ok()){
             $data = $response->collect();
 
-            // Cập nhật lại access_token và thời gian hết hạn trong database
             $tiktokAccount->update([
                 'access_token'  => $data['data']['access_token'],
                 'refresh_token' => $data['data']['refresh_token'],

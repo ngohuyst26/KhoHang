@@ -37,28 +37,29 @@ Route::middleware([
     PreventAccessFromCentralDomains::class,
 ])->prefix('api')->group(function (){
     Route::get('products', [ProductController::class, 'index']);
+    Route::get('product/{product}/{skuId}', [ProductController::class, 'show']);
     Route::prefix('tiktok')->group(function (){
 
         Route::get('/callback', [TikTokController::class, 'handleCallback'])
              ->name('tiktok.callback');
 
-        Route::get('/access-token/{userId}', [TikTokController::class, 'getValidAccessToken'])
-             ->name('tiktok.access_token');
+        Route::middleware('auth:api')->group(function (){
+            Route::get('/access-token/{userId}', [TikTokController::class, 'getValidAccessToken'])
+                 ->name('tiktok.access_token');
 
-        Route::post('/link-product', [TikTokController::class, 'linkProductToTikTok'])
-             ->name('tiktok.link_product');
+            Route::post('/link-product', [TikTokController::class, 'linkProductToTikTok'])
+                 ->name('tiktok.link_product');
 
-        Route::get('/list-product', [TikTokController::class, 'getAllProducts'])
-             ->name('tiktok.list_product');
+            Route::get('/list-product', [TikTokController::class, 'getAllProducts'])
+                 ->name('tiktok.list_product');
 
-        Route::post('/sync-product', [TikTokController::class, 'syncProductTikTok'])
-             ->name('tiktok.sync_product');
-
+            Route::post('/sync-product', [TikTokController::class, 'syncProductTikTok'])
+                 ->name('tiktok.sync_product');
+        });
 
     });
 
     Route::middleware('auth:api')->group(function (){
-        Route::get('product/{product}/{skuId}', [ProductController::class, 'show']);
         Route::post('product/create', [ProductController::class, 'store']);
         Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);
         Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);

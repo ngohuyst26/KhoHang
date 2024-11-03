@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\CheckStockController;
 use App\Http\Controllers\API\OptionController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\TikTokController;
+use App\Http\Middleware\VerifyTenantToken;
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
@@ -43,7 +44,7 @@ Route::middleware([
         Route::get('/callback', [TikTokController::class, 'handleCallback'])
              ->name('tiktok.callback');
 
-        Route::middleware('auth:api')->group(function (){
+        Route::middleware(['auth:api', VerifyTenantToken::class])->group(function (){
             Route::get('/access-token/{userId}', [TikTokController::class, 'getValidAccessToken'])
                  ->name('tiktok.access_token');
 
@@ -59,7 +60,7 @@ Route::middleware([
 
     });
 
-    Route::middleware('auth:api')->group(function (){
+    Route::middleware(['auth:api', VerifyTenantToken::class])->group(function (){
         Route::post('product/create', [ProductController::class, 'store']);
         Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);
         Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);

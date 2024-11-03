@@ -73,17 +73,6 @@ Route::middleware([
         Route::put('checkstock/update/{checkstock}', [CheckStockController::class, 'update']);
         Route::delete('checkstock/delete/{checkstock}', [CheckStockController::class, 'cancel']);
 
-        Route::resource('import-goods', ImportGoodsController::class);
-        Route::resource('option', OptionController::class);
-        Route::resource('customers', CustomerController::class);
-        Route::resource('suppliers', SupplierController::class);
-        Route::resource('orders', OrderController::class);
-        Route::get('orders/restore/{id}', [OrderController::class, 'restore']);
-        Route::resource('categories', CategoryController::class);
-        Route::resource('job-titles', BrandController::class);
-        Route::resource('departments', DepartmentController::class);
-        Route::resource('staffs', StaffController::class);
-    });
             Route::resource('import-goods', ImportGoodsController::class);
             Route::resource('option', OptionController::class);
             Route::resource('customers', CustomerController::class);
@@ -93,15 +82,7 @@ Route::middleware([
             Route::resource('categories', CategoryController::class)->only([
                 'show', 'create', 'store', 'update', 'destroy','edit'
             ]);
-            Route::resource('job-titles', BrandController::class);
-            Route::resource('departments', DepartmentController::class);
-            Route::resource('staffs', StaffController::class);
         });
-
-        Route::resource('categories', CategoryController::class)->only([
-            'index',
-        ]);
-
 
 //        Route::get('products', [ProductController::class, 'index']);
 //        Route::get('product/{product}/{skuId}', [ProductController::class, 'show']);
@@ -110,6 +91,13 @@ Route::middleware([
 //        Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);
 //        Route::post('product/restore/{product}', [ProductController::class, 'restore']);
     });
+
+    Route::resource('categories', CategoryController::class)->only([
+        'index',
+    ]);
+    Route::resource('brands', BrandController::class)->only([
+        'index'
+    ]);
 
     Route::prefix('auth')->group(function (){
         Route::post('/register', [AuthTenantController::class, 'register'])->name('register');

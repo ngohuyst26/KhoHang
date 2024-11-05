@@ -182,6 +182,7 @@ class TikTokController extends Controller{
                         TikTokProductLink::updateOrCreate(
                             ['sku_id' => $productSku->id],
                             [
+                                'product_id'          => $request->product_id,
                                 'shop_id'             => $request->shop_id,
                                 'tiktok_product_id'   => $tiktokData['data']['id'],
                                 'tiktok_product_name' => $tiktokData['data']['title'],
@@ -334,7 +335,20 @@ class TikTokController extends Controller{
                         $productId      = $product['id'];
                         $productDetails = $this->getProductDetails($productId, $shopCipher,
                             $accessToken);
-                        $unsetArray     = ['category_chains', 'is_cod_allowed', 'is_not_for_sale', 'manufacturer_ids', 'package_dimensions', 'package_weight', 'recommended_categories', 'responsible_person_ids', 'shipping_insurance_requirement', 'product_attributes'];
+                        //                        dd($productDetails['data']['skus']);
+                        foreach ($productDetails['data']['skus'] as $index => $sku){
+                            //                            dd($sku);
+                            $productLink = TikTokProductLink::where('tiktok_sku_id', $sku['id'])
+                                                            ->first();
+                            //                            dd($productLink);
+                            if ($productLink){
+                                $skuLink                                                = $this->productRepository->getOneSku($productLink->product_id,
+                                    $productLink->sku_id);
+                                $productDetails['data']['skus'][$index]['product_link'] = $skuLink->toArray();
+                            }
+                        }
+                        //                        dd($productDetails);
+                        $unsetArray = ['category_chains', 'is_cod_allowed', 'is_not_for_sale', 'manufacturer_ids', 'package_dimensions', 'package_weight', 'recommended_categories', 'responsible_person_ids', 'shipping_insurance_requirement', 'product_attributes'];
                         foreach ($unsetArray as $unset){
                             unset($productDetails['data']["$unset"]);
                         }

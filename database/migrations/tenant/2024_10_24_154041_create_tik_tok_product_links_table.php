@@ -11,6 +11,7 @@ return new class extends Migration{
         Schema::create('tiktok_product_links', function (Blueprint $table){
             $table->id();
             $table->foreignId('sku_id')->constrained('product_sku')->onDelete('cascade');
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->string('shop_id');
             $table->string('tiktok_product_id');
             $table->string('tiktok_product_name');

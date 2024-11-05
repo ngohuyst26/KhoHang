@@ -28,6 +28,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Orders::class,'user_create_id', 'id');
     }
 
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class);
+    }
+
     public function customer(){
         return $this->hasOne(Customer::class,'user_id', 'id');
     }

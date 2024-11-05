@@ -20,10 +20,15 @@ return new class extends Migration
                   ->nullOnDelete();
             $table->float('total_payment')->nullable();
             $table->integer('discount')->nullable();
-            $table->string('payment_method')->nullable();
-            $table->string('payment_status')->nullable();
-            $table->enum('order_status',[0,1])->default(1);
+            $table->enum('status', ['pending', 'completed', 'failed']);
             $table->text('notes')->nullable();
+
+            $table->foreignId('payment_method_id')
+                  ->nullable()
+                  ->constrained('payment_methods')
+                  ->cascadeOnUpdate()
+                  ->nullOnDelete();
+
             $table->timestamps();
             $table->softDeletes();
         });

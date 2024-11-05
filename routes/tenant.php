@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\CheckStockController;
 use App\Http\Controllers\API\OptionController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Payment\MomoPaymentController;
+use App\Http\Controllers\Payment\PayOrderController;
 use App\Http\Controllers\Payment\VnPayController;
 use App\Http\Controllers\TikTokController;
 use App\Http\Middleware\VerifyTenantToken;
@@ -103,6 +104,8 @@ Route::middleware([
     Route::post('/momo/payment', [MomoPaymentController::class, 'createPayment']);
     Route::get('/momo/callback', [MomoPaymentController::class, 'callback'])->name('momo.callback');
     Route::post('/momo/ipn', [MomoPaymentController::class, 'ipn'])->name('momo.ipn');
+
+    Route::post('/pay-order/{order}', [PayOrderController::class, 'payOrder']);
 
 
     Route::prefix('auth')->group(function (){

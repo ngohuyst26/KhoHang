@@ -35,4 +35,9 @@ class Orders extends Model
         return $this->hasMany(OrderItems::class, 'order_id', 'id');
     }
 
+    public function paymentMethod()
+    {
+        return $this->belongsTo(PaymentMethod::class);
+    }
+
 }

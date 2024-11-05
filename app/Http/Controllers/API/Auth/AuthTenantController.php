@@ -58,7 +58,7 @@ class AuthTenantController extends Controller
 
         try {
             if (! $token = auth()->claims(['tenant_id' => tenant('id')])->attempt($credentials)) {
-                return response()->json(['error' => 'Unauthorized'], 401);
+                return response()->json(['error' => 'Username hoặc password không đúng'], 400 );
             }
         } catch (JWTException $e) {
 
@@ -66,7 +66,8 @@ class AuthTenantController extends Controller
         }
         return response()->json([
             'token' => $token,
-            'roles' => auth()->user()->getRoleNames()
+            'roles' => auth()->user()->getRoleNames(),
+            'subdomain' => $request->getHttpHost()
         ]);
     }
 
@@ -75,7 +76,7 @@ class AuthTenantController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function me()
+    public function me(Request $request)
     {
        $user = auth()->user();
         return response()->json([
@@ -83,7 +84,7 @@ class AuthTenantController extends Controller
             'name'    => $user->name,
             'email'   => $user->email,
             'roles'   => $user->getRoleNames(),
-
+            'subdomain' => $request->getHttpHost()
         ]);
     }
 

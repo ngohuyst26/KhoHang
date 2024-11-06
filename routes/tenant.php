@@ -71,10 +71,12 @@ Route::middleware([
             Route::resource('import-goods', ImportGoodsController::class);
             Route::resource('option', OptionController::class);
             Route::resource('customers', CustomerController::class);
-            Route::resource('suppliers', SupplierController::class);
             Route::resource('orders', OrderController::class);
             Route::get('orders/restore/{id}',[OrderController::class,'restore']);
             Route::resource('categories', CategoryController::class)->only([
+                'show', 'create', 'store', 'update', 'destroy','edit'
+            ]);
+            Route::resource('suppliers', SupplierController::class)->only([
                 'show', 'create', 'store', 'update', 'destroy','edit'
             ]);
             Route::resource('brands', BrandController::class)->only([
@@ -84,6 +86,9 @@ Route::middleware([
     });
 
     Route::resource('categories', CategoryController::class)->only([
+        'index',
+    ]);
+    Route::resource('suppliers', SupplierController::class)->only([
         'index',
     ]);
     Route::resource('brands', BrandController::class)->only([

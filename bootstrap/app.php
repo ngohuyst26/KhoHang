@@ -4,7 +4,7 @@ use App\Http\Middleware\Cors;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-
+use Illuminate\Http\Response;
 return Application::configure(basePath: dirname(__DIR__))
       ->withRouting(
           web: __DIR__ . '/../routes/web.php',
@@ -35,6 +35,13 @@ return Application::configure(basePath: dirname(__DIR__))
                       'message' => $e->getMessage(),
                   ], 401);
               }
+          });
+
+          $exceptions->renderable(function (\Spatie\Permission\Exceptions\UnauthorizedException $e, $request) {
+              return response()->json([
+                  'message' => 'Không có quyền truy cập.',
+                  'status'  => Response::HTTP_FORBIDDEN,
+              ],Response::HTTP_FORBIDDEN);
           });
       })
       ->create();

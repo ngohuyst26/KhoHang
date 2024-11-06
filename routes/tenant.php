@@ -57,28 +57,30 @@ Route::middleware([
     });
 
     Route::middleware(['auth:api', VerifyTenantToken::class])->group(function (){
-        Route::post('product/create', [ProductController::class, 'store']);
-        Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);
-        Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);
-        Route::post('product/restore/{product}', [ProductController::class, 'restore']);
-        Route::post('upload-file', [ProductController::class, 'upload'])->name('upload');
-        Route::get('checkstock', [CheckStockController::class, 'index']);
-        Route::get('checkstock/{checkstock}', [CheckStockController::class, 'show']);
-        Route::post('checkstock/create', [CheckStockController::class, 'store']);
-        Route::put('checkstock/update/{checkstock}', [CheckStockController::class, 'update']);
-        Route::delete('checkstock/delete/{checkstock}', [CheckStockController::class, 'cancel']);
-        Route::resource('import-goods', ImportGoodsController::class);
-        Route::resource('option', OptionController::class);
-        Route::resource('customers', CustomerController::class);
-        Route::resource('suppliers', SupplierController::class);
-        Route::resource('orders', OrderController::class);
-        Route::get('orders/restore/{id}',[OrderController::class,'restore']);
-        Route::resource('categories', CategoryController::class)->only([
-            'show', 'create', 'store', 'update', 'destroy','edit'
-        ]);
-        Route::resource('brands', BrandController::class)->only([
-            'show', 'create', 'store', 'update', 'destroy','edit'
-        ]);
+        Route::group(['middleware' => ['role:admin']], function () {
+            Route::post('product/create', [ProductController::class, 'store']);
+            Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);
+            Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);
+            Route::post('product/restore/{product}', [ProductController::class, 'restore']);
+            Route::post('upload-file', [ProductController::class, 'upload'])->name('upload');
+            Route::get('checkstock', [CheckStockController::class, 'index']);
+            Route::get('checkstock/{checkstock}', [CheckStockController::class, 'show']);
+            Route::post('checkstock/create', [CheckStockController::class, 'store']);
+            Route::put('checkstock/update/{checkstock}', [CheckStockController::class, 'update']);
+            Route::delete('checkstock/delete/{checkstock}', [CheckStockController::class, 'cancel']);
+            Route::resource('import-goods', ImportGoodsController::class);
+            Route::resource('option', OptionController::class);
+            Route::resource('customers', CustomerController::class);
+            Route::resource('suppliers', SupplierController::class);
+            Route::resource('orders', OrderController::class);
+            Route::get('orders/restore/{id}',[OrderController::class,'restore']);
+            Route::resource('categories', CategoryController::class)->only([
+                'show', 'create', 'store', 'update', 'destroy','edit'
+            ]);
+            Route::resource('brands', BrandController::class)->only([
+                'show', 'create', 'store', 'update', 'destroy','edit'
+            ]);
+        });
     });
 
     Route::resource('categories', CategoryController::class)->only([

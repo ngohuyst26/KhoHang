@@ -21,11 +21,9 @@ class MomoPaymentController extends Controller
         $redirectUrl = route('momo.callback');
         $ipnUrl = route('momo.ipn');
 
-        // Tạo signature
         $rawHash = "accessKey=$accessKey&amount=$amount&extraData=&ipnUrl=$ipnUrl&orderId=$orderId&orderInfo=$orderInfo&partnerCode=$partnerCode&redirectUrl=$redirectUrl&requestId=$orderId&requestType=payWithATM";
         $signature = hash_hmac("sha256", $rawHash, $secretKey);
 
-        // Chuẩn bị dữ liệu gửi đi
         $data = [
             'partnerCode' => $partnerCode,
             'partnerName' => "Test",
@@ -42,7 +40,6 @@ class MomoPaymentController extends Controller
             'signature' => $signature
         ];
 
-        // Gửi yêu cầu thanh toán đến Momo
         $response = Http::post($endpoint, $data);
 
         if ($response->successful()) {

@@ -41,6 +41,10 @@ class AuthTenantController extends Controller
             'email' => $user->email,
         ]);
 
+        $user->wallet()->create([
+            'balance' => 0
+        ]);
+
         $user->assignRole('customer');
 
         return response()->json($user, 201);

@@ -10,14 +10,14 @@ class VnPayController extends Controller
 {
     public function createPayment(Request $request)
     {
-        $vnp_TmnCode = Config::get('vnpay.vnp_TmnCode');
-        $vnp_HashSecret = Config::get('vnpay.vnp_HashSecret');
-        $vnp_Url = Config::get('vnpay.vnp_Url');
-        $vnp_ReturnUrl = Config::get('vnpay.vnp_ReturnUrl');
+        $vnp_TmnCode = env('VNP_TMN_CODE');
+        $vnp_HashSecret = env('VNP_HASH_SECRET');
+        $vnp_Url = env('VNP_URL');
+        $vnp_ReturnUrl = route('vnpay.return');
         $vnp_TxnRef = time(); // Mã đơn hàng
         $vnp_OrderInfo = 'Thanhdonhang';
         $vnp_OrderType = 'billpayment';
-        $vnp_Amount = $request->amount; // Số tiền thanh toán (nhân 100 để chuyển sang đơn vị VNĐ)
+        $vnp_Amount = $request->amount * 100 ;
         $vnp_Locale = 'vn';
         $vnp_IpAddr = $request->ip();
 
@@ -38,21 +38,29 @@ class VnPayController extends Controller
 
         ksort($inputData);
         $query = "";
+        $i = 0;
         $hashdata = "";
         foreach ($inputData as $key => $value) {
-            $hashdata .= $key . "=" . $value . '&';
+            if ($i == 1) {
+                $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
+            } else {
+                $hashdata .= urlencode($key) . "=" . urlencode($value);
+                $i = 1;
+            }
             $query .= urlencode($key) . "=" . urlencode($value) . '&';
         }
 
         $vnp_Url = $vnp_Url . "?" . $query;
-        $vnpSecureHash = hash('sha256', $vnp_HashSecret . rtrim($hashdata, '&'));
-        $vnp_Url .= 'vnp_SecureHashType=sha256&vnp_SecureHash=' . $vnpSecureHash;
+        if (isset($vnp_HashSecret)) {
+            $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);//
+            $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
+        }
 
         return response()->json(['payment_url' => $vnp_Url], 200);
     }
 
     // Xử lý kết quả thanh toán trả về từ VNPay
-    public function vnpayReturn(Request $request)
+    public function vnpayReturn1(Request $request)
     {
         $vnp_HashSecret = Config::get('vnpay.vnp_HashSecret');
         $inputData = $request->all();
@@ -64,11 +72,47 @@ class VnPayController extends Controller
         foreach ($inputData as $key => $value) {
             $hashData .= $key . '=' . $value . '&';
         }
-        $secureHash = hash('sha256', $vnp_HashSecret . rtrim($hashData, '&'));
+        $secureHash = hash('sha512', $vnp_HashSecret . rtrim($hashData, '&'));
         if ($secureHash == $vnp_SecureHash) {
             if ($inputData['vnp_ResponseCode'] == '00') {
                 return response()->json(['message' => 'Successfully', 'data' => $inputData], 200);
             } else {
+                return response()->json(['message' => 'Fail', 'data' => $inputData], 400);
+            }
+        } else {
+            return response()->json(['message' => 'Chu ky khon hop le'], 400);
+        }
+    }
+    public function vnpayReturn(Request $request)
+    {
+        $vnp_HashSecret = Config::get('vnpay.vnp_HashSecret');
+        $vnp_SecureHash = $request->vnp_SecureHash;
+        $inputData = array();
+        foreach ($request->all() as $key => $value) {
+            if (substr($key, 0, 4) == "vnp_") {
+                $inputData[$key] = $value;
+            }
+        }
+
+        unset($inputData['vnp_SecureHash']);
+        ksort($inputData);
+        $i = 0;
+        $hashData = "";
+        foreach ($inputData as $key => $value) {
+            if ($i == 1) {
+                $hashData = $hashData . '&' . urlencode($key) . "=" . urlencode($value);
+            } else {
+                $hashData = $hashData . urlencode($key) . "=" . urlencode($value);
+                $i = 1;
+            }
+        }
+
+        $secureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
+        if ($secureHash == $vnp_SecureHash) {
+            if ($_GET['vnp_ResponseCode'] == '00') {
+                return response()->json(['message' => 'Successfully', 'data' => $inputData], 200);
+            }
+            else {
                 return response()->json(['message' => 'Fail', 'data' => $inputData], 400);
             }
         } else {

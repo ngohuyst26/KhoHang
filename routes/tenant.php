@@ -17,6 +17,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Payment\MomoPaymentController;
 use App\Http\Controllers\Payment\PayOrderController;
 use App\Http\Controllers\Payment\VnPayController;
+use App\Http\Controllers\Payment\WalletController;
 use App\Http\Controllers\TikTokController;
 use App\Http\Middleware\VerifyTenantToken;
 use Illuminate\Support\Facades\Route;
@@ -74,6 +75,7 @@ Route::middleware([
             Route::resource('import-goods', ImportGoodsController::class);
             Route::resource('option', OptionController::class);
             Route::resource('customers', CustomerController::class);
+            Route::resource('suppliers', SupplierController::class);
             Route::resource('orders', OrderController::class);
             Route::get('orders/restore/{id}',[OrderController::class,'restore']);
             Route::resource('categories', CategoryController::class)->only([
@@ -85,6 +87,28 @@ Route::middleware([
             Route::resource('brands', BrandController::class)->only([
                 'show', 'create', 'store', 'update', 'destroy','edit'
             ]);
+
+            //Order
+            Route::post('/pay-order/{order}', [PayOrderController::class, 'payOrder']);
+
+            //VNPay
+            Route::post('/vnpay/payment', [VnPayController::class, 'createPayment'])->name('payment.create');
+            Route::get('/vnpay-return', [VnPayController::class, 'vnpayReturn'])->name('vnpay.return');
+
+            //Momo
+            Route::post('/momo/payment', [MomoPaymentController::class, 'createPayment']);
+            Route::get('/momo/callback', [MomoPaymentController::class, 'callback'])->name('momo.callback');
+            Route::get('/momo/ipn', [MomoPaymentController::class, 'ipn'])->name('momo.ipn');
+
+            //Wallet MOMO
+            Route::post('/wallet/momo-deposit', [WalletController::class, 'createMomoPayment']);
+            Route::get('/wallet/momo-callback', [WalletController::class, 'callback'])->name('wallet.momoCallback');
+            Route::get('/wallet/momo-ipn', [WalletController::class, 'ipn'])->name('wallet.ipn');
+
+            //Wallet VNPAY
+            Route::post('/wallet/vnpay-deposit', [WalletController::class, 'createVnpayPayment']);
+            //Route::get('/wallet/vnpay-ipn', [WalletController::class, 'ipn'])->name('wallet.ipn');
+            Route::get('/wallet/vnpay-return', [WalletController::class, 'vnpayReturn'])->name('wallet.vnpayReturn')->withoutMiddleware(['auth:api', VerifyTenantToken::class]);
         });
     });
 
@@ -97,16 +121,6 @@ Route::middleware([
     Route::resource('brands', BrandController::class)->only([
         'index'
     ]);
-
-    Route::post('/payment', [VnPayController::class, 'createPayment'])->name('payment.create');
-    Route::get('/vnpay-return', [VnPayController::class, 'vnpayReturn'])->name('vnpay.return');
-
-    Route::post('/momo/payment', [MomoPaymentController::class, 'createPayment']);
-    Route::get('/momo/callback', [MomoPaymentController::class, 'callback'])->name('momo.callback');
-    Route::post('/momo/ipn', [MomoPaymentController::class, 'ipn'])->name('momo.ipn');
-
-    Route::post('/pay-order/{order}', [PayOrderController::class, 'payOrder']);
-
 
     Route::prefix('auth')->group(function (){
         Route::post('/register', [AuthTenantController::class, 'register'])->name('register');

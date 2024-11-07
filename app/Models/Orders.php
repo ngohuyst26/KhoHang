@@ -12,22 +12,17 @@ class Orders extends Model
 
     protected $fillable = [
         'id',
-        'discount',
         'payment_method_id',
-        'payment_status',
         'notes',
         'status',
-        'customer_id',
+        'user_id',
         'created_at',
         'updated_at',
         'total_payment',
     ];
-    public function customers(){
-        return $this->belongsTo(Customer::class, 'customer_id', 'id');
-    }
 
     public function user(){
-        return $this->belongsTo(User::class, 'user_create_id', 'id');
+        return $this->belongsTo(User::class);
     }
 
     public function orderItems(){

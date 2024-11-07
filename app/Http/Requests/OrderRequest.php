@@ -27,8 +27,7 @@ class OrderRequest extends FormRequest
     {
         return [
             'total_payment'  => 'required|integer',
-            'discount'       => 'required',
-            'payment_method' => 'required',
+            'payment_method_id' => 'required',
             'order_items'    =>  'required',
         ];
     }

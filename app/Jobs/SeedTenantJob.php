@@ -2,6 +2,10 @@
 
 namespace App\Jobs;
 
+use App\Models\Category;
+use App\Models\PaymentMethod;
+use App\Models\Product;
+use App\Models\Supplier;
 use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
@@ -31,6 +35,28 @@ class SeedTenantJob implements ShouldQueue
     public function handle(): void
     {
         $this->tenant->run(function (){
+
+            $categories = ['shoes','clothing','underwear'];
+            foreach ($categories as  $item){
+                Category::create([
+                    'name' => $item
+                ]);
+            }
+
+            $suppliers = ['FPT','Viettel','Mobi'];
+            foreach ($suppliers as  $item){
+                Supplier::create([
+                    'name' => $item
+                ]);
+            }
+
+            $payment_methods = ['wallet','momo','vnpay'];
+            foreach ($payment_methods as  $item){
+                PaymentMethod::create([
+                    'name' => $item
+                ]);
+            }
+
             $user = User::create([
                 'name'     => $this->tenant->name,
                 'email'    => $this->tenant->email,

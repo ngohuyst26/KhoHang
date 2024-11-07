@@ -10,6 +10,8 @@ class PaymentMethod extends Model
     use HasFactory;
 
     protected $table = "payment_methods";
+
+    protected $fillable = ['name'];
     public function orders()
     {
         return $this->hasMany(Orders::class);

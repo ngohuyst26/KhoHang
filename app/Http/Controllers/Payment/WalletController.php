@@ -103,7 +103,7 @@ class WalletController extends Controller
         $vnp_TxnRef = Str::uuid();
         $vnp_OrderInfo = 'Thanhdonhang';
         $vnp_OrderType = 'billpayment';
-        $vnp_Amount = $request->amount * 100 ;
+        $vnp_Amount = $request->amount ;
         $vnp_Locale = 'vn';
         $vnp_IpAddr = $request->ip();
         $inputData = [

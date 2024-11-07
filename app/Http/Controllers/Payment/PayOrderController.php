@@ -7,28 +7,30 @@ use App\Models\Orders;
 use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PayOrderController extends Controller
 {
-    public function payOrder(Request $request, $orderId)
+    public function payOrder(Request $request)
     {
         $user = auth()->user();
-        $order = Orders::findOrFail($orderId);
-
+        $order = Orders::findOrFail($request->input('order_id'));
         if ($order->status != 'pending') {
             return response()->json(['message' => 'Order is not pending'], 400);
         }
 
-        $paymentMethodId = $request->input('payment_method_id');
-        $paymentMethod = PaymentMethod::findOrFail($paymentMethodId);
+        $paymentMethod = PaymentMethod::find($request->input('payment_method_id'));
+        if(!$paymentMethod){
+            return response()->json(['message' => 'Không tồn tại phương thức thanh toán'], 404);
+        }
 
         DB::beginTransaction();
         try {
             switch ($paymentMethod->name) {
                 case 'wallet':
                     $wallet = $user->wallet;
-                    if (!$wallet || $wallet->balance < $order->amount) {
-                        return response()->json(['message' => 'Insufficient wallet balance'], 400);
+                    if (!$wallet || $wallet->balance < $order->total_payment) {
+                        return response()->json(['message' => 'Số dư trong ví không đủ để thanh toán.'], 400);
                     }
                     $wallet->balance -= $order->amount;
                     $wallet->save();

@@ -76,8 +76,10 @@ Route::middleware([
             Route::resource('option', OptionController::class);
             Route::resource('customers', CustomerController::class);
             Route::resource('suppliers', SupplierController::class);
-            Route::resource('orders', OrderController::class);
             Route::get('orders/restore/{id}',[OrderController::class,'restore']);
+            Route::resource('orders', OrderController::class)->only([
+                'create', 'update', 'destroy','edit'
+            ]);
             Route::resource('categories', CategoryController::class)->only([
                 'show', 'create', 'store', 'update', 'destroy','edit'
             ]);
@@ -87,40 +89,47 @@ Route::middleware([
             Route::resource('brands', BrandController::class)->only([
                 'show', 'create', 'store', 'update', 'destroy','edit'
             ]);
-
-            //Order
-            Route::post('/pay-order/{order}', [PayOrderController::class, 'payOrder']);
-
-            //VNPay
-            Route::post('/vnpay/payment', [VnPayController::class, 'createPayment'])->name('payment.create');
-            Route::get('/vnpay-return', [VnPayController::class, 'vnpayReturn'])->name('vnpay.return');
-
-            //Momo
-            Route::post('/momo/payment', [MomoPaymentController::class, 'createPayment']);
-            Route::get('/momo/callback', [MomoPaymentController::class, 'callback'])->name('momo.callback');
-            Route::get('/momo/ipn', [MomoPaymentController::class, 'ipn'])->name('momo.ipn');
-
-            //Wallet MOMO
-            Route::post('/wallet/momo-deposit', [WalletController::class, 'createMomoPayment']);
-            Route::get('/wallet/momo-callback', [WalletController::class, 'callback'])->name('wallet.momoCallback');
-            Route::get('/wallet/momo-ipn', [WalletController::class, 'ipn'])->name('wallet.ipn');
-
-            //Wallet VNPAY
-            Route::post('/wallet/vnpay-deposit', [WalletController::class, 'createVnpayPayment']);
-            //Route::get('/wallet/vnpay-ipn', [WalletController::class, 'ipn'])->name('wallet.ipn');
-            Route::get('/wallet/vnpay-return', [WalletController::class, 'vnpayReturn'])->name('wallet.vnpayReturn')->withoutMiddleware(['auth:api', VerifyTenantToken::class]);
         });
+
+        //Order
+        Route::post('/pay-order', [PayOrderController::class, 'payOrder']);
+
+        //VNPay
+        Route::post('/vnpay/payment', [VnPayController::class, 'createPayment'])->name('payment.create');
+        Route::get('/vnpay-return', [VnPayController::class, 'vnpayReturn'])->name('vnpay.return');
+
+        //Momo
+        Route::post('/momo/payment', [MomoPaymentController::class, 'createPayment']);
+        Route::get('/momo/callback', [MomoPaymentController::class, 'callback'])->name('momo.callback');
+        Route::get('/momo/ipn', [MomoPaymentController::class, 'ipn'])->name('momo.ipn');
+
+        //Wallet MOMO
+        Route::post('/wallet/momo-deposit', [WalletController::class, 'createMomoPayment']);
+        Route::get('/wallet/momo-callback', [WalletController::class, 'callback'])->name('wallet.momoCallback');
+        Route::get('/wallet/momo-ipn', [WalletController::class, 'ipn'])->name('wallet.ipn');
+
+        //Wallet VNPAY
+        Route::post('/wallet/vnpay-deposit', [WalletController::class, 'createVnpayPayment']);
+        //Route::get('/wallet/vnpay-ipn', [WalletController::class, 'ipn'])->name('wallet.ipn');
+        Route::get('/wallet/vnpay-return', [WalletController::class, 'vnpayReturn'])->name('wallet.vnpayReturn')->withoutMiddleware(['auth:api', VerifyTenantToken::class]);
+
+        Route::resource('orders', OrderController::class)->only([
+            'index','store','show'
+        ]);
+
+        Route::resource('categories', CategoryController::class)->only([
+            'index',
+        ]);
+        Route::resource('suppliers', SupplierController::class)->only([
+            'index',
+        ]);
+        Route::resource('brands', BrandController::class)->only([
+            'index'
+        ]);
+
     });
 
-    Route::resource('categories', CategoryController::class)->only([
-        'index',
-    ]);
-    Route::resource('suppliers', SupplierController::class)->only([
-        'index',
-    ]);
-    Route::resource('brands', BrandController::class)->only([
-        'index'
-    ]);
+
 
     Route::prefix('auth')->group(function (){
         Route::post('/register', [AuthTenantController::class, 'register'])->name('register');

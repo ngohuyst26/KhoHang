@@ -13,11 +13,10 @@ class Orders extends Model
     protected $fillable = [
         'id',
         'discount',
-        'order_status',
-        'payment_method',
+        'payment_method_id',
         'payment_status',
         'notes',
-        'order_status',
+        'status',
         'customer_id',
         'created_at',
         'updated_at',

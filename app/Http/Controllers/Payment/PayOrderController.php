@@ -32,7 +32,7 @@ class PayOrderController extends Controller
                     if (!$wallet || $wallet->balance < $order->total_payment) {
                         return response()->json(['message' => 'Số dư trong ví không đủ để thanh toán.'], 400);
                     }
-                    $wallet->balance -= $order->amount;
+                    $wallet->balance -= $order->total_payment;
                     $wallet->save();
                     break;
 
@@ -47,7 +47,7 @@ class PayOrderController extends Controller
                 // Thêm các phương thức khác nếu cần
             }
 
-            $order->payment_method_id = $paymentMethodId;
+            $order->payment_method_id = $request->input('payment_method_id');
             $order->status = 'completed';
             $order->save();
 

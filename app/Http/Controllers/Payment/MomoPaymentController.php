@@ -55,6 +55,7 @@ class MomoPaymentController extends Controller
 
     public function callback(Request $request)
     {
+        dd($request->all());
         // Xử lý callback khi người dùng thanh toán thành công
         Log::info('Momo Callback', $request->all());
         return response()->json(['status' => 'success']);

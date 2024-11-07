@@ -1,23 +1,21 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 use App\Http\Controllers\API\Admin\BrandController;
 use App\Http\Controllers\API\Admin\CategoryController;
 use App\Http\Controllers\API\Admin\CustomerController;
-use App\Http\Controllers\API\Admin\DepartmentController;
 use App\Http\Controllers\API\Admin\ImportGoodsController;
 use App\Http\Controllers\API\Admin\OrderController;
-use App\Http\Controllers\API\Admin\StaffController;
 use App\Http\Controllers\API\Admin\SupplierController;
 use App\Http\Controllers\API\Auth\AuthTenantController;
 use App\Http\Controllers\Api\CheckStockController;
 use App\Http\Controllers\API\OptionController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Payment\MomoPaymentController;
-use App\Http\Controllers\Payment\WalletPaymentController;
 use App\Http\Controllers\Payment\VnpayPaymentController;
 use App\Http\Controllers\Payment\WalletController;
+use App\Http\Controllers\Payment\WalletPaymentController;
 use App\Http\Controllers\TikTokController;
 use App\Http\Middleware\VerifyTenantToken;
 use Illuminate\Support\Facades\Route;
@@ -57,6 +55,10 @@ Route::middleware([
 
             Route::post('/sync-product', [TikTokController::class, 'syncProductTikTok'])
                  ->name('tiktok.sync_product');
+
+            Route::post('/unlink-account-tiktok', [TikTokController::class, 'unlinkTikTokAccounts'])
+                 ->name('tiktok.unlink_account');
+
         });
     });
 

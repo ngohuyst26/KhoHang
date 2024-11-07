@@ -14,12 +14,10 @@ class TikTokWebhookController extends Controller{
         $data    = $request->all();
         $tenants = UserTikTokAccount::where('open_id', $request->seller_open_id)->first();
         Log::info('FBT Inventory Update Webhook Received:', $data);
-
         if (isset($data['type']) && $data['type'] == 24){
             $goodsId               = $data['data']['goods_id'] ?? NULL;
             $skuId                 = $data['data']['sku_id'] ?? NULL;
             $fbtWarehouseInventory = $data['data']['fbt_warehouse_inventory'][0] ?? NULL;
-
             if ($goodsId && $skuId && $fbtWarehouseInventory){
                 $availableQuantity = $fbtWarehouseInventory['on_hand_detail']['available_quantity'] ?? 0;
                 tenancy()->initialize($tenants->tenant_id);
@@ -29,7 +27,6 @@ class TikTokWebhookController extends Controller{
                     if ($productSku){
                         $productSku->inventory = $availableQuantity;
                         $productSku->save();
-
                         Log::info('Updated inventory for SKU: ' . $productSku->id . ' to ' . $availableQuantity);
                     }else{
                         Log::warning('Product SKU not found for TikTok SKU ID: ' . $skuId);

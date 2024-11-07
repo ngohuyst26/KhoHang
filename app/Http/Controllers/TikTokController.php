@@ -27,9 +27,7 @@ class TikTokController extends Controller{
 
     public function handleCallback(Request $request){
         $authCode = $request->input('code');
-
         $subdomain = $request->input('state');
-
         $tenants = Domain::where('domain', $subdomain . '.' . env('APP_DOMAIN'))->firstOrFail();
         if (!$tenants){
             return response()->json([
@@ -75,13 +73,16 @@ class TikTokController extends Controller{
             $shopInfo  = $shopRes->collect();
 
 
-            TikTokAccount::create([
+            TikTokAccount::updateOrCreate(
+                [
+                    'open_id' => $data['data']['open_id'],
+                ]
+                , [
                 'account_tiktok_name' => $shopInfo['data']['shops']['0']['name'],
                 'access_token'        => $data['data']['access_token'],
                 'refresh_token'       => $data['data']['refresh_token'],
                 'expires_in'          => $data['data']['access_token_expire_in'],
                 'shop_cipher'         => $shopInfo['data']['shops']['0']['cipher'],
-                'open_id'             => $data['data']['open_id'],
                 'shop_id'             => $shopInfo['data']['shops']['0']['id']
             ]);
             tenancy()->end();
@@ -113,7 +114,6 @@ class TikTokController extends Controller{
 
     public function getValidAccessToken($shopId){
         $tiktokAccount = TikTokAccount::where('shop_id', $shopId)->first();
-        //        dd($tiktokAccount);
         if (!$tiktokAccount){
             return response()->json([
                 'status'  => FALSE,
@@ -335,12 +335,9 @@ class TikTokController extends Controller{
                         $productId      = $product['id'];
                         $productDetails = $this->getProductDetails($productId, $shopCipher,
                             $accessToken);
-                        //                        dd($productDetails['data']['skus']);
                         foreach ($productDetails['data']['skus'] as $index => $sku){
-                            //                            dd($sku);
                             $productLink = TikTokProductLink::where('tiktok_sku_id', $sku['id'])
                                                             ->first();
-                            //                            dd($productLink);
                             if ($productLink){
                                 $skuLink                                                = $this->productRepository->getOneSku($productLink->product_id,
                                     $productLink->sku_id);
@@ -431,5 +428,22 @@ class TikTokController extends Controller{
         }
     }
 
+    public function unlinkTikTokAccounts(Request $request){
+        try{
+            $accountLink = TikTokAccount::where('shop_id', $request->shop_id)->firstOrFail();
+            if ($accountLink){
+                $accountLink->delete();
 
+                return response()->json([
+                    'status'  => TRUE,
+                    'message' => 'Hủy liên kết tài khoản tiktok thành công!'
+                ]);
+            }
+        }catch (\Exception $exception){
+            return response()->json([
+                'status'  => FALSE,
+                'message' => 'Hủy liên kết tài khoản tiktok thất bại!'
+            ]);
+        }
+    }
 }

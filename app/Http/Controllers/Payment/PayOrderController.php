@@ -18,35 +18,17 @@ class PayOrderController extends Controller
             return response()->json(['message' => 'Đơn hàng không ở trạng thái chờ thanh toán'], 400);
         }
 
-        $paymentMethod = PaymentMethod::find($request->input('payment_method_id'));
-        if(!$paymentMethod){
-            return response()->json(['message' => 'Không tồn tại phương thức thanh toán'], 404);
-        }
-
         DB::beginTransaction();
         try {
-            switch ($paymentMethod->name) {
-                case 'wallet':
-                    $user = auth()->user();
-                    $wallet = $user->wallet;
-                    if (!$wallet || $wallet->balance < $order->total_payment) {
-                        return response()->json(['message' => 'Số dư trong ví không đủ để thanh toán.'], 400);
-                    }
-                    $wallet->balance -= $order->total_payment;
-                    $wallet->save();
-                    break;
-
-                case 'momo':
-                    
-                    break;
-                case 'vnpay':
-                    // Logic xử lý thanh toán qua chuyển khoản ngân hàng
-                    break;
-
-                // Thêm các phương thức khác nếu cần
+            $user = auth()->user();
+            $wallet = $user->wallet;
+            if (!$wallet || $wallet->balance < $order->total_payment) {
+                return response()->json(['message' => 'Số dư trong ví không đủ để thanh toán.'], 400);
             }
+            $wallet->balance -= $order->total_payment;
+            $wallet->save();
 
-            $order->payment_method_id = $request->input('payment_method_id');
+            $order->payment_method_id = 1;
             $order->status = 'completed';
             $order->save();
 

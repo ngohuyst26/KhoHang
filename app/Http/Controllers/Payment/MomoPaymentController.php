@@ -65,6 +65,7 @@ class MomoPaymentController extends Controller
         $resultCode = $request->input('resultCode');
         if ($resultCode == 0) {
             $order = Orders::findOrFail($request->input('extraData'));
+            $order->payment_method_id = 2;
             $order->status = 'completed';
             $order->save();
 

@@ -100,7 +100,7 @@ Route::middleware([
 
         //Momo
         Route::post('/momo/payment', [MomoPaymentController::class, 'createPayment']);
-        Route::get('/momo/callback', [MomoPaymentController::class, 'callback'])->name('momo.callback');
+        Route::get('/momo/callback', [MomoPaymentController::class, 'callback'])->name('momo.callback')->withoutMiddleware(['auth:api', VerifyTenantToken::class]);
         Route::get('/momo/ipn', [MomoPaymentController::class, 'ipn'])->name('momo.ipn');
 
         //Wallet MOMO

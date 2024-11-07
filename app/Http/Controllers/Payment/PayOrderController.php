@@ -13,10 +13,9 @@ class PayOrderController extends Controller
 {
     public function payOrder(Request $request)
     {
-        $user = auth()->user();
         $order = Orders::findOrFail($request->input('order_id'));
         if ($order->status != 'pending') {
-            return response()->json(['message' => 'Order is not pending'], 400);
+            return response()->json(['message' => 'Đơn hàng không ở trạng thái chờ thanh toán'], 400);
         }
 
         $paymentMethod = PaymentMethod::find($request->input('payment_method_id'));
@@ -28,6 +27,7 @@ class PayOrderController extends Controller
         try {
             switch ($paymentMethod->name) {
                 case 'wallet':
+                    $user = auth()->user();
                     $wallet = $user->wallet;
                     if (!$wallet || $wallet->balance < $order->total_payment) {
                         return response()->json(['message' => 'Số dư trong ví không đủ để thanh toán.'], 400);
@@ -37,10 +37,9 @@ class PayOrderController extends Controller
                     break;
 
                 case 'momo':
-                    // Logic xử lý thanh toán qua thẻ tín dụng
+                    
                     break;
-
-                case 'Bank Transfer':
+                case 'vnpay':
                     // Logic xử lý thanh toán qua chuyển khoản ngân hàng
                     break;
 
@@ -52,7 +51,7 @@ class PayOrderController extends Controller
             $order->save();
 
             DB::commit();
-            return response()->json(['message' => 'Payment successful'], 200);
+            return response()->json(['message' => 'Payment successful1'], 200);
 
         } catch (\Exception $e) {
             DB::rollBack();

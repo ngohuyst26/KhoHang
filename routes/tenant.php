@@ -59,6 +59,8 @@ Route::middleware([
             Route::post('/unlink-account-tiktok', [TikTokController::class, 'unlinkTikTokAccounts'])
                  ->name('tiktok.unlink_account');
 
+            Route::post('/unlink-product-tiktok', [TikTokController::class, 'unlinkTikTokProduct'])
+                 ->name('tiktok.unlink_product_tiktok');
         });
     });
 

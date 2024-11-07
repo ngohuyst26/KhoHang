@@ -14,4 +14,12 @@ class TikTokAccount extends Model{
     public function user(){
         return $this->hasOne(User::class, 'user_id', 'id');
     }
+
+    public static function boot(){
+        parent::boot();
+
+        static::deleting(function ($tiktokAccount){
+            TikTokProductLink::where('shop_id', $tiktokAccount->shop_id)->delete();
+        });
+    }
 }

@@ -26,9 +26,9 @@ class TikTokController extends Controller{
     }
 
     public function handleCallback(Request $request){
-        $authCode = $request->input('code');
+        $authCode  = $request->input('code');
         $subdomain = $request->input('state');
-        $tenants = Domain::where('domain', $subdomain . '.' . env('APP_DOMAIN'))->firstOrFail();
+        $tenants   = Domain::where('domain', $subdomain . '.' . env('APP_DOMAIN'))->firstOrFail();
         if (!$tenants){
             return response()->json([
                 'status'  => FALSE,
@@ -443,6 +443,26 @@ class TikTokController extends Controller{
             return response()->json([
                 'status'  => FALSE,
                 'message' => 'Hủy liên kết tài khoản tiktok thất bại!'
+            ]);
+        }
+    }
+
+    public function unlinkTikTokProduct(Request $request){
+        try{
+            $productLink = TikTokProductLink::where([['shop_id', '=', $request->shop_id], ['sku_id', '=', $request->product_sku_id], ['tiktok_sku_id', '=', $request->product_tiktok_sku]])
+                                            ->firstOrFail();
+            if ($productLink){
+                $productLink->delete();
+
+                return response()->json([
+                    'status'  => TRUE,
+                    'message' => 'Hủy liên kết sản phẩm tiktok thành công!'
+                ]);
+            }
+        }catch (\Exception $exception){
+            return response()->json([
+                'status'  => FALSE,
+                'message' => 'Hủy liên kết sản phẩm tiktok thất bại!'
             ]);
         }
     }

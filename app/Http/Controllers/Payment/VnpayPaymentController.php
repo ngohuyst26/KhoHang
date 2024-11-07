@@ -3,21 +3,27 @@
 namespace App\Http\Controllers\Payment;
 
 use App\Http\Controllers\Controller;
+use App\Models\Orders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
-class VnPayController extends Controller
+class VnpayPaymentController extends Controller
 {
     public function createPayment(Request $request)
     {
+        $order = Orders::findOrFail($request->input('order_id'));
+        if ($order->status != 'pending') {
+            return response()->json(['message' => 'Đơn hàng không ở trạng thái chờ thanh toán'], 400);
+        }
+
         $vnp_TmnCode = env('VNP_TMN_CODE');
         $vnp_HashSecret = env('VNP_HASH_SECRET');
         $vnp_Url = env('VNP_URL');
         $vnp_ReturnUrl = route('vnpay.return');
-        $vnp_TxnRef = time(); // Mã đơn hàng
-        $vnp_OrderInfo = 'Thanhdonhang';
+        $vnp_TxnRef = time();
+        $vnp_OrderInfo = $order->id ;
         $vnp_OrderType = 'billpayment';
-        $vnp_Amount = $request->amount * 100 ;
+        $vnp_Amount = $order->total_payment * 100 ;
         $vnp_Locale = 'vn';
         $vnp_IpAddr = $request->ip();
 
@@ -60,29 +66,6 @@ class VnPayController extends Controller
     }
 
     // Xử lý kết quả thanh toán trả về từ VNPay
-    public function vnpayReturn1(Request $request)
-    {
-        $vnp_HashSecret = Config::get('vnpay.vnp_HashSecret');
-        $inputData = $request->all();
-        $vnp_SecureHash = $inputData['vnp_SecureHash'];
-        unset($inputData['vnp_SecureHashType']);
-        unset($inputData['vnp_SecureHash']);
-        ksort($inputData);
-        $hashData = '';
-        foreach ($inputData as $key => $value) {
-            $hashData .= $key . '=' . $value . '&';
-        }
-        $secureHash = hash('sha512', $vnp_HashSecret . rtrim($hashData, '&'));
-        if ($secureHash == $vnp_SecureHash) {
-            if ($inputData['vnp_ResponseCode'] == '00') {
-                return response()->json(['message' => 'Successfully', 'data' => $inputData], 200);
-            } else {
-                return response()->json(['message' => 'Fail', 'data' => $inputData], 400);
-            }
-        } else {
-            return response()->json(['message' => 'Chu ky khon hop le'], 400);
-        }
-    }
     public function vnpayReturn(Request $request)
     {
         $vnp_HashSecret = Config::get('vnpay.vnp_HashSecret');
@@ -109,14 +92,23 @@ class VnPayController extends Controller
 
         $secureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
         if ($secureHash == $vnp_SecureHash) {
-            if ($_GET['vnp_ResponseCode'] == '00') {
-                return response()->json(['message' => 'Successfully', 'data' => $inputData], 200);
+            if ($request->input('vnp_ResponseCode') == '00') {
+                $order_id = $request->input('vnp_OrderInfo');
+                $order = Orders::findOrFail($order_id);
+                $order->payment_method_id = 3;
+                $order->status = 'completed';
+                $order->save();
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Thanh toán thành công',
+                ],200);
             }
             else {
-                return response()->json(['message' => 'Fail', 'data' => $inputData], 400);
+                return response()->json(['message' => 'Thanh toán thất bại', 'data' => $inputData], 400);
             }
         } else {
-            return response()->json(['message' => 'Chu ky khon hop le'], 400);
+            return response()->json(['message' => 'Chữ ký không hợp lệ'], 400);
         }
     }
 }

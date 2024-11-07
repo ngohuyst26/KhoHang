@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class PayOrderController extends Controller
+class WalletPaymentController extends Controller
 {
     public function payOrder(Request $request)
     {
@@ -33,11 +33,11 @@ class PayOrderController extends Controller
             $order->save();
 
             DB::commit();
-            return response()->json(['message' => 'Payment successful1'], 200);
+            return response()->json(['message' => 'Thanh toán thành công'], 200);
 
         } catch (\Exception $e) {
             DB::rollBack();
-            return response()->json(['message' => 'Payment failed', 'error' => $e->getMessage()], 500);
+            return response()->json(['message' => 'Thanh toán thất bại', 'error' => $e->getMessage()], 500);
         }
     }
 }

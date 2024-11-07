@@ -76,7 +76,7 @@ class MomoPaymentController extends Controller
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Payment failed or cancelled',
+                'message' => 'Thanh toán thất bại',
             ]);
         }
     }

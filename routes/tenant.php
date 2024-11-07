@@ -15,8 +15,8 @@ use App\Http\Controllers\Api\CheckStockController;
 use App\Http\Controllers\API\OptionController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Payment\MomoPaymentController;
-use App\Http\Controllers\Payment\PayOrderController;
-use App\Http\Controllers\Payment\VnPayController;
+use App\Http\Controllers\Payment\WalletPaymentController;
+use App\Http\Controllers\Payment\VnpayPaymentController;
 use App\Http\Controllers\Payment\WalletController;
 use App\Http\Controllers\TikTokController;
 use App\Http\Middleware\VerifyTenantToken;
@@ -92,11 +92,11 @@ Route::middleware([
         });
 
         //Order
-        Route::post('/pay-order', [PayOrderController::class, 'payOrder']);
+        Route::post('/pay-order', [WalletPaymentController::class, 'payOrder']);
 
         //VNPay
-        Route::post('/vnpay/payment', [VnPayController::class, 'createPayment'])->name('payment.create');
-        Route::get('/vnpay-return', [VnPayController::class, 'vnpayReturn'])->name('vnpay.return');
+        Route::post('/vnpay/payment', [VnpayPaymentController::class, 'createPayment'])->name('payment.create');
+        Route::get('/vnpay-return', [VnpayPaymentController::class, 'vnpayReturn'])->name('vnpay.return')->withoutMiddleware(['auth:api', VerifyTenantToken::class]);
 
         //Momo
         Route::post('/momo/payment', [MomoPaymentController::class, 'createPayment']);

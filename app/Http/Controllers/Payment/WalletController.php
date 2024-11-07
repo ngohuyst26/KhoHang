@@ -78,13 +78,13 @@ class WalletController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Deposit successful',
+                'message' => 'Nạp tiền vào ví thành công',
                 'balance' => $wallet->balance,
             ]);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Payment failed or cancelled',
+                'message' => 'Nạp tiền không thành công',
             ]);
         }
     }
@@ -103,7 +103,7 @@ class WalletController extends Controller
         $vnp_TxnRef = Str::uuid();
         $vnp_OrderInfo = 'Thanhdonhang';
         $vnp_OrderType = 'billpayment';
-        $vnp_Amount = $request->amount ;
+        $vnp_Amount = $request->amount * 100;
         $vnp_Locale = 'vn';
         $vnp_IpAddr = $request->ip();
         $inputData = [
@@ -181,15 +181,15 @@ class WalletController extends Controller
 
                 return response()->json([
                     'success' => true,
-                    'message' => 'Deposit successful',
+                    'message' => 'Nạp tiền vào ví thành công',
                     'balance' => $wallet->balance,
                 ]);
             }
             else {
-                return response()->json(['message' => 'Fail', 'data' => $inputData], 400);
+                return response()->json(['message' => 'Nạp tiền không thành công', 'data' => $inputData], 400);
             }
         } else {
-            return response()->json(['message' => 'Chu ky khon hop le'], 400);
+            return response()->json(['message' => 'Chữ ký không hợp lệ'], 400);
         }
     }
 }

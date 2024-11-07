@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')
+            $table->foreignId('user_id')
                   ->nullable()
-                  ->constrained('customers')
+                  ->constrained('users')
                   ->cascadeOnUpdate()
                   ->nullOnDelete();
             $table->float('total_payment')->nullable();
-            $table->integer('discount')->nullable();
             $table->enum('status', ['pending', 'completed', 'failed']);
             $table->text('notes')->nullable();
 

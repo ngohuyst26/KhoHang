@@ -20,6 +20,7 @@ class CreateTenantsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
+            $table->string('plan')->default('basic');
             $table->timestamps();
             $table->json('data')->nullable();
         });

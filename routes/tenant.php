@@ -115,7 +115,7 @@ Route::middleware([
 
         Route::resource('orders', OrderController::class)->only([
             'index','store','show'
-        ]);
+        ])->middleware('check.plan:premium');
 
         Route::resource('categories', CategoryController::class)->only([
             'index',

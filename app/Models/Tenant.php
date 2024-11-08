@@ -20,6 +20,11 @@ class Tenant extends BaseTenant implements TenantWithDatabase
         ];
     }
 
+    public function hasPlan($plan)
+    {
+        return $this->plan === $plan;
+    }
+
     public function setPasswordAttribute($val)
     : string{
         return $this->attributes['password'] = bcrypt($val);

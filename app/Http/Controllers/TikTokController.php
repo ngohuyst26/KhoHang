@@ -466,4 +466,21 @@ class TikTokController extends Controller{
             ]);
         }
     }
+
+    public function listAccountTikTok(){
+        try{
+            $tiktokAccount = TikTokAccount::all()
+                                          ->makeHidden(['access_token', 'refresh_token', 'expires_in', 'shop_cipher', 'auth_code']);
+
+            return response()->json([
+                'status' => TRUE,
+                'data'   => $tiktokAccount
+            ]);
+        }catch (\Exception $exception){
+            return response()->json([
+                'status'  => FALSE,
+                'message' => 'Đã có lỗi sãy ra!'
+            ]);
+        }
+    }
 }

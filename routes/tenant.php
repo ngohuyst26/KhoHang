@@ -83,7 +83,9 @@ Route::middleware([
                 [CheckStockController::class, 'cancel']);
             Route::resource('import-goods', ImportGoodsController::class);
             Route::resource('option', OptionController::class);
-            Route::resource('customers', CustomerController::class);
+            Route::resource('customers', CustomerController::class)->only([
+                'create', 'store', 'destroy', 'edit'
+            ]);
             Route::resource('suppliers', SupplierController::class);
             Route::get('orders/restore/{id}', [OrderController::class, 'restore']);
             Route::resource('orders', OrderController::class)->only([
@@ -135,6 +137,10 @@ Route::middleware([
 
         Route::resource('orders', OrderController::class)->only([
             'index', 'store', 'show'
+        ]);
+
+        Route::resource('customers', CustomerController::class)->only([
+           'update', 'show'
         ]);
 
         Route::resource('categories', CategoryController::class)->only([

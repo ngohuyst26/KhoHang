@@ -43,6 +43,11 @@ class ProductSku extends Model{
         return $this->hasMany(SkuValue::class, 'sku_id', 'id');
     }
 
+    public function orderItems(){
+        return $this->hasMany(OrderItems::class, 'product_sku_id', 'id',);
+    }
+
+
     public static function generateNextCode(){
         $lastSku = self::where('code', 'LIKE', 'SP%')
                        ->get()

@@ -75,7 +75,7 @@ class OrderController extends Controller
         return response()->json([
             'status'  => true,
             'message' => "Chi tiết đơn hàng",
-            'data'    => $order
+            'data'    => $order->orderItems
         ],200);
     }
 

@@ -309,10 +309,11 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
     public function createProduct($request){
         return Product::create([
-            'name'        => $request->name,
-            'category_id' => $request->category_id,
-            'supplier_id' => $request->supplier_id,
-            'description' => $request->description
+            'name'              => $request->name,
+            'category_id'       => $request->category_id,
+            'supplier_id'       => $request->supplier_id,
+            'description'       => $request->description,
+            'tiktok_product_id' => $request->tiktok_product_id ?? NULL
         ]);
     }
 

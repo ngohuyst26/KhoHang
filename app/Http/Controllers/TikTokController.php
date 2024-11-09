@@ -226,11 +226,11 @@ class TikTokController extends Controller{
                 $sign      = $this->generateSignature(config('services.tiktok.app_secret'),
                     "/product/202309/products/$request->tiktok_product_id", $params);
 
-                $response = Http::withHeaders([
+                $response   = Http::withHeaders([
                     'x-tts-access-token' => $accessToken,
                 ])
-                                ->get("https://open-api.tiktokglobalshop.com/product/202309/products/$request->tiktok_product_id?app_key=$appKey&shop_cipher=$tiktokAccount->shop_cipher&timestamp=$timestamp&sign=$sign");
-
+                                  ->get("https://open-api.tiktokglobalshop.com/product/202309/products/$request->tiktok_product_id?app_key=$appKey&shop_cipher=$tiktokAccount->shop_cipher&timestamp=$timestamp&sign=$sign");
+                $tiktokData = $response->collect();
                 if ($response->ok()){
                     $tiktokData = $response->collect();
                     if (count($tiktokData['data']['skus']) == 1){
@@ -243,7 +243,7 @@ class TikTokController extends Controller{
                             'category_id'       => NULL,
                             'supplier_id'       => NULL,
                             'description'       => $tiktokData['data']['description'],
-                            'tiktok_product_id' => $request->tiktok_product_id
+                            'tiktok_product_id' => $tiktokData['data']['id']
                         ];
                         $dataProduct     = new Fluent($productCoppy);
                         $responseProduct = $this->productRepository->addProductApi($dataProduct);
@@ -260,7 +260,7 @@ class TikTokController extends Controller{
                         'category_id'       => NULL,
                         'supplier_id'       => NULL,
                         'description'       => $tiktokData['data']['description'],
-                        'tiktok_product_id' => $request->tiktok_product_id
+                        'tiktok_product_id' => $tiktokData['data']['id']
                     ];
                     $optionVariants = [];
                     foreach ($tiktokData['data']['skus'] as $sku){
@@ -303,7 +303,7 @@ class TikTokController extends Controller{
 
             return response()->json([
                 'status'  => FALSE,
-                'message' => 'Không thể sao chép sản phẩm với TikTok.',
+                'message' => 'Không thể sao chép sản phẩm TikTok.',
             ]);
         }
 

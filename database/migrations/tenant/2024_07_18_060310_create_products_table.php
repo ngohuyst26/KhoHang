@@ -32,7 +32,7 @@ return new class extends Migration{
                 ->nullOnDelete();
 
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->tinyInteger('status')
                   ->default(1);
             $table->timestamps();

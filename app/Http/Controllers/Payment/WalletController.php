@@ -15,6 +15,16 @@ use Illuminate\Support\Str;
 
 class WalletController extends Controller
 {
+    public function getBalance(){
+        $wallet = auth()->user()->wallet;
+        return response()->json([
+            'status'  => true,
+            'message' => "Thông tin số dư",
+            'data'    => [
+                'balance' => $wallet->balance
+            ]
+        ],200);
+    }
     public function createMomoPayment(Request $request)
     {
         $partnerCode = env('MOMO_PARTNER_CODE');

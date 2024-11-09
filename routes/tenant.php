@@ -131,6 +131,8 @@ Route::middleware([
              ->name('wallet.vnpayReturn')
              ->withoutMiddleware(['auth:api', VerifyTenantToken::class]);
 
+        Route::get('/wallet/get-balance', [WalletController::class, 'getBalance']);
+
         Route::resource('orders', OrderController::class)->only([
             'index', 'store', 'show'
         ]);

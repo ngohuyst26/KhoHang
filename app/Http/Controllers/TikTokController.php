@@ -155,58 +155,78 @@ class TikTokController extends Controller{
     }
 
     public function linkProductToTikTok(Request $request){
-        $productSku    = ProductSku::findOrFail($request->product_sku_id);
-        $accessToken   = $this->getValidAccessToken($request->shop_id);
-        $tiktokAccount = TikTokAccount::where('shop_id', $request->shop_id)->firstOrFail();
-        if (is_string($accessToken)){
-            $url       = "https://open-api.tiktokglobalshop.com/product/202309/products/$request->product_tiktok_id";
-            $timestamp = time();
-            $appKey    = config('services.tiktok.app_key');
-            $params    = [
-                'app_key'     => $appKey,
-                'timestamp'   => $timestamp,
-                'shop_cipher' => $tiktokAccount->shop_cipher,
-            ];
-            $sign      = $this->generateSignature(config('services.tiktok.app_secret'),
-                "/product/202309/products/$request->product_tiktok_id", $params);
-
-            $response = Http::withHeaders([
-                'x-tts-access-token' => $accessToken,
-            ])
-                            ->get("https://open-api.tiktokglobalshop.com/product/202309/products/$request->product_tiktok_id?app_key=$appKey&shop_cipher=$tiktokAccount->shop_cipher&timestamp=$timestamp&sign=$sign");
-
-            if ($response->ok()){
-                $tiktokData = $response->collect();
-                foreach ($tiktokData['data']['skus'] as $sku){
-                    if ($sku['id'] == $request->product_sku_tiktok_id){
-                        TikTokProductLink::updateOrCreate(
-                            ['sku_id' => $productSku->id],
-                            [
-                                'product_id'          => $request->product_id,
-                                'shop_id'             => $request->shop_id,
-                                'tiktok_product_id'   => $tiktokData['data']['id'],
-                                'tiktok_product_name' => $tiktokData['data']['title'],
-                                'tiktok_sku_id'       => $sku['id'],
-                                'tiktok_sku_code'     => $sku['seller_sku'],
-                                'price'               => $sku['price']['sale_price'],
-                                'currency'            => $sku['price']['currency'],
-                            ]
-                        );
-
-                    }
-                }
-
+        try{
+            $checkProduct = $this->productRepository->getOneSku($request->product_id,
+                $request->product_sku_id);
+            if (!$checkProduct){
                 return response()->json([
-                    'status'  => TRUE,
-                    'message' => 'Liên kết sản phẩm thành công!',
+                    'status'  => FALSE,
+                    'message' => 'Sản phẩm này không tồn tại!',
                 ]);
             }
-        }
+            $productSku        = ProductSku::findOrFail($request->product_sku_id);
+            $accessToken       = $this->getValidAccessToken($request->shop_id);
+            $tiktokAccount     = TikTokAccount::where('shop_id', $request->shop_id)->firstOrFail();
+            $tiktokProductLink = TikTokProductLink::where('tiktok_sku_id',
+                $request->product_sku_tiktok_id)->first();
+            if (isset($tiktokProductLink)){
+                return response()->json([
+                    'status'  => FALSE,
+                    'message' => 'Sản phẩm này đã được liên kết!',
+                ]);
+            }
+            if (is_string($accessToken)){
+                $url       = "https://open-api.tiktokglobalshop.com/product/202309/products/$request->product_tiktok_id";
+                $timestamp = time();
+                $appKey    = config('services.tiktok.app_key');
+                $params    = [
+                    'app_key'     => $appKey,
+                    'timestamp'   => $timestamp,
+                    'shop_cipher' => $tiktokAccount->shop_cipher,
+                ];
+                $sign      = $this->generateSignature(config('services.tiktok.app_secret'),
+                    "/product/202309/products/$request->product_tiktok_id", $params);
 
-        return response()->json([
-            'status'  => FALSE,
-            'message' => 'Không thể liên kết sản phẩm với TikTok.',
-        ]);
+                $response = Http::withHeaders([
+                    'x-tts-access-token' => $accessToken,
+                ])
+                                ->get("https://open-api.tiktokglobalshop.com/product/202309/products/$request->product_tiktok_id?app_key=$appKey&shop_cipher=$tiktokAccount->shop_cipher&timestamp=$timestamp&sign=$sign");
+
+                if ($response->ok()){
+                    $tiktokData = $response->collect();
+                    foreach ($tiktokData['data']['skus'] as $sku){
+                        if ($sku['id'] == $request->product_sku_tiktok_id){
+                            TikTokProductLink::updateOrCreate(
+                                ['sku_id' => $productSku->id],
+                                [
+                                    'product_id'          => $request->product_id,
+                                    'shop_id'             => $request->shop_id,
+                                    'tiktok_product_id'   => $tiktokData['data']['id'],
+                                    'tiktok_product_name' => $tiktokData['data']['title'],
+                                    'tiktok_sku_id'       => $sku['id'],
+                                    'tiktok_sku_code'     => $sku['seller_sku'],
+                                    'price'               => $sku['price']['sale_price'],
+                                    'currency'            => $sku['price']['currency'],
+                                ]
+                            );
+
+                        }
+                    }
+
+                    return response()->json([
+                        'status'  => TRUE,
+                        'data'    => $this->productRepository->getOneSku($request->product_id,
+                            $request->product_sku_id),
+                        'message' => 'Liên kết sản phẩm thành công!',
+                    ]);
+                }
+            }
+        }catch (\Exception $exception){
+            return response()->json([
+                'status'  => FALSE,
+                'message' => 'Không thể liên kết sản phẩm với TikTok.',
+            ]);
+        }
     }
 
     public function syncProductTikTok(Request $request){

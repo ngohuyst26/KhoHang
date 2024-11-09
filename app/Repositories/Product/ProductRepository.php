@@ -365,12 +365,29 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     public function getOneSku($product_id, $sku_id){
-        return Product::with([
-            'productSku' => function ($query) use ($sku_id){
-                $query->where('id', $sku_id)
-                      ->with('optionValue.option', 'photo', 'storageLocation');
+        try{
+            $product = Product::where('id', $product_id)
+                              ->whereHas('productSku', function ($query) use ($sku_id){
+                                  $query->where('id', $sku_id);
+                              })
+                              ->with([
+                                  'productSku' => function ($query) use ($sku_id){
+                                      $query->where('id', $sku_id)
+                                            ->with('optionValue.option', 'photo',
+                                                'storageLocation');
+                                  },
+                                  'category',
+                                  'supplier'
+                              ])->first();
+            if ($product != NULL){
+                return $product;
             }
-            , 'category', 'supplier'])->find($product_id);
+
+            return FALSE;
+        }catch (Exception $exception){
+            return FALSE;
+        }
+
     }
 
     public function updateProductSku($request, $id, $skuId){

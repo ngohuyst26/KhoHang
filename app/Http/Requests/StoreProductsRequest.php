@@ -27,12 +27,12 @@ class StoreProductsRequest extends FormRequest
     {
         return [
             'name'                  => 'required|max:255',
-            'price'                 => 'nullable|numeric',
-            'sale_price'            => 'nullable|numeric',
-            'stock'                 => 'nullable|numeric',
-            'variants.*.price'      => 'sometimes|required|numeric',
-            'variants.*.sale_price' => 'sometimes|required|numeric',
-            'variants.*.stock'      => 'sometimes|required|numeric',
+            'price'                 => 'nullable|numeric|min:0',
+            'sale_price'            => 'nullable|numeric|min:0|gte:price',
+            'stock'                 => 'nullable|numeric|min:0',
+            'variants.*.price'      => 'sometimes|required|numeric|min:0',
+            'variants.*.sale_price' => 'sometimes|required|numeric|min:0|gte:variants.*.price',
+            'variants.*.stock'      => 'sometimes|required|numeric|min:0',
             'category_id'           => 'exists:App\Models\Category,id',
             'supplier_id'           => 'exists:App\Models\Supplier,id',
             'code'                  => 'nullable|string|max:255'
@@ -48,9 +48,12 @@ class StoreProductsRequest extends FormRequest
 
     public function messages(){
         return [
-            'required' => 'Dữ liệu không được trống!',
-            'max'      => 'Dữ liệu phải nhỏ hơn 255 ký tự',
-            'numeric'  => 'Dữ liệu phải là số'
+            'required'                  => 'Dữ liệu không được trống!',
+            'max'                       => 'Dữ liệu phải nhỏ hơn 255 ký tự!',
+            'numeric'                   => 'Dữ liệu phải là số!',
+            'min'                       => 'Dữ liệu không được bé hơn 0!',
+            'sale_price.gte'            => 'Giá bán không hợp lệ!',
+            'variants.*.sale_price.gte' => 'Giá bán không hợp lệ!'
         ];
     }
 

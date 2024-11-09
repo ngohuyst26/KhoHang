@@ -167,13 +167,13 @@ class TikTokController extends Controller{
             $productSku        = ProductSku::findOrFail($request->product_sku_id);
             $accessToken       = $this->getValidAccessToken($request->shop_id);
             $tiktokAccount     = TikTokAccount::where('shop_id', $request->shop_id)->firstOrFail();
-            $tiktokProductLink = TikTokProductLink::where('tiktok_sku_id',
-                $request->product_sku_tiktok_id)->first();
+            $tiktokProductLink = TikTokProductLink::where(['tiktok_sku_id' => $request->product_sku_tiktok_id])
+                                                  ->first();
             if (isset($tiktokProductLink)){
                 return response()->json([
                     'status'  => FALSE,
                     'message' => 'Sản phẩm này đã được liên kết!',
-                ]);
+                ], 400);
             }
             if (is_string($accessToken)){
                 $url       = "https://open-api.tiktokglobalshop.com/product/202309/products/$request->product_tiktok_id";
@@ -224,7 +224,7 @@ class TikTokController extends Controller{
         }catch (\Exception $exception){
             return response()->json([
                 'status'  => FALSE,
-                'message' => 'Không thể liên kết sản phẩm với TikTok.',
+                'message' => $exception,
             ]);
         }
     }

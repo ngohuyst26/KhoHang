@@ -84,7 +84,7 @@ Route::middleware([
             Route::resource('import-goods', ImportGoodsController::class);
             Route::resource('option', OptionController::class);
             Route::resource('customers', CustomerController::class)->only([
-                'create', 'store', 'destroy', 'edit'
+                'index','create', 'store', 'destroy', 'edit'
             ]);
             Route::resource('suppliers', SupplierController::class);
             Route::get('orders/restore/{id}', [OrderController::class, 'restore']);

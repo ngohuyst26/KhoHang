@@ -22,6 +22,13 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        'phone',
+        'city_name',
+        'date_of_birth',
+        'address',
+        'email',
+        'status',
+        'notes',
     ];
 
     public function orders(){
@@ -38,9 +45,6 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Payment::class);
     }
 
-    public function customer(){
-        return $this->hasOne(Customer::class,'user_id', 'id');
-    }
 
     /**
      * The attributes that should be hidden for serialization.

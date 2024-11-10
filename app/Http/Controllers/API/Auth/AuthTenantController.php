@@ -36,11 +36,6 @@ class AuthTenantController extends Controller
         $user->password = bcrypt(request()->password);
         $user->save();
 
-        $user->customer()->create([
-            'name' => $user->name,
-            'email' => $user->email,
-        ]);
-
         $user->wallet()->create([
             'balance' => 0
         ]);
@@ -83,15 +78,13 @@ class AuthTenantController extends Controller
     public function me(Request $request)
     {
        $user = auth()->user();
-       $customer = $user->customer;
         return response()->json([
             'user_id'     => $user->id,
-            'customer_id' => $customer->id,
-            'name'        => $customer->name,
-            'email'       => $customer->email,
-            'address'     => $customer->address,
-            'city_name'   => $customer->city_name,
-            'phone'       => $customer->phone,
+            'name'        => $user->name,
+            'email'       => $user->email,
+            'address'     => $user->address,
+            'city_name'   => $user->city_name,
+            'phone'       => $user->phone,
             'roles'       => $user->getRoleNames(),
             'subdomain'   => $request->getHttpHost()
         ]);

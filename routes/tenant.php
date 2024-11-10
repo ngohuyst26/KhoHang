@@ -12,6 +12,7 @@ use App\Http\Controllers\API\Auth\AuthTenantController;
 use App\Http\Controllers\Api\CheckStockController;
 use App\Http\Controllers\API\OptionController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\Payment\MomoPaymentController;
 use App\Http\Controllers\Payment\VnpayPaymentController;
 use App\Http\Controllers\Payment\WalletController;
@@ -102,6 +103,7 @@ Route::middleware([
             ]);
         });
 
+        Route::resource('/user', UserController::class);
         //Order
         Route::post('/pay-order', [WalletPaymentController::class, 'payOrder']);
 

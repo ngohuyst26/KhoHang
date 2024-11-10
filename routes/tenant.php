@@ -84,7 +84,7 @@ Route::middleware([
                 [CheckStockController::class, 'cancel']);
             Route::resource('import-goods', ImportGoodsController::class);
             Route::resource('option', OptionController::class);
-            Route::resource('customers', CustomerController::class)->only([
+            Route::resource('user', UserController::class)->only([
                 'index','create', 'store', 'destroy', 'edit'
             ]);
             Route::resource('suppliers', SupplierController::class);

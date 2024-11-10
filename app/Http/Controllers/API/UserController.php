@@ -4,17 +4,32 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Repositories\User\UserRepositoryInterface;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    protected UserRepositoryInterface $userRepository;
+
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $users = $this->userRepository->filter($request);
+        return response()->json([
+            'status'  => true,
+            'message' => "Danh sách khách hàng",
+            'data'    => $users
+        ],200);
     }
 
     /**
@@ -38,7 +53,21 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        try {
+            $user = $this->userRepository->find($id);
+            return response()->json([
+                'status'  => true,
+                'message' => "Chi tiết khách hàng",
+                'data'    => $user
+            ],200);
+        }
+        catch(ModelNotFoundException  $exception){
+            return response()->json([
+                'status'  => false,
+                'message' => "Chi tiết khách hàng",
+                'data'    => "Không tìm thấy khách hàng"
+            ],404);
+        }
     }
 
     /**
@@ -58,12 +87,31 @@ class UserController extends Controller
         if(!$check_user_id){
             return response()->json([
                'status' => FALSE,
-               'messagse' => "Không có quyền cập nhật thông tin người dùng này",
+               'message' => "Không có quyền cập nhật thông tin người dùng này",
             ],Response::HTTP_FORBIDDEN);
         }
 
-        User::find($id)->update($request->all());
+        $rules = [
+            'name' => 'required|max:255',
+            'email' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($id)],
+        ];
 
+        $messages = [
+            'required' => 'Dữ liệu không được trống!',
+            'max' => 'Dữ liệu tối đa :max kí tự',
+            'email.unique' => "Email đã tồn tại trong hệ thống"
+        ];
+
+        $validator = Validator::make($request->all(),$rules, $messages);
+        if ($validator->fails()) {
+            return response()->json([
+                'status'  => false,
+                'message' => "Lỗi",
+                'data'    => $validator->errors()
+            ],400);
+        }
+
+        User::find($id)->update($request->all());
         return response()->json([
             'status' => TRUE,
             'messagse' => "Đã cập nhật thông tin người dùng",
@@ -75,6 +123,20 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $user = $this->userRepository->delete($id);
+            return response()->json([
+                'status'  => true,
+                'message' => "Đã xóa thông tin khách hàng",
+                'data'    => []
+            ],200);
+        }
+        catch (ModelNotFoundException $e){
+            return response()->json([
+                'status'  => false,
+                'message' => "Xóa thất bại",
+                'data'    => []
+            ],404);
+        }
     }
 }

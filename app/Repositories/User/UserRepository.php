@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Repositories\Customer;
+namespace App\Repositories\User;
 
-use App\Models\Customer;
+use App\Models\User;
 use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Validation\Rule;
 
-class CustomerRepository extends BaseRepository implements CustomerRepositoryInterface{
+class UserRepository extends BaseRepository implements UserRepositoryInterface{
 
     protected $rules = [
         'name' => 'required|max:255',
@@ -19,7 +20,7 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
         'max' => 'Dữ liệu tối đa :max kí tự'
     ];
 
-    public function __construct(Customer $model)
+    public function __construct(User $model)
     {
         parent::__construct($model);
     }
@@ -31,23 +32,23 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
 
     public function filter($request)
     {
-        $customers = $this->model->orderBy('id', 'DESC');
+        $users = $this->model->orderBy('id', 'DESC');
 
         if($request->has('keyword')){
-            $customers = $customers->where('name','like','%'.$request->keyword.'%');
+            $users = $users->where('name','like','%'.$request->keyword.'%');
         }
 
         if($request->has('status')  && $request->status != '' ){
-            $customers = $customers->where('status',$request->status);
+            $users = $users->where('status',$request->status);
         }
 
         if($request->has('limit')){
-            $customers = $customers->paginate($request->limit);
+            $users = $users->paginate($request->limit);
         }else{
-            $customers = $customers->paginate(10);
+            $users = $users->paginate(10);
         }
 
-        return $customers;
+        return $users;
     }
 
 
@@ -69,7 +70,18 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
 
     public function update(int $id, array $data): bool|Model
     {
-        $this->validate($data, $this->rules, $this->messages);
+        $rules = [
+            'name' => 'required|max:255',
+            'email' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($id)],
+        ];
+
+        $messages = [
+            'required' => 'Dữ liệu không được trống!',
+            'max' => 'Dữ liệu tối đa :max kí tự',
+            'email.unique' => "Email đã tồn tại trong hệ thống"
+        ];
+
+        $this->validate($data, $rules, $messages);
         return $this->model->findOrFail($id)->update($data);
     }
 
@@ -80,11 +92,11 @@ class CustomerRepository extends BaseRepository implements CustomerRepositoryInt
 
     public function delete(int $id): bool|Model
     {
-        $customers = $this->model->find($id);
-        if (!$customers) {
+        $users = $this->model->find($id);
+        if (!$users) {
             return throw new ModelNotFoundException('Record not found!');
         }
-        return  $customers->delete();
+        return  $users->delete();
     }
 
 }

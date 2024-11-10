@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Customer\CustomerRepositoryInterface;
+use App\Repositories\User\UserRepositoryInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -12,7 +12,7 @@ class CustomerController extends Controller
 {
     protected $customerRepository;
 
-    public function __construct(CustomerRepositoryInterface $customerRepository)
+    public function __construct(UserRepositoryInterface $customerRepository)
     {
         $this->customerRepository = $customerRepository;
     }

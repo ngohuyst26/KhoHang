@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules;
+use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
@@ -45,7 +47,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $users = $this->userRepository->create($request->all());
+            $users->assignRole('customer');
+            return response()->json([
+                'status'  => true,
+                'message' => "Thêm thành công",
+                'data'    => $users
+            ],201);
+        }
+        catch (ValidationException $e){
+            return response()->json([
+                'status'  => false,
+                'message' => "Lỗi",
+                'data'    => $e->validator->errors()
+            ], 400);
+        }
     }
 
     /**
@@ -92,13 +109,24 @@ class UserController extends Controller
         }
 
         $rules = [
-            'name' => 'required|max:255',
-            'email' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($id)],
+            'name'          => ['required','max:255'],
+            'email'         => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique('users')->ignore($id)],
+            'password'      => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone'         => ['regex:/^(09|03|05|07|08)+([0-9]{8})\b/',Rule::unique('users')->ignore($id)],
+            'date_of_birth' => ['date' , 'before:' . date('Y-m-d')],
+            'address'       => ['string','max:255'],
+            'notes'         => ['string','max:255']
         ];
 
         $messages = [
-            'required' => 'Dữ liệu không được trống!',
-            'max' => 'Dữ liệu tối đa :max kí tự',
+            'required'  => 'Dữ liệu không được trống!',
+            'string'    => "Dữ liệu phải là chữ cái từ a-zA-Z",
+            'lowercase' => "Dữ liệu phải là chữ cái thường",
+            'email'     => "Không dđúng định đạng email",
+            'phone.regex' => "Số điện thoại không đúng định dạng",
+            'date'      => "Ngày không đúng định dạng",
+            'before'    => "Ngày phải trước hiện tại",
+            'max'       => 'Dữ liệu tối đa :max kí tự',
             'email.unique' => "Email đã tồn tại trong hệ thống"
         ];
 

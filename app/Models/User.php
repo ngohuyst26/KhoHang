@@ -23,7 +23,6 @@ class User extends Authenticatable implements JWTSubject
         'email',
         'password',
         'phone',
-        'city_name',
         'date_of_birth',
         'address',
         'email',
@@ -89,7 +88,6 @@ class User extends Authenticatable implements JWTSubject
         return [
             'name' => $this->name,
             'email'=> $this->email,
-
         ];
     }
 }

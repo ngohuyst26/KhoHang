@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface{
 
@@ -64,7 +65,30 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface{
 
     public function create(array $data)
     {
-        $this->validate($data, $this->rules, $this->messages);
+        $rules = [
+            'name'          => ['required','max:255'],
+            'email'         => ['required', 'string', 'lowercase', 'email', 'max:255','unique:users,email'],
+            'password'      => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone'         => ['regex:/^(09|03|05|07|08)+([0-9]{8})\b/','unique:users,phone'],
+            'date_of_birth' => ['date' , 'before:' . date('Y-m-d')],
+            'address'       => ['string','max:255'],
+            'notes'         => ['max:255']
+        ];
+
+        $messages = [
+            'required'  => 'Dữ liệu không được trống!',
+            'string'    => "Dữ liệu phải là chữ cái từ a-zA-Z",
+            'lowercase' => "Dữ liệu phải là chữ cái thường",
+            'email'     => "Không dđúng định đạng email",
+            'phone.regex'  => "Số điện thoại không đúng định dạng",
+            'date'         => "Ngày không đúng định dạng",
+            'before'       => "Ngày phải trước hiện tại",
+            'max'          => 'Dữ liệu tối đa :max kí tự',
+            'email.unique' => "Email đã tồn tại trong hệ thống",
+            'phone.unique' => "Số điện thoại đã tồn tại trong hệ thống",
+            'confirmed'    => "Mật khẩu không khớp"
+        ];
+        $this->validate($data, $rules, $messages);
         return $this->model->create($data);
     }
 

@@ -18,6 +18,7 @@ use App\Http\Controllers\Payment\VnpayPaymentController;
 use App\Http\Controllers\Payment\WalletController;
 use App\Http\Controllers\Payment\WalletPaymentController;
 use App\Http\Controllers\TikTokController;
+use App\Http\Controllers\UpgradeTenantController;
 use App\Http\Middleware\VerifyTenantToken;
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
@@ -102,6 +103,8 @@ Route::middleware([
             Route::resource('brands', BrandController::class)->only([
                 'show', 'create', 'store', 'update', 'destroy', 'edit'
             ]);
+
+            Route::put('upgrade-plan/{tenant_id}',[UpgradeTenantController::class,'upgradePlanByMomo']);
         });
 
         Route::resource('/user', UserController::class);

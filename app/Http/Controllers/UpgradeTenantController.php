@@ -1,36 +1,39 @@
 <?php
 
-namespace App\Http\Controllers\Payment;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Orders;
+use App\Models\Tenant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
-class MomoPaymentController extends Controller
+use Illuminate\Support\Str;
+
+class UpgradeTenantController extends Controller
 {
-    public function createPayment(Request $request)
-    {
-        $order = Orders::findOrFail($request->input('order_id'));
-        if ($order->status != 'pending') {
-            return response()->json(['message' => 'Đơn hàng không ở trạng thái chờ thanh toán'], 400);
+    public function upgradePlanByMomo(Request $request, $tenant_id){
+        if (tenant()->id != $tenant_id){
+            return response()->json([
+                'status' => FALSE,
+                'message' => "Không thể nâng cấp cho người thuê này"
+            ],403);
         }
+
+        $tenant = Tenant::findOrFail($tenant_id);
+        if ($tenant->plan != 'basic') {
+            return response()->json(['message' => 'Đã nâng cấp gói này'], 400);
+        }
+
         $partnerCode = env('MOMO_PARTNER_CODE');
         $accessKey = env('MOMO_ACCESS_KEY');
         $secretKey = env('MOMO_SECRET_KEY');
         $endpoint = env('MOMO_ENDPOINT');
-
         $orderId = time();
         $orderInfo = "Thanh toán qua Momo ATM";
-        $amount = $order->total_payment;
+        $amount = 300000;
         $redirectUrl = route('momo.callback');
         $ipnUrl = route('wallet.ipn');
-
-        // Tạo signature
-        $rawHash = "accessKey=$accessKey&amount=$amount&extraData=$order->id&ipnUrl=$ipnUrl&orderId=$orderId&orderInfo=$orderInfo&partnerCode=$partnerCode&redirectUrl=$redirectUrl&requestId=$orderId&requestType=payWithATM";
+        $rawHash = "accessKey=$accessKey&amount=$amount&extraData=$tenant_id&ipnUrl=$ipnUrl&orderId=$orderId&orderInfo=$orderInfo&partnerCode=$partnerCode&redirectUrl=$redirectUrl&requestId=$orderId&requestType=payWithATM";
         $signature = hash_hmac("sha256", $rawHash, $secretKey);
 
-        // Chuẩn bị dữ liệu gửi đi
         $data = [
             'partnerCode' => $partnerCode,
             'partnerName' => "Test",
@@ -42,7 +45,7 @@ class MomoPaymentController extends Controller
             'redirectUrl' => $redirectUrl,
             'ipnUrl' => $ipnUrl,
             'lang' => 'vi',
-            'extraData' => $order->id,
+            'extraData' => $tenant_id,
             'requestType' => "payWithATM",
             'signature' => $signature,
 
@@ -59,26 +62,18 @@ class MomoPaymentController extends Controller
             ], 500);
         }
     }
-
-    public function callback(Request $request)
-    {
+    
+    public function callbackMomo(Request $request){
         $resultCode = $request->input('resultCode');
+        $tenant_id = $request->input('extraData');
         if ($resultCode == 0) {
-            $order = Orders::findOrFail($request->input('extraData'));
-            $order->payment_method_id = 2;
-            $order->status = 'completed';
-            $order->save();
+            $tenant = Tenant::findOrFail($tenant_id);
+            $tenant->plan = 'premium';
+            $tenant->save();
 
             return redirect(env('APP_METHOD') . tenant()->domain_name. "." . env('URL_SUCCESS_MOMO'));
         } else {
             return redirect(env('APP_METHOD') . tenant()->domain_name. "."  . env('URL_FAIL_MOMO'));
         }
-    }
-
-    public function ipn(Request $request)
-    {
-        // Xử lý IPN (Instant Payment Notification) từ Momo
-        Log::info('Momo IPN', $request->all());
-        return response()->json(['status' => 'success']);
     }
 }

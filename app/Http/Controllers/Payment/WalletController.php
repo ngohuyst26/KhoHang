@@ -54,7 +54,7 @@ class WalletController extends Controller
             'redirectUrl' => $redirectUrl,
             'ipnUrl' => $ipnUrl,
             'lang' => 'vi',
-            'extraData' => "",
+            'extraData' => $request->input('user_id'),
             'requestType' => "payWithATM",
             'signature' => $signature
         ];
@@ -78,7 +78,7 @@ class WalletController extends Controller
         $resultCode = $request->input('resultCode');
 
         if ($resultCode == 0) {
-            $user = auth()->user();
+            $user = User::findOrFail($request->input('extraData'));
             $wallet = $user->wallet;
 
             if ($wallet) {

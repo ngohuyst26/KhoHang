@@ -112,7 +112,7 @@ class UserController extends Controller
             'name'          => ['required','max:255'],
             'email'         => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique('users')->ignore($id)],
             'phone'         => ['required','regex:/^(09|03|05|07|08)+([0-9]{8})\b/',Rule::unique('users')->ignore($id)],
-            'date_of_birth' => ['required','date' , 'before:' . date('Y-m-d')],
+            'date_of_birth' => ['required','date_format:d/m/Y' , 'before:' . date('Y-m-d')],
             'address'       => ['required', 'string','max:255'],
         ];
 
@@ -120,12 +120,14 @@ class UserController extends Controller
             'required'  => "Vui lòng nhập dữ liệu",
             'string'    => "Dữ liệu phải là chữ cái từ a-zA-Z",
             'lowercase' => "Dữ liệu phải là chữ cái thường",
-            'email'     => "Không dđúng định đạng email",
-            'phone.regex' => "Số điện thoại không đúng định dạng",
-            'date'      => "Ngày không đúng định dạng",
-            'before'    => "Ngày phải trước hiện tại",
-            'max'       => "Dữ liệu tối đa :max kí tự",
-            'email.unique' => "Email đã tồn tại trong hệ thống"
+            'email'     => "Không đúng định đạng email",
+            'phone.regex'  => "Số điện thoại bắt đầu là 03 05 07 08 09 với độ dài là 10 chữ số",
+            'date'         => "Ngày không đúng định dạng",
+            'max'          => "Dữ liệu tối đa :max kí tự",
+            'email.unique' => "Email đã tồn tại trong hệ thống",
+            'date_of_birth.date_format' => "Ngày có dịnh dạng là dd/mm/yyyy",
+            'date_of_birth.before'      => "Ngày phải trước hiện tại",
+
         ];
 
         $validator = Validator::make($request->all(),$rules, $messages);

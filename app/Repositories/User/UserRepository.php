@@ -70,7 +70,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface{
             'email'         => ['required', 'string', 'lowercase', 'email', 'max:255','unique:users,email'],
             'password'      => ['required', 'confirmed', Rules\Password::defaults()],
             'phone'         => ['required', 'regex:/^(09|03|05|07|08)+([0-9]{8})\b/','unique:users,phone'],
-            'date_of_birth' => ['required', 'date' , 'before:' . date('Y-m-d')],
+            'date_of_birth' => ['required', 'date_format:d/m/Y' , 'before:' . date('Y-m-d')],
             'address'       => ['required', 'string','max:255'],
         ];
 
@@ -78,14 +78,16 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface{
             'required'  => "Vui lòng nhập dữ liệu",
             'string'    => "Dữ liệu phải là chữ cái từ a-zA-Z",
             'lowercase' => "Dữ liệu phải là chữ cái thường",
-            'email'     => "Không dđúng định đạng email",
-            'phone.regex'  => "Số điện thoại không đúng định dạng",
+            'email'     => "Không đúng định đạng email",
+            'phone.regex'  => "Số điện thoại bắt đầu là 03 05 07 08 09 với độ dài là 10 chữ số",
             'date'         => "Ngày không đúng định dạng",
-            'before'       => "Ngày phải trước hiện tại",
             'max'          => "Dữ liệu tối đa :max kí tự",
             'email.unique' => "Email đã tồn tại trong hệ thống",
             'phone.unique' => "Số điện thoại đã tồn tại trong hệ thống",
-            'confirmed'    => "Mật khẩu không khớp"
+            'confirmed'    => "Mật khẩu không khớp",
+            'password.min' => "Độ dài mật khẩu ít nhất 8 kí tự",
+            'date_of_birth.date_format' => "Ngày có dịnh dạng là dd/mm/yyyy",
+            'date_of_birth.before'      => "Ngày phải trước hiện tại",
         ];
         $this->validate($data, $rules, $messages);
         return $this->model->create($data);

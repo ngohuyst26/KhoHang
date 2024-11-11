@@ -3,8 +3,8 @@
 namespace App\Jobs;
 
 use App\Models\Category;
+use App\Models\Introduction;
 use App\Models\PaymentMethod;
-use App\Models\Product;
 use App\Models\Supplier;
 use App\Models\Tenant;
 use App\Models\User;
@@ -62,6 +62,11 @@ class SeedTenantJob implements ShouldQueue
                 'email'    => $this->tenant->email,
                 'password' => $this->tenant->password
             ]);
+
+            Introduction::create([
+                'introductions' => 'Giới thiệu đây,  đây là giới thiệu'
+            ]);
+
             $user->wallet()->create([
                 'balance' => 0
             ]);

@@ -10,6 +10,7 @@ use App\Http\Controllers\API\Admin\OrderController;
 use App\Http\Controllers\API\Admin\SupplierController;
 use App\Http\Controllers\API\Auth\AuthTenantController;
 use App\Http\Controllers\Api\CheckStockController;
+use App\Http\Controllers\Api\IntroductionController;
 use App\Http\Controllers\API\OptionController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\API\UserController;
@@ -73,6 +74,9 @@ Route::middleware([
 
     Route::middleware(['auth:api', VerifyTenantToken::class])->group(function (){
         Route::group(['middleware' => ['role:admin']], function (){
+
+            Route::post('introductions', [IntroductionController::class, 'store']);
+            Route::get('introductions', [IntroductionController::class, 'show']);
             Route::post('product/create', [ProductController::class, 'store']);
             Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);
             Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);

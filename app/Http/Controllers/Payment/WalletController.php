@@ -27,6 +27,12 @@ class WalletController extends Controller
     }
     public function createMomoPayment(Request $request)
     {
+        if ($request->input('user_id') != auth()->user()->id){
+            return response()->json([
+                'status' => FALSE,
+                'message' => "Không có quyền nạp tiền cho tài khoản này"
+            ],403);
+        }
         $partnerCode = env('MOMO_PARTNER_CODE');
         $accessKey = env('MOMO_ACCESS_KEY');
         $secretKey = env('MOMO_SECRET_KEY');
@@ -37,9 +43,10 @@ class WalletController extends Controller
         $amount = $request->input('amount');
         $redirectUrl = route('wallet.momoCallback');
         $ipnUrl = route('wallet.ipn');
+        $extraData  = $request->input('user_id');
 
         // Tạo signature
-        $rawHash = "accessKey=$accessKey&amount=$amount&extraData=&ipnUrl=$ipnUrl&orderId=$orderId&orderInfo=$orderInfo&partnerCode=$partnerCode&redirectUrl=$redirectUrl&requestId=$orderId&requestType=payWithATM";
+        $rawHash = "accessKey=$accessKey&amount=$amount&extraData=$extraData&ipnUrl=$ipnUrl&orderId=$orderId&orderInfo=$orderInfo&partnerCode=$partnerCode&redirectUrl=$redirectUrl&requestId=$orderId&requestType=payWithATM";
         $signature = hash_hmac("sha256", $rawHash, $secretKey);
 
         // Chuẩn bị dữ liệu gửi đi
@@ -54,7 +61,7 @@ class WalletController extends Controller
             'redirectUrl' => $redirectUrl,
             'ipnUrl' => $ipnUrl,
             'lang' => 'vi',
-            'extraData' => $request->input('user_id'),
+            'extraData' => $extraData,
             'requestType' => "payWithATM",
             'signature' => $signature
         ];
@@ -78,7 +85,8 @@ class WalletController extends Controller
         $resultCode = $request->input('resultCode');
 
         if ($resultCode == 0) {
-            $user = User::findOrFail($request->input('extraData'));
+            $user = User::find($request->input('extraData'));
+
             $wallet = $user->wallet;
 
             if ($wallet) {
@@ -99,16 +107,25 @@ class WalletController extends Controller
     }
 
     public function createVnpayPayment(Request $request){
+        $user_id = $request->input('user_id');
+        if ($user_id != auth()->user()->id){
+            return response()->json([
+                'status' => FALSE,
+                'message' => "Không có quyền nạp tiền cho tài khoản này"
+            ],403);
+        }
+
         $vnp_TmnCode = env('VNP_TMN_CODE');
         $vnp_HashSecret = env('VNP_HASH_SECRET');
         $vnp_Url = env('VNP_URL');
         $vnp_ReturnUrl = route('wallet.vnpayReturn');
         $vnp_TxnRef = Str::uuid();
-        $vnp_OrderInfo = 'Thanhdonhang';
+        $vnp_OrderInfo = $user_id;
         $vnp_OrderType = 'billpayment';
-        $vnp_Amount = $request->amount;
+        $vnp_Amount = $request->input('amount') * 100;
         $vnp_Locale = 'vn';
         $vnp_IpAddr = $request->ip();
+
         $inputData = [
             "vnp_Version" => "2.1.0",
             "vnp_TmnCode" => $vnp_TmnCode,
@@ -140,7 +157,7 @@ class WalletController extends Controller
 
         $vnp_Url = $vnp_Url . "?" . $query;
         if (isset($vnp_HashSecret)) {
-            $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);//
+            $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
 
@@ -176,9 +193,12 @@ class WalletController extends Controller
         $secureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
         if ($secureHash == $vnp_SecureHash) {
             if ($vnp_ResponseCode == '00') {
-                $wallet = auth()->user()->wallet;
-                if ($wallet){
-                    $wallet->balance += $request->vnp_Amount;
+
+                $user = User::findOrFail($request->input('vnp_OrderInfo'));
+                $wallet = $user->wallet;
+
+                if ($wallet) {
+                    $wallet->balance += $request->input('vnp_Amount')/100;
                     $wallet->save();
                 }
 

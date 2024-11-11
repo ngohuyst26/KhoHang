@@ -18,7 +18,7 @@ return new class extends Migration
                   ->constrained('users')
                   ->cascadeOnUpdate()
                   ->nullOnDelete();
-            $table->decimal('balance', 15, 2)->default(0);
+            $table->decimal('balance', 15,0)->default(0);
             $table->timestamps();
 
         });

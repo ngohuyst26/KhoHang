@@ -23,7 +23,7 @@ class VnpayPaymentController extends Controller
         $vnp_TxnRef = time();
         $vnp_OrderInfo = $order->id ;
         $vnp_OrderType = 'billpayment';
-        $vnp_Amount = $order->total_payment * 100 ;
+        $vnp_Amount = $order->total_payment;
         $vnp_Locale = 'vn';
         $vnp_IpAddr = $request->ip();
 

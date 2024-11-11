@@ -111,22 +111,20 @@ class UserController extends Controller
         $rules = [
             'name'          => ['required','max:255'],
             'email'         => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique('users')->ignore($id)],
-            'password'      => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone'         => ['regex:/^(09|03|05|07|08)+([0-9]{8})\b/',Rule::unique('users')->ignore($id)],
-            'date_of_birth' => ['date' , 'before:' . date('Y-m-d')],
-            'address'       => ['string','max:255'],
-            'notes'         => ['string','max:255']
+            'phone'         => ['required','regex:/^(09|03|05|07|08)+([0-9]{8})\b/',Rule::unique('users')->ignore($id)],
+            'date_of_birth' => ['required','date' , 'before:' . date('Y-m-d')],
+            'address'       => ['required', 'string','max:255'],
         ];
 
         $messages = [
-            'required'  => 'Dữ liệu không được trống!',
+            'required'  => "Vui lòng nhập dữ liệu",
             'string'    => "Dữ liệu phải là chữ cái từ a-zA-Z",
             'lowercase' => "Dữ liệu phải là chữ cái thường",
             'email'     => "Không dđúng định đạng email",
             'phone.regex' => "Số điện thoại không đúng định dạng",
             'date'      => "Ngày không đúng định dạng",
             'before'    => "Ngày phải trước hiện tại",
-            'max'       => 'Dữ liệu tối đa :max kí tự',
+            'max'       => "Dữ liệu tối đa :max kí tự",
             'email.unique' => "Email đã tồn tại trong hệ thống"
         ];
 

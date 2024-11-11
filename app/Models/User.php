@@ -27,7 +27,6 @@ class User extends Authenticatable implements JWTSubject
         'address',
         'email',
         'status',
-        'notes',
     ];
 
     public function orders(){

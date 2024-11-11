@@ -79,11 +79,11 @@ class AuthTenantController extends Controller
     {
        $user = auth()->user();
         return response()->json([
-            'user_id'     => $user->id,
-            'name'        => $user->name,
-            'email'       => $user->email,
-            'address'     => $user->address,
-            'city_name'   => $user->city_name,
+            'user_id'         => $user->id,
+            'name'            => $user->name,
+            'email'           => $user->email,
+            'address'         => $user->address,
+            'date_of_birth'   => $user->date_of_birth,
             'phone'       => $user->phone,
             'roles'       => $user->getRoleNames(),
             'subdomain'   => $request->getHttpHost()

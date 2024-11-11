@@ -112,8 +112,8 @@ class UserController extends Controller
             'name'          => ['required','max:255'],
             'email'         => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique('users')->ignore($id)],
             'phone'         => ['required','regex:/^(09|03|05|07|08)+([0-9]{8})\b/',Rule::unique('users')->ignore($id)],
-            'date_of_birth' => ['required','date_format:d/m/Y' , 'before:' . date('Y-m-d')],
-            'address'       => ['required', 'string','max:255'],
+            'date_of_birth' => ['date_format:Y/m/d' , 'before:' . date('Y-m-d')],
+            'address'       => ['max:255'],
         ];
 
         $messages = [

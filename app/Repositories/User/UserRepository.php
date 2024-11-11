@@ -70,7 +70,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface{
             'email'         => ['required', 'string', 'lowercase', 'email', 'max:255','unique:users,email'],
             'password'      => ['required', 'confirmed', Rules\Password::defaults()],
             'phone'         => ['required', 'regex:/^(09|03|05|07|08)+([0-9]{8})\b/','unique:users,phone'],
-            'date_of_birth' => ['required', 'date_format:d/m/Y' , 'before:' . date('Y-m-d')],
+            'date_of_birth' => ['required', 'date_format:Y/m/d' , 'before:' . date('Y-m-d')],
             'address'       => ['required', 'string','max:255'],
         ];
 

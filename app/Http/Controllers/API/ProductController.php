@@ -62,6 +62,10 @@ class ProductController extends Controller{
         ]);
     }
 
+    public function getOneProduct($id){
+        return $this->productRepository->getOneProduct($id);
+    }
+
     /**
      * Update the specified resource in storage.
      */

@@ -32,4 +32,6 @@ interface ProductRepositoryInterface extends BaseRepositoryInterface{
 
     public function restoreProduct($id);
 
+    public function getOneProduct($id);
+
 }

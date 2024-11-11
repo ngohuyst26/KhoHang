@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AddVariantsRequest;
 use App\Http\Requests\StoreProductsRequest;
+use App\Models\ProductSku;
 use App\Repositories\CheckStock\CheckStockRepositoryInterface;
 use App\Repositories\Product\ProductRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller{
@@ -41,6 +44,90 @@ class ProductController extends Controller{
             'message' => 'Product created successfully',
             'sku_ids' => $skuIds,
         ], 201);
+    }
+
+
+    public function addVariant(AddVariantsRequest $request){
+        $productId    = $request->product_id;
+        $productCheck = $this->productRepository->getOneProduct($productId);
+        if ($productCheck == NULL){
+            return response()->json(['error' => 'Không tìm thấy sản phẩm!'], 400);
+        }
+        $optionValues = [];
+        foreach ($request->data as $option){
+            $optionValues[] = $option['value'];
+        }
+
+        $productSkuQuery = ProductSku::query();
+        $productSkuQuery->where('product_id',
+            $request->product_id);
+        $productSkuQuery->whereHas('optionValue', function ($query) use ($optionValues){
+            $query->whereIn('name', $optionValues);
+        }, '=', count($optionValues));
+
+        $productSku = $productSkuQuery->get();
+
+        if (!$productSku->isEmpty()){
+            return response()->json([
+                'status'  => FALSE,
+                'message' => 'Biến thể ' . implode(", ",
+                        $optionValues) . ' đã tồn tại vui lòng tạo biến thể khác'
+            ], 400);
+        }
+
+        DB::beginTransaction();
+        try{
+            if (empty($request->code)){
+                $request->merge(['code' => ProductSku::generateNextCode()]);
+            }else{
+                $existingSku = ProductSku::where('code', $request->code)->first();
+                if ($existingSku){
+                    $request->merge(['code' => ProductSku::generateNextCode()]);
+                }
+            }
+            $sku = $this->productRepository->createSku(
+                $productId,
+                $request->price,
+                $request->sale_price,
+                $request->inventory,
+                $request->barcode,
+                $request->code
+            );
+
+            $optionValues = [];
+            foreach ($request->data as $option){
+                $optionValue = $this->productRepository->createOptionValue(
+                    $productId,
+                    $option['type'],
+                    $option['value']
+                );
+                if ($optionValue){
+                    $optionValues[] = [
+                        'option_id'       => $option['type'],
+                        'option_value_id' => $optionValue->id,
+                    ];
+                }
+            }
+
+            foreach ($optionValues as $optionValue){
+                $this->productRepository->createSkuValue(
+                    $productId,
+                    $sku->id,
+                    $optionValue
+                );
+            };
+
+            DB::commit();
+
+            return response()->json([
+                'status'  => TRUE,
+                'message' => 'Tạo thành công'
+            ], 200);
+        }catch (\Exception $e){
+            DB::rollBack();
+
+            return response()->json(['error' => 'Có lỗi xảy ra. Vui lòng thử lại'], 500);
+        }
     }
 
     /**

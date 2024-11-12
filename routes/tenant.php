@@ -84,6 +84,7 @@ Route::middleware([
             Route::post('product/add-variants', [ProductController::class, 'addVariant']);
             Route::get('product/{id}', [ProductController::class, 'getOneProduct']);
             Route::post('upload-file', [ProductController::class, 'upload'])->name('upload');
+            Route::delete('delete-photo/{id}', [ProductController::class, 'deletePhoto']);
             Route::get('checkstock', [CheckStockController::class, 'index']);
             Route::get('checkstock/{checkstock}', [CheckStockController::class, 'show']);
             Route::post('checkstock/create', [CheckStockController::class, 'store']);

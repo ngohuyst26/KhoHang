@@ -313,6 +313,7 @@ class TikTokController extends Controller{
                     $dataProduct     = new Fluent($productCoppy);
                     $responseProduct = $this->productRepository->addProductApi($dataProduct);
 
+
                     return response()->json([
                         'status'  => TRUE,
                         'data'    => $responseProduct,

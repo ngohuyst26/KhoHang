@@ -34,4 +34,5 @@ interface ProductRepositoryInterface extends BaseRepositoryInterface{
 
     public function getOneProduct($id);
 
+    public function deletePhoto($id);
 }

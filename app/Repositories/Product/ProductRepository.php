@@ -522,4 +522,25 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         ], 404);
     }
 
+    public function deletePhoto($id){
+        try{
+            $photo = Photo::destroy($id);
+            if ($photo){
+                return response()->json([
+                    'status'  => TRUE,
+                    'message' => 'Xóa hình thành công!'
+                ]);
+            }
+
+            return response()->json([
+                'status'  => FALSE,
+                'message' => 'Xóa hình thất bại!'
+            ]);
+        }catch (Exception $exception){
+            return response()->json([
+                'status'  => FALSE,
+                'message' => 'Xóa hình thất bại đã có lỗi sảy ra!'
+            ]);
+        }
+    }
 }

@@ -24,7 +24,9 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
         $brands = $this->model->orderBy('id', 'DESC')->with('orderItems.product_sku.product','user.orders');
 
         if(!empty($keyword)){
-            $brands = $brands->where('name','like','%'.$keyword.'%');
+            $brands = $brands->whereHas('user', function ($query) use ($keyword) {
+                $query->where('name', 'like', '%' . $keyword . '%');
+            });
         }
 
         if(!empty($status)){

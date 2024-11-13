@@ -93,11 +93,10 @@ class OrderController extends Controller
     public function update(Request $request, string $id)
     {
         $this->orderRepository->update($id,[
-            'customer_id'    =>$request->customer_id,
-            'total_payment'  =>$request->customer_id,
-            'discount'       =>$request->discount,
-            'payment_method' =>$request->payment_method,
-            'notes'          =>$request->notes,
+            'user_id'           =>$request->user_id,
+            'total_payment'     =>$request->total_payment,
+            'payment_method_id' =>$request->payment_method_id,
+            'notes'             =>$request->notes,
         ]);
 
         $order = Orders::findOrFail($id);

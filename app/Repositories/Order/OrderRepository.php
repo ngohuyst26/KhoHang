@@ -43,7 +43,7 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
     }
 
     public function getOrder(int $id){
-        return $this->model->with('orderItems.product_sku.photo')->find($id);
+        return $this->model->with('orderItems.product_sku.product','orderItems.product_sku.photo')->find($id);
     }
 
     public function delete(int $id)

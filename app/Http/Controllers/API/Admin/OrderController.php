@@ -100,14 +100,20 @@ class OrderController extends Controller
         ]);
 
         $order = Orders::findOrFail($id);
+        $orderItemIds = collect($request->order_items)->pluck('product_sku_id');
+        $order->orderItems()->whereNotIn('product_sku_id', $orderItemIds)->delete();
         foreach ($request->order_items as $item){
-            $order->orderItems()->update([
-                'order_id'       => $order->id,
-                'product_sku_id' => $item['product_sku_id'],
-                'quantity'       => $item['quantity'],
-                'unit_amount'    => $item['unit_amount'],
-                'total_amount'   => $item['total_amount'],
-            ]);
+            $order->orderItems()->updateOrCreate(
+                [
+                    'product_sku_id' => $item['product_sku_id'],
+                ],
+                [
+                    'order_id'       => $order->id,
+                    'quantity'       => $item['quantity'],
+                    'unit_amount'    => $item['unit_amount'],
+                    'total_amount'   => $item['total_amount'],
+                ]
+            );
         }
 
         return response()->json([

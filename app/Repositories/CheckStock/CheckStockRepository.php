@@ -166,7 +166,11 @@ class CheckStockRepository extends BaseRepository implements CheckStockRepositor
                     ]);
                 }
             }
-
+            if ($request->status === 2){
+                $this->update($id, [
+                    'status' => $request->status,
+                ]);
+            };
             $this->update($id, [
                 'ac_number'        => $ac_number,
                 'ac_total'         => $ac_total,

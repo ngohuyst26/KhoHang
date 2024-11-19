@@ -19,7 +19,7 @@ return new class extends Migration
                   ->cascadeOnUpdate()
                   ->nullOnDelete();
             $table->float('total_payment')->nullable();
-            $table->enum('status', ['pending', 'completed', 'failed']);
+            $table->enum('status', ['pending', 'completed', 'failed','cancelled']);
             $table->text('notes')->nullable();
 
             $table->foreignId('payment_method_id')

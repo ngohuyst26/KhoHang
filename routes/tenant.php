@@ -125,6 +125,8 @@ Route::middleware([
         Route::resource('/user', UserController::class);
         //Order
         Route::post('/pay-order', [WalletPaymentController::class, 'payOrder']);
+        Route::post('/cancel-order', [WalletPaymentController::class, 'cancelOrder']);
+
 
         //VNPay
         Route::post('/vnpay/payment', [VnpayPaymentController::class, 'createPayment'])

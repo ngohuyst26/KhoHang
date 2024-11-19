@@ -57,10 +57,8 @@ class WalletService{
         }
 
         $createdAt = $order->created_at;
-        $currentTime = now();
-
-        if ($currentTime->diffInHours($createdAt) > 24) {
-            return response()->json(['message' => 'Cancellation is only allowed within 24 hours after order creation'], 400);
+        if ($createdAt->addHours(24)->isPast()) {
+            throw new Exception('Đơn hàng chỉ được hủy trong vòng 24h');
         }
 
         DB::beginTransaction();

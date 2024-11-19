@@ -21,14 +21,26 @@ class WalletPaymentController extends Controller
     {
         $order = Orders::findOrFail($request->input('order_id'));
         if ($order->status !== 'pending') {
-            return response()->json(['message' => 'Đơn hàng không ở trạng thái chờ thanh toán'], 400);
+
+            return response()->json([
+                'status'  => 'fail',
+                'message' => 'Đơn hàng không ở trạng thái chờ thanh toán'
+            ], 400);
         }
 
         try {
             $this->walletService->payOrderUsingWallet($order);
-            return response()->json(['message' => 'Thanh toán thành công'], 200);
+
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'Thanh toán thành công'
+            ], 200);
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
+
+            return response()->json([
+                'status'  => 'fail',
+                'message' => $e->getMessage()
+            ], 400);
         }
 
     }
@@ -36,16 +48,26 @@ class WalletPaymentController extends Controller
     public function cancelOrder(Request $request){
         $order = Orders::findOrFail($request->input('order_id'));
         if ($order->status !== 'completed') {
-            return response()->json(['message' => 'Đơn hàng chưa được thanh toán'], 400);
+
+            return response()->json([
+                'status'  => 'fail',
+                'message' => 'Chỉ thực hiện trên đơn hàng đã thanh toán'
+            ], 400);
         }
         try{
             $this->walletService->refundToWallet($order);
-            return response()->json(['message' => 'Hoàn tiền thành công'], 200);
+
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'Hoàn tiền thành công'
+            ], 200);
         }catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
+
+            return response()->json([
+                'status'  => 'fail',
+                'message' => $e->getMessage()
+            ], 400);
         }
-
-
     }
 
 

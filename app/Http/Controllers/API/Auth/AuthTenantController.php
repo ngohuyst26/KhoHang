@@ -86,7 +86,8 @@ class AuthTenantController extends Controller
             'date_of_birth'   => $user->date_of_birth,
             'phone'       => $user->phone,
             'roles'       => $user->getRoleNames(),
-            'subdomain'   => $request->getHttpHost()
+            'subdomain'   => $request->getHttpHost(),
+            'tenant_id'   => tenant('id')
         ]);
     }
 

@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 class UpgradeTenantController extends Controller
 {
     public function upgradePlanByMomo(Request $request){
-        $tenant_id = $request->input('tenant_id ');
+        $tenant_id = $request->input('tenant_id');
         if (tenant()->id != $tenant_id){
             return response()->json([
                 'status' => FALSE,

@@ -112,15 +112,17 @@ Route::middleware([
             ]);
 
             Route::post('upgrade-plan-momo/',[UpgradeTenantController::class,'upgradePlanByMomo']);
-            Route::get('/plan-momo-return', [UpgradeTenantController::class, 'callbackMomoPlan'])
-                 ->name('momo.return.plan')
-                 ->withoutMiddleware(['auth:api', VerifyTenantToken::class]);
-
             Route::post('upgrade-plan-vnpay/',[UpgradeTenantController::class,'upgradePlanByVnpay']);
-            Route::get('/plan-vnpay-return', [UpgradeTenantController::class, 'returnVnpayPlan'])
-                 ->name('vnpay.return.plan')
-                 ->withoutMiddleware(['auth:api', VerifyTenantToken::class]);
+
         });
+
+        Route::get('/plan-momo-return', [UpgradeTenantController::class, 'callbackMomoPlan'])
+             ->name('momo.return.plan')
+             ->withoutMiddleware(['auth:api', VerifyTenantToken::class]);
+
+        Route::get('/plan-vnpay-return', [UpgradeTenantController::class, 'returnVnpayPlan'])
+             ->name('vnpay.return.plan')
+             ->withoutMiddleware(['auth:api', VerifyTenantToken::class]);
 
         Route::resource('/user', UserController::class);
         //Order

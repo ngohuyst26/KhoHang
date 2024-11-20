@@ -170,7 +170,8 @@ Route::middleware([
 
         Route::resource('categories', CategoryController::class)->only([
             'index',
-        ]);
+        ])  ->withoutMiddleware(['auth:api', VerifyTenantToken::class]);
+
         Route::resource('suppliers', SupplierController::class)->only([
             'index',
         ]);

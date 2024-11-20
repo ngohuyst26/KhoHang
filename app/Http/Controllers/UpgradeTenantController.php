@@ -99,7 +99,7 @@ class UpgradeTenantController extends Controller
         $vnp_TxnRef = Str::uuid();
         $vnp_OrderInfo = $tenant_id;
         $vnp_OrderType = 'billpayment';
-        $vnp_Amount = 400000000 * 100;
+        $vnp_Amount = 400000 * 100;
         $vnp_Locale = 'vn';
         $vnp_IpAddr = $request->ip();
 

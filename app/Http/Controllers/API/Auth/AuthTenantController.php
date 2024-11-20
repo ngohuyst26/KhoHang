@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -78,16 +79,18 @@ class AuthTenantController extends Controller
     public function me(Request $request)
     {
        $user = auth()->user();
+       $tenant = Tenant::find(tenant('id'));
         return response()->json([
             'user_id'         => $user->id,
             'name'            => $user->name,
             'email'           => $user->email,
             'address'         => $user->address,
             'date_of_birth'   => $user->date_of_birth,
-            'phone'       => $user->phone,
-            'roles'       => $user->getRoleNames(),
-            'subdomain'   => $request->getHttpHost(),
-            'tenant_id'   => tenant('id')
+            'phone'           => $user->phone,
+            'roles'           => $user->getRoleNames(),
+            'subdomain'       => $request->getHttpHost(),
+            'tenant_id'       => tenant('id'),
+            'plan'            => $tenant->plan
         ]);
     }
 

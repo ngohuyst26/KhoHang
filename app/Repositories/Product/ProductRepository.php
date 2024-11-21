@@ -421,7 +421,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                     'supplier_id' => $request->supplier_id
                 ]);
 
-                if ($sku->inventory != $request->inventory){
+                if ($sku->inventory != $request->stock){
                     $checkStock = $this->checkStockRepository->create([
                         'code'        => CheckStock::generateNextCode(),
                         'description' => 'Được tạo tự động khi cập nhật sản phẩm',

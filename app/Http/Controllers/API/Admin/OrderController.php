@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Models\Orders;
+use App\Models\ProductSku;
 use App\Repositories\Order\OrderRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -50,6 +51,10 @@ class OrderController extends Controller
                 'unit_amount'    => $item['unit_amount'],
                 'total_amount'   => $item['total_amount'],
             ]);
+
+            $product_sku = ProductSku::find($item['product_sku_id']);
+            $product_sku->inventory -= $item['quantity'];
+            $product_sku->save();
         }
 
         return response()->json([

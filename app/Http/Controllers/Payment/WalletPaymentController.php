@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Payment;
 
 use App\Http\Controllers\Controller;
 use App\Models\Orders;
+use App\Models\ProductSku;
 use App\Services\WalletService;
 use Exception;
 use Illuminate\Http\Request;
@@ -47,6 +48,7 @@ class WalletPaymentController extends Controller
 
     public function cancelOrder(Request $request){
         $order = Orders::findOrFail($request->input('order_id'));
+
         if ($order->status !== 'completed') {
 
             return response()->json([
@@ -54,9 +56,15 @@ class WalletPaymentController extends Controller
                 'message' => 'Chỉ thực hiện trên đơn hàng đã thanh toán'
             ], 400);
         }
+
+        foreach ($order->orderItems as $item){
+            $product_sku = ProductSku::find($item['product_sku_id']);
+            $product_sku->inventory += $item['quantity'];
+            $product_sku->save();
+        }
+
         try{
             $this->walletService->refundToWallet($order);
-
             return response()->json([
                 'status'  => 'success',
                 'message' => 'Hoàn tiền thành công'

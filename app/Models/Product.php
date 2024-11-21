@@ -36,6 +36,11 @@ class Product extends Model{
         return $this->belongsTo(Supplier::class, 'supplier_id', 'id');
     }
 
+    public function getImageAttribute(){
+        // Kiểm tra nếu có photo trong productSku, và trả về url ảnh
+        $photo = $this->productSku->first()?->photo; // Lấy photo của productSku đầu tiên (nếu có)
 
-
+        // Nếu có ảnh, trả về đường dẫn ảnh, nếu không, trả về null
+        return $photo ? $photo->url : NULL;
+    }
 }

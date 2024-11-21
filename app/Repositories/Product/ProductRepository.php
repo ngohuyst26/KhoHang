@@ -95,8 +95,10 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     public function getOneProduct($id){
-        return Product::with(['productSku.photo', 'productSku.optionValue.option', 'productSku.storageLocation'])
-                      ->find($id);
+        $product = Product::with(['productSku.photo', 'productSku.optionValue.option', 'productSku.storageLocation'])
+                          ->find($id);
+
+        return $product;
     }
 
     public function getTrash(int $page){

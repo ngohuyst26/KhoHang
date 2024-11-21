@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\BrandInformation;
 use App\Models\Category;
 use App\Models\Introduction;
 use App\Models\PaymentMethod;
@@ -15,8 +16,8 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
 
-class SeedTenantJob implements ShouldQueue
-{
+class SeedTenantJob implements ShouldQueue{
+
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
@@ -24,27 +25,27 @@ class SeedTenantJob implements ShouldQueue
      */
 
     protected $tenant;
-    public function __construct(Tenant $tenant)
-    {
+
+    public function __construct(Tenant $tenant){
         $this->tenant = $tenant;
     }
 
     /**
      * Execute the job.
      */
-    public function handle(): void
-    {
+    public function handle()
+    : void{
         $this->tenant->run(function (){
 
-            $categories = ['shoes','clothing','underwear'];
-            foreach ($categories as  $item){
+            $categories = ['shoes', 'clothing', 'underwear'];
+            foreach ($categories as $item){
                 Category::create([
                     'name' => $item
                 ]);
             }
 
-            $suppliers = ['FPT','Viettel','Mobi'];
-            foreach ($suppliers as  $item){
+            $suppliers = ['FPT', 'Viettel', 'Mobi'];
+            foreach ($suppliers as $item){
                 Supplier::create([
                     'name' => $item
                 ]);
@@ -65,6 +66,10 @@ class SeedTenantJob implements ShouldQueue
 
             Introduction::create([
                 'introductions' => 'Giới thiệu đây,  đây là giới thiệu'
+            ]);
+
+            BrandInformation::create([
+                'name_brand' => "BlueTea"
             ]);
 
             $user->wallet()->create([

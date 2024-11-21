@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\IntroductionController;
 use App\Http\Controllers\API\OptionController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\BrandInformationController;
 use App\Http\Controllers\Payment\MomoPaymentController;
 use App\Http\Controllers\Payment\VnpayPaymentController;
 use App\Http\Controllers\Payment\WalletController;
@@ -77,6 +78,10 @@ Route::middleware([
 
             Route::post('introductions', [IntroductionController::class, 'store']);
             Route::get('introductions', [IntroductionController::class, 'show']);
+
+            Route::post('brand-information', [BrandInformationController::class, 'store']);
+            Route::get('brand-information', [BrandInformationController::class, 'index']);
+
             Route::post('product/create', [ProductController::class, 'store']);
             Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);
             Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);
@@ -94,7 +99,7 @@ Route::middleware([
             Route::resource('import-goods', ImportGoodsController::class);
             Route::resource('option', OptionController::class);
             Route::resource('user', UserController::class)->only([
-                'index','create', 'store', 'destroy', 'edit'
+                'index', 'create', 'store', 'destroy', 'edit'
             ]);
             Route::resource('suppliers', SupplierController::class);
             Route::get('orders/restore/{id}', [OrderController::class, 'restore']);

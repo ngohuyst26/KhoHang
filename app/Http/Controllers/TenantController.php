@@ -99,4 +99,21 @@ class TenantController extends Controller
     {
         //
     }
+
+    public function activateTrial()
+    {
+        try {
+            $tenant = tenant();
+            $tenant->activateTrial();
+
+            return response()->json([
+                'message' => 'Bạn đã kích hoạt dùng thử gói Premium trong 7 ngày.',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], 400);
+        }
+    }
+
 }

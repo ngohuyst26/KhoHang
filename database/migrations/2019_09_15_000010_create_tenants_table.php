@@ -23,6 +23,8 @@ class CreateTenantsTable extends Migration
             $table->enum('plan',['basic','premium'])->default('basic');
             $table->timestamps();
             $table->json('data')->nullable();
+            $table->timestamp('trial_ends_at')->nullable();
+            $table->boolean('has_used_trial')->default(false);
         });
     }
 

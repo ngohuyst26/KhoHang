@@ -7,6 +7,7 @@ use App\Models\TikTokProductLink;
 use App\Observers\ProductSkuObserver;
 use App\Observers\TikTokProductLinkObserver;
 use App\Services\OpenIdService;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,10 +26,11 @@ class AppServiceProvider extends ServiceProvider{
     /**
      * Bootstrap any application services.
      */
-    public function boot()
+    public function boot(Schedule $schedule)
     : void{
         TikTokProductLink::observe(TikTokProductLinkObserver::class);
         ProductSku::observe(ProductSkuObserver::class);
         Paginator::useBootstrapFour();
+        $schedule->command('trial:check')->daily();
     }
 }

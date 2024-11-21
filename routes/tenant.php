@@ -19,6 +19,7 @@ use App\Http\Controllers\Payment\MomoPaymentController;
 use App\Http\Controllers\Payment\VnpayPaymentController;
 use App\Http\Controllers\Payment\WalletController;
 use App\Http\Controllers\Payment\WalletPaymentController;
+use App\Http\Controllers\TenantController;
 use App\Http\Controllers\TikTokController;
 use App\Http\Controllers\UpgradeTenantController;
 use App\Http\Middleware\VerifyTenantToken;
@@ -119,6 +120,7 @@ Route::middleware([
             Route::post('upgrade-plan-momo/',[UpgradeTenantController::class,'upgradePlanByMomo']);
             Route::post('upgrade-plan-vnpay/',[UpgradeTenantController::class,'upgradePlanByVnpay']);
 
+            Route::get('tenant/active-trial', [TenantController::class, 'activateTrial']);
         });
 
         Route::get('/plan-momo-return', [UpgradeTenantController::class, 'callbackMomoPlan'])

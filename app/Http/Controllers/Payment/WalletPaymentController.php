@@ -50,6 +50,15 @@ class WalletPaymentController extends Controller
         $order = Orders::findOrFail($request->input('order_id'));
 
         if ($order->status !== 'completed') {
+            if($order->status === "pending"){
+                $order->status = 'cancelled';
+                $order->save();
+
+                return response()->json([
+                    'status'  => 'success',
+                    'message' => 'Đã hủy đơn hàng'
+                ], 200);
+            }
 
             return response()->json([
                 'status'  => 'fail',

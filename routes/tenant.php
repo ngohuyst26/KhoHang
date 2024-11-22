@@ -15,6 +15,7 @@ use App\Http\Controllers\API\OptionController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\BrandInformationController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Payment\MomoPaymentController;
 use App\Http\Controllers\Payment\VnpayPaymentController;
 use App\Http\Controllers\Payment\WalletController;
@@ -76,6 +77,8 @@ Route::middleware([
 
     Route::middleware(['auth:api', VerifyTenantToken::class])->group(function (){
         Route::group(['middleware' => ['role:admin']], function (){
+
+            Route::get('/dashboard/doanh-thu', [DashboardController::class, 'getDoanhThu']);
 
             Route::post('introductions', [IntroductionController::class, 'store']);
             Route::get('introductions', [IntroductionController::class, 'show']);

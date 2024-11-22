@@ -78,8 +78,7 @@ Route::middleware([
     Route::middleware(['auth:api', VerifyTenantToken::class])->group(function (){
         Route::group(['middleware' => ['role:admin']], function (){
 
-            Route::get('/dashboard/doanh-thu', [DashboardController::class, 'getDoanhThu']);
-            Route::get('/dashboard/loi-nhuan', [DashboardController::class, 'getLoiNhuan']);
+            Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 
             Route::post('introductions', [IntroductionController::class, 'store']);
             Route::get('introductions', [IntroductionController::class, 'show']);

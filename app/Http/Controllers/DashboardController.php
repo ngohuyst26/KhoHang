@@ -32,8 +32,28 @@ class DashboardController extends Controller{
     /**
      * Show the form for creating a new resource.
      */
-    public function create(){
-        //
+    public function getLoiNhuan(){
+        $orders            = Orders::with(['orderItems.product_sku'])->get();
+        $tongLoiNhuan      = 0;
+        $loiNhuanTheoThang = array_fill(1, 12, 0);
+        foreach ($orders as $order){
+            foreach ($order->orderItems as $item){
+                $giaVon                    = $item->product_sku->price * $item->quantity;
+                $doanhThu                  = $item->total_amount;
+                $loiNhuan                  = $doanhThu - $giaVon;
+                $tongLoiNhuan              += $loiNhuan;
+                $month                     = $order->created_at->format('n');
+                $loiNhuanTheoThang[$month] += $loiNhuan;
+            }
+        }
+
+        return response()->json([
+            'status' => TRUE,
+            'data'   => [
+                'tong_loi_nhuan' => $tongLoiNhuan,
+                'bieu_do'        => $loiNhuanTheoThang
+            ]
+        ]);
     }
 
     /**

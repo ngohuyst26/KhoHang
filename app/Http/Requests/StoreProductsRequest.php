@@ -7,14 +7,13 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 
-class StoreProductsRequest extends FormRequest
-{
+class StoreProductsRequest extends FormRequest{
 
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
-    {
+    public function authorize()
+    : bool{
         return TRUE;
     }
 
@@ -23,10 +22,11 @@ class StoreProductsRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
-    {
+    public function rules()
+    : array{
         return [
             'name'                  => 'required|max:255',
+            'weight'                => 'required|numeric|min:0',
             'price'                 => 'nullable|numeric|min:0',
             'sale_price'            => 'nullable|numeric|min:0|gte:price',
             'stock'                 => 'nullable|numeric|min:0',
@@ -39,8 +39,7 @@ class StoreProductsRequest extends FormRequest
         ];
     }
 
-    public function withValidator(Validator $validator)
-    {
+    public function withValidator(Validator $validator){
         $validator->sometimes(['price', 'sale_price', 'stock'], 'required', function ($input){
             return !isset($input->variants);
         });

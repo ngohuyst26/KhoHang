@@ -10,7 +10,7 @@ class Product extends Model{
 
     use HasApiTokens, HasFactory;
 
-    protected $fillable = ['name', 'description', 'status', 'category_id', 'brand_id', 'supplier_id', 'tiktok_product_id'];
+    protected $fillable = ['name', 'description', 'status', 'category_id', 'brand_id', 'supplier_id', 'tiktok_product_id', 'weight'];
 
     public function productSku(){
         return $this->hasMany(ProductSku::class, 'product_id', 'id',);

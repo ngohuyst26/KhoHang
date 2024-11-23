@@ -32,6 +32,7 @@ return new class extends Migration{
                 ->nullOnDelete();
 
             $table->string('name');
+            $table->float('weight');
             $table->text('description')->nullable();
             $table->tinyInteger('status')
                   ->default(1);

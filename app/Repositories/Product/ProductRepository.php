@@ -320,6 +320,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             'category_id'       => $request->category_id,
             'supplier_id'       => $request->supplier_id,
             'description'       => $request->description,
+            'weight'            => $request->weight,
             'tiktok_product_id' => $request->tiktok_product_id ?? NULL
         ]);
     }
@@ -418,6 +419,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                     'name'        => $request->name,
                     'description' => $request->description,
                     'category_id' => $request->category_id,
+                    'weight'      => $request->weight,
                     'supplier_id' => $request->supplier_id
                 ]);
 

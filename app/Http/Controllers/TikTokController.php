@@ -251,11 +251,14 @@ class TikTokController extends Controller{
                 ])
                                   ->get("https://open-api.tiktokglobalshop.com/product/202309/products/$request->tiktok_product_id?app_key=$appKey&shop_cipher=$tiktokAccount->shop_cipher&timestamp=$timestamp&sign=$sign");
                 $tiktokData = $response->collect();
+                //                dd();
                 if ($response->ok()){
                     $tiktokData = $response->collect();
+                    //                    dd($tiktokData['data']['package_weight']['value']);
                     if (count($tiktokData['data']['skus']) == 1){
                         $productCoppy    = [
                             'code'              => ProductSku::generateNextCode(),
+                            'weight'            => $tiktokData['data']['package_weight']['value'],
                             'name'              => $tiktokData['data']['title'],
                             'price'             => $tiktokData['data']['skus']['0']['price']['sale_price'],
                             'sale_price'        => $tiktokData['data']['skus']['0']['price']['sale_price'],
@@ -266,6 +269,7 @@ class TikTokController extends Controller{
                             'tiktok_product_id' => $tiktokData['data']['id']
                         ];
                         $dataProduct     = new Fluent($productCoppy);
+                        //                        dd($dataProduct);
                         $responseProduct = $this->productRepository->addProductApi($dataProduct);
 
                         return response()->json([
@@ -277,6 +281,7 @@ class TikTokController extends Controller{
                     $coppy          = [
                         'code'              => ProductSku::generateNextCode(),
                         'name'              => $tiktokData['data']['title'],
+                        'weight'            => $tiktokData['data']['package_weight']['value'],
                         'category_id'       => NULL,
                         'supplier_id'       => NULL,
                         'description'       => $tiktokData['data']['description'],

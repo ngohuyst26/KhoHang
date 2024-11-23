@@ -26,6 +26,7 @@ class UpdateProductsRequest extends FormRequest{
     : array{
         return [
             'name'        => 'required|max:255',
+            'weight'      => 'required|numeric|min:0',
             'sale_price'  => 'nullable|numeric|min:0|gte:price',
             'stock'       => 'nullable|numeric|min:0',
             'inventory'   => 'required|numeric',

@@ -12,7 +12,12 @@ class BrandInformationController extends Controller{
      * Display a listing of the resource.
      */
     public function index(){
-        return 'hihi';
+        $brandInformation = BrandInformation::first();
+
+        return response()->json([
+            'status' => TRUE,
+            'data'   => $brandInformation
+        ]);
     }
 
     /**
@@ -26,15 +31,6 @@ class BrandInformationController extends Controller{
      * Store a newly created resource in storage.
      */
     public function store(BrandInformationRequest $request){
-        //        $request->validate([
-        //            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // File logo
-        //            'name_brand' => 'required|string|max:255',
-        //            'phone' => 'required|string|max:15',
-        //            'email' => 'required|email',
-        //            'facebook_link' => 'nullable|url',
-        //            'youtube_link' => 'nullable|url',
-        //            'tiktok_link' => 'nullable|url',
-        //        ]);
         $logoPath = NULL;
         if ($request->hasFile('logo')){
             $file     = $request->file('logo');
@@ -42,13 +38,16 @@ class BrandInformationController extends Controller{
         }
         $brandInformation = BrandInformation::first();
         $brandInformation->update([
-            'logo'          => $logoPath,
-            'name_brand'    => $request->input('name_brand'),
-            'phone'         => $request->input('phone'),
-            'email'         => $request->input('email'),
-            'facebook_link' => $request->input('facebook_link'),
-            'youtube_link'  => $request->input('youtube_link'),
-            'tiktok_link'   => $request->input('tiktok_link'),
+            'logo'           => $logoPath,
+            'name_brand'     => $request->input('name_brand'),
+            'phone'          => $request->input('phone'),
+            'email'          => $request->input('email'),
+            'facebook_link'  => $request->input('facebook_link'),
+            'youtube_link'   => $request->input('youtube_link'),
+            'tiktok_link'    => $request->input('tiktok_link'),
+            'introduction'   => $request->input('introduction'),
+            'privacy_policy' => $request->input('privacy_policy'),
+            'return_policy'  => $request->input('return_policy'),
         ]);
 
         return response()->json([

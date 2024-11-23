@@ -17,6 +17,9 @@ return new class extends Migration{
             $table->string('name_brand')->default('BlueTea');
             $table->string('phone')->default('0819267054');
             $table->string('email')->default('ngohuyst77@gmail.com');
+            $table->text('introduction');
+            $table->text('privacy_policy');
+            $table->text('return_policy');
             $table->string('facebook_link')->nullable();
             $table->string('youtube_link')->nullable();
             $table->string('tiktok_link')->nullable();

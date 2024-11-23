@@ -47,6 +47,9 @@ Route::middleware([
 ])->prefix('api')->group(function (){
     Route::get('products', [ProductController::class, 'index']);
     Route::get('product/{product}/{skuId}', [ProductController::class, 'show']);
+    Route::get('brand-information', [BrandInformationController::class, 'index']);
+    Route::get('introductions', [IntroductionController::class, 'show']);
+
     Route::prefix('tiktok')->group(function (){
         Route::get('/callback', [TikTokController::class, 'handleCallback'])
              ->name('tiktok.callback');
@@ -79,12 +82,8 @@ Route::middleware([
         Route::group(['middleware' => ['role:admin']], function (){
 
             Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-
             Route::post('introductions', [IntroductionController::class, 'store']);
-            Route::get('introductions', [IntroductionController::class, 'show']);
-
             Route::post('brand-information', [BrandInformationController::class, 'store']);
-            Route::get('brand-information', [BrandInformationController::class, 'index']);
 
             Route::post('product/create', [ProductController::class, 'store']);
             Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);

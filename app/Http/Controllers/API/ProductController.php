@@ -36,10 +36,7 @@ class ProductController extends Controller{
      * Store a newly created resource in storage.
      */
     public function store(StoreProductsRequest $request){
-
-
         $skuIds = $this->productRepository->addProductApi($request);
-
         return response()->json([
             'message' => 'Product created successfully',
             'sku_ids' => $skuIds,

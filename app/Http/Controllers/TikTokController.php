@@ -164,12 +164,15 @@ class TikTokController extends Controller{
                     'message' => 'Sản phẩm này không tồn tại!',
                 ]);
             }
-            $productSku        = ProductSku::findOrFail($request->product_sku_id);
-            $accessToken       = $this->getValidAccessToken($request->shop_id);
-            $tiktokAccount     = TikTokAccount::where('shop_id', $request->shop_id)->firstOrFail();
-            $tiktokProductLink = TikTokProductLink::where(['tiktok_sku_id' => $request->product_sku_tiktok_id])
-                                                  ->first();
-            if (isset($tiktokProductLink)){
+            $productSku                   = ProductSku::findOrFail($request->product_sku_id);
+            $accessToken                  = $this->getValidAccessToken($request->shop_id);
+            $tiktokAccount                = TikTokAccount::where('shop_id', $request->shop_id)
+                                                         ->firstOrFail();
+            $tiktokProductLinkCheckTikTok = TikTokProductLink::where(['tiktok_sku_id' => $request->product_sku_tiktok_id])
+                                                             ->first();
+            $tiktokProductLinkCheckSku    = TikTokProductLink::where(['sku_id' => $request->product_sku_id])
+                                                             ->first();
+            if (isset($tiktokProductLinkCheckTikTok) || isset($tiktokProductLinkCheckSku)){
                 return response()->json([
                     'status'  => FALSE,
                     'message' => 'Sản phẩm này đã được liên kết!',
@@ -453,6 +456,7 @@ class TikTokController extends Controller{
             return NULL;
         }
     }
+
 
     public function unlinkTikTokAccounts(Request $request){
         try{

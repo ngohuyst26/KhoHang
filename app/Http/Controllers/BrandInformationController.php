@@ -45,9 +45,6 @@ class BrandInformationController extends Controller{
             'facebook_link'  => $request->input('facebook_link'),
             'youtube_link'   => $request->input('youtube_link'),
             'tiktok_link'    => $request->input('tiktok_link'),
-            'introduction'   => $request->input('introduction'),
-            'privacy_policy' => $request->input('privacy_policy'),
-            'return_policy'  => $request->input('return_policy'),
         ]);
 
         return response()->json([

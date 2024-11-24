@@ -94,6 +94,16 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         }
     }
 
+    public function getRandom(){
+        $product = Product::with(['productSku.photo', 'category', 'supplier', 'productSku.optionValue.option', 'productSku.storageLocation'])
+                          ->inRandomOrder()->take(10)->get();
+
+        return response()->json([
+            'status' => TRUE,
+            'data'   => $product
+        ]);
+    }
+
     public function getOneProduct($id){
         $product = Product::with(['productSku.photo', 'productSku.optionValue.option', 'productSku.storageLocation'])
                           ->find($id);

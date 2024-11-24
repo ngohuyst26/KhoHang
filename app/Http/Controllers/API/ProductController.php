@@ -202,4 +202,9 @@ class ProductController extends Controller{
     public function deletePhoto($id){
         return $this->productRepository->deletePhoto($id);
     }
+
+    public function getRandom(){
+        return $this->productRepository->getRandom();
+    }
+
 }

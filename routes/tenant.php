@@ -56,6 +56,7 @@ Route::middleware([
     Route::get('return-policy', [ReturnPolicyController::class, 'show']);
     Route::get('sliders', [SliderController::class, 'index']);
     Route::get('product/{id}', [ProductController::class, 'getOneProduct']);
+    Route::get('products/pho-bien', [ProductController::class, 'getRandom']);
 
 
     Route::prefix('tiktok')->group(function (){

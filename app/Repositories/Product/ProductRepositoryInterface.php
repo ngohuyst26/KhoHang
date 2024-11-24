@@ -8,6 +8,8 @@ interface ProductRepositoryInterface extends BaseRepositoryInterface{
 
     public function getAll($request);
 
+    public function getRandom();
+
     public function getTrash(int $page);
 
     public function createProduct($data);

@@ -29,13 +29,12 @@ class CheckTrialStatus extends Command
         $tenants = Tenant::whereNotNull('trial_ends_at')->get();
 
         foreach ($tenants as $tenant) {
-            if ($tenant->trial_ends_at->isPast()) {
+            if ($tenant->trial_ends_at && $tenant->trial_ends_at->isPast()) {
                 $tenant->plan = 'basic';
                 $tenant->trial_ends_at = null;
                 $tenant->save();
             }
         }
-
         $this->info('Đã kiểm tra trạng thái dùng thử của các tenant.');
     }
 }

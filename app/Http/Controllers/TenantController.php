@@ -55,14 +55,25 @@ class TenantController extends Controller
             ], 400);
         }
 
-        $tenant = Tenant::create($request->all());
+        $tenant = Tenant::create(
+            [
+                'name'        => $request->name,
+                'email'       => $request->email,
+                'domain_name' => $request->domain_name,
+                'password'    => $request->password,
+                'plan'        => 'premium',
+                'trial_ends_at'  => now()->addDays(7),
+                'has_used_trial' => true,
+
+            ]
+        );
         $tenant->domains()->create([
             'domain' => $request->domain_name.'.'.config('app.domain')
         ]);
 
         return response()->json([
             'status'  => true,
-            'message' => "Thêm thành công",
+            'message' => "Đã đăng ký thành công với gói dùng thử premium 7 ngày",
             'data'    => $tenant
         ], 201);
 
@@ -100,20 +111,5 @@ class TenantController extends Controller
         //
     }
 
-    public function activateTrial()
-    {
-        try {
-            $tenant = tenant();
-            $tenant->activateTrial();
-
-            return response()->json([
-                'message' => 'Bạn đã kích hoạt dùng thử gói Premium trong 7 ngày.',
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'error' => $e->getMessage(),
-            ], 400);
-        }
-    }
 
 }

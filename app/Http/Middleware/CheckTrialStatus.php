@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckPlan
+class CheckTrialStatus
 {
     /**
      * Handle an incoming request.
@@ -15,14 +15,19 @@ class CheckPlan
      */
     public function handle(Request $request, Closure $next, $plan): Response
     {
-        if (tenant()->hasPlan($plan)) {
+        $tenant = tenant();
+
+        if ($tenant->isOnTrial()) {
+            return $next($request);
+        }
+
+        if ($tenant->plan === 'premium') {
             return $next($request);
         }
 
         return response()->json([
             'status'  => Response::HTTP_FORBIDDEN,
-            'message' => "Hãy nâng cấp gói để thực hiện chức năng này",
-            'data'    => ''
+            'message' => "Gói dùng thử của bạn đã hết hạn. Vui lòng nâng cấp.",
         ],Response::HTTP_FORBIDDEN);
     }
 }

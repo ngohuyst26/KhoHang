@@ -33,6 +33,10 @@ class Tenant extends BaseTenant implements TenantWithDatabase
         ];
     }
 
+    protected $casts = [
+        'trial_ends_at' => 'datetime',
+    ];
+
     public function hasPlan($plan)
     {
         return $this->plan === $plan;
@@ -41,18 +45,6 @@ class Tenant extends BaseTenant implements TenantWithDatabase
     public function setPasswordAttribute($val)
     : string{
         return $this->attributes['password'] = bcrypt($val);
-    }
-
-    public function activateTrial()
-    {
-        if ($this->has_used_trial) {
-            throw new \Exception('Bạn đã sử dụng gói dùng thử trước đó.');
-        }
-
-        $this->plan = 'premium';
-        $this->trial_ends_at = now()->addDays(7);
-        $this->has_used_trial = true;
-        $this->save();
     }
 
     public function isOnTrial()

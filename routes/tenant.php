@@ -51,6 +51,7 @@ Route::middleware([
     Route::get('brand-information', [BrandInformationController::class, 'index']);
     Route::get('introductions', [IntroductionController::class, 'show']);
     Route::get('sliders', [SliderController::class, 'index']);
+    Route::get('product/{id}', [ProductController::class, 'getOneProduct']);
 
 
     Route::prefix('tiktok')->group(function (){
@@ -90,13 +91,11 @@ Route::middleware([
             Route::post('sliders', [SliderController::class, 'store']);
             Route::delete('sliders/{id}', [SliderController::class, 'destroy']);
 
-
             Route::post('product/create', [ProductController::class, 'store']);
             Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);
             Route::delete('product/delete/{product}', [ProductController::class, 'destroy']);
             Route::post('product/restore/{product}', [ProductController::class, 'restore']);
             Route::post('product/add-variants', [ProductController::class, 'addVariant']);
-            Route::get('product/{id}', [ProductController::class, 'getOneProduct']);
             Route::post('upload-file', [ProductController::class, 'upload'])->name('upload');
             Route::delete('delete-photo/{id}', [ProductController::class, 'deletePhoto']);
             Route::get('checkstock', [CheckStockController::class, 'index']);

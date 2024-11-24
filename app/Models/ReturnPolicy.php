@@ -5,7 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PrivacyPolycy extends Model{
+class ReturnPolicy extends Model{
 
     use HasFactory;
+
+    protected $table = 'return_policies';
+    protected $fillable = ['return_policy'];
 }

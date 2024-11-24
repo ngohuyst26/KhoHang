@@ -11,8 +11,9 @@ return new class extends Migration{
      */
     public function up()
     : void{
-        Schema::create('return_polycies', function (Blueprint $table){
+        Schema::create('return_policies', function (Blueprint $table){
             $table->id();
+            $table->text('return_policy');
             $table->timestamps();
         });
     }
@@ -22,6 +23,6 @@ return new class extends Migration{
      */
     public function down()
     : void{
-        Schema::dropIfExists('return_polycies');
+        Schema::dropIfExists('return_policies');
     }
 };

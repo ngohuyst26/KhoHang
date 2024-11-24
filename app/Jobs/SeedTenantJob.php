@@ -6,6 +6,8 @@ use App\Models\BrandInformation;
 use App\Models\Category;
 use App\Models\Introduction;
 use App\Models\PaymentMethod;
+use App\Models\PrivacyPolicy;
+use App\Models\ReturnPolicy;
 use App\Models\Supplier;
 use App\Models\Tenant;
 use App\Models\User;
@@ -69,7 +71,15 @@ class SeedTenantJob implements ShouldQueue{
             ]);
 
             BrandInformation::create([
-                'name_brand'     => "BlueTea",
+                'name_brand' => "BlueTea",
+            ]);
+
+            PrivacyPolicy::create([
+                'privacy_policy' => 'Trang chính sách bảo mật.'
+            ]);
+
+            ReturnPolicy::create([
+                'return_policy' => 'Trang chính sách đổi trả.'
             ]);
 
             $user->wallet()->create([

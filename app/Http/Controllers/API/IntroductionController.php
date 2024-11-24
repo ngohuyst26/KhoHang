@@ -14,7 +14,6 @@ class  IntroductionController extends Controller{
         $update->update([
             'introductions' => $request->introductions
         ]);
-
         return response()->json([
             'status' => TRUE,
             'data'   => Introduction::first()

@@ -70,9 +70,6 @@ class SeedTenantJob implements ShouldQueue{
 
             BrandInformation::create([
                 'name_brand'     => "BlueTea",
-                'introduction'   => 'Trang giới thiệu',
-                'privacy_policy' => 'Trang chính sách bảo mật',
-                'return_policy'  => 'Trang chính sách đổi trả'
             ]);
 
             $user->wallet()->create([

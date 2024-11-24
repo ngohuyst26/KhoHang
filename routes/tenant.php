@@ -20,6 +20,7 @@ use App\Http\Controllers\Payment\MomoPaymentController;
 use App\Http\Controllers\Payment\VnpayPaymentController;
 use App\Http\Controllers\Payment\WalletController;
 use App\Http\Controllers\Payment\WalletPaymentController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\TikTokController;
 use App\Http\Controllers\UpgradeTenantController;
@@ -49,6 +50,8 @@ Route::middleware([
     Route::get('product/{product}/{skuId}', [ProductController::class, 'show']);
     Route::get('brand-information', [BrandInformationController::class, 'index']);
     Route::get('introductions', [IntroductionController::class, 'show']);
+    Route::get('sliders', [SliderController::class, 'index']);
+
 
     Route::prefix('tiktok')->group(function (){
         Route::get('/callback', [TikTokController::class, 'handleCallback'])
@@ -84,6 +87,9 @@ Route::middleware([
             Route::get('/dashboard', [DashboardController::class, 'dashboard']);
             Route::post('introductions', [IntroductionController::class, 'store']);
             Route::post('brand-information', [BrandInformationController::class, 'store']);
+            Route::post('sliders', [SliderController::class, 'store']);
+            Route::delete('sliders/{id}', [SliderController::class, 'destroy']);
+
 
             Route::post('product/create', [ProductController::class, 'store']);
             Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);

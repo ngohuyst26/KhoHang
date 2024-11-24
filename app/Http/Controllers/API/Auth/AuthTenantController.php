@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Tenant;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -78,8 +79,7 @@ class AuthTenantController extends Controller
      */
     public function me(Request $request)
     {
-       $user = auth()->user();
-       $tenant = Tenant::find(tenant('id'));
+        $user = auth()->user();
         return response()->json([
             'user_id'         => $user->id,
             'name'            => $user->name,
@@ -90,7 +90,8 @@ class AuthTenantController extends Controller
             'roles'           => $user->getRoleNames(),
             'subdomain'       => $request->getHttpHost(),
             'tenant_id'       => tenant('id'),
-            'plan'            => $tenant->plan
+            'plan'            => tenant('plan'),
+            'days_left'       => tenant()->trialDaysLeft()
         ]);
     }
 

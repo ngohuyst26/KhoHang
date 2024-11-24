@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Stancl\Tenancy\Database\Models\Tenant as BaseTenant;
 use Stancl\Tenancy\Contracts\TenantWithDatabase;
 use Stancl\Tenancy\Database\Concerns\HasDatabase;
@@ -50,5 +51,15 @@ class Tenant extends BaseTenant implements TenantWithDatabase
     public function isOnTrial()
     {
         return $this->trial_ends_at && now()->lessThanOrEqualTo($this->trial_ends_at);
+    }
+
+    public function trialDaysLeft(): int
+    {
+        if ($this->trial_ends_at && now()->lessThanOrEqualTo($this->trial_ends_at)) {
+            $diffInHours = now()->diffInHours(Carbon::parse($this->trial_ends_at));
+            return (int) ceil($diffInHours / 24);
+        }
+
+        return 0;
     }
 }

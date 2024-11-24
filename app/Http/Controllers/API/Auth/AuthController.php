@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules;
 use PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException;
+use Carbon\Carbon;
 
 class AuthController extends Controller
 {

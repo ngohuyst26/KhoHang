@@ -65,12 +65,14 @@ class ImportGoodsRepository extends BaseRepository implements ImportGoodsReposit
             $importGoods = $this->create([
                 'supplier_id'       => $request->supplier_id,
                 'code'              => $request->code,
+                'status'            => $request->status,
                 'total_goods'       => $request->total_goods,
                 'discount'          => $request->discount,
                 'supplier_payments' => $request->supplier_payments,
                 'description'       => $request->description
             ]);
             foreach ($request->detail_import_goods as $detail){
+                $sku = ProductSku::find($detail['product_id']);
                 DetailImportGoods::create([
                     'import_goods_id' => $importGoods->id,
                     'product_id'      => $detail['product_id'],
@@ -79,6 +81,11 @@ class ImportGoodsRepository extends BaseRepository implements ImportGoodsReposit
                     'price'           => $detail['price'],
                     'total_price'     => $detail['total_price']
                 ]);
+                if ($request->status == 2){
+                    $sku->update([
+                        'inventory' => $sku->inventory + $detail['qty']
+                    ]);
+                }
             }
 
             return response()->json([
@@ -97,6 +104,7 @@ class ImportGoodsRepository extends BaseRepository implements ImportGoodsReposit
         try{
             $this->update($id, [
                 'supplier_id'       => $request->supplier_id,
+                'status'            => $request->status,
                 'code'              => $request->code,
                 'total_goods'       => $request->total_goods,
                 'discount'          => $request->discount,
@@ -104,13 +112,11 @@ class ImportGoodsRepository extends BaseRepository implements ImportGoodsReposit
                 'description'       => $request->description
             ]);
 
-
             $currentProducts = DetailImportGoods::where('import_goods_id', $id)
                                                 ->pluck('product_id')
                                                 ->toArray();
 
             $newProducts = collect($request->detail_import_goods)->pluck('product_id')->toArray();
-
 
             $productsToDelete = array_diff($currentProducts, $newProducts);
 
@@ -139,6 +145,12 @@ class ImportGoodsRepository extends BaseRepository implements ImportGoodsReposit
                         'total_price' => $import_good['total_price']
                     ]
                 );
+
+                if ($request->status == 2){
+                    $sku->update([
+                        'inventory' => $sku->inventory + $import_good['qty']
+                    ]);
+                }
             }
 
             return response()->json([

@@ -23,7 +23,7 @@ return new class extends Migration{
             $table->integer('total_goods');
             $table->integer('discount');
             $table->integer('supplier_payments');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

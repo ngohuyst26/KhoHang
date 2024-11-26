@@ -39,14 +39,14 @@ class SeedTenantJob implements ShouldQueue{
     : void{
         $this->tenant->run(function (){
 
-            $categories = ['shoes', 'clothing', 'underwear'];
+            $categories = ['Áo Thun', 'Áo Polo', 'Áo sơ mi', 'Áo khoác', 'Hoodie'];
             foreach ($categories as $item){
                 Category::create([
                     'name' => $item
                 ]);
             }
 
-            $suppliers = ['FPT', 'Viettel', 'Mobi'];
+            $suppliers = ['Công ty May Ngô Huy', 'Công ty TNHH MTV Huy ST', 'Công ty TNHH MTV Phúc ĐT', 'Công ty TNHH MTV Khang HG', 'Công ty TNHH Nam Can Ther'];
             foreach ($suppliers as $item){
                 Supplier::create([
                     'name' => $item

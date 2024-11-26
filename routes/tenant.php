@@ -97,6 +97,7 @@ Route::middleware([
             Route::post('brand-information', [BrandInformationController::class, 'store']);
             Route::post('sliders', [SliderController::class, 'store']);
             Route::delete('sliders/{id}', [SliderController::class, 'destroy']);
+            Route::post('update-logo', [BrandInformationController::class, 'updateLogo']);
 
             Route::post('product/create', [ProductController::class, 'store']);
             Route::put('product/update/{product}/{skuId}', [ProductController::class, 'update']);

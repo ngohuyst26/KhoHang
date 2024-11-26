@@ -56,9 +56,23 @@ class BrandInformationController extends Controller{
     /**
      * Display the specified resource.
      */
-    public function show(string $id){
-        //
+    public function updateLogo(Request $request){
+        $logoPath = NULL;
+        if ($request->hasFile('logo')){
+            $file     = $request->file('logo');
+            $logoPath = $file->store('logos', 'public');
+        }
+        $brandInformation = BrandInformation::first();
+        $brandInformation->update([
+            'logo' => $logoPath
+        ]);
+
+        return response()->json([
+            'status'  => TRUE,
+            'message' => 'Cập nhật logo thành công!'
+        ]);
     }
+
 
     /**
      * Show the form for editing the specified resource.

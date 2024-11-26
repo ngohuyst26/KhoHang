@@ -95,7 +95,6 @@ class ImportGoodsRepository extends BaseRepository implements ImportGoodsReposit
 
     public function updateImportGoods($request, $id){
         try{
-            // Cập nhật thông tin phiếu nhập kho
             $this->update($id, [
                 'supplier_id'       => $request->supplier_id,
                 'code'              => $request->code,

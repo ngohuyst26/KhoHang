@@ -10,7 +10,7 @@ class DetailCheckStock extends Model{
 
     use HasApiTokens, HasFactory;
 
-    protected $fillable = ['stock', 'check_stock_id', 'product_sku_id', 'ac_number', 'total_difference', 'value',];
+    protected $fillable = ['stock', 'check_stock_id', 'product_sku_id', 'ac_number', 'total_difference', 'value'];
 
     public function checkStock(){
         return $this->belongsTo(CheckStock::class);

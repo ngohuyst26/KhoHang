@@ -33,6 +33,7 @@ return new class extends Migration{
 
             $table->string('name');
             $table->float('weight');
+            $table->text('info_product')->nullable();
             $table->text('description')->nullable();
             $table->tinyInteger('status')
                   ->default(1);

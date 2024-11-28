@@ -19,6 +19,10 @@ class CheckStockRepository extends BaseRepository implements CheckStockRepositor
         $order = 'desc';
         $query = CheckStock::with(['detailStock.productSku.product', 'detailStock.productSku.optionValue.option']);
 
+        if ($request->has('code')){
+            $query->where('code', 'like', "%$request->code%");
+        }
+
         if ($request->has('status') && $request->input('status') != ''){
             $query->where('status', "=", $request->input('status'));
         }

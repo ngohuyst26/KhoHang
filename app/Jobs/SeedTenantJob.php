@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Models\BrandInformation;
 use App\Models\Category;
 use App\Models\Introduction;
+use App\Models\Option;
 use App\Models\PaymentMethod;
 use App\Models\PrivacyPolicy;
 use App\Models\ReturnPolicy;
@@ -65,6 +66,14 @@ class SeedTenantJob implements ShouldQueue{
                 'email'    => $this->tenant->email,
                 'password' => $this->tenant->password
             ]);
+
+
+            $options = ['Màu sắc', 'Kích thước'];
+            foreach ($options as $item){
+                Option::create([
+                    'name' => $item
+                ]);
+            }
 
             Introduction::create([
                 'introductions' => 'Giới thiệu đây,  đây là giới thiệu'

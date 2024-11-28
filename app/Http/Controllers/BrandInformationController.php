@@ -31,14 +31,8 @@ class BrandInformationController extends Controller{
      * Store a newly created resource in storage.
      */
     public function store(BrandInformationRequest $request){
-        $logoPath = NULL;
-        if ($request->hasFile('logo')){
-            $file     = $request->file('logo');
-            $logoPath = $file->store('logos', 'public');
-        }
         $brandInformation = BrandInformation::first();
         $brandInformation->update([
-            'logo'           => $logoPath,
             'name_brand'     => $request->input('name_brand'),
             'phone'          => $request->input('phone'),
             'email'          => $request->input('email'),

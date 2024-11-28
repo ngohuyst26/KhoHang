@@ -46,7 +46,7 @@ class ProductSkuObserver{
                                 "id"        => $tiktokProductLink->tiktok_sku_id,
                                 "inventory" => [
                                     [
-                                        "quantity" => $productSku->inventory,
+                                        "quantity" => intval($productSku->inventory),
                                     ]
                                 ]
                             ]
@@ -69,12 +69,15 @@ class ProductSkuObserver{
                                                     "id"        => $tiktokProductLink->tiktok_sku_id,
                                                     "inventory" => [
                                                         [
-                                                            "quantity" => $productSku->inventory,
+                                                            "quantity" => intval($productSku->inventory),
                                                         ]
                                                     ]
                                                 ]
                                             ]
                                         ]);
+                    \Log::error('Inventory update failed',
+                        ['response' => intval($productSku->inventory)]);
+
                     if (!$response->ok()){
                         \Log::error('Inventory update failed', ['response' => $response->body()]);
                     }

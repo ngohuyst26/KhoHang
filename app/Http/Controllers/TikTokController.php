@@ -422,7 +422,6 @@ class TikTokController extends Controller{
         }else{
             Log::error('Failed to retrieve product list from TikTok',
                 ['response' => $response->body()]);
-
             return NULL;
         }
     }

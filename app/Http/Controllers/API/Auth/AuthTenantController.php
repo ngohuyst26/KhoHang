@@ -68,7 +68,8 @@ class AuthTenantController extends Controller
         return response()->json([
             'token' => $token,
             'roles' => auth()->user()->getRoleNames(),
-            'subdomain' => $request->getHttpHost()
+            'subdomain' => $request->getHttpHost(),
+            'has_used_trial' => tenant('has_used_trial')
         ]);
     }
 

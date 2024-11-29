@@ -92,7 +92,8 @@ class AuthTenantController extends Controller
             'subdomain'       => $request->getHttpHost(),
             'tenant_id'       => tenant('id'),
             'plan'            => tenant('plan'),
-            'days_left'       => tenant()->trialDaysLeft()
+            'days_left'       => tenant()->trialDaysLeft(),
+            'trial_ends_at' => tenant('trial_ends_at')
         ]);
     }
 

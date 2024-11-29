@@ -19,7 +19,8 @@ class Tenant extends BaseTenant implements TenantWithDatabase
         'plan',
         'password',
         'trial_ends_at',
-        'has_used_trial'
+        'has_used_trial',
+        'subscription_ends_at'
     ];
 
     public static function  getCustomColumns(): array{
@@ -30,12 +31,14 @@ class Tenant extends BaseTenant implements TenantWithDatabase
             'plan',
             'password',
             'trial_ends_at',
-            'has_used_trial'
+            'has_used_trial',
+            'subscription_ends_at'
         ];
     }
 
     protected $casts = [
         'trial_ends_at' => 'datetime',
+        'subscription_ends_at' => 'datetime',
     ];
 
     public function hasPlan($plan)
@@ -61,5 +64,13 @@ class Tenant extends BaseTenant implements TenantWithDatabase
         }
 
         return 0;
+    }
+
+    public function isSubscriptionExpired(): bool
+    {
+        if ($this->subscription_ends_at) {
+            return now()->greaterThan(Carbon::parse($this->subscription_ends_at));
+        }
+        return true;
     }
 }

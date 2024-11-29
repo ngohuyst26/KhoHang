@@ -69,7 +69,7 @@ class AuthTenantController extends Controller
             'token' => $token,
             'roles' => auth()->user()->getRoleNames(),
             'subdomain' => $request->getHttpHost(),
-            'has_used_trial' => tenant('has_used_trial')
+            'trial_ends_at' => tenant('trial_ends_at')
         ]);
     }
 

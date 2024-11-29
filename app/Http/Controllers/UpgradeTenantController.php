@@ -18,10 +18,6 @@ class UpgradeTenantController extends Controller
             ],403);
         }
 
-        $tenant = Tenant::findOrFail($tenant_id);
-        if ($tenant->plan != 'basic') {
-            return response()->json(['message' => 'Đã nâng cấp gói này'], 400);
-        }
 
         $partnerCode = env('MOMO_PARTNER_CODE');
         $accessKey = env('MOMO_ACCESS_KEY');
@@ -69,7 +65,13 @@ class UpgradeTenantController extends Controller
         $tenant_id = $request->input('extraData');
         if ($resultCode == 0) {
             $tenant = Tenant::findOrFail($tenant_id);
+
+            if ($tenant->trial_ends_at && now()->lessThanOrEqualTo($tenant->trial_ends_at)) {
+                $tenant->trial_ends_at = null;
+            }
+
             $tenant->plan = 'premium';
+            $tenant->subscription_ends_at = now()->addDays(30);
             $tenant->save();
 
             return redirect(env('APP_METHOD') . tenant()->domain_name. "." . env('URL_SUCCESS_MOMO'));
@@ -169,9 +171,12 @@ class UpgradeTenantController extends Controller
         $secureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
         if ($secureHash == $vnp_SecureHash) {
             if ($vnp_ResponseCode == '00') {
-
                 $tenant_id = $request->input('vnp_OrderInfo');
                 $tenant = Tenant::findOrFail($tenant_id);
+                if ($tenant->trial_ends_at && now()->lessThanOrEqualTo($tenant->trial_ends_at)) {
+                    $tenant->trial_ends_at = null;
+                }
+                $tenant->subscription_ends_at = now()->addDays(30);
                 $tenant->plan = 'premium';
                 $tenant->save();
 

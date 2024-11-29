@@ -93,7 +93,8 @@ class AuthTenantController extends Controller
             'tenant_id'       => tenant('id'),
             'plan'            => tenant('plan'),
             'days_left'       => tenant()->trialDaysLeft(),
-            'trial_ends_at' => tenant('trial_ends_at')
+            'trial_ends_at'   => tenant('trial_ends_at'),
+            'has_used_trial'  => tenant('has_used_trial')
         ]);
     }
 

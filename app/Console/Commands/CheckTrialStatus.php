@@ -32,6 +32,7 @@ class CheckTrialStatus extends Command
             if ($tenant->trial_ends_at && $tenant->trial_ends_at->isPast()) {
                 $tenant->plan = 'basic';
                 $tenant->trial_ends_at = null;
+                $tenant->has_used_trial = 1;
                 $tenant->save();
             }
         }

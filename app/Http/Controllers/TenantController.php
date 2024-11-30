@@ -63,7 +63,7 @@ class TenantController extends Controller
                 'password'    => $request->password,
                 'plan'        => 'premium',
                 'trial_ends_at'  => now()->addDays(7),
-                'has_used_trial' => true,
+                'has_used_trial' => 0,
 
             ]
         );

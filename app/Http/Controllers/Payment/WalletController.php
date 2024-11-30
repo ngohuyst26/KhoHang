@@ -94,9 +94,9 @@ class WalletController extends Controller
                 $wallet->save();
             }
 
-            return redirect(env('APP_METHOD') . tenant()->domain_name . "." . env('URL_SUCCESS_MOMO'));
+            return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_SUCCESS_MOMO'));
         } else {
-            return redirect(env('APP_METHOD') . tenant()->domain_name. "." . env('URL_FAIL_MOMO'));
+            return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_FAIL_MOMO'));
         }
     }
 
@@ -202,13 +202,13 @@ class WalletController extends Controller
                     $wallet->save();
                 }
 
-                return redirect(env('APP_METHOD') . tenant()->domain_name. "."  . env('URL_SUCCESS_VNPAY'));
+                return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_SUCCESS_VNPAY'));
             }
             else {
-                return redirect(env('APP_METHOD') . tenant()->domain_name. "."  . env('URL_FAIL_VNPAY'));
+                return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_FAIL_VNPAY'));
             }
         } else {
-            return redirect(env('APP_METHOD') . tenant()->domain_name. "."  . env('URL_FAIL_VNPAY'));
+            return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_FAIL_VNPAY'));
         }
     }
 }

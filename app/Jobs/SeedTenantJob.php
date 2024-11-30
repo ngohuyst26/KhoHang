@@ -80,7 +80,8 @@ class SeedTenantJob implements ShouldQueue{
             ]);
 
             BrandInformation::create([
-                'name_brand' => "BlueTea",
+                'logo'       => 'logos/logo_v2.png',
+                'name_brand' => "Brix",
             ]);
 
             PrivacyPolicy::create([

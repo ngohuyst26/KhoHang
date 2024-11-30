@@ -36,6 +36,8 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
             if ($request->has('status') && $request->input('status') != ''){
                 $query->where('status', '=', $request->input('status'));
+            }else{
+                $query->where('status', '=', 1);
             }
 
             if ($request->has('onHand') && $request->input('onHand') == 1 && $request->input('onHand') != ''){

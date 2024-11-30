@@ -25,7 +25,7 @@ class UpgradeTenantController extends Controller
         $endpoint = env('MOMO_ENDPOINT');
         $orderId = time();
         $orderInfo = "Thanh toán qua Momo ATM";
-        $amount = 300000;
+        $amount = 400000;
         $redirectUrl = route('momo.return.plan');
         $ipnUrl = route('wallet.ipn');
         $rawHash = "accessKey=$accessKey&amount=$amount&extraData=$tenant_id&ipnUrl=$ipnUrl&orderId=$orderId&orderInfo=$orderInfo&partnerCode=$partnerCode&redirectUrl=$redirectUrl&requestId=$orderId&requestType=payWithATM";
@@ -87,11 +87,6 @@ class UpgradeTenantController extends Controller
                 'status' => FALSE,
                 'message' => "Không thể nâng cấp cho người thuê này"
             ],403);
-        }
-
-        $tenant = Tenant::findOrFail($tenant_id);
-        if ($tenant->plan != 'basic') {
-            return response()->json(['message' => 'Đã nâng cấp gói này'], 400);
         }
 
         $vnp_TmnCode = env('VNP_TMN_CODE');

@@ -69,7 +69,7 @@ class UpgradeTenantController extends Controller
             if ($tenant->trial_ends_at && now()->lessThanOrEqualTo($tenant->trial_ends_at)) {
                 $tenant->trial_ends_at = null;
             }
-
+            $tenant->has_used_trial = 0;
             $tenant->plan = 'premium';
             $tenant->subscription_ends_at = now()->addDays(30);
             $tenant->save();
@@ -171,6 +171,7 @@ class UpgradeTenantController extends Controller
                 if ($tenant->trial_ends_at && now()->lessThanOrEqualTo($tenant->trial_ends_at)) {
                     $tenant->trial_ends_at = null;
                 }
+                $tenant->has_used_trial = 0;
                 $tenant->subscription_ends_at = now()->addDays(30);
                 $tenant->plan = 'premium';
                 $tenant->save();

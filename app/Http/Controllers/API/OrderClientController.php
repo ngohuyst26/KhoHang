@@ -10,11 +10,11 @@ class OrderClientController extends Controller
 {
     public function index() {
         $user = auth()->user();
-        $orders  = Orders::where('user_id',$user->id)->with('orderItems')->paginate(5);
+        $orders  = Orders::orderBy('id','desc')->where('user_id',$user->id)->with('orderItems')->paginate(5);
 
         return response()->json([
             'status'  => 200,
-            'message' => "Danh sách thương hiệu",
+            'message' => "Danh sách orders",
             'data'    => $orders
         ], 200);
     }

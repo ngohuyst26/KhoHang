@@ -10,7 +10,7 @@ class OrderClientController extends Controller
 {
     public function index() {
         $user = auth()->user();
-        $orders  = Orders::where('user_id',$user->id)->paginate(5);
+        $orders  = Orders::where('user_id',$user->id)->with('orderItems')->paginate(5);
 
         return response()->json([
             'status'  => 200,

@@ -12,6 +12,7 @@ use App\Http\Controllers\API\Auth\AuthTenantController;
 use App\Http\Controllers\Api\CheckStockController;
 use App\Http\Controllers\Api\IntroductionController;
 use App\Http\Controllers\API\OptionController;
+use App\Http\Controllers\API\OrderClientController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\BrandInformationController;
@@ -185,6 +186,8 @@ Route::middleware([
         Route::resource('orders', OrderController::class)->only([
             'index', 'store', 'show'
         ]);
+
+        Route::get('/order-client', [OrderClientController::class,'index']);
 
         Route::resource('customers', CustomerController::class)->only([
            'update', 'show'

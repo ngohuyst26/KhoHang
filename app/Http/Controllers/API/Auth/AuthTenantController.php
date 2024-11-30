@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Orders;
 use App\Models\Tenant;
 use App\Models\User;
 use Carbon\Carbon;

@@ -14,9 +14,29 @@ class TenantController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        dd(User::all()->toArray());
+        $tenants = Tenant::orderBy('id', 'DESC');
+
+        if($request->has('keyword')){
+            $tenants = $tenants->where('name','like','%'.$request->keyword.'%');
+        }
+
+        if($request->has('status') && $request->status != '' ){
+            $tenants = $tenants->where('status',$request->status);
+        }
+
+        if($request->has('limit')){
+            $tenants = $tenants->paginate($request->limit);
+        }else{
+            $tenants = $tenants->paginate(10);
+        }
+
+        return response()->json([
+            'status'  => true,
+            'message' => "Danh sách người thuê",
+            'data'    => $tenants
+        ],200);
     }
 
     /**
@@ -109,6 +129,28 @@ class TenantController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function monthlyUserRegistrations()
+    {
+        $statistics = Tenant::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as count')
+                          ->groupBy('year', 'month')
+                          ->orderBy('year')
+                          ->orderBy('month')
+                          ->get();
+
+        $data = $statistics->map(function ($item) {
+            return [
+                'year' => $item->year,
+                'month' => $item->month,
+                'count' => $item->count,
+            ];
+        });
+
+        return response()->json([
+            'success' => true,
+            'data' => $data,
+        ]);
     }
 
 

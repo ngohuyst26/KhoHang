@@ -26,6 +26,10 @@ class TenantController extends Controller
             $tenants = $tenants->where('status',$request->status);
         }
 
+        if($request->has('plan') && $request->plan != '' ){
+            $tenants = $tenants->where('plan',$request->plan);
+        }
+
         if($request->has('limit')){
             $tenants = $tenants->paginate($request->limit);
         }else{

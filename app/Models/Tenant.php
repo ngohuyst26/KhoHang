@@ -21,7 +21,8 @@ class Tenant extends BaseTenant implements TenantWithDatabase
         'password',
         'trial_ends_at',
         'has_used_trial',
-        'subscription_ends_at'
+        'subscription_ends_at',
+        'deleted_at'
     ];
 
     public static function  getCustomColumns(): array{
@@ -33,7 +34,8 @@ class Tenant extends BaseTenant implements TenantWithDatabase
             'password',
             'trial_ends_at',
             'has_used_trial',
-            'subscription_ends_at'
+            'subscription_ends_at',
+            'deleted_at'
         ];
     }
 

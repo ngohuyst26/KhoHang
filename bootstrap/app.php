@@ -44,5 +44,12 @@ return Application::configure(basePath: dirname(__DIR__))
                   'status'  => Response::HTTP_FORBIDDEN,
               ],Response::HTTP_FORBIDDEN);
           });
+
+          $exceptions->renderable(function (Stancl\Tenancy\Exceptions\TenantCouldNotBeIdentifiedOnDomainException $e, $request) {
+              return response()->json([
+                  'message' => 'Không tìm thấy cửa hàng này',
+                  'status'  => Response::HTTP_NOT_FOUND,
+              ],Response::HTTP_NOT_FOUND);
+          });
       })
       ->create();

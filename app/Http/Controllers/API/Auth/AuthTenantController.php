@@ -58,6 +58,13 @@ class AuthTenantController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
+        $tenant = Tenant::where('email',$request->email)->first();
+        if ($tenant->deleted_at){
+            return response()->json([
+                'message' => 'Cửa hàng đã bị khóa'
+            ], 404 );
+        }
+
         try {
             if (! $token = auth()->claims(['tenant_id' => tenant('id')])->attempt($credentials)) {
                 return response()->json(['error' => 'Username hoặc password không đúng'], 400 );

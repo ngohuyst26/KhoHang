@@ -132,7 +132,19 @@ class TenantController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $tenant = Tenant::find($id);
+        if(!$tenant){
+            return response()->json([
+                'status'  => false,
+                'message' => "Không tồn tại bảng ghi này trong hệ thống",
+            ]);
+        }
+
+        $tenant->delete();
+        return response()->json([
+            'status'  => true,
+            'message' => "Xóa thành công",
+        ]);
     }
 
     public function monthlyUserRegistrations()
@@ -152,7 +164,7 @@ class TenantController extends Controller
         });
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'data' => $data,
         ]);
     }

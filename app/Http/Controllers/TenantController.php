@@ -22,9 +22,9 @@ class TenantController extends Controller
             $tenants = $tenants->where('name','like','%'.$request->keyword.'%');
         }
 
-        if($request->has('status') && $request->status != '' ){
-            $tenants = $tenants->where('status',$request->status);
-        }
+//        if($request->has('status') && $request->status != '' ){
+//            $tenants = $tenants->where('status',$request->status);
+//        }
 
         if($request->has('plan') && $request->plan != '' ){
             $tenants = $tenants->where('plan',$request->plan);

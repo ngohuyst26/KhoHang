@@ -82,8 +82,8 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             if ($request->has('page') && $request->input('page') > 0){
                 $page = $request->input('page');
             }
-            if ($request->input('rowsPerPage') && $request->input('rowsPerPage') >= 0){
-                $rowsPerPage = $request->input('rowsPerPage');
+            if ($request->input('limit') && $request->input('limit') >= 0){
+                $rowsPerPage = $request->input('limit');
             }
 
             return $query->paginate($rowsPerPage, ['*'], 'page', $page);
@@ -214,6 +214,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $product    = $this->createProduct($request);
         $checkStock = $this->checkStockRepository->create([
             'code'        => CheckStock::generateNextCode(),
+            'status'      => 2,
             'description' => 'Được tạo tự động khi thêm sản phẩm'
         ]);
         $sku_id     = [];
@@ -440,6 +441,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                 if ($sku->inventory != $request->stock){
                     $checkStock = $this->checkStockRepository->create([
                         'code'        => CheckStock::generateNextCode(),
+                        'status'      => 2,
                         'description' => 'Được tạo tự động khi cập nhật sản phẩm',
                     ]);
 

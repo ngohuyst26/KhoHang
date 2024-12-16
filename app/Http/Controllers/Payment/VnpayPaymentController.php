@@ -98,10 +98,10 @@ class VnpayPaymentController extends Controller
                 $order->payment_method_id = 3;
                 $order->status = 'completed';
                 $order->save();
-                return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_SUCCESS_VNPAY'));
+                return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_SUCCESS_VNPAY'). '?type=payment_order');
             }
             else {
-                return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_FAIL_VNPAY'));
+                return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_FAIL_VNPAY'). '?type=payment_order');
             }
         } else {
             return response()->json(['message' => 'Chữ ký không hợp lệ'], 400);

@@ -94,9 +94,9 @@ class WalletController extends Controller
                 $wallet->save();
             }
 
-            return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_SUCCESS_MOMO'));
+            return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_SUCCESS_MOMO'). '?type=wallet');
         } else {
-            return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_FAIL_MOMO'));
+            return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_FAIL_MOMO'). '?type=wallet');
         }
     }
 

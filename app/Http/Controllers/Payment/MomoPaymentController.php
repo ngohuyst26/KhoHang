@@ -69,9 +69,9 @@ class MomoPaymentController extends Controller
             $order->status = 'completed';
             $order->save();
 
-            return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_SUCCESS_MOMO'));
+            return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_SUCCESS_MOMO'). '?type=payment_order');
         } else {
-            return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_FAIL_MOMO'));
+            return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_FAIL_MOMO'). '?type=payment_order');
         }
     }
 

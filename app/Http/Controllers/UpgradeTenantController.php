@@ -74,9 +74,9 @@ class UpgradeTenantController extends Controller
             $tenant->subscription_ends_at = now()->addDays(30);
             $tenant->save();
 
-            return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_SUCCESS_MOMO'));
+            return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain . env('URL_SUCCESS_MOMO'). '?type=upgrade');
         } else {
-            return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain  . env('URL_FAIL_MOMO'));
+            return redirect(env('APP_METHOD') . tenant()->domains()->first()->domain  . env('URL_FAIL_MOMO'). '?type=upgrade');
         }
     }
 

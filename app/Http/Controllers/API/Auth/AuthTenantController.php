@@ -4,12 +4,9 @@ namespace App\Http\Controllers\API\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
-use App\Models\Orders;
 use App\Models\Tenant;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules;
 use PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException;
@@ -57,14 +54,24 @@ class AuthTenantController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        try {
-            if (! $token = auth()->claims(['tenant_id' => tenant('id')])->attempt($credentials)) {
-                return response()->json(['error' => 'Username hoặc password không đúng'], 400 );
+
+        $tenant = Tenant::where('email', $request->email)->first();
+
+        //        if ($tenant->deleted_at){
+        //            return response()->json([
+        //                'message' => 'Cửa hàng đã bị khóa'
+        //            ], 404 );
+        //        }
+
+        try{
+            if (!$token = auth()->claims(['tenant_id' => tenant('id')])->attempt($credentials)){
+                return response()->json(['error' => 'Username hoặc password không đúng'], 400);
             }
-        } catch (JWTException $e) {
+        }catch (JWTException $e){
 
             return response()->json(['error' => 'Could not create token'], 500);
         }
+
         return response()->json([
             'token' => $token,
             'roles' => auth()->user()->getRoleNames(),

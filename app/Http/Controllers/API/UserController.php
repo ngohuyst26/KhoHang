@@ -112,7 +112,7 @@ class UserController extends Controller
             'name'          => ['required','max:255'],
             'email'         => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique('users')->ignore($id)],
             'phone'         => ['required','regex:/^(09|03|05|07|08)+([0-9]{8})\b/',Rule::unique('users')->ignore($id)],
-            'date_of_birth' => ['date_format:d/m/Y' , 'before:' . date('Y-m-d')],
+            'date_of_birth' => ['date' , 'before:' . date('Y-m-d')],
             'address'       => ['max:255'],
         ];
 
@@ -122,10 +122,9 @@ class UserController extends Controller
             'lowercase' => "Dữ liệu phải là chữ cái thường",
             'email'     => "Không đúng định đạng email",
             'phone.regex'  => "Số điện thoại bắt đầu là 03 05 07 08 09 với độ dài là 10 chữ số",
-            'date'         => "Ngày không đúng định dạng",
+            'date'         => "Ngày có dịnh dạng là yyyy/mm/dd",
             'max'          => "Dữ liệu tối đa :max kí tự",
             'email.unique' => "Email đã tồn tại trong hệ thống",
-            'date_of_birth.date_format' => "Ngày có dịnh dạng là dd/mm/yyyy",
             'date_of_birth.before'      => "Ngày phải trước hiện tại",
 
         ];
